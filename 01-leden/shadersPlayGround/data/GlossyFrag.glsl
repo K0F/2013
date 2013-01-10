@@ -1,13 +1,3 @@
-// Copyright (C) 2007 Dave Griffiths
-// Copyright (C) 2007 Dave Griffiths
-// Licence: GPLv2 (see COPYING)
-// Fluxus Shader Library
-// ---------------------
-// Glossy Specular Reflection Shader
-// A more controllable version of blinn shading,
-// Useful for ceramic or fluids - from Advanced 
-// Renderman, thanks to Larry Gritz
-
 #ifdef GL_ES
 precision mediump float;
 precision mediump int;
@@ -15,7 +5,6 @@ precision mediump int;
 
 uniform sampler2D diffuseTexture;
 uniform sampler2D normalTexture;
-uniform vec2 inTexcoord;
 
 uniform vec3 AmbientColour;
 uniform vec3 DiffuseColour;
@@ -47,9 +36,11 @@ void main()
 
   float diffuse = dot(l,n);
   float specular = smoothstep(0.72-w,0.72+w,pow(max(0.0,dot(n,h)),1.0/Roughness));
+  
   gl_FragColor = vec4(
   diff*diffuse*DiffuseColour*DiffuseIntensity + 
   AmbientColour*AmbientIntensity +
   SpecularColour*specular*SpecularIntensity
   ,1);
+
 }

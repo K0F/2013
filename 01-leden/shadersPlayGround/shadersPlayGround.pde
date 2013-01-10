@@ -4,17 +4,13 @@ PImage diff, norm;
 
 float rx, ry;
 
-//PeasyCam cam;
-
-
-
 void INIT_SHADER() {
 
 
   mat.set("AmbientColour", 0.2, 0.2, 0.2);
   mat.set("DiffuseColour", 0.8, 0.8, 0.8);
-  mat.set("SpecularColour", 1.0, 1.0, 1.0);
-  mat.set("AmbientIntensity", 0.9);
+  mat.set("SpecularColour", 0.6, 0.6, 0.6);
+  mat.set("AmbientIntensity", 0.4);
   mat.set("DiffuseIntensity", 0.9);
   mat.set("SpecularIntensity", 0.7);
   mat.set("Roughness", 0.3);
@@ -22,17 +18,17 @@ void INIT_SHADER() {
 
   mat.set("diffuseTexture", diff);
   mat.set("normalTexture", norm);
-  
- // mat.set("inTexcoord", 300,300);
+
+  // mat.set("inTexcoord", 300,300);
 }
 
 void setup() {
 
-  size(640, 640, P3D);  
-  
-  
+  size(1600, 900, P3D);  
 
-  mat = loadShader("GlossyFrag.glsl","GlossyVert.glsl");
+
+
+  mat = loadShader("GlossyFrag.glsl", "GlossyVert.glsl");
 
 
   diff = loadImage("female_child_muscle.png");
@@ -41,38 +37,30 @@ void setup() {
 
 
   ball = loadShape("woman.obj");
-  ball.scale(30, -30, 30);
+  ball.scale(40, -40, 40);
   //ball.texture(diff);
   // mat.set("lightVec",new PVector(100,100,100));s
   INIT_SHADER();
-
-
-  shader(mat);
- 
-
 }
 
 void draw() {
 
+  shader(mat);
 
+  lights();
 
-  //image(diff,0,0);
   background(15);
- // lights(); 
+
   pushMatrix();
   translate(width/2, height/2);
-  pointLight(204, 204, 204, (sin(frameCount/300.0))*1000, 1000, 1000);
+  // pointLight(204, 204, 204, (sin(frameCount/300.0))*1000, 1000, 1000);
 
-  //rotateX(frameCount/100.0);
-  rotateY(frameCount/75.0);
+  rotateY(frameCount/85.0);
 
 
-  //shape(ball);
-  //image(diff,0,0);
   shape(ball);
   popMatrix();
-  
- 
+  resetShader();
 }
 
 void mouseDragged() {
@@ -89,7 +77,6 @@ void keyPressed() {
     INIT_SHADER();
     shader(mat);
     println("---------------------------------");
-    
   } 
   catch(Exception e) {
     println(e);

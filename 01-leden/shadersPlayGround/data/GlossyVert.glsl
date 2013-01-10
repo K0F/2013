@@ -1,14 +1,3 @@
-// Copyright (C) 2007 Dave Griffiths
-// Licence: GPLv2 (see COPYING)
-// Fluxus Shader Library
-// ---------------------
-// Glossy Specular Reflection Shader
-// A more controllable version of blinn shading,
-// Useful for ceramic or fluids - from Advanced 
-// Renderman, thanks to Larry Gritz
-
-
-
 attribute vec2 inTexcoord;
 
 uniform mat4 modelviewMatrix;
@@ -33,12 +22,8 @@ void main() {
   V = -vec3(modelviewMatrix * inVertex);
   L = vec3(modelviewMatrix * (lightPosition[0] - inVertex));
 
+  TexCoord = inTexcoord;
 
-  TexCoord = inTexcoord;//gl_TextureMatrix[0] * gl_MultiTexCoord0;
-
-
-  // gl_Position = ftransform();
   gl_Position = projmodelviewMatrix * inVertex;
-
 }
 
