@@ -1,14 +1,18 @@
-PShape ball;
+
+boolean render = true;
+
+PShape character,jeans;
 PShader mat;
-PImage diff, norm;
+PImage diff, norm, p5;
 
 float rx, ry;
 float scale = 30.0;
 
+
 void INIT_SHADER() {
 
 
-   mat.set("NR_Ammount", 0.0005);
+   mat.set("NR_Ammount", 0.002);
  
   mat.set("AmbientColour", 0.2, 0.2, 0.2);
   mat.set("DiffuseColour", 0.8, 0.8, 0.8);
@@ -16,7 +20,7 @@ void INIT_SHADER() {
   mat.set("AmbientIntensity", 0.4);
   mat.set("DiffuseIntensity", 0.9);
   mat.set("SpecularIntensity", 0.7);
-  mat.set("Roughness", 0.2);
+  mat.set("Roughness", 0.5);
   mat.set("Sharpness", 0.01);
 
   mat.set("diffuseTexture", diff);
@@ -27,21 +31,24 @@ void INIT_SHADER() {
 
 void setup() {
 
-  size(800, 600, P3D);  
+  size(1280, 720, P3D);  
 
 
-
+  p5 = loadImage("p5.png");
+  imageMode(CENTER);
   mat = loadShader("frag.glsl", "vert.glsl");
 
 
-  diff = loadImage("female_child_muscle.png");
-  norm = loadImage("female_child_muscle_normal.png");
+  diff = loadImage("texture.png");
+  norm = loadImage("texture_norm.png");
   //diff = loadImage("checker.png");
 
 
-  ball = loadShape("woman.obj");
-  ball.scale(scale, -scale, scale);
-  //ball.texture(diff);
+  character = loadShape("man2.obj");
+ 
+  
+  character.scale(scale, -scale, scale);
+  //character.texture(diff);
   // mat.set("lightVec",new PVector(100,100,100));s
   INIT_SHADER();
 }
@@ -61,9 +68,17 @@ void draw() {
   rotateY(frameCount/85.0);
 
 
-  shape(ball);
-  popMatrix();
+  shape(character);
+  
   resetShader();
+  rotateX(radians(-15));
+  translate(0,-20,39);
+  image(p5,0,0,50,50);
+  
+  popMatrix();
+  
+  if(render)
+  saveFrame("/home/kof/render/man/fr#####.tga");
 }
 
 void mouseDragged() {
