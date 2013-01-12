@@ -7,12 +7,12 @@ PImage diff, norm, p5;
 
 float rx, ry;
 float scale = 30.0;
-
+float time = 0.0;
 
 void INIT_SHADER() {
 
 
-   mat.set("NR_Ammount", 0.002);
+   mat.set("NR_Ammount", 0.004);
  
   mat.set("AmbientColour", 0.2, 0.2, 0.2);
   mat.set("DiffuseColour", 0.8, 0.8, 0.8);
@@ -25,6 +25,9 @@ void INIT_SHADER() {
 
   mat.set("diffuseTexture", diff);
   mat.set("normalTexture", norm);
+  
+  mat.set("time", time);
+  
 
   // mat.set("inTexcoord", 300,300);
 }
@@ -49,11 +52,14 @@ void setup() {
   
   character.scale(scale, -scale, scale);
   //character.texture(diff);
-  // mat.set("lightVec",new PVector(100,100,100));s
+  // mat.set("lightVec",new PVector(100,100,100));
   INIT_SHADER();
 }
 
 void draw() {
+  
+  time+=0.1;
+  mat.set("time", time);
 
   shader(mat);
 
@@ -65,7 +71,7 @@ void draw() {
   translate(width/2, height/2);
   pointLight(250, 250, 250, (sin(frameCount/300.0))*1000, 1000, 1000);
 
-  rotateY(frameCount/85.0);
+  rotateY(frameCount/32.0);
 
 
   shape(character);
