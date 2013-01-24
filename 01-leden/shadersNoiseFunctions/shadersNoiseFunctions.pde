@@ -1,5 +1,5 @@
 
-boolean render = false;
+boolean render = true;
 
 PShape character,jeans;
 PShader mat;
@@ -85,6 +85,8 @@ void draw() {
   
   if(render)
   saveFrame("/home/kof/render/man/fr#####.tga");
+  
+  println(frameCount+" "+(frameCount/25.0));
 }
 
 void mouseDragged() {

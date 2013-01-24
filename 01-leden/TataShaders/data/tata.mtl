@@ -1,0 +1,13 @@
+# Blender MTL File: 'tata6.blend'
+# Material Count: 1
+newmtl Material.001_full_bake_tata6
+Ns 141.176471
+Ka 0.004241 0.004241 0.004241
+Kd 0.800000 0.800000 0.800000
+Ks 0.162791 0.162791 0.162791
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd bake_full_tata6.png
+
+
