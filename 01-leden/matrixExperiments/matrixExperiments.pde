@@ -93,12 +93,14 @@ void mousePressed() {
 }
 
 void mouseReleased() {
-  try {
-    Trace tmp = (Trace)traces.get(traces.size()-1);
-    tmp.stop();
-  }
-  catch(Exception e) {
-    ;
+  if (mouseButton==LEFT) {
+    try {
+      Trace tmp = (Trace)traces.get(traces.size()-1);
+      tmp.stop();
+    }
+    catch(Exception e) {
+      ;
+    }
   }
 
   if (mouseButton==RIGHT) {
@@ -154,17 +156,17 @@ void draw() {
 
   helperPoint = new PVector(x.cross(y).x*R/2.0, x.cross(y).y*R/2.0, x.cross(y).z*R/2.0);
 
-  if(HELPERS){
-  float siz = 100.0;
-  line(helperPoint.x-siz, helperPoint.y, helperPoint.z, helperPoint.x+siz, helperPoint.y, helperPoint.z);
-  line(helperPoint.x, helperPoint.y-siz, helperPoint.z, helperPoint.x, helperPoint.y+siz, helperPoint.z);
-  line(helperPoint.x, helperPoint.y, helperPoint.z-siz, helperPoint.x, helperPoint.y, helperPoint.z+siz);
+  if (HELPERS) {
+    float siz = 100.0;
+    line(helperPoint.x-siz, helperPoint.y, helperPoint.z, helperPoint.x+siz, helperPoint.y, helperPoint.z);
+    line(helperPoint.x, helperPoint.y-siz, helperPoint.z, helperPoint.x, helperPoint.y+siz, helperPoint.z);
+    line(helperPoint.x, helperPoint.y, helperPoint.z-siz, helperPoint.x, helperPoint.y, helperPoint.z+siz);
   };
 
 
   camera( d.x, d.y, d.z, 0, 0, 0, y.x, y.y, y.z);
 
- 
+
   if (HELPERS) {
     stroke(#ff0000);
     line(0, 0, 0, x.x*200, x.y*200, x.z*200);
@@ -183,6 +185,5 @@ void draw() {
 
   noFill();
   stroke(255, 120);
-
 }
 
