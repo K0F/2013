@@ -1,5 +1,5 @@
 /**
- 3d Draw, Kof, 2013
+ Fri Jan 25 01:58:55 CET 2013
  
  
  
@@ -20,6 +20,12 @@
  "Y8P'
  */
 
+import android.view.MotionEvent;
+
+// Define max touch events.  My phone (seems to) support 5.
+int maxTouchEvents = 5;
+// This array will hold all of our queryable MultiTouch data:
+MultiTouch2[] mt; 
 
 boolean HELPERS = false;
 
@@ -32,6 +38,8 @@ PVector helperPoint;
 float X, Y, rotx, roty;
 PVector x, y, d;
 
+float WALK_Z, WALK_X;
+boolean WALKING = false;
 
 ArrayList traces;
 
@@ -48,22 +56,28 @@ float ROT_START_X = 0;
 float ROT_START_Y = 0;
 
 void setup() {
-  size(800, 600, P3D);
-  // magic here
+    size(displayWidth, displayHeight, OPENGL);
   R = sqrt(width*width+height*height)/1.92;
   cam = new PMatrix3D();
+  
+  noSmooth();
+  
+  / Populate our MultiTouch array that will track all of our touch-points:
+  mt = new MultiTouch2[maxTouchEvents];
+  for(int i=0; i < maxTouchEvents; i++) {
+    mt[i] = new MultiTouch2();
+  }
 
   traces = new ArrayList();
 }
 
 
-
 void mousePressed() {
-  if (mouseButton == LEFT) {
+//  if (mouseButton == LEFT) {
     Trace tmp = new Trace(); 
     traces.add(tmp);
     tmp.start();
-  }
+  /*}
   else {
 
     ROTATING = true;
@@ -71,11 +85,11 @@ void mousePressed() {
     TARGET_ROTATION_X = ROTATION_X;
     ROT_START_X = mouseX-width/2;
     ROT_START_Y = mouseY-height/2;
-  }
+  }*/
 }
 
 void mouseReleased() {
-  if (mouseButton==LEFT) {
+  //if (mouseButton==LEFT) {
     try {
       Trace tmp = (Trace)traces.get(traces.size()-1);
       tmp.stop();
@@ -83,11 +97,11 @@ void mouseReleased() {
     catch(Exception e) {
       ;
     }
-  }
+  //}
 
-  if (mouseButton==RIGHT) {
-    ROTATING=false;
-  }
+  //if (mouseButton==RIGHT) {
+  //  ROTATING=false;
+  //}
 }
 
 void calcCoords() {
@@ -106,6 +120,7 @@ void draw() {
   X = mouseX-width/2;
   Y = mouseY-height/2;
 
+TARGET_ROTATION_Y = radians(frameCount/10.0)/10.0;
 
   if (ROTATING) {
     TARGET_ROTATION_Y = -radians(X-ROT_START_X)/100.0;
@@ -117,6 +132,9 @@ void draw() {
 
   ROTATION_X += (TARGET_ROTATION_X-ROTATION_X) / SMOOTH_ROT;
   ROTATION_Y += (TARGET_ROTATION_Y-ROTATION_Y) / SMOOTH_ROT;
+
+
+  //   cam.translate(WALK_X,0,WALK_Z);
 
   calcCoords();
   cam.rotateX(ROTATION_X);

@@ -1,6 +1,6 @@
 /**
- 3d Draw, Kof, 2013
- 
+
+  Aurora by Kof, 2013
  
  
  ,dPYb,                  ,dPYb,
@@ -12,12 +12,12 @@
  I8P' "Yb,  i8'    ,8I   I8P
  ,d8    `Yb,,d8,   ,d8'  ,d8b,_
  88P      Y8P"Y8888P"    PI8"8888
- I8 `8,
- I8  `8,
- I8   8I
- I8   8I
- I8, ,8'
- "Y8P'
+                         I8 `8,
+                         I8  `8,
+                         I8   8I
+                         I8   8I
+                         I8, ,8'
+                         "Y8P'
  */
 
 
@@ -37,7 +37,13 @@ ArrayList traces;
 
 ////////////////////////////////////////////////////
 
-float SMOOTH_ROT = 10.0;
+
+boolean DRAWING = false;
+int INTERVAL = 200;
+float SPEED = 10000.0;
+float SKIP = 0;
+
+float SMOOTH_ROT = 30.0;
 
 boolean ROTATING = false;
 float ROTATION_Y = 0;
@@ -48,46 +54,21 @@ float ROT_START_X = 0;
 float ROT_START_Y = 0;
 
 void setup() {
-  size(800, 600, P3D);
+  size(512, 512, P3D);
   // magic here
   R = sqrt(width*width+height*height)/1.92;
   cam = new PMatrix3D();
 
   traces = new ArrayList();
-}
 
 
+  ROT_START_X = 0;
+  ROT_START_Y = 0;
 
-void mousePressed() {
-  if (mouseButton == LEFT) {
-    Trace tmp = new Trace(); 
-    traces.add(tmp);
-    tmp.start();
-  }
-  else {
+  noSmooth();
 
-    ROTATING = true;
-    TARGET_ROTATION_Y = ROTATION_Y;
-    TARGET_ROTATION_X = ROTATION_X;
-    ROT_START_X = mouseX-width/2;
-    ROT_START_Y = mouseY-height/2;
-  }
-}
-
-void mouseReleased() {
-  if (mouseButton==LEFT) {
-    try {
-      Trace tmp = (Trace)traces.get(traces.size()-1);
-      tmp.stop();
-    }
-    catch(Exception e) {
-      ;
-    }
-  }
-
-  if (mouseButton==RIGHT) {
-    ROTATING=false;
-  }
+  colorMode(HSB, 255);
+  background(0);
 }
 
 void calcCoords() {
@@ -99,17 +80,53 @@ void calcCoords() {
   d.mult(R);
 }
 
+
 void draw() {
-  background(0);
+  resetMatrix();
+
+  tint(255, 12);
+  blend(g, 0, 0, width, height, -4, -4, width+6, height+6, BLEND);
 
 
-  X = mouseX-width/2;
-  Y = mouseY-height/2;
+  if (frameCount%INTERVAL==0 && !DRAWING) {
+    Trace tmp = new Trace(); 
+    traces.add(tmp);
+    tmp.start();
+
+    ROTATING = true;
+    TARGET_ROTATION_Y = ROTATION_Y;
+    TARGET_ROTATION_X = ROTATION_X;
+    ROT_START_X = X-width/2;
+    ROT_START_Y = Y-height/2;
+
+    DRAWING = true;
+
+    SKIP += 3000.0;
+  }
+  else if (frameCount%INTERVAL==0 && DRAWING) {
+    try {
+      Trace tmp = (Trace)traces.get(traces.size()-1);
+      tmp.stop();
+    }
+    catch(Exception e) {
+      ;
+    } 
+
+    DRAWING = false;
+  }
+
+
+
+
+  X = width*noise(frameCount/SPEED+SKIP, 0)-width/2;
+  Y = height*noise(0, frameCount/SPEED+SKIP)-height/2;
+
+  ROTATING = true;
 
 
   if (ROTATING) {
-    TARGET_ROTATION_Y = -radians(X-ROT_START_X)/100.0;
-    TARGET_ROTATION_X = radians(Y-ROT_START_Y)/100.0;
+    TARGET_ROTATION_Y = -radians(X-ROT_START_X)/400.0;
+    TARGET_ROTATION_X = radians(Y-ROT_START_Y)/400.0;
   }
 
   TARGET_ROTATION_X *= 0.9;
@@ -117,6 +134,7 @@ void draw() {
 
   ROTATION_X += (TARGET_ROTATION_X-ROTATION_X) / SMOOTH_ROT;
   ROTATION_Y += (TARGET_ROTATION_Y-ROTATION_Y) / SMOOTH_ROT;
+
 
   calcCoords();
   cam.rotateX(ROTATION_X);
@@ -131,9 +149,7 @@ void draw() {
     line(helperPoint.x, helperPoint.y, helperPoint.z-siz, helperPoint.x, helperPoint.y, helperPoint.z+siz);
   };
 
-
   camera( d.x, d.y, d.z, 0, 0, 0, y.x, y.y, y.z);
-
 
   if (HELPERS) {
     stroke(#ff0000);

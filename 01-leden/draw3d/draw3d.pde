@@ -56,6 +56,13 @@ void setup() {
   traces = new ArrayList();
 }
 
+void keyPressed(){
+ if(key == ' '){
+  traces = new ArrayList();
+ } 
+  
+}
+
 
 
 void mousePressed() {
