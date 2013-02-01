@@ -81,8 +81,9 @@ class Collada implements Runnable{
 
     for(int i = 0 ; i < b.length; i++){
       println(b[i].listChildren());
-
     }
+
+
 
   }
 
