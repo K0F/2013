@@ -2,13 +2,13 @@ boolean DEBUG  = true;
 
 Collada test;
 
-float SCALE = 60.0;
+float SCALE = 160.0;
 
 void setup(){
 
   size(640,480,P3D);
 
-  test = new Collada("test.dae");
+  test = new Collada("test2.dae");
 
 
 }
@@ -18,11 +18,13 @@ void draw(){
 
   background(255);
 
+  pointLight(255,255,255,-5*SCALE,-5*SCALE,-5*SCALE);
   pushMatrix();
   translate(width/2,height/2);
   rotateX(HALF_PI);
   rotateZ(radians(frameCount/10.0));
-  noFill();//fill(0,35);
+  noStroke();
+  fill(255,0,0);
   test.drawFaces();
   popMatrix();
 
@@ -99,7 +101,7 @@ class Collada{
           parseFloat(p[i-2]),parseFloat(p[i-1]),parseFloat(p[i])
           );
 
-      pos.add(tmp);
+      norm.add(tmp);
     }
     /////////////////////
     //
@@ -122,12 +124,14 @@ class Collada{
 
       for(int i = offset ; i < p.length ; i+=a){
         Face tmp = new Face(
-            parseInt(p[i-6]),parseInt(p[i-4]),parseInt(p[i-2]),parseInt(p[i])
+            parseInt(p[i-6]),parseInt(p[i-4]),parseInt(p[i-2]),parseInt(p[i]),
+            parseInt(p[i-5]),parseInt(p[i-3]),parseInt(p[i-1]),parseInt(p[i+1])
+
             );
 
         faces.add(tmp);
-        }
-        offset += a;
+      }
+      offset += a;
     }
     /////////////////////
 
@@ -154,13 +158,26 @@ class Collada{
       PVector c = (PVector)pos.get(f.idx[2]);
       PVector d = (PVector)pos.get(f.idx[3]);
 
-      beginShape();
+      PVector na,nb,nc,nd;
+      //try{
+        na = (PVector)norm.get(f.idx[4]);
+        nb = (PVector)norm.get(f.idx[5]);
+        nc = (PVector)norm.get(f.idx[6]);
+        nd = (PVector)norm.get(f.idx[7]);
 
-      vertex(a.x*SCALE,a.y*SCALE,a.z*SCALE);
-      vertex(b.x*SCALE,b.y*SCALE,b.z*SCALE);
-      vertex(c.x*SCALE,c.y*SCALE,c.z*SCALE);
-      vertex(d.x*SCALE,d.y*SCALE,d.z*SCALE);
-      endShape();
+
+
+        beginShape();
+        normal(na.x*SCALE,na.y*SCALE,na.z*SCALE);
+        vertex(a.x*SCALE,a.y*SCALE,a.z*SCALE);
+        normal(nb.x*SCALE,nb.y*SCALE,nb.z*SCALE);
+        vertex(b.x*SCALE,b.y*SCALE,b.z*SCALE);
+        normal(nc.x*SCALE,nc.y*SCALE,nc.z*SCALE);
+        vertex(c.x*SCALE,c.y*SCALE,c.z*SCALE);
+        normal(nd.x*SCALE,nd.y*SCALE,nd.z*SCALE);
+        vertex(d.x*SCALE,d.y*SCALE,d.z*SCALE);
+        endShape();
+      //}catch(Exception e){;}
     }
 
   }
@@ -177,6 +194,18 @@ class Face{
     idx[1] = b;
     idx[2] = c;
     idx[3] = d;
+  }
+
+  Face(int a,int b,int c, int d,int na, int nb, int nc, int nd){
+    idx = new int[8];
+    idx[0] = a;
+    idx[1] = b;
+    idx[2] = c;
+    idx[3] = d;
+    idx[4] = na;
+    idx[5] = nb;
+    idx[6] = nc;
+    idx[7] = nd;
   }
 
 }
