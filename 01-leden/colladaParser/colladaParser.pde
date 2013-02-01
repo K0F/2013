@@ -84,7 +84,6 @@ class Collada implements Runnable{
 
   void parseArmature(){
     ArrayList bones = new ArrayList();
-    ArrayList 
 
     XML b[] = raw.getChildren("library_controllers");
     XML props = b[0].getChildren("controller")[0];
