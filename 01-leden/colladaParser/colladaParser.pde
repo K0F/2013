@@ -94,6 +94,7 @@ class Collada implements Runnable{
 
 
     println(bind_shape_matrix);
+    println(joints_names);
     println(bind_poses);
     println(skin_weights);
 
