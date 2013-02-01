@@ -33,7 +33,7 @@ void draw(){
   noStroke();//stroke(0);
   fill(255,0,0);
 
-//  shape(zzz,0,0);
+  //shape(zzz,0,0);
   if(test!=null)
     test.drawFaces();
   //
@@ -73,6 +73,12 @@ class Collada implements Runnable{
     parseArmature();
 
   }
+
+  /* todo: 
+   * parse armature geometry
+   * get vetricles weights
+   * construc armature object
+   */
 
   void parseArmature(){
     ArrayList bones = new ArrayList();
