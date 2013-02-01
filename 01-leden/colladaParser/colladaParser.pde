@@ -2,15 +2,22 @@ boolean DEBUG  = true;
 
 Collada test;
 
-float SCALE = 160.0;
+float SCALE = 100.0;
+Runnable runnable;
+Thread thread;
+
+PShape zzz;
 
 void setup(){
 
   size(640,480,P3D);
 
-  test = new Collada("test2.dae");
+  zzz = createShape();
 
-
+  noSmooth();
+  runnable = new Collada("test.dae");
+  thread = new Thread(runnable);
+  thread.start();
 }
 
 
@@ -18,21 +25,31 @@ void draw(){
 
   background(255);
 
-  pointLight(255,255,255,-5*SCALE,-5*SCALE,-5*SCALE);
   pushMatrix();
   translate(width/2,height/2);
+  scale(SCALE,SCALE,SCALE);
   rotateX(HALF_PI);
-  rotateZ(radians(frameCount/10.0));
-  noStroke();
+  rotateZ(radians(frameCount/3.0));
+  pointLight(255,255,255,-5,5,5);
+  stroke(0);
+  noFill();
   fill(255,0,0);
-  test.drawFaces();
+
+//  shape(zzz,0,0);
+  if(test!=null)
+    test.drawFaces();
+  //
+  //test = new Collada("test2.dae");
+
   popMatrix();
 
 }
 
-class Collada{
+class Collada implements Runnable{
   String filename;
   XML raw;
+
+  boolean loaded = false;
 
   ArrayList pos;
   ArrayList norm;
@@ -40,12 +57,22 @@ class Collada{
   ArrayList faces;
 
 
+  Collada(ArrayList _pos,ArrayList _norm,ArrayList _vcount, ArrayList _faces){
+      pos = _pos;
+      norm = _norm;
+      vcount = _vcount;
+      faces = _faces;
+  }
 
   Collada(String _filename){
     filename = _filename;
+  }
+
+  void run(){
     raw = loadXML(filename);
 
     parseGeometry();
+
 
   }
 
@@ -130,6 +157,7 @@ class Collada{
             );
 
         faces.add(tmp);
+
       }
       offset += a;
     }
@@ -137,6 +165,51 @@ class Collada{
 
 
 
+    //loaded = true;
+    //createShape();
+    test = new Collada(pos,norm,vcount,faces);
+    //createShape();
+    println("JOB DONE!");
+  }
+
+  public boolean loaded(){
+    return loaded;
+  }
+
+  void createShape(){
+     for(int i = 0 ; i < faces.size();i++){
+      Face f = (Face)faces.get(i);
+      PVector a = (PVector)pos.get(f.idx[0]);
+      PVector b = (PVector)pos.get(f.idx[1]);
+      PVector c = (PVector)pos.get(f.idx[2]);
+      PVector d = (PVector)pos.get(f.idx[3]);
+
+      PVector na,nb,nc,nd;
+      //try{
+      na = (PVector)norm.get(f.idx[4]);
+      nb = (PVector)norm.get(f.idx[5]);
+      nc = (PVector)norm.get(f.idx[6]);
+      nd = (PVector)norm.get(f.idx[7]);
+
+
+//      zzz.beginContour();
+     // beginShape();
+      zzz.normal(na.x*SCALE,na.y*SCALE,na.z*SCALE);
+      zzz.vertex(a.x*SCALE,a.y*SCALE,a.z*SCALE);
+      zzz.normal(nb.x*SCALE,nb.y*SCALE,nb.z*SCALE);
+      zzz.vertex(b.x*SCALE,b.y*SCALE,b.z*SCALE);
+      zzz.normal(nc.x*SCALE,nc.y*SCALE,nc.z*SCALE);
+      zzz.vertex(c.x*SCALE,c.y*SCALE,c.z*SCALE);
+      zzz.normal(nd.x*SCALE,nd.y*SCALE,nd.z*SCALE);
+      zzz.vertex(d.x*SCALE,d.y*SCALE,d.z*SCALE);
+  //    zzz.endContour();
+
+      println(zzz.getVertexCount());
+      //endShape();
+      //}catch(Exception e){;}
+    }
+
+ 
 
   }
 
@@ -144,9 +217,9 @@ class Collada{
   void plot(){
     for(int i = 0 ; i < pos.size();i++){
       PVector tmp = (PVector)pos.get(i);
-      line(tmp.x*SCALE+1,tmp.y*SCALE,tmp.z*SCALE,tmp.x*SCALE-1,tmp.y*SCALE,tmp.z*SCALE);
-      line(tmp.x*SCALE,tmp.y*SCALE+1,tmp.z*SCALE,tmp.x*SCALE,tmp.y*SCALE-1,tmp.z*SCALE);
-      line(tmp.x*SCALE,tmp.y*SCALE,tmp.z*SCALE+1,tmp.x*SCALE,tmp.y*SCALE,tmp.z*SCALE-1);
+      line(tmp.x+1,tmp.y,tmp.z,tmp.x-1,tmp.y,tmp.z);
+      line(tmp.x,tmp.y+1,tmp.z,tmp.x,tmp.y-1,tmp.z);
+      line(tmp.x,tmp.y,tmp.z+1,tmp.x,tmp.y,tmp.z-1);
     }
   }
 
@@ -160,23 +233,23 @@ class Collada{
 
       PVector na,nb,nc,nd;
       //try{
-        na = (PVector)norm.get(f.idx[4]);
-        nb = (PVector)norm.get(f.idx[5]);
-        nc = (PVector)norm.get(f.idx[6]);
-        nd = (PVector)norm.get(f.idx[7]);
+      na = (PVector)norm.get(f.idx[4]);
+      nb = (PVector)norm.get(f.idx[5]);
+      nc = (PVector)norm.get(f.idx[6]);
+      nd = (PVector)norm.get(f.idx[7]);
 
 
 
-        beginShape();
-        normal(na.x*SCALE,na.y*SCALE,na.z*SCALE);
-        vertex(a.x*SCALE,a.y*SCALE,a.z*SCALE);
-        normal(nb.x*SCALE,nb.y*SCALE,nb.z*SCALE);
-        vertex(b.x*SCALE,b.y*SCALE,b.z*SCALE);
-        normal(nc.x*SCALE,nc.y*SCALE,nc.z*SCALE);
-        vertex(c.x*SCALE,c.y*SCALE,c.z*SCALE);
-        normal(nd.x*SCALE,nd.y*SCALE,nd.z*SCALE);
-        vertex(d.x*SCALE,d.y*SCALE,d.z*SCALE);
-        endShape();
+      beginShape();
+      normal(na.x,na.y,na.z);
+      vertex(a.x,a.y,a.z);
+      normal(nb.x,nb.y,nb.z);
+      vertex(b.x,b.y,b.z);
+      normal(nc.x,nc.y,nc.z);
+      vertex(c.x,c.y,c.z);
+      normal(nd.x,nd.y,nd.z);
+      vertex(d.x,d.y,d.z);
+      endShape();
       //}catch(Exception e){;}
     }
 
