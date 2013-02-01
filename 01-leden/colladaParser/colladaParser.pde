@@ -43,6 +43,8 @@ void draw(){
 
 }
 
+// avoid using main thread to load data
+
 class Collada implements Runnable{
   String filename;
   XML raw;
@@ -77,26 +79,33 @@ class Collada implements Runnable{
   /* todo: 
    * parse armature geometry
    * get vetricles weights
-   * construc armature object
+   * construct armature object
    */
 
   void parseArmature(){
     ArrayList bones = new ArrayList();
+    ArrayList 
 
     XML b[] = raw.getChildren("library_controllers");
     XML props = b[0].getChildren("controller")[0];
     XML armGeom = props.getChildren("skin")[0];
-    
+   
+
+    //hradcoded names?
     String bind_shape_matrix = armGeom.getChildren("bind_shape_matrix")[0].getContent();
     String joints_names = armGeom.getChildren("source")[0].getContent();
     String bind_poses = armGeom.getChildren("source")[1].getContent();
     String skin_weights = armGeom.getChildren("source")[2].getContent();
 
+    String bsm[] = splitTokens(bind_shape_matrix," \n");
+    String jn[] = splitTokens(joints_names," \n");
+    String bp[] = splitTokens(bind_poses," \n");
+    String sw[] = splitTokens(skin_weights," \n");
 
-    println("@"+bind_poses+"@");
-    //println(joints_names);
-    //println(bind_poses);
-    //println(skin_weights);
+    println(bsm.length);
+    println(jn.length);
+    println(bp.length);
+    println(sw.length);
 
 
 
