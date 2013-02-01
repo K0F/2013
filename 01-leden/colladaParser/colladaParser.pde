@@ -85,7 +85,7 @@ class Collada implements Runnable{
 
     XML b[] = raw.getChildren("library_controllers");
 
-    println(b);
+      println(b[0]);
     
 
 
