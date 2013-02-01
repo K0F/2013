@@ -93,10 +93,10 @@ class Collada implements Runnable{
     String skin_weights = armGeom.getChildren("source")[2].getContent();
 
 
-    println(bind_shape_matrix);
-    println(joints_names);
-    println(bind_poses);
-    println(skin_weights);
+    println("@"+bind_shape_matrix+"@");
+    //println(joints_names);
+    //println(bind_poses);
+    //println(skin_weights);
 
 
 
