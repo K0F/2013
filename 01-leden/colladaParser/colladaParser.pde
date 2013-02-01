@@ -145,21 +145,22 @@ class Collada implements Runnable{
 
     p = splitTokens((String)data.get(3)+""," ");
 
-    int offset = 6;
-    for(int f = 0; f < vcount.size();f++){
-      int a = (Integer)vcount.get(f)*2;
+    int offset = 8;
+    for(int f = offset; f < p.length+1 ;f+=8){
+      int a = parseInt(p[f-8]);
+      int b = parseInt(p[f-6]);
+      int c = parseInt(p[f-4]);
+      int d = parseInt(p[f-2]);
+     
+      int na = parseInt(p[f-7]);
+      int nb = parseInt(p[f-5]);
+      int nc = parseInt(p[f-3]);
+      int nd = parseInt(p[f-1]);
+       
+      Face tmp = new Face(a,b,c,d,na,nb,nc,nd);
 
-      for(int i = offset ; i < p.length ; i+=a){
-        Face tmp = new Face(
-            parseInt(p[i-6]),parseInt(p[i-4]),parseInt(p[i-2]),parseInt(p[i]),
-            parseInt(p[i-5]),parseInt(p[i-3]),parseInt(p[i-1]),parseInt(p[i+1])
+      faces.add(tmp);
 
-            );
-
-        faces.add(tmp);
-
-      }
-      offset += a;
     }
     /////////////////////
 
@@ -170,6 +171,11 @@ class Collada implements Runnable{
     test = new Collada(pos,norm,vcount,faces);
     //createShape();
     println("JOB DONE!");
+
+    println("got "+pos.size()+" verticles");
+    println("got "+norm.size()+" normals");
+    println("got "+vcount.size()+" faces");
+    println("got "+faces.size()+" f+n");
   }
 
   public boolean loaded(){
