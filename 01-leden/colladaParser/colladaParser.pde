@@ -2,7 +2,7 @@ boolean DEBUG  = true;
 
 Collada test;
 
-float SCALE = 100.0;
+float SCALE = 150.0;
 Runnable runnable;
 Thread thread;
 
@@ -15,7 +15,7 @@ void setup(){
   zzz = createShape();
 
   noSmooth();
-  runnable = new Collada("test.dae");
+  runnable = new Collada("test2.dae");
   thread = new Thread(runnable);
   thread.start();
 }
@@ -27,12 +27,11 @@ void draw(){
 
   pushMatrix();
   translate(width/2,height/2);
-  scale(SCALE,SCALE,SCALE);
+  scale(SCALE);
+  pointLight(255,255,255,-5,-5,5);
   rotateX(HALF_PI);
   rotateZ(radians(frameCount/3.0));
-  pointLight(255,255,255,-5,5,5);
-  stroke(0);
-  noFill();
+  noStroke();//stroke(0);
   fill(255,0,0);
 
 //  shape(zzz,0,0);
