@@ -86,7 +86,10 @@ class Collada implements Runnable{
     XML b[] = raw.getChildren("library_controllers");
     XML props = b[0].getChildren("controller")[0];
     XML armGeom = props.getChildren("skin")[0];
-    println(armGeom);
+    XML bind_shape_matrix = armGeon.getChildren("bind_shape_matrix");
+
+
+    println(bind_shape_matrix);
 
 
 
