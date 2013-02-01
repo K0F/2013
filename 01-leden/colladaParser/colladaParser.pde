@@ -88,8 +88,9 @@ class Collada implements Runnable{
     XML armGeom = props.getChildren("skin")[0];
     
     String bind_shape_matrix = armGeom.getChildren("bind_shape_matrix")[0].getContent();
-    String bind_poses = armGeom.getChildren("source")[0].getContent();
-    String skin_weights = armGeom.getChildren("source")[1].getContent();
+    String joints_names = armGeom.getChildren("source")[0].getContent();
+    String bind_poses = armGeom.getChildren("source")[1].getContent();
+    String skin_weights = armGeom.getChildren("source")[2].getContent();
 
 
     println(bind_shape_matrix);
