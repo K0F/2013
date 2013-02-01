@@ -70,8 +70,20 @@ class Collada implements Runnable{
   void run(){
     raw = loadXML(filename);
 
-    parseGeometry();
+    //parseGeometry();
+    parseArmature();
 
+  }
+
+  void parseArmature(){
+    ArrayList bones = new ArrayList();
+
+    XML b[] = raw.getChildren("library_controllers");
+
+    for(int i = 0 ; i < b.length; i++){
+      println(b[i].listChildren());
+
+    }
 
   }
 
