@@ -109,7 +109,7 @@ class Neuron{
 
     weights = new ArrayList();
     for(int i = 0; i < inputs.size();i++)
-      weights.add(random(0,20)/10.0);
+      weights.add(random(0,20)/5.0);
   }
 
   float sum(){
