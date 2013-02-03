@@ -326,3 +326,18 @@ class Face{
   }
 
 }
+
+class Armature{
+  ArrayList bones;
+  ArrayList weights;
+  ArrayList offsets;
+
+}
+
+class Bone{
+    PVector base,target;
+    Bone parent;
+     
+
+
+}
