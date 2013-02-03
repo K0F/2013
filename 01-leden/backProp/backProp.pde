@@ -1,6 +1,6 @@
 ArrayList neurons;
 
-float SPEED = 200.1;
+float SPEED = 2000.1;
 
 Neuron i1,i2,i3;
 Neuron o1,o2;
