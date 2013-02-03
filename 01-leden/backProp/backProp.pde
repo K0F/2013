@@ -12,22 +12,20 @@ void setup(){
   size(400,400,P2D);
 
 
-  i1 = new Neuron();
-  i2 = new Neuron();
-  i3 = new Neuron();
-
-  o1 = new Neuron(layNum+2);
-  o2 = new Neuron(layNum+2);
-
   createNetwork();
 }
 
 void createNetwork(){
   neurons = new ArrayList();
 
-    neurons.add(i1);
-    neurons.add(i2);
-    neurons.add(i3);
+  i1 = new Neuron();
+  i2 = new Neuron();
+  i3 = new Neuron();
+
+
+  neurons.add(i1);
+  neurons.add(i2);
+  neurons.add(i3);
 
   for(int i = 0 ; i < layNum ;i++){
     for(int ii = 0 ; ii < nPerLayer ;ii++){
@@ -35,10 +33,13 @@ void createNetwork(){
     }  
   }
 
+  o1 = new Neuron(layNum+2);
+  o2 = new Neuron(layNum+2);
+
   neurons.add(o1);
   neurons.add(o2);
 
-  
+
 
 }
 
@@ -89,7 +90,7 @@ class Neuron{
     layer = _layer;
     sum = 0;
 
-    inputs = getPreviousLayeNeurons();
+    inputs = getPreviousLayerNeurons();
 
     weights = new ArrayList();
     for(int i = 0; i < inputs.size();i++)
@@ -110,7 +111,7 @@ class Neuron{
     sum = sum();
   }
 
-  ArrayList getPreviousLayeNeurons(){
+  ArrayList getPreviousLayerNeurons(){
     ArrayList seek = new ArrayList();
     for(int i = 0 ; i < neurons.size();i++){
       Neuron n = (Neuron)neurons.get(i);
