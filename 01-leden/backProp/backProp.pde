@@ -10,7 +10,7 @@ int nPerLayer = 10;
 
 void setup(){
   size(400,400,P2D);
-
+  rectMode(CENTER);
 
   createNetwork();
 }
