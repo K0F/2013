@@ -121,7 +121,7 @@ class Collada implements Runnable{
 
     ArrayList poses = new ArrayList();
      for(int i = 0 ; i < bp.length; i++){
-      names.add(jn[i]+"");
+      names.add(bp[i]+"");
     }
 
   }
