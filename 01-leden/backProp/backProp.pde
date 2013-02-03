@@ -46,9 +46,9 @@ void createNetwork(){
 void draw(){
   background(0);
 
-  i1.sum = noise(frameCount/10.0);
-  i2.sum = noise(frameCount/10.3);
-  i3.sum = noise(frameCount/10.733);
+  i1.sum = noise(frameCount/1.0);
+  i2.sum = noise(frameCount/1.3);
+  i3.sum = noise(frameCount/1.733);
 
 
   for(int i = 3 ; i < neurons.size();i++){
