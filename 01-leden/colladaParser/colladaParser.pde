@@ -167,8 +167,6 @@ class Collada implements Runnable{
       norm.add(tmp);
     }
     /////////////////////
-    //
-    //
 
     p = splitTokens((String)data.get(2)+""," ");
 
@@ -177,6 +175,7 @@ class Collada implements Runnable{
 
       vcount.add(tmp);
     }
+
     /////////////////////
 
     p = splitTokens((String)data.get(3)+""," ");
@@ -198,6 +197,7 @@ class Collada implements Runnable{
       faces.add(tmp);
 
     }
+    
     /////////////////////
 
 
