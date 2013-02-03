@@ -107,13 +107,17 @@ class Collada implements Runnable{
     println(bp.length);
     println(sw.length);
 
-
+    /*
+       The bind shape matrix describes how to transform the pCylinderShape1 geometry into the right
+       coordinate system for use with the joints.  In this case we do an +90 Y transform because
+       the pCylinderShape1 geometry was initially a 180 unit long cylinder with 0,0,0 at it's center.
+       This moves it so 0,0,0 is at the base of the cylinder.
+     */
 
     float[] bind = new float[16];
     for(int i = 0 ; i < 16; i++){
       bind[i] = (parseFloat(bsm[i]));
     }
-
 
     PMatrix3D bind_matrix = new PMatrix3D(
         bind[0],bind[1],bind[2],bind[3],
@@ -128,9 +132,26 @@ class Collada implements Runnable{
       names.add(jn[i]+"");
     }
 
-    ArrayList poses = new ArrayList();
-    for(int i = 0 ; i < bp.length; i++){
-      poses.add(parseFloat(bp[i]));
+    /*
+       This source defines the inverse bind matrix for each joint, these are used to bring 
+       coordinates being skinned into the same space as each joint.  Note that in this case the
+       joints begin at 0,0,0 and move up 30 units for each joint, so the inverse bind matrices
+       are the opposite of that.
+     */
+
+    ArrayList poses_matrixes = new ArrayList();
+    for(int i = 0 ; i < names.size(); i++){
+      float [] mat = new float[16];
+      for(int m = 0;m<16;m++){
+        mat[m] = parseFloat(bp[16*i+m]);
+
+      }
+      poses_matrixes.add(new PMatrix3D(
+            mat[0],mat[1],mat[2],mat[3],
+            mat[4],mat[5],mat[6],mat[7],
+            mat[8],mat[9],mat[10],mat[11],
+            mat[12],mat[13],mat[14],mat[15],
+            ));
     }
 
     ArrayList weights = new ArrayList();
