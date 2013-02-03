@@ -10,20 +10,19 @@ void setup(){
   neurons = createNetwork();
 }
 
-ArrayList createNetwork(){
-  ArrayList nn = new ArrayList();
+void createNetwork(){
+  neurons = new ArrayList();
 
   for(int i = 0 ; i < inputNum;i++){
-    nn.add(new Neuron());
+    neurons.add(new Neuron());
   }
 
   for(int i = 0 ; i < layNum ;i++){
     for(int ii = 0 ; ii < nPerLayer ;ii++){
-      nn.add(new Neuron(i));
+      neurons.add(new Neuron(i));
     }  
   }
 
-  return nn;
 }
 
 
