@@ -64,7 +64,7 @@ class Neuron{
       if(n.layer==layer-1);
       seek.add(n);
     }
-    return seek();
+    return seek;
   }
 
 }
