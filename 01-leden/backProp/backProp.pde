@@ -59,10 +59,14 @@ void draw(){
 
   float siz = 10;
 
-  for(int i = 3 ; i < neurons.size();i++){
+  pushMatrix();
+  
+  translate(width/2,height/2);
+
+  for(int i = 0 ; i < neurons.size();i++){
     Neuron tmp = (Neuron)neurons.get(i);
-    float x = (neurons.indexOf(tmp) % 10) * siz ;
-    float y = tmp.layer*siz;
+    float x = (neurons.indexOf(tmp) % 10) * siz - (nPerLayer * siz / 2.0) ;
+    float y = tmp.layer * siz - ((layNum+2) * siz / 2.0);
 
     pushMatrix();
     noStroke();
@@ -71,6 +75,8 @@ void draw(){
     rect(0,0,siz/2,siz/2);
     popMatrix();
   }
+
+  popMatrix();
 
 }
 
