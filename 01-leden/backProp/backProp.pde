@@ -83,6 +83,7 @@ class Neuron{
   ArrayList inputs,weights;
   int layer;
   float sum;
+  float speed;
 
   Neuron(){
     layer = 0;
@@ -96,6 +97,8 @@ class Neuron{
     sum = 0.5;
 
     inputs = getPreviousLayerNeurons();
+
+    speed = random(1.0,100.0);
 
     weights = new ArrayList();
     for(int i = 0; i < inputs.size();i++)
@@ -114,7 +117,7 @@ class Neuron{
   }
 
   void compute(){
-    sum += (sum()-sum)/SPEED;
+    sum += (sum()-sum) / speed;
   }
 
   ArrayList getPreviousLayerNeurons(){
