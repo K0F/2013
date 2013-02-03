@@ -28,7 +28,7 @@ ArrayList createNetwork(){
 
 
 void draw(){
-
+  background(0);
 
 }
 
