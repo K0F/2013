@@ -105,7 +105,7 @@ class Neuron{
 
     inputs = getPreviousLayerNeurons();
 
-    speed = random(1.0,SPEED);
+    speed = random(10.0,SPEED);
 
     weights = new ArrayList();
     for(int i = 0; i < inputs.size();i++)
