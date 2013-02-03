@@ -82,8 +82,8 @@ class Collada implements Runnable{
    * construct armature object
    */
 
-  void parseArmature(){
-    ArrayList bones = new ArrayList();
+  Armature constructArmature(){
+    Armature armature;
 
     XML b[] = raw.getChildren("library_controllers");
     XML props = b[0].getChildren("controller")[0];
@@ -105,6 +105,29 @@ class Collada implements Runnable{
     println(jn.length);
     println(bp.length);
     println(sw.length);
+
+
+    
+    ArrayList bind = new ArrayList();
+    for(int i = 0 ; i < bsm.length; i++){
+      bind.add(parseFloat(bsm[i]));
+    }
+
+   
+    ArrayList names = new ArrayList();
+    for(int i = 0 ; i < jn.length; i++){
+      names.add(jn[i]+"");
+    }
+
+    ArrayList poses = new ArrayList();
+     for(int i = 0 ; i < bp.length; i++){
+      names.add(jn[i]+"");
+    }
+
+
+
+
+    return armature;
 
 
 
