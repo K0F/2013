@@ -101,7 +101,7 @@ class Neuron{
 
   Neuron(int _layer){
     layer = _layer;
-    sum = 0.5;
+    sum = 1.0;
 
     inputs = getPreviousLayerNeurons();
 
