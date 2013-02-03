@@ -119,7 +119,7 @@ class Neuron{
     for(int i = 0 ; i < inputs.size();i++){
       Neuron n = (Neuron)inputs.get(i);
       float w = (Float)weights.get(i);
-      if(n.sum>0.05){
+      if(n.sum>0.1){
       result += n.sum*w;
       cnt+=1.0;
       }
