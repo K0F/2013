@@ -58,10 +58,10 @@ class Collada implements Runnable{
 
 
   Collada(ArrayList _pos,ArrayList _norm,ArrayList _vcount, ArrayList _faces){
-      pos = _pos;
-      norm = _norm;
-      vcount = _vcount;
-      faces = _faces;
+    pos = _pos;
+    norm = _norm;
+    vcount = _vcount;
+    faces = _faces;
   }
 
   Collada(String _filename){
@@ -88,7 +88,7 @@ class Collada implements Runnable{
     XML b[] = raw.getChildren("library_controllers");
     XML props = b[0].getChildren("controller")[0];
     XML armGeom = props.getChildren("skin")[0];
-   
+
 
     //hradcoded names?
     String bind_shape_matrix = armGeom.getChildren("bind_shape_matrix")[0].getContent();
@@ -107,22 +107,29 @@ class Collada implements Runnable{
     println(sw.length);
 
 
-    
+
     ArrayList bind = new ArrayList();
     for(int i = 0 ; i < bsm.length; i++){
       bind.add(parseFloat(bsm[i]));
     }
 
-   
+
     ArrayList names = new ArrayList();
     for(int i = 0 ; i < jn.length; i++){
       names.add(jn[i]+"");
     }
 
     ArrayList poses = new ArrayList();
-     for(int i = 0 ; i < bp.length; i++){
-      names.add(parseFloat(bp[i]));
+    for(int i = 0 ; i < bp.length; i++){
+      poses.add(parseFloat(bp[i]));
     }
+
+    ArrayList weights = new ArrayList();
+    for(int i = 0 ; i < sw.length; i++){
+      weights.add(parseFloat(sw[i]));
+    }
+
+
 
   }
 
@@ -200,18 +207,18 @@ class Collada implements Runnable{
       int b = parseInt(p[f-6]);
       int c = parseInt(p[f-4]);
       int d = parseInt(p[f-2]);
-     
+
       int na = parseInt(p[f-7]);
       int nb = parseInt(p[f-5]);
       int nc = parseInt(p[f-3]);
       int nd = parseInt(p[f-1]);
-       
+
       Face tmp = new Face(a,b,c,d,na,nb,nc,nd);
 
       faces.add(tmp);
 
     }
-    
+
     /////////////////////
 
 
@@ -233,7 +240,7 @@ class Collada implements Runnable{
   }
 
   void createShape(){
-     for(int i = 0 ; i < faces.size();i++){
+    for(int i = 0 ; i < faces.size();i++){
       Face f = (Face)faces.get(i);
       PVector a = (PVector)pos.get(f.idx[0]);
       PVector b = (PVector)pos.get(f.idx[1]);
@@ -248,8 +255,8 @@ class Collada implements Runnable{
       nd = (PVector)norm.get(f.idx[7]);
 
 
-//      zzz.beginContour();
-     // beginShape();
+      //      zzz.beginContour();
+      // beginShape();
       zzz.normal(na.x*SCALE,na.y*SCALE,na.z*SCALE);
       zzz.vertex(a.x*SCALE,a.y*SCALE,a.z*SCALE);
       zzz.normal(nb.x*SCALE,nb.y*SCALE,nb.z*SCALE);
@@ -258,14 +265,14 @@ class Collada implements Runnable{
       zzz.vertex(c.x*SCALE,c.y*SCALE,c.z*SCALE);
       zzz.normal(nd.x*SCALE,nd.y*SCALE,nd.z*SCALE);
       zzz.vertex(d.x*SCALE,d.y*SCALE,d.z*SCALE);
-  //    zzz.endContour();
+      //    zzz.endContour();
 
       println(zzz.getVertexCount());
       //endShape();
       //}catch(Exception e){;}
     }
 
- 
+
 
   }
 
@@ -347,9 +354,9 @@ class Armature{
 }
 
 class Bone{
-    PVector base,target;
-    Bone parent;
-     
+  PVector base,target;
+  Bone parent;
+
 
 
 }
