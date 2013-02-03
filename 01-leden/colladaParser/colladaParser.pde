@@ -280,7 +280,7 @@ class Collada implements Runnable{
       nc = (PVector)norm.get(f.idx[6]);
       nd = (PVector)norm.get(f.idx[7]);
 
-      //      zzz.beginContour();
+      //  zzz.beginContour();
       // beginShape();
       zzz.normal(na.x*SCALE,na.y*SCALE,na.z*SCALE);
       zzz.vertex(a.x*SCALE,a.y*SCALE,a.z*SCALE);
@@ -290,7 +290,7 @@ class Collada implements Runnable{
       zzz.vertex(c.x*SCALE,c.y*SCALE,c.z*SCALE);
       zzz.normal(nd.x*SCALE,nd.y*SCALE,nd.z*SCALE);
       zzz.vertex(d.x*SCALE,d.y*SCALE,d.z*SCALE);
-      //    zzz.endContour();
+      // zzz.endContour();
 
       println(zzz.getVertexCount());
       //endShape();
