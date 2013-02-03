@@ -7,7 +7,7 @@ int nPerLayer = 10;
 
 void setup(){
   size(400,400,P2D);
-  neurons = createNetwork();
+  createNetwork();
 }
 
 void createNetwork(){
