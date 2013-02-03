@@ -32,7 +32,7 @@ void draw(){
 
 }
 
-Neuron{
+class Neuron{
   ArrayList inputs,weights;
   int layer;
   float sum;
