@@ -27,14 +27,14 @@ void createNetwork(){
   neurons.add(i2);
   neurons.add(i3);
 
-  for(int i = 0 ; i < layNum ;i++){
+  for(int i = 1 ; i < layNum+1 ;i++){
     for(int ii = 0 ; ii < nPerLayer ;ii++){
       neurons.add(new Neuron(i));
     }  
   }
 
-  o1 = new Neuron(layNum+1);
-  o2 = new Neuron(layNum+1);
+  o1 = new Neuron(layNum+2);
+  o2 = new Neuron(layNum+2);
 
   neurons.add(o1);
   neurons.add(o2);
