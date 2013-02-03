@@ -316,7 +316,6 @@ class Collada implements Runnable{
       PVector d = (PVector)pos.get(f.idx[3]);
 
       PVector na,nb,nc,nd;
-      //try{
       na = (PVector)norm.get(f.idx[4]);
       nb = (PVector)norm.get(f.idx[5]);
       nc = (PVector)norm.get(f.idx[6]);
@@ -332,7 +331,6 @@ class Collada implements Runnable{
       normal(nd.x,nd.y,nd.z);
       vertex(d.x,d.y,d.z);
       endShape();
-      //}catch(Exception e){;}
     }
   }
 }
