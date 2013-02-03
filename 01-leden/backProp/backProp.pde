@@ -112,6 +112,13 @@ class Neuron{
       weights.add(random(0,10)/5.0);
   }
 
+  void noiseWeights(){
+    for(int i = 0; i < inputs.size();i++){
+      weights.set(i,noise((i*30.0+frameCount)/100.0)*2.0);
+    }
+
+  }
+
   float sum(){
     float result = 0;
     float cnt = 0.0;
@@ -131,6 +138,7 @@ class Neuron{
   }
 
   void compute(){
+    noiseWeights();
     sum += (sum()-sum) / speed;
   }
 
