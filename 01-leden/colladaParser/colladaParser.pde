@@ -84,6 +84,7 @@ class Collada implements Runnable{
 
   void parseArmature(){
     Armature armature;
+    ArrayList bones;
 
     XML b[] = raw.getChildren("library_controllers");
     XML props = b[0].getChildren("controller")[0];
@@ -108,10 +109,18 @@ class Collada implements Runnable{
 
 
 
-    ArrayList bind = new ArrayList();
-    for(int i = 0 ; i < bsm.length; i++){
-      bind.add(parseFloat(bsm[i]));
+    float[] bind = new float[16];
+    for(int i = 0 ; i < 16; i++){
+      bind[i] = (parseFloat(bsm[i]));
     }
+
+
+    PMatrix3D bind_matrix = new PMatrix3D(
+        bind[0],bind[1],bind[2],bind[3],
+        bind[4],bind[5],bind[6],bind[7],
+        bind[8],bind[9],bind[10],bind[11],
+        bind[12],bind[13],bind[14],bind[15]
+        );
 
 
     ArrayList names = new ArrayList();
@@ -128,6 +137,8 @@ class Collada implements Runnable{
     for(int i = 0 ; i < sw.length; i++){
       weights.add(parseFloat(sw[i]));
     }
+
+
 
 
 
