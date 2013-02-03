@@ -77,6 +77,13 @@ void draw(){
 
   popMatrix();
 
+  float X = map(o1.sum,0,2,0,width);
+  float Y = map(o2.sum,0,2,0,height);
+
+  stroke(#ffcc00);
+  line(X-20,Y,X+20,Y);
+  line(X,Y-20,X,Y+20);
+
 }
 
 class Neuron{
