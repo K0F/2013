@@ -38,9 +38,6 @@ void createNetwork(){
 
   neurons.add(o1);
   neurons.add(o2);
-
-
-
 }
 
 
@@ -100,7 +97,7 @@ class Neuron{
 
     weights = new ArrayList();
     for(int i = 0; i < inputs.size();i++)
-      weights.add(random(0,10)/10.0);
+      weights.add(random(0,10)/5.0);
   }
 
   float sum(){
