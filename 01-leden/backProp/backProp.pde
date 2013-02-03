@@ -1,6 +1,6 @@
 ArrayList neurons;
 
-float SPEED = 1.1;
+float SPEED = 10.1;
 
 Neuron i1,i2,i3;
 Neuron o1,o2;
@@ -98,7 +98,7 @@ class Neuron{
 
     inputs = getPreviousLayerNeurons();
 
-    speed = random(1.0,100.0);
+    speed = random(1.0,SPEED);
 
     weights = new ArrayList();
     for(int i = 0; i < inputs.size();i++)
