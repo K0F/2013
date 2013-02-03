@@ -7,7 +7,7 @@ Neuron o1,o2;
 
 int inputNum = 3;
 int outputNum = 2;
-int layNum = 40;
+int layNum = 30;
 int nPerLayer = 30;
 
 void setup(){
