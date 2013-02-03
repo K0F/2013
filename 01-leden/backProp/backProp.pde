@@ -33,8 +33,8 @@ void createNetwork(){
     }  
   }
 
-  o1 = new Neuron(layNum+2);
-  o2 = new Neuron(layNum+2);
+  o1 = new Neuron(layNum+1);
+  o2 = new Neuron(layNum+1);
 
   neurons.add(o1);
   neurons.add(o2);
