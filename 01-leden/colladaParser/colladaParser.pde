@@ -9,7 +9,6 @@ Thread thread;
 PShape zzz;
 
 void setup(){
-
   size(640,480,P3D);
 
   zzz = createShape();
@@ -20,10 +19,9 @@ void setup(){
   thread.start();
 }
 
-
 void draw(){
   background(255);
-
+  
   pushMatrix();
   translate(width/2,height/2);
   scale(SCALE);
@@ -36,11 +34,9 @@ void draw(){
   //shape(zzz,0,0);
   if(test!=null)
     test.drawFaces();
-  //
   //test = new Collada("test2.dae");
 
   popMatrix();
-
 }
 
 // avoid using main thread to load data
@@ -70,16 +66,19 @@ class Collada implements Runnable{
 
   void run(){
     raw = loadXML(filename);
-
     //parseGeometry();
     parseArmature();
 
   }
 
+  ///////////////////////////////////////////////////
+
   /* todo: 
    * parse armature geometry
+   * parse matrixes
    * get vetricles weights
-   * construct armature object
+   * construct particular bones
+   * construct complete armature object
    */
 
   void parseArmature(){
@@ -89,7 +88,6 @@ class Collada implements Runnable{
     XML b[] = raw.getChildren("library_controllers");
     XML props = b[0].getChildren("controller")[0];
     XML armGeom = props.getChildren("skin")[0];
-
 
     //hradcoded names?
     String bind_shape_matrix = armGeom.getChildren("bind_shape_matrix")[0].getContent();
@@ -102,10 +100,13 @@ class Collada implements Runnable{
     String bp[] = splitTokens(bind_poses," \n");
     String sw[] = splitTokens(skin_weights," \n");
 
-    println(bsm.length);
-    println(jn.length);
-    println(bp.length);
-    println(sw.length);
+
+    if(DEBUG){
+      println(bsm.length);
+      println(jn.length);
+      println(bp.length);
+      println(sw.length);
+    }
 
     /*
        The bind shape matrix describes how to transform the pCylinderShape1 geometry into the right
@@ -158,12 +159,9 @@ class Collada implements Runnable{
     for(int i = 0 ; i < sw.length; i++){
       weights.add(parseFloat(sw[i]));
     }
-
-
-
-
-
   }
+
+  //////////////////////////////////////////////
 
   void parseGeometry(){
     pos = new ArrayList();
@@ -188,9 +186,7 @@ class Collada implements Runnable{
     String s = mesh.getContent();
     String lines [] = splitTokens(s,"\n\t");
 
-
     ArrayList data = new ArrayList();
-
 
     for(int i = 0; i < lines.length;i++){
       if(splitTokens(lines[i]," ").length > 0){
@@ -212,7 +208,7 @@ class Collada implements Runnable{
 
     p = splitTokens((String)data.get(1)+""," ");
 
-    for(int i = 2 ; i < p.length ; i+=3){
+    for(int i = 2 ; i < p.length ; i += 3){
       PVector tmp = new PVector(
           parseFloat(p[i-2]),parseFloat(p[i-1]),parseFloat(p[i])
           );
@@ -223,7 +219,7 @@ class Collada implements Runnable{
 
     p = splitTokens((String)data.get(2)+""," ");
 
-    for(int i = 0 ; i < p.length ; i+=1){
+    for(int i = 0 ; i < p.length ; i += 1){
       int tmp = parseInt(p[i]);
 
       vcount.add(tmp);
@@ -234,7 +230,7 @@ class Collada implements Runnable{
     p = splitTokens((String)data.get(3)+""," ");
 
     int offset = 8;
-    for(int f = offset; f < p.length+1 ;f+=8){
+    for(int f = offset; f < p.length+1 ;f += 8){
       int a = parseInt(p[f-8]);
       int b = parseInt(p[f-6]);
       int c = parseInt(p[f-4]);
@@ -252,8 +248,6 @@ class Collada implements Runnable{
     }
 
     /////////////////////
-
-
 
     //loaded = true;
     //createShape();
@@ -286,7 +280,6 @@ class Collada implements Runnable{
       nc = (PVector)norm.get(f.idx[6]);
       nd = (PVector)norm.get(f.idx[7]);
 
-
       //      zzz.beginContour();
       // beginShape();
       zzz.normal(na.x*SCALE,na.y*SCALE,na.z*SCALE);
@@ -303,11 +296,7 @@ class Collada implements Runnable{
       //endShape();
       //}catch(Exception e){;}
     }
-
-
-
   }
-
 
   void plot(){
     for(int i = 0 ; i < pos.size();i++){
@@ -333,8 +322,6 @@ class Collada implements Runnable{
       nc = (PVector)norm.get(f.idx[6]);
       nd = (PVector)norm.get(f.idx[7]);
 
-
-
       beginShape();
       normal(na.x,na.y,na.z);
       vertex(a.x,a.y,a.z);
@@ -347,10 +334,7 @@ class Collada implements Runnable{
       endShape();
       //}catch(Exception e){;}
     }
-
   }
-
-
 }
 
 class Face{
@@ -375,7 +359,6 @@ class Face{
     idx[6] = nc;
     idx[7] = nd;
   }
-
 }
 
 class Armature{
@@ -387,7 +370,6 @@ class Armature{
   Armature(PMatrix3D _space){
 
   }
-
 }
 
 class Bone{
@@ -399,7 +381,4 @@ class Bone{
     parent = _parent;
     offset = _offset;
   }
-
-
-
 }
