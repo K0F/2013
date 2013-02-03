@@ -379,15 +379,26 @@ class Face{
 }
 
 class Armature{
+  PMatrix3D space;
   ArrayList bones;
   ArrayList weights;
   ArrayList offsets;
 
+  Armature(PMatrix3D _space){
+
+  }
+
 }
 
 class Bone{
+  PMatrix3D offset;
   PVector base,target;
   Bone parent;
+
+  Bone(Bone _parent, PMatrix3D _offset){
+    parent = _parent;
+    offset = _offset;
+  }
 
 
 
