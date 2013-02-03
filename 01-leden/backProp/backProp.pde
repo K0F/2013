@@ -107,6 +107,7 @@ class Neuron{
       float w = (Float)weights.get(i);
       result += n.sum*w;
     }
+    result /= (inputs.size()+0.0);
     return result;
   }
 
