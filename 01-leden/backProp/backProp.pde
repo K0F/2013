@@ -1,5 +1,7 @@
 ArrayList neurons;
 
+float SPEED = 30.0;
+
 Neuron i1,i2,i3;
 Neuron o1,o2;
 
@@ -91,7 +93,7 @@ class Neuron{
 
   Neuron(int _layer){
     layer = _layer;
-    sum = 0;
+    sum = 0.5;
 
     inputs = getPreviousLayerNeurons();
 
@@ -112,7 +114,7 @@ class Neuron{
   }
 
   void compute(){
-    sum = sum();
+    sum += (sum()-sum)/SPEED;
   }
 
   ArrayList getPreviousLayerNeurons(){
