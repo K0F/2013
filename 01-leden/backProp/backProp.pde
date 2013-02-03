@@ -114,7 +114,7 @@ class Neuron{
 
   void noiseWeights(){
     for(int i = 0; i < inputs.size();i++){
-      weights.set(i,noise((i*30.0+frameCount)/100.0)*2.0);
+      weights.set(i,noise((i*3.0+frameCount)/100.0)*2.0);
     }
 
   }
