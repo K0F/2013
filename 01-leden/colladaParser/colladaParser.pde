@@ -82,7 +82,7 @@ class Collada implements Runnable{
    * construct armature object
    */
 
-  Armature constructArmature(){
+  void parseArmature(){
     Armature armature;
 
     XML b[] = raw.getChildren("library_controllers");
@@ -123,17 +123,6 @@ class Collada implements Runnable{
      for(int i = 0 ; i < bp.length; i++){
       names.add(jn[i]+"");
     }
-
-
-
-
-    return armature;
-
-
-
-
-
-
 
   }
 
