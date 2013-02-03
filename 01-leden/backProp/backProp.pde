@@ -64,7 +64,7 @@ void draw(){
 
   for(int i = 0 ; i < neurons.size();i++){
     Neuron tmp = (Neuron)neurons.get(i);
-    float x = (neurons.indexOf(tmp) % 10) * siz - (nPerLayer * siz / 2.0) ;
+    float x = (neurons.indexOf(tmp) % nPerLayer) * siz - (nPerLayer * siz / 2.0) ;
     float y = tmp.layer * siz - ((layNum+2) * siz / 2.0);
 
     pushMatrix();
