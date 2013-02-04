@@ -4,8 +4,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.MouseInfo;
 
-
-
 java.awt.Robot robot;
 
 void setup(){
@@ -38,6 +36,9 @@ void init(){
 
 void draw(){
 
+
+  println(MouseInfo.getPointerInfo());
+
   int x = MouseInfo.getPointerInfo().getLocation().x;
   int y = MouseInfo.getPointerInfo().getLocation().y;
 
@@ -45,6 +46,7 @@ void draw(){
   int x = (int)(noise(frameCount/100.0,0)*(displayWidth-width));
   int y = (int)(noise(0,frameCount/100.0)*(displayHeight-height));
 */
+
   if(frameCount<10)
   frame.setLocation(0,0);
 
@@ -66,6 +68,8 @@ void draw(){
 
   updatePixels();
   */
+
+
   PImage img = new PImage(bf);
   image(img,0,0,width,height);
 
