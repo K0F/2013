@@ -7,7 +7,7 @@ import java.awt.MouseInfo;
 java.awt.Robot robot;
 
 void setup(){
-  size(320,240);
+  size(640,480);
   background(255);
 
   noSmooth();
@@ -37,7 +37,7 @@ void init(){
 void draw(){
 
 
-  println(MouseInfo.getPointerInfo());
+  //println(MouseInfo.getPointerInfo());
 
   int x = MouseInfo.getPointerInfo().getLocation().x;
   int y = MouseInfo.getPointerInfo().getLocation().y;
