@@ -1,7 +1,7 @@
 2013
 ====
 
-Kof's sketchbook year 2013
+Kof's sketchbook year 2013 for [Processing](http://processing.org) software.
 
 The sketches are organized by month of year. This structure can make a feel of a superior organization, which in fact is false, it is rather mess with all ideas and unfinished concepts placed in kind of plain time-line space. Feel free to dig in and recycle anything useful for you.. when you find something like this, feel free to contact me, I would be really happy to see if anything can be somehow useful / helpful for the others.
 
