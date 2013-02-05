@@ -6,8 +6,14 @@ import java.awt.MouseInfo;
 
 java.awt.Robot robot;
 
+  java.awt.Rectangle rct;
+  java.awt.image.BufferedImage bf;
+
+
+
+
 void setup(){
-  size(640,480);
+  size(320,240);
   background(255);
 
   noSmooth();
@@ -54,8 +60,8 @@ void draw(){
 
   int r = 100;
 
-  java.awt.Rectangle rct = new java.awt.Rectangle(x-width/2,y-height/2,width,height);
-  java.awt.image.BufferedImage bf = robot.createScreenCapture(rct);
+  rct = new java.awt.Rectangle(x-width/2,y-height/2,width,height);
+  bf = robot.createScreenCapture(rct);
 
   /*
   for(int Y = 0 ; Y < height;Y++){
