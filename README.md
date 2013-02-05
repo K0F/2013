@@ -8,7 +8,7 @@ The sketches are organized by month of year. This structure can make a feel of k
 Sketches Running Online
 -----------------------
 
-There is a kind of selection hosted on [Open Processing](http://www.openprocessing.org/user/3942), these are mostly kind of "obsolete" Java applets selected for being able to run in a browser.
+There is a kind of selection hosted on [Open Processing](http://www.openprocessing.org/user/3942), these are mostly a bit "obsolete" Java applets selected for being able to run in a browser.
 
 Rendered Outputs
 ----------------
