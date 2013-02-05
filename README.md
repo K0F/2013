@@ -13,7 +13,7 @@ There is a kind of selection hosted on [Open Processing](http://www.openprocessi
 Rendered Outputs
 ----------------
 
-Other way of online presentation is just online quite heavily re-compressed (mpeg4) videos, they are more widely accepted due to more standard media form. The most of these outputs are available on [Vimeo](https://vimeo.com/kof/videos).
+Other way of online presentation is quite heavily re-compressed (mpeg4) videos, they are more widely accepted due to more standard media form. The most of these outputs are available on [Vimeo](https://vimeo.com/kof/videos).
 
 Archival Bits and Pieces
 ------------------------
