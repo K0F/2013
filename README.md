@@ -27,7 +27,7 @@ If you really feel like digging, there are more historical "pieces". To travel b
 * [2008](https://github.com/K0F/2008)
 * [2007](https://github.com/K0F/2007)
 
-But please, remember you had been warned, there is plenty of nearly autistic mental production with very varying "qualities" .. to be more exact, some of them are complete waste of time to run or even compile ))
+But please, remember you had been warned, there is plenty of nearly autistic mental production with very varying "qualities" .. to be more exact, some of programmes are complete waste of time to run or even compile ))
 
 
 Enjoy, and feel free to recycle!
