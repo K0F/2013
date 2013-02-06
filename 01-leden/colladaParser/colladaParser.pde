@@ -428,6 +428,7 @@ class Armature{
     applyMatrix(mat);
     box(1);
 
+
     popMatrix();
     //printMatrix();
     }
