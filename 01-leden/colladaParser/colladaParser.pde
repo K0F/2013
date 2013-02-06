@@ -1,8 +1,9 @@
 boolean DEBUG  = true;
 
 Collada test;
+Armature armature;
 
-float SCALE = 150.0;
+float SCALE = 50.0;
 Runnable runnable;
 Thread thread;
 
@@ -32,9 +33,14 @@ void draw(){
   fill(255,0,0);
 
   //shape(zzz,0,0);
-  if(test!=null)
-    test.drawFaces();
+  //if(test!=null)
+  //  test.drawFaces();
   //test = new Collada("test2.dae");
+  //
+
+  if(armature!=null){
+    armature.plot();
+  }
 
   popMatrix();
 }
@@ -66,7 +72,7 @@ class Collada implements Runnable{
 
   void run(){
     raw = loadXML(filename);
-    //parseGeometry();
+    parseGeometry();
     parseArmature();
 
   }
@@ -82,7 +88,6 @@ class Collada implements Runnable{
    */
 
   void parseArmature(){
-    Armature armature;
     ArrayList bones;
 
     XML b[] = raw.getChildren("library_controllers");
@@ -159,6 +164,8 @@ class Collada implements Runnable{
     for(int i = 0 ; i < sw.length; i++){
       weights.add(parseFloat(sw[i]));
     }
+
+    armature = new Armature(bind_matrix,poses_matrixes,weights);
   }
 
   //////////////////////////////////////////////
@@ -360,14 +367,85 @@ class Face{
 }
 
 class Armature{
-  PMatrix3D space;
+  PMatrix3D base;
   ArrayList bones;
   ArrayList weights;
   ArrayList offsets;
+  ArrayList preMult;
 
-  Armature(PMatrix3D _space){
+  Armature(PMatrix3D _base, ArrayList _offsets, ArrayList _weights){
+    base = rowToColMatrix(_base);
+    offsets = _offsets;
+    
+    
+
+    // convert to opengl space
+    for(int i = 0 ; i < offsets.size();i++){
+      PMatrix3D tmp = (PMatrix3D)offsets.get(i);
+      tmp = rowToColMatrix(tmp);
+    }
+
+    preMult = new ArrayList();
+    for(int i = 1 ; i < offsets.size();i++){
+      PMatrix3D origin1 = (PMatrix3D)offsets.get(i-1);
+      PMatrix3D origin2 = (PMatrix3D)offsets.get(i);
+      float o1[] = new float[16];
+      float o2[] = new float[16];
+     float m[] = new float[16]; 
+      origin1.get(o1);
+      origin2.get(o2);
+
+      origin1.mult(o2,m);
+
+      preMult.add(new PMatrix3D(
+            m[0],m[1],m[2],m[3],
+            m[4],m[5],m[6],m[7],
+            m[8],m[9],m[10],m[11],
+            m[12],m[13],m[14],m[15]
+            ));
+    }
+
+    weights = _weights;
+
+    PMatrix3D mat = (PMatrix3D)offsets.get(0);
 
   }
+
+  void plot(){
+    pushMatrix();
+    applyMatrix(base);
+    for(int i = 0 ; i < preMult.size();i++){
+    PMatrix3D mat = (PMatrix3D)preMult.get(i);
+    
+    /*
+     *  0  1  2  3
+     *  4  5  6  7
+     *  8  9 10 11
+     * 12 13 14 15
+     */
+    
+    pushMatrix();
+    applyMatrix(mat);
+    box(1);
+
+    popMatrix();
+    //printMatrix();
+    }
+    popMatrix();
+
+  }
+
+  //this converts collada space to opengl
+  PMatrix3D rowToColMatrix(PMatrix3D mat){
+    float m[] = new float[16];
+    mat.get(m);
+    return new PMatrix3D(
+        m[0],m[4],m[8],m[12],
+        m[1],m[5],m[9],m[13],
+        m[2],m[6],m[10],m[14],
+        m[3],m[7],m[11],m[15]);
+  }
+
 }
 
 class Bone{
