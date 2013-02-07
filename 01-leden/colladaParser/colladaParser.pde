@@ -3,14 +3,14 @@ boolean DEBUG  = true;
 Collada test;
 Armature armature;
 
-float SCALE = 50.0;
+float SCALE = 20.0;
 Runnable runnable;
 Thread thread;
 
 PShape zzz;
 
 void setup(){
-  size(640,480,P3D);
+  size(640,480,OPENGL);
 
   zzz = createShape();
 
@@ -25,7 +25,7 @@ void draw(){
   
   pushMatrix();
   translate(width/2,height/2);
-  scale(SCALE);
+  scale(SCALE,SCALE,SCALE);
   pointLight(255,255,255,-5,-5,5);
   rotateX(HALF_PI);
   rotateZ(radians(frameCount/3.0));
@@ -33,9 +33,9 @@ void draw(){
   fill(255,0,0);
 
   //shape(zzz,0,0);
-  //if(test!=null)
-  //  test.drawFaces();
-  //test = new Collada("test2.dae");
+  if(test!=null)
+    test.drawFaces();
+    //test = new Collada("test2.dae");
   //
 
   if(armature!=null){
@@ -126,10 +126,10 @@ class Collada implements Runnable{
     }
 
     PMatrix3D bind_matrix = new PMatrix3D(
-        bind[0],bind[1],bind[2],bind[3],
-        bind[4],bind[5],bind[6],bind[7],
-        bind[8],bind[9],bind[10],bind[11],
-        bind[12],bind[13],bind[14],bind[15]
+        bind[0],bind[4],bind[8],bind[12],
+        bind[1],bind[5],bind[9],bind[13],
+        bind[2],bind[6],bind[10],bind[14],
+        bind[3],bind[7],bind[11],bind[15]
         );
 
 
@@ -153,11 +153,11 @@ class Collada implements Runnable{
 
       }
       poses_matrixes.add(new PMatrix3D(
-            mat[0],mat[1],mat[2],mat[3],
-            mat[4],mat[5],mat[6],mat[7],
-            mat[8],mat[9],mat[10],mat[11],
-            mat[12],mat[13],mat[14],mat[15]
-            ));
+        bind[0],bind[4],bind[8],bind[12],
+        bind[1],bind[5],bind[9],bind[13],
+        bind[2],bind[6],bind[10],bind[14],
+        bind[3],bind[7],bind[11],bind[15]
+      ));
     }
 
     ArrayList weights = new ArrayList();
@@ -372,21 +372,28 @@ class Armature{
   ArrayList weights;
   ArrayList offsets;
   ArrayList preMult;
+
+  PVector brotX,brotY,brotZ;
+    PVector bpos;
+
+
+
  PVector rotX[],rotY[],rotZ[];
     PVector pos[];
 
 
   Armature(PMatrix3D _base, ArrayList _offsets, ArrayList _weights){
-    base = rowToColMatrix(_base);
+    base = _base;//rowToColMatrix(_base);
     offsets = _offsets;
     
-    
+   /* 
     // convert to opengl space
     for(int i = 0 ; i < offsets.size();i++){
       PMatrix3D tmp = (PMatrix3D)offsets.get(i);
       PMatrix3D conv = rowToColMatrix(tmp.get());
       offsets.set(i,conv);
     }
+    */
    
     /*
     preMult = new ArrayList();
@@ -414,15 +421,22 @@ class Armature{
 
     weights = _weights;
     collToOpengl(offsets);
+    collToOpenglB(base);
 
-    PMatrix3D mat = (PMatrix3D)offsets.get(0);
+   // PMatrix3D mat = (PMatrix3D)offsets.get(0);
 
   }
 
   void plot(){
     pushMatrix();
-    applyMatrix(base);
-    for(int i = 0 ; i < offsets.size();i++){
+    //applyMatrix(base);
+   
+    translate(bpos.x,bpos.y,bpos.z);
+
+   // rotateX(rotY[i].x);
+   // rotateY(rotY[i].y);
+    //rotateZ(rotY[i].z);
+  for(int i = 0 ; i < offsets.size();i++){
     PMatrix3D mat = (PMatrix3D)offsets.get(i);
     
     /*
@@ -432,15 +446,15 @@ class Armature{
      * 12 13 14 15
      */
    
-    //translate(pos[i].x,pos[i].y,pos[i].z);
+    translate(pos[i].x,pos[i].y,pos[i].z);
 
     //pushMatrix();
-    //rotateX(rotX[i].x*rotX[i].y*rotX[i].z);
-    //rotateY(rotX[i].x*rotY[i].y*rotZ[i].z);
-    //rotateZ(rotX[i].x*rotY[i].y*rotZ[i].z);
-    applyMatrix(mat);
+   // rotateX(rotY[i].x);
+   // rotateY(rotY[i].y);
+   // rotateZ(rotY[i].z);
+    //applyMatrix(mat);
 
-    box(0.2);
+    box(1);
     //popMatrix();
     //printMatrix();
     }
@@ -448,20 +462,21 @@ class Armature{
 
   }
 
+  /*
   //this converts collada space to opengl
   PMatrix3D rowToColMatrix(PMatrix3D mat){
     float m[] = new float[16];
     mat.get(m);
     
     return new PMatrix3D(
-        m[0],m[4],m[8],m[12],
-        m[1],m[5],m[9],m[13],
-        m[2],m[6],m[10],m[14],
-        m[3],m[7],m[11],m[15]);
+        m[0]/SCALE,m[4]/SCALE,m[8]/SCALE,m[12]/SCALE,
+        m[1]/SCALE,m[5]/SCALE,m[9]/SCALE,m[13]/SCALE,
+        m[2]/SCALE,m[6]/SCALE,m[10]/SCALE,m[14]/SCALE,
+        m[3]/SCALE,m[7]/SCALE,m[11]/SCALE,m[15]/SCALE);
   }
+  */
 
 
-  
   void collToOpengl(ArrayList matrices){
     rotX = new PVector[matrices.size()];   
     rotY = new PVector[matrices.size()];   
@@ -477,11 +492,21 @@ class Armature{
     rotX[i] = new PVector(m[0],m[1],m[2]);
     rotY[i] = new PVector(m[4],m[5],m[6]);
     rotZ[i] = new PVector(m[8],m[9],m[10]);
-    pos[i] = new PVector(m[12],m[13],m[14]);
+    pos[i] = new PVector(m[12],m[13],-m[14]);
     }
-
   }
 
+  void collToOpenglB(PMatrix3D mat){
+
+    float m[] = new float[16];
+    mat.get(m);
+
+
+    brotX = new PVector(m[0],m[1],m[2]);
+    brotY = new PVector(m[4],m[5],m[6]);
+    brotZ = new PVector(m[8],m[9],m[10]);
+    bpos = new PVector(m[12],m[13],m[14]);
+  }
 }
 
 class Bone{
