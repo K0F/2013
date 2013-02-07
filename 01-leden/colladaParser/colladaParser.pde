@@ -381,20 +381,23 @@ class Armature{
     offsets = _offsets;
     
     
-
     // convert to opengl space
     for(int i = 0 ; i < offsets.size();i++){
       PMatrix3D tmp = (PMatrix3D)offsets.get(i);
-      tmp = rowToColMatrix(tmp);
+      PMatrix3D conv = rowToColMatrix(tmp.get());
+      offsets.set(i,conv);
     }
-
+   
+    /*
     preMult = new ArrayList();
+
     for(int i = offsets.size()-1 ; i >= 1;i--){
       PMatrix3D origin1 = (PMatrix3D)offsets.get(i-1);
       PMatrix3D origin2 = (PMatrix3D)offsets.get(i);
       float o1[] = new float[16];
       float o2[] = new float[16];
-     float m[] = new float[16]; 
+     float m[] = new float[16];
+
       origin1.get(o1);
       origin2.get(o2);
 
@@ -407,6 +410,7 @@ class Armature{
             m[12],m[13],m[14],m[15]
             ));
     }
+    */
 
     weights = _weights;
     collToOpengl(offsets);
@@ -418,7 +422,7 @@ class Armature{
   void plot(){
     pushMatrix();
     applyMatrix(base);
-    for(int i = 0 ; i < preMult.size();i++){
+    for(int i = 0 ; i < offsets.size();i++){
     PMatrix3D mat = (PMatrix3D)offsets.get(i);
     
     /*
@@ -427,14 +431,17 @@ class Armature{
      *  8  9 10 11
      * 12 13 14 15
      */
-    
-    translate(pos[i].x,pos[i].y,pos[i].z);
+   
+    //translate(pos[i].x,pos[i].y,pos[i].z);
 
-    rotateX(rotX[i].x);
-    rotateY(rotY[i].x);
-    rotateZ(rotZ[i].x);
+    //pushMatrix();
+    //rotateX(rotX[i].x*rotX[i].y*rotX[i].z);
+    //rotateY(rotX[i].x*rotY[i].y*rotZ[i].z);
+    //rotateZ(rotX[i].x*rotY[i].y*rotZ[i].z);
+    applyMatrix(mat);
 
-    box(1);
+    box(0.2);
+    //popMatrix();
     //printMatrix();
     }
     popMatrix();
@@ -445,12 +452,15 @@ class Armature{
   PMatrix3D rowToColMatrix(PMatrix3D mat){
     float m[] = new float[16];
     mat.get(m);
+    
     return new PMatrix3D(
         m[0],m[4],m[8],m[12],
         m[1],m[5],m[9],m[13],
         m[2],m[6],m[10],m[14],
         m[3],m[7],m[11],m[15]);
   }
+
+
   
   void collToOpengl(ArrayList matrices){
     rotX = new PVector[matrices.size()];   
@@ -467,7 +477,7 @@ class Armature{
     rotX[i] = new PVector(m[0],m[1],m[2]);
     rotY[i] = new PVector(m[4],m[5],m[6]);
     rotZ[i] = new PVector(m[8],m[9],m[10]);
-    pos[i] = new PVector(m[3],m[7],m[11]);
+    pos[i] = new PVector(m[12],m[13],m[14]);
     }
 
   }
