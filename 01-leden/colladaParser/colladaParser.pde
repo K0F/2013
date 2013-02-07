@@ -3,7 +3,7 @@ boolean DEBUG  = true;
 Collada test;
 Armature armature;
 
-float SCALE = 20.0;
+float SCALE = 15.0;
 Runnable runnable;
 Thread thread;
 
@@ -125,6 +125,7 @@ class Collada implements Runnable{
       bind[i] = (parseFloat(bsm[i]));
     }
 
+      // apply row-to-col transform here
     PMatrix3D bind_matrix = new PMatrix3D(
         bind[0],bind[4],bind[8],bind[12],
         bind[1],bind[5],bind[9],bind[13],
@@ -152,6 +153,8 @@ class Collada implements Runnable{
         mat[m] = parseFloat(bp[16*i+m]);
 
       }
+
+      // apply row-to-col transform here
       poses_matrixes.add(new PMatrix3D(
         bind[0],bind[4],bind[8],bind[12],
         bind[1],bind[5],bind[9],bind[13],
@@ -428,11 +431,19 @@ class Armature{
   }
 
   void plot(){
+   
+    rotY[1].x = sin(radians(frameCount/3.0));
+    rotY[1].z = cos(radians(frameCount/3.0));
+    
     pushMatrix();
     //applyMatrix(base);
    
     translate(bpos.x,bpos.y,bpos.z);
-
+ 
+    rotateX(brotX.x+brotY.x+brotZ.x);
+    rotateY(brotX.y+brotY.y+brotZ.y);
+    rotateZ(brotX.z+brotY.z+brotZ.z);
+    
    // rotateX(rotY[i].x);
    // rotateY(rotY[i].y);
     //rotateZ(rotY[i].z);
@@ -449,9 +460,9 @@ class Armature{
     translate(pos[i].x,pos[i].y,pos[i].z);
 
     //pushMatrix();
-   // rotateX(rotY[i].x);
-   // rotateY(rotY[i].y);
-   // rotateZ(rotY[i].z);
+    rotateX(rotX[i].x+rotY[i].x+rotZ[i].x);
+    rotateY(rotX[i].y+rotY[i].y+rotZ[i].y);
+    rotateZ(rotX[i].z+rotY[i].z+rotZ[i].z);
     //applyMatrix(mat);
 
     box(1);
@@ -489,10 +500,10 @@ class Armature{
     mat.get(m);
 
 
-    rotX[i] = new PVector(m[0],m[1],m[2]);
-    rotY[i] = new PVector(m[4],m[5],m[6]);
-    rotZ[i] = new PVector(m[8],m[9],m[10]);
-    pos[i] = new PVector(m[12],m[13],-m[14]);
+    rotX[i] = new PVector(m[0]*m[3],m[1]*m[3],m[2]*m[3]);
+    rotY[i] = new PVector(m[4]*m[7],m[5]*m[7],m[6]*m[7]);
+    rotZ[i] = new PVector(m[8]*m[11],m[9]*m[11],m[10]*m[11]);
+    pos[i] = new PVector(m[12]*m[15],m[13]*m[15],-m[14]*m[15]);
     }
   }
 
@@ -501,11 +512,16 @@ class Armature{
     float m[] = new float[16];
     mat.get(m);
 
-
+ brotX = new PVector(m[0]*m[3],m[1]*m[3],m[2]*m[3]);
+    brotY = new PVector(m[4]*m[7],m[5]*m[7],m[6]*m[7]);
+    brotZ = new PVector(m[8]*m[11],m[9]*m[11],m[10]*m[11]);
+    bpos = new PVector(m[12]*m[15],m[13]*m[15],m[14]*m[15]);
+/*    
     brotX = new PVector(m[0],m[1],m[2]);
     brotY = new PVector(m[4],m[5],m[6]);
     brotZ = new PVector(m[8],m[9],m[10]);
     bpos = new PVector(m[12],m[13],m[14]);
+    */
   }
 }
 
