@@ -50,9 +50,9 @@ void draw(){
       PVector t[] = b.getTransform();
 
       translate(t[3].x,t[3].y,t[3].z);
-      rotateX((t[0].x+t[1].x+t[2].x)/3.0);
-      rotateY((t[0].y+t[1].y+t[2].y)/3.0);
-      rotateZ((t[0].z+t[1].z+t[2].z)/3.0);
+      rotateX((t[0].x*t[1].x*t[2].x));
+      rotateY((t[0].y*t[1].y*t[2].y));
+      rotateZ((t[0].z*t[1].z*t[2].z));
       box(1);
 
     }
@@ -620,9 +620,9 @@ class Bone{
     float m[] = new float[16];
     matrix.get(m);
 
-      PVector rotX = new PVector(m[0],m[1],m[2]);
-      PVector rotY = new PVector(m[4],m[5],m[6]);
-      PVector rotZ = new PVector(m[8],m[9],m[10]);
+      PVector rotX = new PVector(m[0],m[4],m[8]);
+      PVector rotY = new PVector(m[1],m[5],m[9]);
+      PVector rotZ = new PVector(m[2],m[6],m[10]);
       PVector pos = new PVector(m[12],m[13],-m[14]);
 
       return new PVector[]{rotX,rotY,rotZ,pos};
