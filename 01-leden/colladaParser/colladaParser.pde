@@ -2,6 +2,7 @@ boolean DEBUG  = true;
 
 Collada test;
 Armature armature;
+ArrayList bones;
 
 float SCALE = 30.0;
 Runnable runnable;
@@ -42,6 +43,22 @@ void draw(){
     armature.plot();
   }
 
+  if(bones.size()>0){
+    for(int i = 0; i < bones.size();i++){
+      Bone b = (Bone)bones.get(i);
+      pushMatrix();
+      PVector t[] = b.getTransform();
+
+      translate(t[3].x,t[3].y,t[3].z);
+      rotateX(t[0].x+t[1].x+t[2].x);
+      rotateY(t[0].y+t[1].y+t[2].y);
+      rotateZ(t[0].z+t[1].z+t[2].z);
+      box(1);
+
+      popMatrix();
+    }
+  }
+
   popMatrix();
 }
 
@@ -59,6 +76,7 @@ class Collada implements Runnable{
   ArrayList faces;
 
 
+
   Collada(ArrayList _pos,ArrayList _norm,ArrayList _vcount, ArrayList _faces){
     pos = _pos;
     norm = _norm;
@@ -72,8 +90,67 @@ class Collada implements Runnable{
 
   void run(){
     raw = loadXML(filename);
-    parseGeometry();
-    parseArmature();
+    //parseGeometry();
+    //parseArmature();
+    parseArmatureHierarchy();
+
+  }
+
+
+  void parseArmatureHierarchy(){
+    bones = new ArrayList();
+
+
+    XML b[] = raw.getChildren("library_visual_scenes");
+    XML vs = b[0].getChildren("visual_scene")[0];
+    XML arm = vs.getChildren("node")[0];
+
+    println(arm.listChildren());
+
+
+    xmlAddBoneIteration(arm.getChildren("node")[0]);
+    
+  }
+
+  void xmlAddBoneIteration(XML start){
+
+    println(start.listAttributes());
+    println(start.getName());
+
+    if(start.hasAttribute("name")){
+      println("Adding bone: "+start.getString("name"));
+      String[] matS = splitTokens(start.getChildren("matrix")[0].getContent()," ");
+      float [] m = new float[16];
+
+      for(int i = 0 ; i < m.length;i++)
+        m[i] = parseFloat(matS[i]);
+
+      PMatrix3D matrix = new PMatrix3D(
+            m[0],m[4],m[8],m[12],
+            m[1],m[5],m[9],m[13],
+            m[2],m[6],m[10],m[14],
+            m[3],m[7],m[11],m[15]
+            );
+      
+
+      bones.add(new Bone(start.getString("name"),matrix));
+      
+      String ch[] = start.listChildren();
+
+      boolean hasChild = false;
+
+      for(int i = 0 ; i < ch.length;i++)
+      {
+        if(ch[i].indexOf("node")>-1){
+          hasChild = true;
+        }
+      }
+
+      if(hasChild){
+        xmlAddBoneIteration(start.getChildren("node")[0]);
+      }
+    }
+
 
   }
 
@@ -523,12 +600,31 @@ class Armature{
 }
 
 class Bone{
-  PMatrix3D offset;
+  PMatrix3D matrix;
   PVector base,target;
   Bone parent;
+  String name;
 
-  Bone(Bone _parent, PMatrix3D _offset){
+  Bone(String _name, PMatrix3D _matrix){
+    name = _name;
+    matrix = _matrix;
+  }
+
+  Bone(Bone _parent, PMatrix3D _matrix){
     parent = _parent;
-    offset = _offset;
+    matrix = _matrix;
+  }
+
+  PVector[] getTransform(){
+    float m[] = new float[16];
+    matrix.get(m);
+
+      PVector rotX = new PVector(m[0]*m[3],m[1]*m[3],m[2]*m[3]);
+      PVector rotY = new PVector(m[4]*m[7],m[5]*m[7],m[6]*m[7]);
+      PVector rotZ = new PVector(m[8]*m[11],m[9]*m[11],m[10]*m[11]);
+      PVector pos = new PVector(m[12]*m[15],m[13]*m[15],-m[14]*m[15]);
+
+      return new PVector[]{rotX,rotY,rotZ,pos};
+
   }
 }
