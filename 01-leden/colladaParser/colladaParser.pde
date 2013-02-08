@@ -50,9 +50,9 @@ void draw(){
       PVector t[] = b.getTransform();
 
       translate(t[3].x,t[3].y,t[3].z);
-      //rotateX(t[0].x+t[1].x+t[2].x);
-      //rotateY(t[0].y+t[1].y+t[2].y);
-      //rotateZ(t[0].z+t[1].z+t[2].z);
+      rotateX((t[0].x+t[1].x+t[2].x)/3.0);
+      rotateY((t[0].y+t[1].y+t[2].y)/3.0);
+      rotateZ((t[0].z+t[1].z+t[2].z)/3.0);
       box(1);
 
     }
