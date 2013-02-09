@@ -47,12 +47,7 @@ void draw(){
       pushMatrix();
     for(int i = 0; i < bones.size();i++){
       Bone b = (Bone)bones.get(i);
-      PVector t[] = b.getTransform();
-
-      translate(t[3].x,t[3].y,t[3].z);
-      rotateX((t[0].x*t[1].x*t[2].x));
-      rotateY((t[0].y*t[1].y*t[2].y));
-      rotateZ((t[0].z*t[1].z*t[2].z));
+      applyMatrix(b.matrix);
       box(1);
 
     }
@@ -110,8 +105,14 @@ class Collada implements Runnable{
 
 
     xmlAddBoneIteration(arm.getChildren("node")[0]);
+
+    
     
   }
+
+
+  /* Iterrate through the whole tree beginning of given element
+   */
 
   void xmlAddBoneIteration(XML start){
 
@@ -127,10 +128,10 @@ class Collada implements Runnable{
         m[i] = parseFloat(matS[i]);
 
       PMatrix3D matrix = new PMatrix3D(
-            m[0],m[4],m[8],m[12],
-            m[1],m[5],m[9],m[13],
-            m[2],m[6],m[10],m[14],
-            m[3],m[7],m[11],m[15]
+            m[0],m[1],m[2],m[3],
+            m[4],m[5],m[6],m[7],
+            m[8],m[9],m[10],m[11],
+            m[12],m[13],m[14],m[15]
             );
       
 
@@ -151,8 +152,6 @@ class Collada implements Runnable{
         xmlAddBoneIteration(start.getChildren("node")[0]);
       }
     }
-
-
   }
 
   ///////////////////////////////////////////////////
@@ -532,13 +531,13 @@ class Armature{
        * 12 13 14 15
        */
 
-      translate(pos[i].x/3.0,pos[i].y/3.0,pos[i].z/3.0);
+      //translate(pos[i].x/3.0,pos[i].y/3.0,pos[i].z/3.0);
 
       //pushMatrix();
-      rotateX(rotX[i].x+rotY[i].x+rotZ[i].x);
-      rotateY(rotX[i].y+rotY[i].y+rotZ[i].y);
-      rotateZ(rotX[i].z+rotY[i].z+rotZ[i].z);
-      //applyMatrix(mat);
+      //rotateX(rotX[i].x+rotY[i].x+rotZ[i].x);
+      //rotateY(rotX[i].y+rotY[i].y+rotZ[i].y);
+      //rotateZ(rotX[i].z+rotY[i].z+rotZ[i].z);
+      applyMatrix(mat);
 
       box(1);
       //popMatrix();
