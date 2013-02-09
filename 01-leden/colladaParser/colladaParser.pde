@@ -331,7 +331,7 @@ class Collada implements Runnable{
 
     int vcv = (Integer)vcount.get(0);
     int vcn = (Integer)vcount.get(1);
-    int offset = vcv+vcn;
+    int offset = 0;
 
     println("pointers length -> "+p.length);
     println("offsets length -> "+vcount.size());
@@ -342,6 +342,7 @@ class Collada implements Runnable{
       vcv = (Integer)vcount.get(i);
       vcn = (Integer)vcount.get(i+1);
 
+      offset += vcn+vcn;
       
       if(vcv == 3){
       int a = parseInt(p[offset-6]);
@@ -377,7 +378,6 @@ class Collada implements Runnable{
         println("Wrong number of verticles detected!");
       }
       
-      offset += vcn+vcn;
      
 
     }
