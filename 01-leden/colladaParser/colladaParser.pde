@@ -4,7 +4,7 @@ Collada test;
 Armature armature;
 ArrayList bones;
 
-float SCALE = 30.0;
+float SCALE = 120.0;
 Runnable runnable;
 Thread thread;
 
@@ -14,6 +14,8 @@ void setup(){
   size(640,480,OPENGL);
 
   zzz = createShape();
+
+  bones = new ArrayList();
 
   noSmooth();
   runnable = new Collada("test2.dae");
@@ -31,7 +33,8 @@ void draw(){
   rotateX(HALF_PI+radians(frameCount/10.0));
   rotateZ(radians(frameCount/3.0));
   noStroke();//stroke(0);
-  fill(255,0,0);
+  noFill();
+  stroke(0,127);
 
   //shape(zzz,0,0);
   if(test!=null)
@@ -48,7 +51,7 @@ void draw(){
     for(int i = 0; i < bones.size();i++){
       Bone b = (Bone)bones.get(i);
       applyMatrix(b.matrix);
-      box(1);
+      box(0.33);
 
     }
 
@@ -86,7 +89,7 @@ class Collada implements Runnable{
 
   void run(){
     raw = loadXML(filename);
-    //parseGeometry();
+    parseGeometry();
     //parseArmature();
     parseArmatureHierarchy();
 
@@ -306,18 +309,51 @@ class Collada implements Runnable{
 
     p = splitTokens((String)data.get(2)+""," ");
 
+
+
+    int checksum = 0;
+    int cnt = 0;
     for(int i = 0 ; i < p.length ; i += 1){
       int tmp = parseInt(p[i]);
-
+      print(tmp+" ");
+      checksum += tmp;
+      cnt++;
       vcount.add(tmp);
     }
+    println();
+    println("checksum -> "+cnt+ " : "+checksum);
 
     /////////////////////
 
     p = splitTokens((String)data.get(3)+""," ");
 
-    int offset = 8;
-    for(int f = offset; f < p.length+1 ;f += 8){
+    int counter = 0;
+
+    int vcv = (Integer)vcount.get(counter);
+    int vcn = (Integer)vcount.get(counter+1);
+    int offset = vcv+vcn;
+    int start = offset;
+
+    println("pointers length -> "+p.length);
+    println("offsets length -> "+vcount.size());
+    
+    for(int f = start; f < p.length / 2 ;f += offset){
+      counter += 2;
+            if(vcv == 3){
+      int a = parseInt(p[f-6]);
+      int b = parseInt(p[f-4]);
+      int c = parseInt(p[f-2]);
+
+      int na = parseInt(p[f-5]);
+      int nb = parseInt(p[f-3]);
+      int nc = parseInt(p[f-1]);
+
+      Face tmp = new Face(a,b,c,na,nb,nc);
+
+      faces.add(tmp);
+
+
+      }else if(vcv == 4){
       int a = parseInt(p[f-8]);
       int b = parseInt(p[f-6]);
       int c = parseInt(p[f-4]);
@@ -331,6 +367,16 @@ class Collada implements Runnable{
       Face tmp = new Face(a,b,c,d,na,nb,nc,nd);
 
       faces.add(tmp);
+
+
+      }else{
+        println("Wrong number of verticles detected!");
+      }
+      
+      vcv = (Integer)vcount.get(counter);
+      vcn = (Integer)vcount.get(counter+1);
+      offset = vcv+vcn;
+      
 
     }
 
@@ -397,7 +443,29 @@ class Collada implements Runnable{
   void drawFaces(){
     for(int i = 0 ; i < faces.size();i++){
       Face f = (Face)faces.get(i);
+      if(f.idx.length==6){
+
       PVector a = (PVector)pos.get(f.idx[0]);
+      PVector b = (PVector)pos.get(f.idx[1]);
+      PVector c = (PVector)pos.get(f.idx[2]);
+
+      PVector na,nb,nc;
+      na = (PVector)norm.get(f.idx[3]);
+      nb = (PVector)norm.get(f.idx[4]);
+      nc = (PVector)norm.get(f.idx[5]);
+
+      beginShape();
+      normal(na.x,na.y,na.z);
+      vertex(a.x,a.y,a.z);
+      normal(nb.x,nb.y,nb.z);
+      vertex(b.x,b.y,b.z);
+      normal(nc.x,nc.y,nc.z);
+      vertex(c.x,c.y,c.z);
+      endShape();
+ 
+      }else if(f.idx.length==8){
+
+       PVector a = (PVector)pos.get(f.idx[0]);
       PVector b = (PVector)pos.get(f.idx[1]);
       PVector c = (PVector)pos.get(f.idx[2]);
       PVector d = (PVector)pos.get(f.idx[3]);
@@ -418,6 +486,9 @@ class Collada implements Runnable{
       normal(nd.x,nd.y,nd.z);
       vertex(d.x,d.y,d.z);
       endShape();
+      }
+      
+     
     }
   }
 }
@@ -444,6 +515,24 @@ class Face{
     idx[6] = nc;
     idx[7] = nd;
   }
+
+Face(int a,int b,int c){
+    idx = new int[3];
+    idx[0] = a;
+    idx[1] = b;
+    idx[2] = c;
+  }
+
+  Face(int a,int b,int c, int na, int nb, int nc){
+    idx = new int[6];
+    idx[0] = a;
+    idx[1] = b;
+    idx[2] = c;
+    idx[3] = na;
+    idx[4] = nb;
+    idx[5] = nc;
+  }
+
 }
 
 class Armature{
