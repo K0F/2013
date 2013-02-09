@@ -30,10 +30,10 @@ void draw(){
   translate(width/2,height/2);
   scale(SCALE,SCALE,SCALE);
   pointLight(255,255,255,-5,-5,5);
-  rotateX(HALF_PI+radians(frameCount/10.0));
-  rotateZ(radians(frameCount/3.0));
+  rotateX(HALF_PI);
+  rotateZ(radians(frameCount/7.0));
   noStroke();//stroke(0);
-  fill(#ffcc00,90);
+  fill(255,10);
   stroke(0,127);
 
   //shape(zzz,0,0);
