@@ -33,7 +33,7 @@ void draw(){
   rotateX(HALF_PI+radians(frameCount/10.0));
   rotateZ(radians(frameCount/3.0));
   noStroke();//stroke(0);
-  noFill();
+  fill(#ffcc00,90);
   stroke(0,127);
 
   //shape(zzz,0,0);
@@ -342,7 +342,7 @@ class Collada implements Runnable{
       vcv = (Integer)vcount.get(i);
       vcn = (Integer)vcount.get(i+1);
 
-      offset += vcn+vcn;
+      offset += vcv+vcn;
       
       if(vcv == 3){
       int a = parseInt(p[offset-6]);
