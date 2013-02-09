@@ -337,12 +337,11 @@ class Collada implements Runnable{
     println("offsets length -> "+vcount.size());
     int index = 0;
 
-    for(int i = 0; i < vcount.size()-1 ;i += 1){
+    for(int i = 0; i < vcount.size() ;i += 1){
       
       vcv = (Integer)vcount.get(i);
-      vcn = (Integer)vcount.get(i+1);
 
-      offset += vcv+vcn;
+      offset += vcv*2;
       
       if(vcv == 3){
       int a = parseInt(p[offset-6]);
