@@ -329,24 +329,28 @@ class Collada implements Runnable{
 
     int counter = 0;
 
-    int vcv = (Integer)vcount.get(counter);
-    int vcn = (Integer)vcount.get(counter+1);
+    int vcv = (Integer)vcount.get(0);
+    int vcn = (Integer)vcount.get(1);
     int offset = vcv+vcn;
-    int start = offset;
 
     println("pointers length -> "+p.length);
     println("offsets length -> "+vcount.size());
-    
-    for(int f = start; f < p.length / 2 ;f += offset){
-      counter += 2;
-            if(vcv == 3){
-      int a = parseInt(p[f-6]);
-      int b = parseInt(p[f-4]);
-      int c = parseInt(p[f-2]);
+    int index = 0;
 
-      int na = parseInt(p[f-5]);
-      int nb = parseInt(p[f-3]);
-      int nc = parseInt(p[f-1]);
+    for(int i = 0; i < vcount.size()-1 ;i += 1){
+      
+      vcv = (Integer)vcount.get(i);
+      vcn = (Integer)vcount.get(i+1);
+
+      
+      if(vcv == 3){
+      int a = parseInt(p[offset-6]);
+      int b = parseInt(p[offset-4]);
+      int c = parseInt(p[offset-2]);
+
+      int na = parseInt(p[offset-5]);
+      int nb = parseInt(p[offset-3]);
+      int nc = parseInt(p[offset-1]);
 
       Face tmp = new Face(a,b,c,na,nb,nc);
 
@@ -354,15 +358,15 @@ class Collada implements Runnable{
 
 
       }else if(vcv == 4){
-      int a = parseInt(p[f-8]);
-      int b = parseInt(p[f-6]);
-      int c = parseInt(p[f-4]);
-      int d = parseInt(p[f-2]);
+      int a = parseInt(p[offset-8]);
+      int b = parseInt(p[offset-6]);
+      int c = parseInt(p[offset-4]);
+      int d = parseInt(p[offset-2]);
 
-      int na = parseInt(p[f-7]);
-      int nb = parseInt(p[f-5]);
-      int nc = parseInt(p[f-3]);
-      int nd = parseInt(p[f-1]);
+      int na = parseInt(p[offset-7]);
+      int nb = parseInt(p[offset-5]);
+      int nc = parseInt(p[offset-3]);
+      int nd = parseInt(p[offset-1]);
 
       Face tmp = new Face(a,b,c,d,na,nb,nc,nd);
 
@@ -373,10 +377,8 @@ class Collada implements Runnable{
         println("Wrong number of verticles detected!");
       }
       
-      vcv = (Integer)vcount.get(counter);
-      vcn = (Integer)vcount.get(counter+1);
-      offset = vcv+vcn;
-      
+      offset += vcn+vcn;
+     
 
     }
 
