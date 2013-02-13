@@ -1,5 +1,6 @@
 boolean DEBUG  = true;
 
+
 Collada test;
 Armature armature;
 ArrayList bones;
