@@ -11,7 +11,7 @@ Thread thread;
 PShape zzz;
 
 void setup(){
-  size(640,480,OPENGL);
+  size(800,600,OPENGL);
 
   zzz = createShape();
 
@@ -74,13 +74,15 @@ class Collada implements Runnable{
   ArrayList vcount;
   ArrayList faces;
 
+  PMatrix3D bind_matrix;
 
 
-  Collada(ArrayList _pos,ArrayList _norm,ArrayList _vcount, ArrayList _faces){
+  Collada(ArrayList _pos,ArrayList _norm,ArrayList _vcount, ArrayList _faces,PMatrix3D _bind_matrix){
     pos = _pos;
     norm = _norm;
     vcount = _vcount;
     faces = _faces;
+    bind_matrix = _bind_matrix;
   }
 
   Collada(String _filename){
@@ -89,9 +91,10 @@ class Collada implements Runnable{
 
   void run(){
     raw = loadXML(filename);
-    parseGeometry();
+    getBindMatrix();
     //parseArmature();
     parseArmatureHierarchy();
+    parseGeometry();
 
   }
 
@@ -111,6 +114,56 @@ class Collada implements Runnable{
 
     
     
+  }
+
+  void getBindMatrix(){
+
+    XML b[] = raw.getChildren("library_controllers");
+    XML props = b[0].getChildren("controller")[0];
+    XML armGeom = props.getChildren("skin")[0];
+
+    //hradcoded names?
+    String bind_shape_matrix = armGeom.getChildren("bind_shape_matrix")[0].getContent();
+    String joints_names = armGeom.getChildren("source")[0].getContent();
+    String bind_poses = armGeom.getChildren("source")[1].getContent();
+    String skin_weights = armGeom.getChildren("source")[2].getContent();
+
+    String bsm[] = splitTokens(bind_shape_matrix," \n");
+    String jn[] = splitTokens(joints_names," \n");
+    String bp[] = splitTokens(bind_poses," \n");
+    String sw[] = splitTokens(skin_weights," \n");
+
+
+    if(DEBUG){
+      println(bsm.length);
+      println(jn.length);
+      println(bp.length);
+      println(sw.length);
+    }
+
+    /*
+       The bind shape matrix describes how to transform the pCylinderShape1 geometry into the right
+       coordinate system for use with the joints.  In this case we do an +90 Y transform because
+       the pCylinderShape1 geometry was initially a 180 unit long cylinder with 0,0,0 at it's center.
+       This moves it so 0,0,0 is at the base of the cylinder.
+     */
+
+    float[] bind = new float[16];
+    for(int i = 0 ; i < 16; i++){
+      bind[i] = (parseFloat(bsm[i]));
+    }
+
+    // apply row-to-col transform here
+    bind_matrix = new PMatrix3D(
+        bind[0],bind[1],bind[2],bind[3],
+        bind[4],bind[5],bind[6],bind[7],
+        bind[8],bind[9],bind[10],bind[11],
+        bind[12],bind[13],bind[14],bind[15]
+        );
+
+
+
+
   }
 
 
@@ -383,10 +436,8 @@ class Collada implements Runnable{
 
     /////////////////////
 
-    //loaded = true;
-    //createShape();
-    test = new Collada(pos,norm,vcount,faces);
-    //createShape();
+    loaded = true;
+    test = new Collada(pos,norm,vcount,faces,bind_matrix);
     println("JOB DONE!");
 
     println("got "+pos.size()+" verticles");
@@ -399,40 +450,7 @@ class Collada implements Runnable{
     return loaded;
   }
 
-  void createShape(){
-    for(int i = 0 ; i < faces.size();i++){
-      Face f = (Face)faces.get(i);
-      PVector a = (PVector)pos.get(f.idx[0]);
-      PVector b = (PVector)pos.get(f.idx[1]);
-      PVector c = (PVector)pos.get(f.idx[2]);
-      PVector d = (PVector)pos.get(f.idx[3]);
-
-      PVector na,nb,nc,nd;
-      //try{
-      na = (PVector)norm.get(f.idx[4]);
-      nb = (PVector)norm.get(f.idx[5]);
-      nc = (PVector)norm.get(f.idx[6]);
-      nd = (PVector)norm.get(f.idx[7]);
-
-      //  zzz.beginContour();
-      // beginShape();
-      zzz.normal(na.x*SCALE,na.y*SCALE,na.z*SCALE);
-      zzz.vertex(a.x*SCALE,a.y*SCALE,a.z*SCALE);
-      zzz.normal(nb.x*SCALE,nb.y*SCALE,nb.z*SCALE);
-      zzz.vertex(b.x*SCALE,b.y*SCALE,b.z*SCALE);
-      zzz.normal(nc.x*SCALE,nc.y*SCALE,nc.z*SCALE);
-      zzz.vertex(c.x*SCALE,c.y*SCALE,c.z*SCALE);
-      zzz.normal(nd.x*SCALE,nd.y*SCALE,nd.z*SCALE);
-      zzz.vertex(d.x*SCALE,d.y*SCALE,d.z*SCALE);
-      // zzz.endContour();
-
-      println(zzz.getVertexCount());
-      //endShape();
-      //}catch(Exception e){;}
-    }
-  }
-
-  void plot(){
+   void plot(){
     for(int i = 0 ; i < pos.size();i++){
       PVector tmp = (PVector)pos.get(i);
       line(tmp.x+1,tmp.y,tmp.z,tmp.x-1,tmp.y,tmp.z);
@@ -442,6 +460,9 @@ class Collada implements Runnable{
   }
 
   void drawFaces(){
+    pushMatrix();
+    if(bind_matrix!=null)
+    applyMatrix(bind_matrix);
     for(int i = 0 ; i < faces.size();i++){
       Face f = (Face)faces.get(i);
       if(f.idx.length==6){
@@ -491,6 +512,7 @@ class Collada implements Runnable{
       
      
     }
+    popMatrix();
   }
 }
 
