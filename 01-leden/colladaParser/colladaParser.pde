@@ -75,15 +75,26 @@ class Collada implements Runnable{
   ArrayList vcount;
   ArrayList faces;
 
+
+  ArrayList weights, poses_matrices;
   PMatrix3D bind_matrix;
 
 
-  Collada(ArrayList _pos,ArrayList _norm,ArrayList _vcount, ArrayList _faces,PMatrix3D _bind_matrix){
+  Collada(ArrayList _pos,
+      ArrayList _norm,
+      ArrayList _vcount,
+      ArrayList _faces,
+      PMatrix3D _bind_matrix,
+      ArrayList _weights,
+      ArrayList _poses_matrices){
+
     pos = _pos;
     norm = _norm;
     vcount = _vcount;
     faces = _faces;
     bind_matrix = _bind_matrix;
+    weights = _weights;
+    poses_matrices = _poses_matrices;
   }
 
   Collada(String _filename){
@@ -154,13 +165,38 @@ class Collada implements Runnable{
       bind[i] = (parseFloat(bsm[i]));
     }
 
-    // apply row-to-col transform here
     bind_matrix = new PMatrix3D(
         bind[0],bind[1],bind[2],bind[3],
         bind[4],bind[5],bind[6],bind[7],
         bind[8],bind[9],bind[10],bind[11],
         bind[12],bind[13],bind[14],bind[15]
         );
+
+    ArrayList names = new ArrayList();
+    for(int i = 0 ; i < jn.length; i++){
+      names.add(jn[i]+"");
+    }
+
+   poses_matrices = new ArrayList();
+    for(int i = 0 ; i < names.size(); i++){
+      float [] mat = new float[16];
+      for(int m = 0;m<16;m++){
+        mat[m] = parseFloat(bp[16*i+m]);
+
+      }
+
+      poses_matrices.add(new PMatrix3D(
+        mat[0],mat[1],mat[2],mat[3],
+        mat[4],mat[5],mat[6],mat[7],
+        mat[8],mat[9],mat[10],mat[11],
+        mat[12],mat[13],mat[14],mat[15]
+        ));
+    }
+
+    weights = new ArrayList();
+    for(int i = 0 ; i < sw.length; i++){
+      weights.add(parseFloat(sw[i]));
+    }
 
 
 
@@ -438,7 +474,7 @@ class Collada implements Runnable{
     /////////////////////
 
     loaded = true;
-    test = new Collada(pos,norm,vcount,faces,bind_matrix);
+    test = new Collada(pos,norm,vcount,faces,bind_matrix,weights, poses_matrices);
     println("JOB DONE!");
 
     println("got "+pos.size()+" verticles");
