@@ -19,7 +19,7 @@ void setup(){
   bones = new ArrayList();
 
   noSmooth();
-  runnable = new Collada("test2.dae");
+  runnable = new Collada("test3.dae");
   thread = new Thread(runnable);
   thread.start();
 }
@@ -34,8 +34,7 @@ void draw(){
   rotateX(HALF_PI);
   rotateZ(radians(frameCount/7.0));
   noStroke();//stroke(0);
-  fill(255,10);
-  stroke(0,127);
+  fill(255,127,12);
 
   //shape(zzz,0,0);
   if(test!=null)
