@@ -55,14 +55,73 @@ class Collada implements Runnable{
     XML vs = b[0].getChildren("visual_scene")[0];
     XML arm = vs.getChildren("node")[2];
 
-    println(arm.listChildren());
+   // println(arm.listChildren());
 
 
-    xmlAddBoneIteration(arm.getChildren("node")[0]);
+    xmlAddBoneIteration(arm.getChildren("node")[0],0);
 
 
 
   }
+
+  /* Iterrate through the whole tree beginning of given element
+   */
+
+  void xmlAddBoneIteration(XML start,int _id){
+    Bone parent;
+
+    //println(start.listAttributes());
+    //println(start.getName());
+
+    if(start.hasAttribute("name")){
+      String[] matS = splitTokens(start.getChildren("matrix")[0].getContent()," ");
+      float [] m = new float[16];
+
+      for(int i = 0 ; i < m.length;i++)
+        m[i] = parseFloat(matS[i]);
+
+      PMatrix3D matrix = new PMatrix3D(
+          m[0],m[1],m[2],m[3],
+          m[4],m[5],m[6],m[7],
+          m[8],m[9],m[10],m[11],
+          m[12],m[13],m[14],m[15]
+          );
+
+
+      if(_id==0){
+        Bone root = new Bone(start.getString("name"),matrix);
+        bones.add(root);
+
+      }else{
+        parent = (Bone)bones.get(_id);
+        bones.add(new Bone(start.getString("name"),matrix,parent));
+      }
+      int id = bones.size()-1;
+
+
+
+      String ch[] = start.listChildren();
+
+      boolean hasChild = false;
+
+      int counter = 0;
+
+      for(int i = 0 ; i < ch.length;i++)
+      {
+        if(ch[i].indexOf("node")>-1){
+          hasChild = true;
+          counter++;
+        }
+      }
+
+      if(hasChild){
+        for(int i = 0 ; i < counter;i++)
+          xmlAddBoneIteration(start.getChildren("node")[0],id);
+      }
+
+    }
+  }
+
 
   void getBindMatrix(){
 
@@ -139,55 +198,6 @@ class Collada implements Runnable{
 
   }
 
-
-  /* Iterrate through the whole tree beginning of given element
-   */
-
-  void xmlAddBoneIteration(XML start){
-
-    println(start.listAttributes());
-    println(start.getName());
-
-    if(start.hasAttribute("name")){
-      println("Adding bone: "+start.getString("name"));
-      String[] matS = splitTokens(start.getChildren("matrix")[0].getContent()," ");
-      float [] m = new float[16];
-
-      for(int i = 0 ; i < m.length;i++)
-        m[i] = parseFloat(matS[i]);
-
-      PMatrix3D matrix = new PMatrix3D(
-          m[0],m[1],m[2],m[3],
-          m[4],m[5],m[6],m[7],
-          m[8],m[9],m[10],m[11],
-          m[12],m[13],m[14],m[15]
-          );
-
-
-
-      String ch[] = start.listChildren();
-
-      boolean hasChild = false;
-
-      int counter = 0;
-
-      for(int i = 0 ; i < ch.length;i++)
-      {
-        if(ch[i].indexOf("node")>-1){
-          hasChild = true;
-          counter++;
-        }
-      }
-
-      bones.add(new Bone(start.getString("name"),matrix,counter>1?true:false));
-
-      if(hasChild){
-        for(int i = 0 ; i < counter;i++)
-          xmlAddBoneIteration(start.getChildren("node")[0]);
-      }
-
-    }
-  }
 
   ///////////////////////////////////////////////////
 

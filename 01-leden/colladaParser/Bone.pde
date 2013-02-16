@@ -4,23 +4,27 @@ class Bone{
   Bone parent;
   String name;
   boolean branching = false;
+  ArrayList history;
 
-
-  Bone(String _name, PMatrix3D _matrix, boolean _branching){
-    branching = _branching;
+  Bone(String _name, PMatrix3D _matrix){
+    parent = this;
     name = _name;
     matrix = _matrix;
+    history = getHistory();
   }
 
   Bone(Bone _parent, String _name, PMatrix3D _matrix){
     name = _name;
     matrix = _matrix;
     parent = _parent;
+    history = getHistory();
   }
 
-  Bone(Bone _parent, PMatrix3D _matrix){
+  Bone(String _name, PMatrix3D _matrix,Bone _parent){
+   name = _name;
     parent = _parent;
     matrix = _matrix;
+    history = getHistory();
   }
 
   PVector[] getTransform(){
@@ -33,6 +37,40 @@ class Bone{
       PVector pos = new PVector(m[12],m[13],-m[14]);
 
       return new PVector[]{rotX,rotY,rotZ,pos};
+
+  }
+
+  ArrayList getHistory(){
+    ArrayList n = new ArrayList();
+    Bone p = parent;
+  
+    n.add(parent);
+
+    println("getting history for bone: "+name);
+
+    while(p.parent!=p){
+      p = p.parent;
+      n.add(p.matrix);
+      print(p.name + " --> ");
+    }
+
+    println();
+
+    return n;
+  }
+
+  void plot(){
+
+      pushMatrix();
+    
+    for(int i = history.size()-1; i >= 0;i--){
+      PMatrix3D tmp = (PMatrix3D)history.get(i);
+      applyMatrix(tmp);
+    }
+
+    box(0.25);
+
+    popMatrix();
 
   }
 }
