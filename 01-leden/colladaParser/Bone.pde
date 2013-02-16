@@ -44,13 +44,13 @@ class Bone{
     ArrayList n = new ArrayList();
     Bone p = parent;
   
-    n.add(parent);
+    n.add(parent.matrix);
 
     println("getting history for bone: "+name);
 
     while(p.parent!=p){
-      p = p.parent;
       n.add(p.matrix);
+      p = p.parent;
       print(p.name + " --> ");
     }
 
