@@ -49,12 +49,12 @@ class Bone{
     println("getting history for bone: "+name);
 
     while(p.parent!=p){
+      print(p.name + " --> ");
       n.add(p.matrix);
       p = p.parent;
-      print(p.name + " --> ");
     }
 
-    println();
+    println(n.size());
 
     return n;
   }

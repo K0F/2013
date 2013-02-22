@@ -96,6 +96,7 @@ class Collada implements Runnable{
         parent = (Bone)bones.get(_id);
         bones.add(new Bone(start.getString("name"),matrix,parent));
       }
+
       int id = bones.size()-1;
 
 

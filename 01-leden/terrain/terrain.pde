@@ -1,13 +1,11 @@
-import peasy.test.*;
-import peasy.org.apache.commons.math.*;
-import peasy.*;
-import peasy.org.apache.commons.math.geometry.*;
-
-PeasyCam cam;
 
 
-  int W = 1200;
-  int H = 1200;
+
+int W = 1200;
+int H = 1200;
+
+float R = 900;
+float tras = 0;
 
 Terrain terrain;
 
@@ -15,27 +13,31 @@ void setup() {
   size(800, 600, P3D);
 
   terrain = new Terrain();
-  
-  cam = new PeasyCam(this, 1000);
-  cam.setMinimumDistance(400);
-  cam.setMaximumDistance(2000);
-
-  // ortho();
+ 
 }
 
-void keyPressed(){
+void keyPressed() {
   noiseSeed((long)random(12222));
   terrain = new Terrain();
-  
 }
 
 void draw() {
 
   background(0);
+  
+  R = noise(frameCount/5000.0)*1400+200;
+
+  pointLight(255, 250, 200, 0, 0, 1000);
+  ambientLight(50, 60, 90);
+
+
+  camera(R*sin(frameCount/300.0), R*cos(frameCount/300.0), R,
+  (noise(frameCount/200.0,0,0)-0.5)*tras, (noise(0,frameCount/200.0,0)-0.5)*tras,(noise(0,0,frameCount/1000.0)-0.5)*tras,
+  0, 0, -1);
+
 
   translate(-W/2, -H/2, -terrain.elevation/2);
 
-  lights();
 
   terrain.drawVec();
 }
@@ -99,24 +101,15 @@ class Terrain {
       tmp = new PVector(me.x, me.y, me.z);
       me.cross(d, a, cd);
 
+      PVector result = new PVector();
+ 
 
-      PVector result = new PVector(ca.x, ca.y, ca.z);
-
-      result.x += (cb.x-result.x)/4.0;
-      result.y += (cb.y-result.y)/4.0;
-      result.z += (cb.z-result.z)/4.0;
-
-      result.x += (cc.x-result.x)/4.0;
-      result.y += (cc.y-result.y)/4.0;
-      result.y += (cc.z-result.z)/4.0;
-
-      result.x += (cd.x-result.x)/4.0;
-      result.y += (cd.y-result.y)/4.0;
-      result.z += (cd.z-result.z)/4.0;
+      result.x = (ca.x+cb.x+cc.x+cd.x)/4.0;
+      result.y = (ca.y+cb.y+cc.y+cd.y)/4.0;
+      result.z = (ca.z+cb.z+cc.z+cd.z)/4.0;
+ 
 
 
-
-      //result.normalize();
 
       normals.add(result);
     }
@@ -125,7 +118,7 @@ class Terrain {
   void computeVertexes() {
     vec = new ArrayList();
 
-   // noiseSeed(seed);
+    // noiseSeed(seed);
     for (int y=  0; y < W;y+=grid) {
       for (int x=  0; x < H;x+=grid) {
         vec.add(new PVector(x, y, (noise(x/sc, y/sc))*elevation));
