@@ -1,5 +1,7 @@
 import processing.pdf.*;
 
+PImage podklad;
+
 float DISTANCE = 75.0;
 float ALPHA = 10.0;
 int MAX_LINES_PER_FRAME = 20;
@@ -13,14 +15,18 @@ int counter = 0;
 void setup() {
   size(1600, 900, P2D); 
 
+podklad = loadImage("lisa.jpg");
 
   frameRate(120);
 
   trace = new Trace();
+  background(255);
+  imageMode(CENTER);
+  //image(podklad,width/2,height/2);
 
   beginRecord(PDF, "everything.pdf");
-  background(255);
-  strokeWeight(0.5);
+  
+  //strokeWeight(0.5);
 }
 
 void draw() {
@@ -38,7 +44,6 @@ void draw() {
 }
 
 void mouseDragged() {
-
   trace.paint = true;
 }
 
@@ -49,6 +54,7 @@ void mouseReleased() {
 
 void mousePressed() {
   if (mouseButton==RIGHT) {
+    beginRecord(PDF, "everything.pdf");
     background(255);
   }
 }
