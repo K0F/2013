@@ -1,5 +1,6 @@
 
 Rovina p;
+Rovina p2;
 PMatrix3D mmatrix;
 
 void setup(){
@@ -16,6 +17,7 @@ void setup(){
 
 
   p = new Rovina(mmatrix);
+  p2 = new Rovina(mmatrix,p);
 
   strokeWeight(2);
 
@@ -29,6 +31,7 @@ void draw(){
 
   p.rotateX(mouseX);
   p.rotateY(mouseY);
+  //p.rotateZ(1);
 
   pushMatrix();
   translate(width/2,height/2,0);
@@ -39,6 +42,7 @@ void draw(){
   rotateZ(QUARTER_PI);
 
   p.draw();
+  p2.draw();
 
   popMatrix();
   popMatrix();
@@ -48,8 +52,9 @@ void draw(){
 
 class Rovina{
   PVector x,y,z;
-  PMatrix3D matrix,baseX,baseY,baseZ;
-  PMatrix3D Xmat,Ymat,Zmat;
+  PMatrix3D matrix,base;
+
+  Rovina parent;
 
   PVector relPoint;
   PVector origin;
@@ -63,36 +68,18 @@ class Rovina{
 
 
   Rovina(PMatrix3D _mat){
+    initialize(_mat);
+  }
 
+
+  Rovina(PMatrix3D _mat,Rovina _parent){
+    parent = _parent;
+    initialize(_mat);
+  }
+
+  void initialize(PMatrix _mat){
     matrix = new PMatrix3D(_mat);
-    baseX = new PMatrix3D(_mat);
-    baseY = new PMatrix3D(_mat);
-    baseZ = new PMatrix3D(_mat);
-
-    baseY.rotateX(90);
-    baseZ.rotateY(90);
-
-    
-    Xmat= new PMatrix3D(
-        1,0,0,0,
-        0,1,0,0,
-        0,0,1,0,
-        0,0,0,1
-        );
- 
-    Ymat= new PMatrix3D(
-        1,0,0,0,
-        0,1,0,0,
-        0,0,1,0,
-        0,0,0,1
-        );
-
-    Zmat= new PMatrix3D(
-        1,0,0,0,
-        0,1,0,0,
-        0,0,1,0,
-        0,0,0,1
-        );
+    base = new PMatrix3D(_mat);
 
 
 
@@ -102,12 +89,11 @@ class Rovina{
     x = new PVector(mat[0],mat[1],mat[2]);
     y = new PVector(mat[4],mat[5],mat[6]);
     z = new PVector(mat[8],mat[9],mat[10]);
-
-
     origin = new PVector(mat[12],mat[13],mat[14]);
 
 
-    relPoint = relativePoint(new PVector(120,120,0));
+    relPoint = relativePoint(new PVector(0,0,120));
+
 
   }
 
@@ -133,15 +119,31 @@ class Rovina{
 
   } 
 
+  void inherit(){
+
+    matrix = new PMatrix3D(base);
+    
+
+    //matrix.mult(parent.relPoint);
+
+
+
+  }
 
 
   void rotateX(float rad){
+
+
+    if(parent!=null)
+      inherit();
+
     rad = radians(rad);
 
     float c = cos(rad);
     float s = sin(rad);
     float[] mat = new float[16];
-    base.get(mat);
+    matrix = new PMatrix3D(base);
+    matrix.get(mat);
 
     matrix = new PMatrix3D(
         mat[0],mat[1],mat[2],mat[3],
@@ -161,7 +163,8 @@ class Rovina{
     float c = cos(rad);
     float s = sin(rad);
     float[] mat = new float[16];
-    base.get(mat);
+    matrix = new PMatrix3D(base);
+    matrix.get(mat);
 
     matrix = new PMatrix3D(
         mat[0] * c + mat[8] * s ,mat[1] * c + mat[9] * s ,mat[2] * c + mat[10] * s , mat[3] * c + mat[11] * s,
@@ -178,7 +181,8 @@ class Rovina{
     float c = cos(rad);
     float s = sin(rad);
     float[] mat = new float[16];
-    base.get(mat);
+    matrix = new PMatrix3D(base);
+    matrix.get(mat);
 
     matrix = new PMatrix3D(
         mat[0] * c + mat[4] * s ,mat[1] * c + mat[5] * s ,mat[2] * c + mat[6] * s , mat[3] * c + mat[7] * s,
