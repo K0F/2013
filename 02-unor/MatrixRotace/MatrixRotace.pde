@@ -29,8 +29,10 @@ void setup(){
 void draw(){
   background(0);
 
-  p.rotateX(mouseX);
-  p.rotateY(mouseY);
+  p.rotateX(noise(frameCount/20.0,0,0)*90.0);
+  p.rotateY(noise(0,frameCount/200.0,0)*90.0);
+  p.rotateZ(noise(0,0,frameCount/2000.0)*90.0);
+  
   //p.rotateZ(1);
 
   pushMatrix();
@@ -163,7 +165,7 @@ class Rovina{
     float c = cos(rad);
     float s = sin(rad);
     float[] mat = new float[16];
-    matrix = new PMatrix3D(base);
+    //matrix = new PMatrix3D(base);
     matrix.get(mat);
 
     matrix = new PMatrix3D(
@@ -181,7 +183,7 @@ class Rovina{
     float c = cos(rad);
     float s = sin(rad);
     float[] mat = new float[16];
-    matrix = new PMatrix3D(base);
+    //matrix = new PMatrix3D(base);
     matrix.get(mat);
 
     matrix = new PMatrix3D(
