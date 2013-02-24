@@ -28,11 +28,16 @@ void setup(){
 
 void draw(){
   background(0);
-
-  p.rotateX(noise(frameCount/20.0,0,0)*90.0);
+/*
+  p.rotateX(noise(frameCount/200.0,0,0)*90.0);
   p.rotateY(noise(0,frameCount/200.0,0)*90.0);
-  p.rotateZ(noise(0,0,frameCount/2000.0)*90.0);
+  p.rotateZ(noise(0,0,frameCount/200.0)*90.0);
+ */
+  p.rotateX(100);
+  p.rotateY(100);
+  p.rotateZ(mouseX);
   
+ 
   //p.rotateZ(1);
 
   pushMatrix();
@@ -205,7 +210,21 @@ class Rovina{
        0,0,0,1
        );
      */
+
+
+    PVector A,B;
+    stroke(255);
+    
+    // vv ???
+    A = new PVector(0,-100,-100);
+    B = relativePoint(new PVector(0,100,100));
+    
     applyMatrix(matrix);
+
+    beginShape();
+    vertex(A.x,A.y,A.z);
+    vertex(B.x,B.y,B.z);
+    endShape();
 
     noFill();
     stroke(255);
