@@ -71,6 +71,9 @@ void draw(){
   rotateX(QUARTER_PI);
   rotateZ(QUARTER_PI);
 
+  lights();
+
+
   for(int i = 0 ; i < bones.size();i++){
     Rovina r = (Rovina)bones.get(i);
     r.draw();
@@ -120,8 +123,8 @@ void draw(){
     
     beginShape();
     vertex(v03.x,v03.y,v03.z);
-    vertex(v01.x,v01.y,v01.z);
-    vertex(v11.x,v11.y,v11.z);
+    vertex(v00.x,v00.y,v00.z);
+    vertex(v10.x,v10.y,v10.z);
     vertex(v13.x,v13.y,v13.z);
     endShape(CLOSE);
      
