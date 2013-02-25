@@ -1,12 +1,15 @@
 
-Rovina p;
-Rovina p2;
-PMatrix3D mmatrix;
+int num = 4;
+
+ArrayList bones;
+PMatrix3D clean;
+
+PVector target = new PVector(0,90,0);
 
 void setup(){
   size(800,600,P3D);
 
-  mmatrix = new PMatrix3D(
+  clean = new PMatrix3D(
       1,0,0,0,
       0,1,0,0,
       0,0,1,0,
@@ -16,8 +19,12 @@ void setup(){
   printMatrix();
 
 
-  p = new Rovina(mmatrix);
-  p2 = new Rovina(mmatrix,p);
+  bones = new ArrayList();
+  Rovina first = new Rovina(clean);
+  bones.add(first);
+
+  for(int i = 0 ; i < num; i ++)
+    bones.add(new Rovina(clean,first));
 
   strokeWeight(2);
 
@@ -33,26 +40,28 @@ void draw(){
      p.rotateY(noise(0,frameCount/200.0,0)*90.0);
      p.rotateZ(noise(0,0,frameCount/200.0)*90.0);
    */
-  p.rotate(mouseX,0,mouseY);
-  //p.rotateY(mouseY);
-  //p.rotateZ(mouseX);
+ 
+ for(int i = 0 ; i < bones.size();i++){
+    Rovina r = (Rovina)bones.get(i);
+     r.rotate(
+     noise(i*20+frameCount/200.0,0,0)*90.0,
+     noise(0,i*20+frameCount/200.0,0)*90.0,
+     noise(0,0,i*20+frameCount/200.0)*90.0
+     );
+  }
 
-
-  //p.rotateZ(1);
-
+ 
+  
   pushMatrix();
   translate(width/2,height/2,0);
-
-  pushMatrix();
   rotateX(QUARTER_PI);
-  pushMatrix();
   rotateZ(QUARTER_PI);
 
-  p.draw();
-  p2.draw();
+  for(int i = 0 ; i < bones.size();i++){
+    Rovina r = (Rovina)bones.get(i);
+    r.draw();
+  }
 
-  popMatrix();
-  popMatrix();
   popMatrix();
 }
 
@@ -82,77 +91,41 @@ class Rovina{
   Rovina(PMatrix3D _mat,Rovina _parent){
     parent = _parent;
     initialize(_mat);
+
+    base.m03 = target.x;
+    base.m13 = target.y;
+    base.m23 = target.z;
   }
 
   void initialize(PMatrix _mat){
     matrix = new PMatrix3D(_mat);
     base = new PMatrix3D(_mat);
 
-
-
-    float mat[] = new float[16];
-    matrix.get(mat);
-
-    x = new PVector(mat[0],mat[4],mat[8]);
-    y = new PVector(mat[1],mat[5],mat[9]);
-    z = new PVector(mat[2],mat[6],mat[10]);
-    origin = new PVector(mat[3],mat[7],mat[11]);
-
-
-
-
+    origin = absolutePoint(0,0,0);
+    relPoint = absolutePoint(target.x,target.y,target.z);
   }
 
   PVector relativePoint(float _x,float _y, float _z){
-
     PVector pt = new PVector(_x,_y,_z);
     PMatrix3D nn = new PMatrix3D(matrix);
     nn.invert();
     nn.mult(pt,pt);
-    
-    /*
-    PVector anX,anY,anZ;
-
-    anX = new PVector(x.x,x.y,x.z);
-    anY = new PVector(y.x,y.y,y.z);
-    anZ = new PVector(z.x,z.y,z.z);
-
-    anX.mult(pt);
-    anY.mult(pt);
-    anZ.mult(pt);
-
-    return new PVector(
-        anX.x+anY.x+anZ.x,
-        anX.y+anY.y+anZ.y,
-        anX.z+anY.z+anZ.z
-        );
-        */
-
+   
     return pt;
-
   }
 
-
-
-
+ PVector absolutePoint(float _x,float _y, float _z){
+    PVector pt = new PVector(_x,_y,_z);
+    PMatrix3D nn = new PMatrix3D(matrix);
+    nn.mult(pt,pt);
+   
+    return pt;
+  }
   void inherit(){
-
-    //matrix = new PMatrix3D(base);
-
-
-    PVector rp = parent.relPoint;
-    matrix.m30 = rp.x;
-    matrix.m31 = rp.y;
-    matrix.m32 = rp.z;
-
-
-
+    matrix.preApply(parent.matrix);//new PMatrix3D(base);
   }
 
   void rotate(float _x, float _y, float _z){
-    if(parent!=null)
-      inherit();
-
     float radx = radians(_x);
     float rady = radians(_y);
     float radz = radians(_z);
@@ -170,30 +143,26 @@ class Rovina{
     matrix = new PMatrix3D(base);
     matrix.get(mat);
 
-    // working solution
+    // working X,Y,Z arbitrary solution
     matrix = new PMatrix3D(
         cb*cg,cg*sa*sb-ca*sg,ca*cg*sb+sa*sg,mat[3],
         cb*sg,ca*cg+sa*sb*sg,-cg*sa+ca*sb*sg,mat[7],
         -sb,cb*sa,ca*cb,mat[11],
         mat[12],mat[13],mat[14],mat[15]
-
         );
  }
 
   void draw(){
-    /*
-       matrix = new PMatrix3D(
-       x.x, x.y, x.z, origin.x,
-       y.x, y.y, y.z, origin.y,
-       z.x, z.y, z.z, origin.z,
-       0,0,0,1
-       );
-     */
+    if(parent!=null)
+      inherit();
 
+ 
     PVector A,B;
     stroke(255);
-    relPoint = relativePoint(100,100,120);
-    applyMatrix(matrix);
+    origin  = absolutePoint(0,0,0);
+    relPoint = absolutePoint(target.x,target.y,target.z);
+    s = 10;
+    //applyMatrix(matrix);
 
     noFill();
     stroke(255);
@@ -210,12 +179,14 @@ class Rovina{
     stroke(#0000ff);
     line(0,0,0,0,0,h/2);
 
-    stroke(255);
-    s = 50;
+    stroke(#ff0000);
     line(relPoint.x-s,relPoint.y,relPoint.z,relPoint.x+s,relPoint.y,relPoint.z);
+    stroke(#00ff00);
     line(relPoint.x,relPoint.y-s,relPoint.z,relPoint.x,relPoint.y+s,relPoint.z);
+    stroke(#0000ff);
     line(relPoint.x,relPoint.y,relPoint.z-s,relPoint.x,relPoint.y,relPoint.z+s);
-    line(0,0,0,relPoint.x,relPoint.y,relPoint.z);
+    stroke(#ffff00);
+    line(origin.x,origin.y,origin.z,relPoint.x,relPoint.y,relPoint.z);
   }
 
 
