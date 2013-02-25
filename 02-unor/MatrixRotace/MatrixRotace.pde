@@ -7,12 +7,15 @@ float ANGLE = 90.0;
 
 boolean APPLIED = true;
 
-float W = 20;
-float s = 10;
+float W = 40;
+float S = 10;
+float L = 40;
+float V = 50;
+
 ArrayList bones;
 PMatrix3D clean;
 
-PVector target = new PVector(0,0,50);
+PVector target = new PVector(0,0,L);
 
 void setup(){
   size(800,600,P3D);
@@ -73,11 +76,66 @@ void draw(){
     r.draw();
   }
 
+  noStroke();
+  fill(127);
+
+  for(int i = 1 ; i < bones.size();i++){
+    Rovina r1 = (Rovina)bones.get(i-1);
+    ArrayList verts1 = r1.vertices;
+    Rovina r2 = (Rovina)bones.get(i);
+    ArrayList verts2 = r2.vertices;
+
+    PVector v00,v01,v02,v03,v10,v11,v12,v13;
+
+    v00 = (PVector)verts1.get(0);
+    v01 = (PVector)verts1.get(1);
+    v02 = (PVector)verts1.get(2);
+    v03 = (PVector)verts1.get(3);
+    
+    v10 = (PVector)verts2.get(0);
+    v11 = (PVector)verts2.get(1);
+    v12 = (PVector)verts2.get(2);
+    v13 = (PVector)verts2.get(3);
+
+    beginShape();
+    vertex(v00.x,v00.y,v00.z);
+    vertex(v01.x,v01.y,v01.z);
+    vertex(v11.x,v11.y,v11.z);
+    vertex(v10.x,v10.y,v10.z);
+    endShape(CLOSE);
+      
+    beginShape();
+    vertex(v01.x,v01.y,v01.z);
+    vertex(v02.x,v02.y,v02.z);
+    vertex(v12.x,v12.y,v12.z);
+    vertex(v11.x,v11.y,v11.z);
+    endShape(CLOSE);
+
+    beginShape();
+    vertex(v02.x,v02.y,v02.z);
+    vertex(v03.x,v03.y,v03.z);
+    vertex(v13.x,v13.y,v13.z);
+    vertex(v12.x,v12.y,v12.z);
+    endShape(CLOSE);
+    
+    beginShape();
+    vertex(v03.x,v03.y,v03.z);
+    vertex(v01.x,v01.y,v01.z);
+    vertex(v11.x,v11.y,v11.z);
+    vertex(v13.x,v13.y,v13.z);
+    endShape(CLOSE);
+     
+    }
+
+
+
   popMatrix();
 }
 
 
 class Rovina{
+  ArrayList vertices;
+  
   PVector x,y,z;
   PMatrix3D matrix,base;
 
@@ -99,6 +157,7 @@ class Rovina{
     base.m03 = target.x;
     base.m13 = target.y;
     base.m23 = target.z;
+    updateVertices();
   }
 
   void initialize(PMatrix _mat){
@@ -107,6 +166,17 @@ class Rovina{
 
     origin = absolutePoint(0,0,0);
     relPoint = absolutePoint(target.x,target.y,target.z);
+    updateVertices();
+  }
+
+  void updateVertices(){
+
+    vertices = new ArrayList();
+    vertices.add(absolutePoint(-V/2,-V/2,0));
+    vertices.add(absolutePoint(V/2,-V/2,0));
+    vertices.add(absolutePoint(V/2,V/2,0));
+    vertices.add(absolutePoint(-V/2,V/2,0));
+
   }
 
   PVector relativePoint(float _x,float _y, float _z){
@@ -185,7 +255,10 @@ class Rovina{
     line(0,0,0,0,0,W/2);
 
     popMatrix();
+    
+    updateVertices();
 
+    float s =  S;
     origin  = absolutePoint(0,0,0);
     relPoint = absolutePoint(target.x,target.y,target.z);
     stroke(#ff0000);
