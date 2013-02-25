@@ -1,15 +1,17 @@
 
-int num = 4;
+int num = 40;
 
-float SPREAD = 10.0;
+float SPREAD = 0.033;
 float SPEED = 100.0;
-float ANGLE = 90.0;
+float ANGLE = 60.0;
 
 boolean APPLIED = true;
 
-float W = 40;
+float ALPHA = 40;
+
+float W = 20;
 float S = 10;
-float L = 40;
+float L = 20;
 float V = 50;
 
 ArrayList bones;
@@ -19,6 +21,7 @@ PVector target = new PVector(0,0,L);
 
 void setup(){
   size(800,600,P3D);
+
 
   clean = new PMatrix3D(
       1,0,0,0,
@@ -40,7 +43,7 @@ void setup(){
 
   }
 
-  strokeWeight(2);
+  strokeWeight(1);
 
   smooth();
 }
@@ -49,23 +52,19 @@ void setup(){
 
 void draw(){
   background(0);
-  /*
-     p.rotateX(noise(frameCount/200.0,0,0)*90.0);
-     p.rotateY(noise(0,frameCount/200.0,0)*90.0);
-     p.rotateZ(noise(0,0,frameCount/200.0)*90.0);
-   */
- 
- for(int i = 0 ; i < bones.size();i++){
+
+  // set rotations per bone
+  for(int i = 0 ; i < bones.size();i++){
     Rovina r = (Rovina)bones.get(i);
-     r.rotate(
-     (noise(i*SPREAD+frameCount/SPEED,0,0)-0.5)*ANGLE,
-     (noise(0,i*SPREAD+frameCount/SPEED,0)-0.5)*ANGLE,
-     (noise(0,0,i*SPREAD+frameCount/SPEED)-0.5)*ANGLE
-     );
+    r.rotate(
+        (noise(i*SPREAD+frameCount/SPEED,0,0)-0.5)*ANGLE,
+        (noise(0,i*SPREAD+frameCount/SPEED,0)-0.5)*ANGLE,
+        (noise(0,0,i*SPREAD+frameCount/SPEED)-0.5)*ANGLE
+        );
   }
 
- 
-  
+
+  // set coordinates of world 
   pushMatrix();
   translate(width/2,height/2,0);
   rotateX(QUARTER_PI);
@@ -73,14 +72,16 @@ void draw(){
 
   lights();
 
-
+  // apply 
   for(int i = 0 ; i < bones.size();i++){
     Rovina r = (Rovina)bones.get(i);
-    r.draw();
+    r.updateVertices();
   }
 
   noStroke();
   fill(127);
+
+  hint(ENABLE_DEPTH_TEST);
 
   for(int i = 1 ; i < bones.size();i++){
     Rovina r1 = (Rovina)bones.get(i-1);
@@ -94,7 +95,7 @@ void draw(){
     v01 = (PVector)verts1.get(1);
     v02 = (PVector)verts1.get(2);
     v03 = (PVector)verts1.get(3);
-    
+
     v10 = (PVector)verts2.get(0);
     v11 = (PVector)verts2.get(1);
     v12 = (PVector)verts2.get(2);
@@ -106,7 +107,7 @@ void draw(){
     vertex(v11.x,v11.y,v11.z);
     vertex(v10.x,v10.y,v10.z);
     endShape(CLOSE);
-      
+
     beginShape();
     vertex(v01.x,v01.y,v01.z);
     vertex(v02.x,v02.y,v02.z);
@@ -120,17 +121,23 @@ void draw(){
     vertex(v13.x,v13.y,v13.z);
     vertex(v12.x,v12.y,v12.z);
     endShape(CLOSE);
-    
+
     beginShape();
     vertex(v03.x,v03.y,v03.z);
     vertex(v00.x,v00.y,v00.z);
     vertex(v10.x,v10.y,v10.z);
     vertex(v13.x,v13.y,v13.z);
     endShape(CLOSE);
-     
-    }
 
+  }
 
+hint(DISABLE_DEPTH_TEST);
+
+  // apply 
+  for(int i = 0 ; i < bones.size();i++){
+    Rovina r = (Rovina)bones.get(i);
+    r.draw();
+  }
 
   popMatrix();
 }
@@ -138,7 +145,7 @@ void draw(){
 
 class Rovina{
   ArrayList vertices;
-  
+
   PVector x,y,z;
   PMatrix3D matrix,base;
 
@@ -173,6 +180,11 @@ class Rovina{
   }
 
   void updateVertices(){
+   if(parent!=null)
+      inherit();
+
+ origin  = absolutePoint(0,0,0);
+    relPoint = absolutePoint(target.x,target.y,target.z);
 
     vertices = new ArrayList();
     vertices.add(absolutePoint(-V/2,-V/2,0));
@@ -187,15 +199,15 @@ class Rovina{
     PMatrix3D nn = new PMatrix3D(matrix);
     nn.invert();
     nn.mult(pt,pt);
-   
+
     return pt;
   }
 
- PVector absolutePoint(float _x,float _y, float _z){
+  PVector absolutePoint(float _x,float _y, float _z){
     PVector pt = new PVector(_x,_y,_z);
     PMatrix3D nn = new PMatrix3D(matrix);
     nn.mult(pt,pt);
-   
+
     return pt;
   }
   void inherit(){
@@ -203,7 +215,7 @@ class Rovina{
   }
 
   void rotate(float _x, float _y, float _z){
-    float radx = radians(_x);
+     float radx = radians(_x);
     float rady = radians(_y);
     float radz = radians(_z);
 
@@ -227,52 +239,54 @@ class Rovina{
         -sb,cb*sa,ca*cb,mat[11],
         mat[12],mat[13],mat[14],mat[15]
         );
- }
+  }
 
   void draw(){
-    if(parent!=null)
-      inherit();
-
-
+   
 
     if(APPLIED){
 
-    pushMatrix();
+      pushMatrix();
       origin = new PVector(0,0,0);
-    relPoint = new PVector(target.x,target.y,target.z);
-    applyMatrix(matrix);
+      relPoint = new PVector(target.x,target.y,target.z);
+      applyMatrix(matrix);
 
-    noFill();
-    stroke(255);
-    rectMode(CENTER);
+      noFill();
+      stroke(255,ALPHA);
+      rectMode(CENTER);
 
-    rect(0,0,W,W);
+      
 
-    stroke(#ff0000);
-    line(0,0,0,W/2,0,0);
+      strokeWeight(1);
 
-    stroke(#00ff00);
-    line(0,0,0,0,W/2,0);
+      rect(0,0,W,W);
 
-    stroke(#0000ff);
-    line(0,0,0,0,0,W/2);
+      stroke(#ff0000,ALPHA);
+      line(0,0,0,W/2,0,0);
 
-    popMatrix();
-    
-    updateVertices();
+      stroke(#00ff00,ALPHA);
+      line(0,0,0,0,W/2,0);
 
-    float s =  S;
-    origin  = absolutePoint(0,0,0);
-    relPoint = absolutePoint(target.x,target.y,target.z);
-    stroke(#ff0000);
-    line(relPoint.x-s,relPoint.y,relPoint.z,relPoint.x+s,relPoint.y,relPoint.z);
-    stroke(#00ff00);
-    line(relPoint.x,relPoint.y-s,relPoint.z,relPoint.x,relPoint.y+s,relPoint.z);
-    stroke(#0000ff);
-    line(relPoint.x,relPoint.y,relPoint.z-s,relPoint.x,relPoint.y,relPoint.z+s);
-    stroke(#ffff00);
-    line(origin.x,origin.y,origin.z,relPoint.x,relPoint.y,relPoint.z);
-  }
+      stroke(#0000ff,ALPHA);
+      line(0,0,0,0,0,W/2);
+
+      popMatrix();
+
+      origin = absolutePoint(0,0,0);
+      relPoint = absolutePoint(target.x,target.y,target.z);
+      strokeWeight(2);
+
+      stroke(#ff0000,ALPHA);
+      line(relPoint.x-S,relPoint.y,relPoint.z,relPoint.x+S,relPoint.y,relPoint.z);
+      stroke(#00ff00,ALPHA);
+      line(relPoint.x,relPoint.y-S,relPoint.z,relPoint.x,relPoint.y+S,relPoint.z);
+      stroke(#0000ff,ALPHA);
+      line(relPoint.x,relPoint.y,relPoint.z-S,relPoint.x,relPoint.y,relPoint.z+S);
+      
+      strokeWeight(10);
+      stroke(#ffff00,ALPHA);
+      line(origin.x,origin.y,origin.z,relPoint.x,relPoint.y,relPoint.z);
+    }
   }
 
 
