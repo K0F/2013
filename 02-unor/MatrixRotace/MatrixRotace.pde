@@ -5,6 +5,8 @@ float SPREAD = 0.033;
 float SPEED = 100.0;
 float ANGLE = 60.0;
 
+int NUM_SEGMENTS = 8;
+
 boolean APPLIED = true;
 
 float ALPHA = 40;
@@ -19,9 +21,13 @@ PMatrix3D clean;
 
 PVector target = new PVector(0,0,L);
 
-void setup(){
-  size(800,600,P3D);
+PImage texture;
 
+void setup(){
+  size(1600,900,P3D);
+
+  texture = loadImage("texture.png");
+  textureMode(NORMAL);
 
   clean = new PMatrix3D(
       1,0,0,0,
@@ -83,55 +89,47 @@ void draw(){
 
   hint(ENABLE_DEPTH_TEST);
 
-  for(int i = 1 ; i < bones.size();i++){
-    Rovina r1 = (Rovina)bones.get(i-1);
+  for(int b = 1 ; b < bones.size();b++){
+    Rovina r1 = (Rovina)bones.get(b-1);
     ArrayList verts1 = r1.vertices;
-    Rovina r2 = (Rovina)bones.get(i);
+    Rovina r2 = (Rovina)bones.get(b);
     ArrayList verts2 = r2.vertices;
 
-    PVector v00,v01,v02,v03,v10,v11,v12,v13;
+    PVector vert1[] = new PVector[r1.vertices.size()];
+    PVector vert2[] = new PVector[r2.vertices.size()];
+    
+    
 
-    v00 = (PVector)verts1.get(0);
-    v01 = (PVector)verts1.get(1);
-    v02 = (PVector)verts1.get(2);
-    v03 = (PVector)verts1.get(3);
 
-    v10 = (PVector)verts2.get(0);
-    v11 = (PVector)verts2.get(1);
-    v12 = (PVector)verts2.get(2);
-    v13 = (PVector)verts2.get(3);
+    if(vert1.length==vert2.length){
+  
+      for(int i = 0 ; i < vert1.length;i++){
+        vert1[i] = (PVector)r1.vertices.get(i);
+        vert2[i] = (PVector)r2.vertices.get(i);
+      }
 
-    beginShape();
-    vertex(v00.x,v00.y,v00.z);
-    vertex(v01.x,v01.y,v01.z);
-    vertex(v11.x,v11.y,v11.z);
-    vertex(v10.x,v10.y,v10.z);
-    endShape(CLOSE);
+      for(int i = 1 ; i < vert1.length + 1; i += 1){
+        PVector v1 = vert1[i-1];
+        PVector v2 = vert1[i%vert1.length];
+        PVector v3 = vert2[i%vert1.length];
+        PVector v4 = vert2[i-1];
 
-    beginShape();
-    vertex(v01.x,v01.y,v01.z);
-    vertex(v02.x,v02.y,v02.z);
-    vertex(v12.x,v12.y,v12.z);
-    vertex(v11.x,v11.y,v11.z);
-    endShape(CLOSE);
+        float Us = (float)(vert1.length);
+        float Vs = (float)bones.size();
 
-    beginShape();
-    vertex(v02.x,v02.y,v02.z);
-    vertex(v03.x,v03.y,v03.z);
-    vertex(v13.x,v13.y,v13.z);
-    vertex(v12.x,v12.y,v12.z);
-    endShape(CLOSE);
+        beginShape();
+        texture(texture);
+        vertex(v1.x,v1.y,v1.z,(i-1)/Us,(b-1)/Vs);
+        vertex(v2.x,v2.y,v2.z,(i)/Us,(b-1)/Vs);
+        vertex(v3.x,v3.y,v3.z,(i)/Us,(b)/Vs);
+        vertex(v4.x,v4.y,v4.z,(i-1)/Us,(b)/Vs);
+        endShape(CLOSE);
+      }
 
-    beginShape();
-    vertex(v03.x,v03.y,v03.z);
-    vertex(v00.x,v00.y,v00.z);
-    vertex(v10.x,v10.y,v10.z);
-    vertex(v13.x,v13.y,v13.z);
-    endShape(CLOSE);
-
+    }
   }
 
-hint(DISABLE_DEPTH_TEST);
+  hint(DISABLE_DEPTH_TEST);
 
   // apply 
   for(int i = 0 ; i < bones.size();i++){
@@ -187,11 +185,13 @@ class Rovina{
     relPoint = absolutePoint(target.x,target.y,target.z);
 
     vertices = new ArrayList();
-    vertices.add(absolutePoint(-V/2,-V/2,0));
-    vertices.add(absolutePoint(V/2,-V/2,0));
-    vertices.add(absolutePoint(V/2,V/2,0));
-    vertices.add(absolutePoint(-V/2,V/2,0));
 
+    float step = radians(360.0/(NUM_SEGMENTS+0.0));
+
+    for(float f = 0 ; f < radians(360) ; f += step){
+        vertices.add(absolutePoint(cos(f)*V,sin(f)*V,0));
+
+    }
   }
 
   PVector relativePoint(float _x,float _y, float _z){
