@@ -2,19 +2,25 @@
 int num = 40;
 
 float SPREAD = 0.033;
-float SPEED = 100.0;
+float SPEED = 150.0;
 float ANGLE = 60.0;
 
-int NUM_SEGMENTS = 8;
+int NUM_SEGMENTS = 16;
 
 boolean APPLIED = true;
 
-float ALPHA = 40;
+boolean NOISED = false;
+
+int TRAIL_LENGTH = 200;
+
+float ALPHA = 80;
 
 float W = 20;
 float S = 10;
 float L = 20;
 float V = 50;
+
+float SCALE = 0.75;
 
 ArrayList bones;
 PMatrix3D clean;
@@ -73,8 +79,9 @@ void draw(){
   // set coordinates of world 
   pushMatrix();
   translate(width/2,height/2,0);
+  scale(SCALE);
   rotateX(QUARTER_PI);
-  rotateZ(QUARTER_PI);
+  rotateZ(QUARTER_PI+frameCount/1000.0);
 
   lights();
 
@@ -89,6 +96,13 @@ void draw(){
 
   hint(ENABLE_DEPTH_TEST);
 
+  // draw geom hits here 
+  for(int i = 0 ; i < bones.size();i++){
+    Rovina r = (Rovina)bones.get(i);
+    r.drawTrail();
+  }
+
+
   for(int b = 1 ; b < bones.size();b++){
     Rovina r1 = (Rovina)bones.get(b-1);
     ArrayList verts1 = r1.vertices;
@@ -97,12 +111,12 @@ void draw(){
 
     PVector vert1[] = new PVector[r1.vertices.size()];
     PVector vert2[] = new PVector[r2.vertices.size()];
-    
-    
+
+
 
 
     if(vert1.length==vert2.length){
-  
+
       for(int i = 0 ; i < vert1.length;i++){
         vert1[i] = (PVector)r1.vertices.get(i);
         vert2[i] = (PVector)r2.vertices.get(i);
@@ -117,6 +131,7 @@ void draw(){
         float Us = (float)(vert1.length);
         float Vs = (float)bones.size();
 
+        noStroke();
         beginShape();
         texture(texture);
         vertex(v1.x,v1.y,v1.z,(i-1)/Us,(b-1)/Vs);
@@ -129,9 +144,11 @@ void draw(){
     }
   }
 
+
+
   hint(DISABLE_DEPTH_TEST);
 
-  // apply 
+  // draw geom hits here 
   for(int i = 0 ; i < bones.size();i++){
     Rovina r = (Rovina)bones.get(i);
     r.draw();
@@ -144,6 +161,7 @@ void draw(){
 class Rovina{
   ArrayList vertices;
 
+  ArrayList trail;
   PVector x,y,z;
   PMatrix3D matrix,base;
 
@@ -155,12 +173,14 @@ class Rovina{
 
   Rovina(PMatrix3D _mat){
     initialize(_mat);
+    trail = new ArrayList();
   }
 
 
   Rovina(PMatrix3D _mat,Rovina _parent){
     parent = _parent;
     initialize(_mat);
+    trail = new ArrayList();
 
     base.m03 = target.x;
     base.m13 = target.y;
@@ -178,10 +198,10 @@ class Rovina{
   }
 
   void updateVertices(){
-   if(parent!=null)
+    if(parent!=null)
       inherit();
 
- origin  = absolutePoint(0,0,0);
+    origin  = absolutePoint(0,0,0);
     relPoint = absolutePoint(target.x,target.y,target.z);
 
     vertices = new ArrayList();
@@ -189,7 +209,20 @@ class Rovina{
     float step = radians(360.0/(NUM_SEGMENTS+0.0));
 
     for(float f = 0 ; f < radians(360) ; f += step){
-        vertices.add(absolutePoint(cos(f)*V,sin(f)*V,0));
+      if(NOISED){
+        float shiftX = (noise(f/radians(360),bones.indexOf(this)/10.0+frameCount/80.0))*4.0;
+        float shiftY = (noise(bones.indexOf(this)/10.0+frameCount/80.0,f/radians(360)))*4.0;
+        vertices.add(absolutePoint(
+              cos(f)*V*shiftX,
+              sin(f)*V*shiftY,
+              0));
+      }else{
+        vertices.add(absolutePoint(
+              cos(f)*V,
+              sin(f)*V,
+              0));
+
+      }
 
     }
   }
@@ -215,7 +248,7 @@ class Rovina{
   }
 
   void rotate(float _x, float _y, float _z){
-     float radx = radians(_x);
+    float radx = radians(_x);
     float rady = radians(_y);
     float radz = radians(_z);
 
@@ -242,7 +275,7 @@ class Rovina{
   }
 
   void draw(){
-   
+
 
     if(APPLIED){
 
@@ -255,7 +288,7 @@ class Rovina{
       stroke(255,ALPHA);
       rectMode(CENTER);
 
-      
+
 
       strokeWeight(1);
 
@@ -282,16 +315,39 @@ class Rovina{
       line(relPoint.x,relPoint.y-S,relPoint.z,relPoint.x,relPoint.y+S,relPoint.z);
       stroke(#0000ff,ALPHA);
       line(relPoint.x,relPoint.y,relPoint.z-S,relPoint.x,relPoint.y,relPoint.z+S);
-      
+
       strokeWeight(10);
       stroke(#ffff00,ALPHA);
       line(origin.x,origin.y,origin.z,relPoint.x,relPoint.y,relPoint.z);
-    }
+
+      addTrail();
+
+        }
   }
+    void addTrail(){
+
+      trail.add(new PVector(relPoint.x,relPoint.y,relPoint.z));
+      if(trail.size()>TRAIL_LENGTH)
+        trail.remove(0);
+
+
+    }
+
+    void drawTrail(){
+  strokeWeight(1);
+      if(trail.size()>=1)
+        for(int i = 1 ; i < trail.size();i+=1){
+          PVector t1 = (PVector)trail.get(i-1);
+          PVector t2 = (PVector)trail.get(i);
+          stroke(255,map(i,0,trail.size(),0,90));
+          line(t1.x,t1.y,t1.z,t2.x,t2.y,t2.z);
+        }
+
+
+    }
 
 
 }
-
 
 
 
