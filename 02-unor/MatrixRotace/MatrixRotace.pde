@@ -28,16 +28,16 @@ void setup(){
 
 void draw(){
   background(0);
-/*
-  p.rotateX(noise(frameCount/200.0,0,0)*90.0);
-  p.rotateY(noise(0,frameCount/200.0,0)*90.0);
-  p.rotateZ(noise(0,0,frameCount/200.0)*90.0);
- */
-  p.rotate(mouseX,mouseY,0);
+  /*
+     p.rotateX(noise(frameCount/200.0,0,0)*90.0);
+     p.rotateY(noise(0,frameCount/200.0,0)*90.0);
+     p.rotateZ(noise(0,0,frameCount/200.0)*90.0);
+   */
+  p.rotate(mouseX,0,mouseY);
   //p.rotateY(mouseY);
   //p.rotateZ(mouseX);
-  
- 
+
+
   //p.rotateZ(1);
 
   pushMatrix();
@@ -93,47 +93,24 @@ class Rovina{
     float mat[] = new float[16];
     matrix.get(mat);
 
-    x = new PVector(mat[0],mat[1],mat[2]);
-    y = new PVector(mat[4],mat[5],mat[6]);
-    z = new PVector(mat[8],mat[9],mat[10]);
-    origin = new PVector(mat[12],mat[13],mat[14]);
+    x = new PVector(mat[0],mat[4],mat[8]);
+    y = new PVector(mat[1],mat[5],mat[9]);
+    z = new PVector(mat[2],mat[6],mat[10]);
+    origin = new PVector(mat[3],mat[7],mat[11]);
 
 
-    relPoint = relativePoint(new PVector(0,0,120));
 
 
   }
 
-
-  PVector relativePoint(PVector pt){
-
-    update();
-
-    PVector answer = new PVector();
-    PVector anX,anY,anZ;
-
-    anX = new PVector(x.x,x.y,x.z);
-    anY = new PVector(y.x,y.y,y.z);
-    anZ = new PVector(z.x,z.y,z.z);
-
-    anX.mult(pt);
-    anY.mult(pt);
-    anZ.mult(pt);
-
-    return new PVector(
-        anX.x+anY.x+anZ.x,
-        anX.y+anY.y+anZ.y,
-        anX.z+anY.z+anZ.z
-        );
-
-  } 
-  
   PVector relativePoint(float _x,float _y, float _z){
 
-    update();
-
     PVector pt = new PVector(_x,_y,_z);
-    PVector answer = new PVector();
+    PMatrix3D nn = new PMatrix3D(matrix);
+    nn.invert();
+    nn.mult(pt,pt);
+    
+    /*
     PVector anX,anY,anZ;
 
     anX = new PVector(x.x,x.y,x.z);
@@ -149,135 +126,59 @@ class Rovina{
         anX.y+anY.y+anZ.y,
         anX.z+anY.z+anZ.z
         );
+        */
+
+    return pt;
 
   }
 
-  void update(){
-  
-      float mat[] = new float[16];
-      matrix.get(mat);
 
-  x = new PVector(mat[0],mat[1],mat[2]);
-    y = new PVector(mat[4],mat[5],mat[6]);
-    z = new PVector(mat[8],mat[9],mat[10]);
-    origin = new PVector(mat[12],mat[13],mat[14]);
-
-
-  }
 
 
   void inherit(){
 
-    matrix = new PMatrix3D(base);
-    
+    //matrix = new PMatrix3D(base);
 
-    //matrix.mult(parent.relPoint);
+
+    PVector rp = parent.relPoint;
+    matrix.m30 = rp.x;
+    matrix.m31 = rp.y;
+    matrix.m32 = rp.z;
 
 
 
   }
 
   void rotate(float _x, float _y, float _z){
-  if(parent!=null)
+    if(parent!=null)
       inherit();
 
     float radx = radians(_x);
     float rady = radians(_y);
     float radz = radians(_z);
 
-    float cx = cos(radx);
-    float sx = sin(radx);
+    float ca = cos(radx);
+    float sa = sin(radx);
 
-    float cy = cos(rady);
-    float sy = sin(rady);
+    float cb = cos(rady);
+    float sb = sin(rady);
 
-    float cz = cos(radz);
-    float sz = sin(radz);
+    float cg = cos(radz);
+    float sg = sin(radz);
 
     float[] mat = new float[16];
     matrix = new PMatrix3D(base);
     matrix.get(mat);
 
-    PVector xaxis = relativePoint(1,0,0);
-    matrix.rotate(radx, xaxis.x,xaxis.y,xaxis.z);
-    PVector yaxis = relativePoint(0,1,0);
-    matrix.rotate(rady, yaxis.x,yaxis.y,yaxis.z);
-    PVector zaxis = relativePoint(0,0,1);
-    matrix.rotate(radz, zaxis.x,zaxis.y,zaxis.z);
-
-    /*
+    // working solution
     matrix = new PMatrix3D(
-        0.5 * ((mat[0] * cy + mat[8] * sy) + (mat[0] * cz + mat[4] * sz)),
-        0.5 * ((mat[1] * cy + mat[9] * sy) + (mat[1] * cz + mat[5] * sz)),
-        0.5 * ((mat[2] * cy + mat[10] * sy) + (mat[2] * cz + mat[6] * sz)),
-        0.5 * ((mat[3] * cy + mat[11] * sy) + (mat[3] * cz + mat[7] * sz)),
+        cb*cg,cg*sa*sb-ca*sg,ca*cg*sb+sa*sg,mat[3],
+        cb*sg,ca*cg+sa*sb*sg,-cg*sa+ca*sb*sg,mat[7],
+        -sb,cb*sa,ca*cb,mat[11],
+        mat[12],mat[13],mat[14],mat[15]
 
-        0.5 * ((mat[4] * cx + mat[8] * sx) + (mat[4] * cz - mat[0] * sz)),
-        0.5 * ((mat[5] * cx + mat[9] * sx) + (mat[5] * cz - mat[1] * sz)),
-        0.5 * ((mat[6] * cx + mat[10] * sx) + (mat[6] * cz - mat[2] * sz)),
-        0.5 * ((mat[7] * cx + mat[11] * sx) + (mat[7] * cz - mat[3] * sz)),
-        
-        0.5 * ((mat[8] * cx - mat[4] * sx) + (mat[8] * cy - mat[0] * sy)),
-        0.5 * ((mat[9] * cx - mat[5] * sx) + (mat[9] * cy - mat[1] * sy)),
-        0.5 * ((mat[10] * cx - mat[6] * sx) + (mat[10] * cy - mat[2] * sy)),
-        0.5 * ((mat[11] * cx - mat[7] * sx) + (mat[11] * cy - mat[3] * sy)),
-
-        mat[12],mat[13],mat[14],mat[15]);
-
-        */
-  }
-
-
-  void rotateX(float rad){
-
-    if(parent!=null)
-      inherit();
-
-    rad = radians(rad);
-
-    float c = cos(rad);
-    float s = sin(rad);
-    float[] mat = new float[16];
-    matrix = new PMatrix3D(base);
-    matrix.get(mat);
-    
-    matrix = new PMatrix3D(
-        mat[0], mat[1], mat[2], mat[3],
-        mat[4] * c + mat[8] * s ,mat[5] * c + mat[9] * s ,mat[6] * c + mat[10] * s , mat[7] * c + mat[11] * s,
-        mat[8] * c - mat[4] * s ,mat[9] * c - mat[5] * s ,mat[10] * c - mat[6] * s, mat[11] * c - mat[7] * s,
-        mat[12], mat[13], mat[14], mat[15]);
-  }
-
-  void rotateY(float rad){
-    rad = radians(rad);
-    float c = cos(rad);
-    float s = sin(rad);
-    float[] mat = new float[16];
-    //matrix = new PMatrix3D(base);
-    matrix.get(mat);
-    
-    matrix = new PMatrix3D(
-        mat[0] * c + mat[8] * s ,mat[1] * c + mat[9] * s ,mat[2] * c + mat[10] * s , mat[3] * c + mat[11] * s,
-        mat[4], mat[5], mat[6], mat[7],
-        mat[8] * c - mat[0] * s ,mat[9] * c - mat[1] * s ,mat[10] * c - mat[2] * s, mat[11] * c - mat[3] * s,
-        mat[12], mat[13], mat[14], mat[15]);
-  }
-
-  void rotateZ(float rad){
-    rad = radians(rad);
-
-    float c = cos(rad);
-    float s = sin(rad);
-    float[] mat = new float[16];
-    //matrix = new PMatrix3D(base);
-    matrix.get(mat);
-
-    matrix = new PMatrix3D(
-        mat[0] * c + mat[4] * s ,mat[1] * c + mat[5] * s ,mat[2] * c + mat[6] * s , mat[3] * c + mat[7] * s,
-        mat[4] * c - mat[0] * s ,mat[5] * c - mat[1] * s ,mat[6] * c - mat[2] * s, mat[7] * c - mat[3] * s,
-        mat[8], mat[9], mat[10], mat[11],
-        mat[12], mat[13], mat[14], mat[15]);
-  }
+        );
+ }
 
   void draw(){
     /*
@@ -291,17 +192,8 @@ class Rovina{
 
     PVector A,B;
     stroke(255);
-    
-    // vv ???
-    A = new PVector(0,-100,-100);
-    B = relativePoint(new PVector(0,100,100));
-    
+    relPoint = relativePoint(100,100,120);
     applyMatrix(matrix);
-
-    beginShape();
-    vertex(A.x,A.y,A.z);
-    vertex(B.x,B.y,B.z);
-    endShape();
 
     noFill();
     stroke(255);
@@ -319,9 +211,11 @@ class Rovina{
     line(0,0,0,0,0,h/2);
 
     stroke(255);
+    s = 50;
     line(relPoint.x-s,relPoint.y,relPoint.z,relPoint.x+s,relPoint.y,relPoint.z);
     line(relPoint.x,relPoint.y-s,relPoint.z,relPoint.x,relPoint.y+s,relPoint.z);
     line(relPoint.x,relPoint.y,relPoint.z-s,relPoint.x,relPoint.y,relPoint.z+s);
+    line(0,0,0,relPoint.x,relPoint.y,relPoint.z);
   }
 
 
