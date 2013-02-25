@@ -1,10 +1,18 @@
 
 int num = 4;
 
+float SPREAD = 10.0;
+float SPEED = 100.0;
+float ANGLE = 90.0;
+
+boolean APPLIED = true;
+
+float W = 20;
+float s = 10;
 ArrayList bones;
 PMatrix3D clean;
 
-PVector target = new PVector(0,90,0);
+PVector target = new PVector(0,0,50);
 
 void setup(){
   size(800,600,P3D);
@@ -23,8 +31,11 @@ void setup(){
   Rovina first = new Rovina(clean);
   bones.add(first);
 
-  for(int i = 0 ; i < num; i ++)
-    bones.add(new Rovina(clean,first));
+  for(int i = 0 ; i < num; i ++){
+    Rovina previous = (Rovina)bones.get(bones.size()-1);
+    bones.add(new Rovina(clean,previous));
+
+  }
 
   strokeWeight(2);
 
@@ -44,9 +55,9 @@ void draw(){
  for(int i = 0 ; i < bones.size();i++){
     Rovina r = (Rovina)bones.get(i);
      r.rotate(
-     noise(i*20+frameCount/200.0,0,0)*90.0,
-     noise(0,i*20+frameCount/200.0,0)*90.0,
-     noise(0,0,i*20+frameCount/200.0)*90.0
+     (noise(i*SPREAD+frameCount/SPEED,0,0)-0.5)*ANGLE,
+     (noise(0,i*SPREAD+frameCount/SPEED,0)-0.5)*ANGLE,
+     (noise(0,0,i*SPREAD+frameCount/SPEED)-0.5)*ANGLE
      );
   }
 
@@ -74,13 +85,6 @@ class Rovina{
 
   PVector relPoint;
   PVector origin;
-
-  float s = 5;
-
-  float w = 200;
-  float h = 200;
-
-
 
 
   Rovina(PMatrix3D _mat){
@@ -156,29 +160,34 @@ class Rovina{
     if(parent!=null)
       inherit();
 
- 
-    PVector A,B;
-    stroke(255);
-    origin  = absolutePoint(0,0,0);
-    relPoint = absolutePoint(target.x,target.y,target.z);
-    s = 10;
-    //applyMatrix(matrix);
+
+
+    if(APPLIED){
+
+    pushMatrix();
+      origin = new PVector(0,0,0);
+    relPoint = new PVector(target.x,target.y,target.z);
+    applyMatrix(matrix);
 
     noFill();
     stroke(255);
     rectMode(CENTER);
 
-    rect(0,0,w,h);
+    rect(0,0,W,W);
 
     stroke(#ff0000);
-    line(0,0,0,w/2,0,0);
+    line(0,0,0,W/2,0,0);
 
     stroke(#00ff00);
-    line(0,0,0,0,h/2,0);
+    line(0,0,0,0,W/2,0);
 
     stroke(#0000ff);
-    line(0,0,0,0,0,h/2);
+    line(0,0,0,0,0,W/2);
 
+    popMatrix();
+
+    origin  = absolutePoint(0,0,0);
+    relPoint = absolutePoint(target.x,target.y,target.z);
     stroke(#ff0000);
     line(relPoint.x-s,relPoint.y,relPoint.z,relPoint.x+s,relPoint.y,relPoint.z);
     stroke(#00ff00);
@@ -187,6 +196,7 @@ class Rovina{
     line(relPoint.x,relPoint.y,relPoint.z-s,relPoint.x,relPoint.y,relPoint.z+s);
     stroke(#ffff00);
     line(origin.x,origin.y,origin.z,relPoint.x,relPoint.y,relPoint.z);
+  }
   }
 
 
