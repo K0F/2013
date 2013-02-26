@@ -1,3 +1,9 @@
+/*
+ * Generic Vertebrate
+ * Krystof & Jachym Pesek
+ * 2013
+ */
+
 
 int num = 40;
 
@@ -12,6 +18,7 @@ boolean APPLIED = true;
 boolean NOISED = false;
 
 int TRAIL_LENGTH = 200;
+int TRAIL_ALPHA = 50;
 
 float ALPHA = 80;
 
@@ -20,7 +27,7 @@ float S = 10;
 float L = 20;
 float V = 50;
 
-float SCALE = 0.75;
+float SCALE = 0.65;
 
 ArrayList bones;
 PMatrix3D clean;
@@ -30,7 +37,7 @@ PVector target = new PVector(0,0,L);
 PImage texture;
 
 void setup(){
-  size(1600,900,P3D);
+  size(800,600,P3D);
 
   texture = loadImage("texture.png");
   textureMode(NORMAL);
@@ -81,7 +88,7 @@ void draw(){
   translate(width/2,height/2,0);
   scale(SCALE);
   rotateX(QUARTER_PI);
-  rotateZ(QUARTER_PI+frameCount/1000.0);
+  rotateZ(QUARTER_PI+frameCount/300.0);
 
   lights();
 
@@ -322,29 +329,29 @@ class Rovina{
 
       addTrail();
 
-        }
+    }
   }
-    void addTrail(){
+  void addTrail(){
 
-      trail.add(new PVector(relPoint.x,relPoint.y,relPoint.z));
-      if(trail.size()>TRAIL_LENGTH)
-        trail.remove(0);
-
-
-    }
-
-    void drawTrail(){
-  strokeWeight(1);
-      if(trail.size()>=1)
-        for(int i = 1 ; i < trail.size();i+=1){
-          PVector t1 = (PVector)trail.get(i-1);
-          PVector t2 = (PVector)trail.get(i);
-          stroke(255,map(i,0,trail.size(),0,90));
-          line(t1.x,t1.y,t1.z,t2.x,t2.y,t2.z);
-        }
+    trail.add(new PVector(relPoint.x,relPoint.y,relPoint.z));
+    if(trail.size()>TRAIL_LENGTH)
+      trail.remove(0);
 
 
-    }
+  }
+
+  void drawTrail(){
+    strokeWeight(1);
+    if(trail.size()>=1)
+      for(int i = 1 ; i < trail.size();i+=1){
+        PVector t1 = (PVector)trail.get(i-1);
+        PVector t2 = (PVector)trail.get(i);
+        stroke(255,map(i,0,trail.size(),0,TRAIL_ALPHA));
+        line(t1.x,t1.y,t1.z,t2.x,t2.y,t2.z);
+      }
+
+
+  }
 
 
 }
