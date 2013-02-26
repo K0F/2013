@@ -1,14 +1,13 @@
 boolean DEBUG  = true;
 
 Collada test;
-Armature armature;
 ArrayList bones;
 
-float SCALE = 30.0;
-Runnable runnable;
-Thread thread;
+float S = 1.0;
+int TRAIL_LENGTH = 10;
+int TRAIL_ALPHA = 10;
 
-PShape zzz;
+float SCALE = 30.0;
 
 void setup(){
   size(800,600,P3D);
@@ -16,9 +15,7 @@ void setup(){
   bones = new ArrayList();
 
   noSmooth();
-  runnable = new Collada("test.dae");
-  thread = new Thread(runnable);
-  thread.start();
+  test = new Collada("test.dae");
 }
 
 void draw(){
@@ -36,14 +33,10 @@ void draw(){
   if(test!=null)
     test.drawFaces();
 
-  if(armature!=null){
-    armature.plot();
-  }
-
   if(bones.size()>0){
     for(int i = 0; i < bones.size();i++){
       Bone b = (Bone)bones.get(i);
-      b.plot();
+      b.draw();
     }
 
   }

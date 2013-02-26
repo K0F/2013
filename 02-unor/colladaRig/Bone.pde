@@ -1,5 +1,6 @@
-
 class Bone{
+  String name;
+  
   ArrayList vertices;
 
   ArrayList trail;
@@ -11,18 +12,23 @@ class Bone{
   PVector relPoint;
   PVector origin;
 
+  PVector target;
 
-  Bone(PMatrix3D _mat){
+
+  Bone(String _name,PMatrix3D _mat){
+    name = _name;
     initialize(_mat);
     trail = new ArrayList();
   }
 
 
-  Bone(PMatrix3D _mat,Bone _parent){
+  Bone(String _name,PMatrix3D _mat,Bone _parent){
+    name = _name;
     parent = _parent;
     initialize(_mat);
     trail = new ArrayList();
 
+    target = new PVector(0,0,0);
     base.m03 = target.x;
     base.m13 = target.y;
     base.m23 = target.z;
@@ -33,6 +39,7 @@ class Bone{
     matrix = new PMatrix3D(_mat);
     base = new PMatrix3D(_mat);
 
+    target = new PVector(0,0,1);
     origin = absolutePoint(0,0,0);
     relPoint = absolutePoint(target.x,target.y,target.z);
     updateVertices();
@@ -46,7 +53,7 @@ class Bone{
     relPoint = absolutePoint(target.x,target.y,target.z);
 
     vertices = new ArrayList();
-
+/*
     float step = radians(360.0/(NUM_SEGMENTS+0.0));
 
     for(float f = 0 ; f < radians(360) ; f += step){
@@ -66,6 +73,7 @@ class Bone{
       }
 
     }
+    */
   }
 
   PVector relativePoint(float _x,float _y, float _z){
@@ -118,8 +126,7 @@ class Bone{
   void draw(){
 
 
-    if(APPLIED){
-
+/*
       pushMatrix();
       origin = new PVector(0,0,0);
       relPoint = new PVector(target.x,target.y,target.z);
@@ -145,7 +152,7 @@ class Bone{
       line(0,0,0,0,0,W/2);
 
       popMatrix();
-
+*/
       origin = absolutePoint(0,0,0);
       relPoint = absolutePoint(target.x,target.y,target.z);
       strokeWeight(2);
@@ -161,9 +168,8 @@ class Bone{
       stroke(#ffff00,ALPHA);
       line(origin.x,origin.y,origin.z,relPoint.x,relPoint.y,relPoint.z);
 
-      addTrail();
+  //    addTrail();
 
-    }
   }
   void addTrail(){
 

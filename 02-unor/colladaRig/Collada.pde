@@ -1,6 +1,4 @@
-// avoid using main thread to load data
-
-class Collada implements Runnable{
+class Collada {
   String filename;
   XML raw;
 
@@ -35,9 +33,10 @@ class Collada implements Runnable{
 
   Collada(String _filename){
     filename = _filename;
+    initialize();
   }
 
-  void run(){
+  void initialize(){
     raw = loadXML(filename);
     getBindMatrix();
     //parseArmature();
@@ -50,17 +49,11 @@ class Collada implements Runnable{
   void parseArmatureHierarchy(){
     bones = new ArrayList();
 
-
     XML b[] = raw.getChildren("library_visual_scenes");
     XML vs = b[0].getChildren("visual_scene")[0];
     XML arm = vs.getChildren("node")[2];
 
-   // println(arm.listChildren());
-
-
     xmlAddBoneIteration(arm.getChildren("node")[0],0);
-
-
 
   }
 
@@ -291,7 +284,7 @@ class Collada implements Runnable{
       weights.add(parseFloat(sw[i]));
     }
 
-    armature = new Armature(bind_matrix,poses_matrixes,weights);
+    //armature = new Armature(bind_matrix,poses_matrixes,weights);
   }
 
   //////////////////////////////////////////////
