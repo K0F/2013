@@ -2,11 +2,14 @@
 class Armature{
   ArrayList bones;
   ArrayList weights;
-  PMatrix3d base;
+  ArrayList names;
+  ArrayList matrices;
+  PMatrix3D base;
 
   Armature(ArrayList _names, ArrayList _matrices, ArrayList _weights,PMatrix3D _base){
     base = new PMatrix3D(_base);
-    
+    names = _names; 
+    matrices = _matrices;
     weights = _weights;
 
     bones = new ArrayList();

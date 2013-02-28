@@ -5,9 +5,8 @@ Armature armature;
 
 void setup() {
 
-  parser = new ColladaParser("test.dae");
+  parser = new ColladaParser("test.dae",armature);
 
-  //armature = new Armature();
 
 }
 
