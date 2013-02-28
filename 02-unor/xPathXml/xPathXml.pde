@@ -3,7 +3,7 @@ String filename = "";
 ColladaParser parser;
 Armature armature;
 
-float SCALE = 40.0;
+float SCALE = 60.0;
 PFont font;
 
 void setup() {
@@ -52,27 +52,27 @@ class ColladaParser{
 
 
     ArrayList matrices = new ArrayList();
-ArrayList parentsIndex = new ArrayList();
+    ArrayList parentsIndex = new ArrayList();
 
     for(int i = 0 ; i < node.getLength();i++){
       String boneName = (node.item(i).getAttributes().getNamedItem("id").getNodeValue().toString());
       String boneParentName = (node.item(i).getParentNode().getAttributes().getNamedItem("id").getNodeValue().toString());
       String matrix[] = splitTokens(node.item(i).getChildNodes().item(1).getFirstChild().getNodeValue()," ");
       float m[] = new float[16];
-      
+
       for(int q = 0 ; q < m.length;q++)
         m[q] = parseFloat(matrix[q]);
-      
+
       matrices.add(new PMatrix3D(
-              m[0],m[1],m[2],m[3],
-              m[4],m[5],m[6],m[7],
-              m[8],m[9],m[10],m[11],
-              m[12],m[13],m[14],m[15]
+            m[0],m[1],m[2],m[3],
+            m[4],m[5],m[6],m[7],
+            m[8],m[9],m[10],m[11],
+            m[12],m[13],m[14],m[15]
             ));
       println(boneName + " -> "+ boneParentName + " ... "+matrix);
       println(getBoneId(boneName,names) + " -> "+ getBoneId(boneParentName,names) );
       parentsIndex.add((Integer)getBoneId(boneParentName,names));
-      
+
     }
 
     return new Armature(names,matrices,parentsIndex,weights,bind_shape_matrix);

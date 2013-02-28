@@ -23,8 +23,8 @@ class Armature{
     bones.add(new Bone((String)names.get(0),(PMatrix3D)matrices.get(0),0));
 
     for(int i = 1 ; i < names.size();i++){
+      println("addingBone");
       bones.add(new Bone((Bone)bones.get((Integer)parentsIndex.get(i)),(String)names.get(i),(PMatrix3D)matrices.get(i),i));
-
     }
   }
 
@@ -46,7 +46,6 @@ class Armature{
 
     for(int i = 1 ; i < names.size();i++){
       bones.add(new Bone((Bone)bones.get(i-1),(String)names.get(i),(PMatrix3D)matrices.get(i),i));
-
     }
   }
 
@@ -71,12 +70,12 @@ class Bone{
     id = _id;
     name = _name+"";
 
-    matrix = new PMatrix3D();
-    base = new PMatrix3D();
+    matrix = new PMatrix3D(_matrix);
+    base = new PMatrix3D(_matrix);
 
-    base.m03 = _matrix.m03;
-    base.m13 = _matrix.m13;
-    base.m23 = _matrix.m23;
+    //base.m03 = _matrix.m03;
+    //base.m13 = _matrix.m13;
+    //base.m23 = _matrix.m23;
   }
 
   Bone(Bone _parent,String _name,PMatrix3D _matrix, int _id){
@@ -86,12 +85,12 @@ class Bone{
 
     PMatrix3D p = new PMatrix3D(parent.matrix);
 
-    base = new PMatrix3D();
+    base = new PMatrix3D(_matrix);
 
-    base.m03 = _matrix.m03-parent.base.m03;
-    base.m13 = _matrix.m13-parent.base.m13;
-    base.m23 = _matrix.m23-parent.base.m23;
-    matrix = new PMatrix3D();
+    //base.m03 = _matrix.m03;//-parent.base.m03;
+    //base.m13 = _matrix.m13;//-parent.base.m13;
+    //base.m23 = _matrix.m23;//-parent.base.m23;
+    matrix = new PMatrix3D(_matrix);
     origin = absolutePoint(0,0,0);
     inherit();
 
