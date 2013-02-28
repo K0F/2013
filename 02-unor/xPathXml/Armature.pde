@@ -16,7 +16,7 @@ class Armature{
 
     for(int i = 0 ; i < matrices.size();i++){
       PMatrix3D matrix = (PMatrix3D)matrices.get(i);
-      matrix.invert();
+      // matrix.invert();
     }
 
     bones = new ArrayList();
@@ -64,21 +64,23 @@ class Bone{
     println("addingBone "+name+" with parent bone "+parent.name);
 
     matrix = new PMatrix3D(_matrix);
-
     base = new PMatrix3D(_matrix);
     //base.m03 = _matrix.m03-parent.base.m03;
     //base.m13 = _matrix.m13-parent.base.m13;
     //base.m23 = _matrix.m23-parent.base.m23;
+
     ArrayList history = getHistory();
-    
+
+
     for(int i = 0; i < history.size();i++){
       PMatrix3D mat = (PMatrix3D)history.get(i);
-     // mat.invert();
+      //mat.invert();
       base.apply(mat);
     }
-    origin = absolutePoint(0,0,0);
-        inherit();
+    base.invert();
 
+    inherit();
+    origin = absolutePoint(0,0,0);
   }
 
   PVector absolutePoint(float _x,float _y, float _z){
@@ -148,10 +150,16 @@ class Bone{
 
   void draw(){
 
+
+    pushMatrix();
+    applyMatrix(base);
+    box(0.2);
+    popMatrix();
+
     rotate(0,0,0);
 
-    //    if(id!=0)
-    //     inherit();
+    if(id!=0)
+      inherit();
 
     //text(matrix.m00+matrix.m01+matrix.m02+matrix.m03,screenX(0,0,0),screenY(0,0,0));
 

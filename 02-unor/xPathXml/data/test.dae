@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.65.0 r53177</authoring_tool>
     </contributor>
-    <created>2013-02-28T12:24:14</created>
-    <modified>2013-02-28T12:24:14</modified>
+    <created>2013-02-28T13:36:29</created>
+    <modified>2013-02-28T13:36:29</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -139,9 +139,9 @@
     <geometry id="Cube-mesh" name="Cube">
       <mesh>
         <source id="Cube-mesh-positions">
-          <float_array id="Cube-mesh-positions-array" count="24">1 1 -1 1 -1 -1 -1 -0.9999998 -1 -0.9999997 1 -1 1 0.9999995 1 0.9999994 -1.000001 1 -1 -0.9999997 1 -1 1 1</float_array>
+          <float_array id="Cube-mesh-positions-array" count="60">0.3467418 0.3467418 -9.93609e-5 0.3467418 -0.3467417 -9.93609e-5 -0.3467418 -0.3467416 -9.93609e-5 -0.3467416 0.3467419 -9.93609e-5 0.2547891 0.2547888 1 0.2547888 -0.2547894 1 -0.2547893 -0.2547891 1 -0.2547892 0.2547889 1 0.1368136 0.1368134 1.924348 0.1368134 -0.1368139 1.924348 -0.1368138 -0.1368138 1.924348 -0.1368138 0.1368135 1.924348 0.3434801 0.2737693 2.266515 0.3434798 -0.2737699 2.266515 -0.2040593 -0.2737696 2.266515 -0.2040592 0.2737694 2.266515 0.8188653 -0.1160071 3.599582 0.8188651 -0.4963317 3.599582 0.4385406 -0.4963315 3.599582 0.4385406 -0.116007 3.599582</float_array>
           <technique_common>
-            <accessor source="#Cube-mesh-positions-array" count="8" stride="3">
+            <accessor source="#Cube-mesh-positions-array" count="20" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
@@ -149,9 +149,9 @@
           </technique_common>
         </source>
         <source id="Cube-mesh-normals">
-          <float_array id="Cube-mesh-normals-array" count="18">0 0 -1 0 0 1 1 -2.83122e-7 0 -2.83122e-7 -1 0 -1 2.23517e-7 -1.3411e-7 2.38419e-7 1 2.08616e-7</float_array>
+          <float_array id="Cube-mesh-normals-array" count="54">0 0 -1 0.9919534 -6.02313e-7 0.126604 0.9957997 -2.46656e-7 0.0915575 -2.95987e-7 -0.9957998 0.09155708 -0.9957998 2.71321e-7 0.09155708 1.97325e-7 0.9957997 0.09155762 -0.9812304 0 -0.1928393 2.24591e-7 0.9919533 0.126604 -5.92104e-7 -0.9919534 0.126604 -0.9919533 1.5313e-7 0.126604 -0.9008027 0 0.4342284 0.8559813 -5.44749e-7 -0.5170068 2.33871e-7 0.9283933 -0.3715993 -5.53905e-7 -0.9283933 -0.3715991 0 0 1 0.9419007 -5.90055e-7 -0.3358914 2.3126e-7 0.9598131 0.2806403 -5.46603e-7 -0.9863479 -0.1646751</float_array>
           <technique_common>
-            <accessor source="#Cube-mesh-normals-array" count="6" stride="3">
+            <accessor source="#Cube-mesh-normals-array" count="18" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
@@ -161,11 +161,11 @@
         <vertices id="Cube-mesh-vertices">
           <input semantic="POSITION" source="#Cube-mesh-positions"/>
         </vertices>
-        <polylist material="Material-material" count="6">
+        <polylist material="Material-material" count="18">
           <input semantic="VERTEX" source="#Cube-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cube-mesh-normals" offset="1"/>
-          <vcount>4 4 4 4 4 4 </vcount>
-          <p>0 0 1 0 2 0 3 0 4 1 7 1 6 1 5 1 0 2 4 2 5 2 1 2 1 3 5 3 6 3 2 3 2 4 6 4 7 4 3 4 4 5 0 5 3 5 7 5</p>
+          <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 </vcount>
+          <p>0 0 1 0 2 0 3 0 5 1 4 1 8 1 9 1 0 2 4 2 5 2 1 2 1 3 5 3 6 3 2 3 2 4 6 4 7 4 3 4 4 5 0 5 3 5 7 5 11 6 10 6 14 6 15 6 4 7 7 7 11 7 8 7 6 8 5 8 9 8 10 8 7 9 6 9 10 9 11 9 15 10 14 10 18 10 19 10 9 11 8 11 12 11 13 11 8 12 11 12 15 12 12 12 10 13 9 13 13 13 14 13 16 14 19 14 18 14 17 14 13 15 12 15 16 15 17 15 12 16 15 16 19 16 16 16 14 17 13 17 17 17 18 17</p>
         </polylist>
       </mesh>
       <extra><technique profile="MAYA"><double_sided>1</double_sided></technique></extra>
@@ -192,9 +192,9 @@
           </technique_common>
         </source>
         <source id="Armature_Cube-skin-weights">
-          <float_array id="Armature_Cube-skin-weights-array" count="16">0.9048039 0.09519612 0.9034606 0.09653943 0.9048039 0.09519612 0.9034607 0.09653937 0.5405708 0.4594292 0.5360102 0.4639897 0.5405709 0.4594292 0.5360102 0.4639897</float_array>
+          <float_array id="Armature_Cube-skin-weights-array" count="46">0.9570519 0.042948 0.9648416 0.03515839 0.9570479 0.042952 0.9648333 0.03516674 0.5025044 0.4974957 0.502581 0.497419 0.5024912 0.4975087 0.502546 0.4974539 0.9864078 0.01359224 0.9693661 0.03063392 0.98508 0.01492011 0.9991077 8.92339e-4 0.0773729 0.07380264 0.8488244 0.04219985 0.9578002 0.08268892 0.06955909 0.8375776 0.01017433 0.09612679 0.7177806 0.1860925 1 0.438694 0.0671885 0.4941176 0.09320545 0.8782339 0.02856063 0.8193374 0.08853083 0.09213179</float_array>
           <technique_common>
-            <accessor source="#Armature_Cube-skin-weights-array" count="16" stride="1">
+            <accessor source="#Armature_Cube-skin-weights-array" count="46" stride="1">
               <param name="WEIGHT" type="float"/>
             </accessor>
           </technique_common>
@@ -203,11 +203,11 @@
           <input semantic="JOINT" source="#Armature_Cube-skin-joints"/>
           <input semantic="INV_BIND_MATRIX" source="#Armature_Cube-skin-bind_poses"/>
         </joints>
-        <vertex_weights count="8">
+        <vertex_weights count="20">
           <input semantic="JOINT" source="#Armature_Cube-skin-joints" offset="0"/>
           <input semantic="WEIGHT" source="#Armature_Cube-skin-weights" offset="1"/>
-          <vcount>2 2 2 2 2 2 2 2 </vcount>
-          <v>0 0 1 1 0 2 1 3 0 4 1 5 0 6 1 7 0 8 1 9 0 10 1 11 0 12 1 13 0 14 1 15</v>
+          <vcount>2 2 2 2 2 2 2 2 2 2 2 2 3 2 4 3 1 3 3 3 </vcount>
+          <v>0 0 1 1 0 2 1 3 0 4 1 5 0 6 1 7 0 8 1 9 0 10 1 11 0 12 1 13 0 14 1 15 1 16 7 17 1 18 7 19 1 20 7 21 1 22 3 23 1 24 3 25 7 26 1 27 7 28 1 29 3 30 7 31 8 32 1 33 3 34 7 35 9 36 7 37 8 38 9 39 7 40 8 41 9 42 7 43 8 44 9 45</v>
         </vertex_weights>
       </skin>
     </controller>
