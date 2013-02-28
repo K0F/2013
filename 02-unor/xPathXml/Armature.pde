@@ -50,6 +50,7 @@ class Bone{
     trans = new PMatrix3D();
     matrix = new PMatrix3D();
     base = new PMatrix3D();
+    rot = new PMatrix3D();
 
     trans.m03 = _matrix.m03;
     trans.m13 = _matrix.m13;
@@ -63,6 +64,7 @@ class Bone{
     trans = new PMatrix3D();
     matrix = new PMatrix3D();
     base = new PMatrix3D();
+    rot = new PMatrix3D();
 
     trans.m03 = _matrix.m03;
     trans.m13 = _matrix.m13;
@@ -78,7 +80,7 @@ class Bone{
   }
 
   void inherit(){
-    matrix.preApply(parent.matrix);
+    matrix.preApply(parent.rot);
   }
 
   void rotate(float _x, float _y, float _z) {
@@ -96,7 +98,7 @@ class Bone{
     float sg = sin(radz);
 
     float[] mat = new float[16];
-    matrix = new PMatrix3D(base);
+    matrix = new PMatrix3D(trans);
     matrix.get(mat);
 
 
@@ -107,7 +109,19 @@ class Bone{
         -sb, cb*sa, ca*cb, mat[11],
         mat[12], mat[13], mat[14], mat[15]
         );
-  }
+    matrix.get(mat);
+
+    if(id!=0)
+      inherit();
+ 
+    rot = new PMatrix3D(
+        mat[0],mat[1],mat[2],0,
+        mat[4],mat[5],mat[6],0,
+        mat[8],mat[9],mat[10],0,
+        mat[12],mat[13],mat[14],1
+        );
+
+ }
 
 
 
@@ -118,7 +132,6 @@ class Bone{
       inherit();
     
 
-    matrix.translate(trans.m03,trans.m13,trans.m23);
 
     origin = absolutePoint(0,0,0);
 
