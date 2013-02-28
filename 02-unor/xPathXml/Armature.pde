@@ -40,36 +40,29 @@ class Bone{
   int id;
   String name;
   Bone parent;
-  PMatrix3D base,matrix,rot,trans;
+  PMatrix3D base,matrix;
   PVector origin, target;
 
   Bone(String _name,PMatrix3D _matrix, int _id){
     id = _id;
     name = _name+"";
 
-    trans = new PMatrix3D();
-    matrix = new PMatrix3D();
-    base = new PMatrix3D();
-    rot = new PMatrix3D();
+    matrix = new PMatrix3D(_matrix);
+    base = new PMatrix3D(_matrix);
 
-    trans.m03 = _matrix.m03;
-    trans.m13 = _matrix.m13;
-    trans.m23 = _matrix.m23;
-   }
+  }
 
   Bone(Bone _parent,String _name,PMatrix3D _matrix, int _id){
     id = _id;
     parent = _parent;
     name = _name+"";
-    trans = new PMatrix3D();
-    matrix = new PMatrix3D();
-    base = new PMatrix3D();
-    rot = new PMatrix3D();
 
-    trans.m03 = _matrix.m03;
-    trans.m13 = _matrix.m13;
-    trans.m23 = _matrix.m23;
-     }
+    base = new PMatrix3D(_matrix);
+    matrix = new PMatrix3D(_matrix);
+    origin = absolutePoint(0,0,0);
+
+      inherit();
+  }
 
   PVector absolutePoint(float _x,float _y, float _z){
     PVector pt = new PVector(_x,_y,_z);
@@ -80,7 +73,7 @@ class Bone{
   }
 
   void inherit(){
-    rot.preApply(parent.rot);
+    matrix.preApply(parent.matrix);
   }
 
   void rotate(float _x, float _y, float _z) {
@@ -101,31 +94,17 @@ class Bone{
     matrix = new PMatrix3D(base);
     matrix.get(mat);
 
-
     //working pure hell matrix solution for rotation in X,Y,Z
     matrix = new PMatrix3D(
-        cb*cg, cg*sa*sb-ca*sg, ca*cg*sb+sa*sg, 0,
-        cb*sg, ca*cg+sa*sb*sg, -cg*sa+ca*sb*sg, 0,
-        -sb, cb*sa, ca*cb, 0,
+        cb*cg, cg*sa*sb-ca*sg, ca*cg*sb+sa*sg, mat[3],
+        cb*sg, ca*cg+sa*sb*sg, -cg*sa+ca*sb*sg, mat[7],
+        -sb, cb*sa, ca*cb, mat[11],
         mat[12], mat[13], mat[14], mat[15]
         );
-    matrix.get(mat);
 
 
-    rot = new PMatrix3D(
-        mat[0],mat[1],mat[2],0,
-        mat[4],mat[5],mat[6],0,
-        mat[8],mat[9],mat[10],0,
-        mat[12],mat[13],mat[13],1
-        );
 
-    if(id!=0)
-      inherit();
-
-    matrix.m03 = trans.m03;
-    matrix.m13 = trans.m13;
-    matrix.m23 = trans.m23;
-    matrix.preApply(rot);
+    //matrix.preApply(rot);
 
   }
 
@@ -134,7 +113,7 @@ class Bone{
   void draw(){
     rotate(mouseX,0,0);
 
-    
+
 
 
     origin = absolutePoint(0,0,0);
