@@ -64,9 +64,9 @@ class Bone{
 
     base = new PMatrix3D();
 
-    base.m03 = _matrix.m03;
-    base.m13 = _matrix.m13;
-    base.m23 = _matrix.m23;
+    base.m03 = _matrix.m03-parent.base.m03;
+    base.m13 = _matrix.m13-parent.base.m13;
+    base.m23 = _matrix.m23-parent.base.m23;
     matrix = new PMatrix3D();
     origin = absolutePoint(0,0,0);
     inherit();
