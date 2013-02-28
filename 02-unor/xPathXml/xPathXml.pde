@@ -55,10 +55,11 @@ class ColladaParser{
     for(int i = 0 ; i < node.getLength();i++){
 
 
-      String boneName = splitTokens(node.item(i).getAttributes().getNamedItem("id").toString(),"=\"")[1];
-      String boneParentName = splitTokens(node.item(i).getParentNode().getAttributes().getNamedItem("id").toString(),"=\"")[1];
+      String boneName = (node.item(i).getAttributes().getNamedItem("id").getNodeValue().toString());
+      String boneParentName = (node.item(i).getParentNode().getAttributes().getNamedItem("id").getNodeValue().toString());
+      String matrix[] = splitTokens(node.item(i).getChildNodes().item(1).getFirstChild().getNodeValue()," ");
 
-      println(boneName + " -> "+ boneParentName );
+      println(boneName + " -> "+ boneParentName + " ... "+matrix);
       println(getBoneId(boneName,names) + " -> "+ getBoneId(boneParentName,names) );
     }
 
