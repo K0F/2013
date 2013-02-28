@@ -45,25 +45,37 @@ class ColladaParser{
   Armature parseArmature(){
     ArrayList names = getNodeContent("//library_controllers/controller/skin//Name_array",0);
     PMatrix3D bind_shape_matrix = getMatrix("//library_controllers/controller/skin//bind_shape_matrix");
-    ArrayList matrices = getMatrices(names,"//library_controllers/controller/skin//source[2]");
+    //ArrayList matrices = getMatrices(names,"//library_controllers/controller/skin//source[2]");
     ArrayList weights = getNodeContent("//library_controllers/controller/skin//source[3]",2);
 
     NodeList node = getNode("//library_visual_scenes/visual_scene/node[@id='Armature']//node");
 
 
+    ArrayList matrices = new ArrayList();
+ArrayList parentsIndex = new ArrayList();
 
     for(int i = 0 ; i < node.getLength();i++){
-
-
       String boneName = (node.item(i).getAttributes().getNamedItem("id").getNodeValue().toString());
       String boneParentName = (node.item(i).getParentNode().getAttributes().getNamedItem("id").getNodeValue().toString());
       String matrix[] = splitTokens(node.item(i).getChildNodes().item(1).getFirstChild().getNodeValue()," ");
-
+      float m[] = new float[16];
+      
+      for(int q = 0 ; q < m.length;q++)
+        m[q] = parseFloat(matrix[q]);
+      
+      matrices.add(new PMatrix3D(
+              m[0],m[1],m[2],m[3],
+              m[4],m[5],m[6],m[7],
+              m[8],m[9],m[10],m[11],
+              m[12],m[13],m[14],m[15]
+            ));
       println(boneName + " -> "+ boneParentName + " ... "+matrix);
       println(getBoneId(boneName,names) + " -> "+ getBoneId(boneParentName,names) );
+      parentsIndex.add((Integer)getBoneId(boneParentName,names));
+      
     }
 
-    return new Armature(names,matrices,weights,bind_shape_matrix);
+    return new Armature(names,matrices,parentsIndex,weights,bind_shape_matrix);
   }
 
   int getBoneId(String _name, ArrayList names){

@@ -4,7 +4,31 @@ class Armature{
   ArrayList weights;
   ArrayList names;
   ArrayList matrices;
+  ArrayList parentsIndex;
   PMatrix3D base;
+
+  Armature(ArrayList _names, ArrayList _matrices, ArrayList _parentsIndex, ArrayList _weights,PMatrix3D _base){
+    base = new PMatrix3D(_base);
+    names = _names; 
+    matrices = _matrices;
+    weights = _weights;
+    parentsIndex = _parentsIndex;
+
+    for(int i = 0 ; i < matrices.size();i++){
+      PMatrix3D matrix = (PMatrix3D)matrices.get(i);
+      matrix.invert();
+    }
+
+    bones = new ArrayList();
+    bones.add(new Bone((String)names.get(0),(PMatrix3D)matrices.get(0),0));
+
+    for(int i = 1 ; i < names.size();i++){
+      bones.add(new Bone((Bone)bones.get((Integer)parentsIndex.get(i)),(String)names.get(i),(PMatrix3D)matrices.get(i),i));
+
+    }
+  }
+
+
 
   Armature(ArrayList _names, ArrayList _matrices, ArrayList _weights,PMatrix3D _base){
     base = new PMatrix3D(_base);
