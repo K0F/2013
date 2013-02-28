@@ -80,7 +80,7 @@ class Bone{
   }
 
   void inherit(){
-    matrix.preApply(parent.rot);
+    rot.preApply(parent.rot);
   }
 
   void rotate(float _x, float _y, float _z) {
@@ -98,38 +98,42 @@ class Bone{
     float sg = sin(radz);
 
     float[] mat = new float[16];
-    matrix = new PMatrix3D(trans);
+    matrix = new PMatrix3D(base);
     matrix.get(mat);
 
 
     //working pure hell matrix solution for rotation in X,Y,Z
     matrix = new PMatrix3D(
-        cb*cg, cg*sa*sb-ca*sg, ca*cg*sb+sa*sg, mat[3],
-        cb*sg, ca*cg+sa*sb*sg, -cg*sa+ca*sb*sg, mat[7],
-        -sb, cb*sa, ca*cb, mat[11],
+        cb*cg, cg*sa*sb-ca*sg, ca*cg*sb+sa*sg, 0,
+        cb*sg, ca*cg+sa*sb*sg, -cg*sa+ca*sb*sg, 0,
+        -sb, cb*sa, ca*cb, 0,
         mat[12], mat[13], mat[14], mat[15]
         );
     matrix.get(mat);
 
-    if(id!=0)
-      inherit();
- 
+
     rot = new PMatrix3D(
         mat[0],mat[1],mat[2],0,
         mat[4],mat[5],mat[6],0,
         mat[8],mat[9],mat[10],0,
-        mat[12],mat[13],mat[14],1
+        mat[12],mat[13],mat[13],1
         );
 
- }
+    if(id!=0)
+      inherit();
+
+    matrix.m03 = trans.m03;
+    matrix.m13 = trans.m13;
+    matrix.m23 = trans.m23;
+    matrix.preApply(rot);
+
+  }
 
 
 
   void draw(){
     rotate(mouseX,0,0);
 
-    if(id!=0)
-      inherit();
     
 
 
