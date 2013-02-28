@@ -12,9 +12,9 @@ class Armature{
     matrices = _matrices;
     weights = _weights;
 
-
     for(int i = 0 ; i < matrices.size();i++){
       PMatrix3D matrix = (PMatrix3D)matrices.get(i);
+      matrix.invert();
     }
 
     bones = new ArrayList();
@@ -27,6 +27,7 @@ class Armature{
   }
 
   void draw(){
+    applyMatrix(base);
     for(int i = 0 ; i< bones.size();i++){
       Bone tmp = (Bone)bones.get(i);
       tmp.draw();
@@ -83,29 +84,49 @@ class Bone{
     float cg = cos(radz);
     float sg = sin(radz);
 
-    float[] mat = new float[16];
+
+    PMatrix3D hold = new PMatrix3D(matrix);
+  
     matrix = new PMatrix3D(base);
-    matrix.get(mat);
+
+   
+
+    float keep[] = new float[16];
+    hold.get(keep);
+
+    float[] mat = new float[16];
+        base.get(mat);
+
 
     // working X,Y,Z arbitrary solution
     matrix = new PMatrix3D(
         cb*cg,cg*sa*sb-ca*sg,ca*cg*sb+sa*sg,mat[3],
         cb*sg,ca*cg+sa*sb*sg,-cg*sa+ca*sb*sg,mat[7],
         -sb,cb*sa,ca*cb,mat[11],
-        mat[12],mat[13],mat[14],mat[15]
+        keep[12],keep[13],keep[14],mat[15]
         );
   }
 
   void draw(){
-    if(id!=0)
-      inherit();
-
-    rotate(0,0,0);
+    rotate(mouseX,mouseY,0);
 
     origin = absolutePoint(0,0,0);
+
+    /*
+       if(id!=0){
+       target = parent.absolutePoint(parent.origin.x,parent.origin.y,parent.origin.z);
+       fill(#ffcc00);
+       line(origin.x,origin.y,origin.z,target.x,target.y,target.z);
+       }
+     */
+
     pushMatrix();
+
     translate(origin.x,origin.y,origin.z);
     float s = 0.2;
+
+
+
     stroke(#ff0000);
     line(s,0,0,-s,0,0);
     stroke(#00ff00);
