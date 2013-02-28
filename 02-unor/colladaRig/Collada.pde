@@ -14,7 +14,7 @@ class Collada {
   PMatrix3D bind_matrix;
 
 
-  Collada(ArrayList _pos,
+  void fillData(ArrayList _pos,
       ArrayList _norm,
       ArrayList _vcount,
       ArrayList _faces,
@@ -76,12 +76,15 @@ class Collada {
       PMatrix3D matrix = new PMatrix3D(
           m[0],m[1],m[2],m[3],
           m[4],m[5],m[6],m[7],
-          m[8],m[9],m[10],m[11],
+          m[5],m[9],m[10],m[11],
           m[12],m[13],m[14],m[15]
           );
 
+//      matrix.transpose();
+      
+      int id = bones.size();
 
-      if(_id==0){
+      if(id==0){
         Bone root = new Bone(start.getString("name"),matrix);
         bones.add(root);
 
@@ -90,7 +93,6 @@ class Collada {
         bones.add(new Bone(start.getString("name"),matrix,parent));
       }
 
-      int id = bones.size()-1;
 
 
 
@@ -420,7 +422,7 @@ class Collada {
     /////////////////////
 
     loaded = true;
-    test = new Collada(pos,norm,vcount,faces,bind_matrix,weights, poses_matrices);
+    fillData(pos,norm,vcount,faces,bind_matrix,weights, poses_matrices);
     println("JOB DONE!");
 
     println("got "+pos.size()+" verticles");
