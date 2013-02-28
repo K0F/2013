@@ -4,10 +4,15 @@ ColladaParser parser;
 Armature armature;
 
 float SCALE = 40.0;
+PFont font;
 
 void setup() {
 
   size(800,600,P3D);
+
+font = createFont("Monaco",7,false);
+textFont(font,7);
+
   parser = new ColladaParser("test.dae",armature);
 
 

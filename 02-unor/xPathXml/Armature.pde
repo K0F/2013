@@ -47,9 +47,12 @@ class Bone{
     id = _id;
     name = _name+"";
 
-    matrix = new PMatrix3D(_matrix);
-    base = new PMatrix3D(_matrix);
+    matrix = new PMatrix3D();
+    base = new PMatrix3D();
 
+    base.m03 = _matrix.m03;
+    base.m13 = _matrix.m13;
+    base.m23 = _matrix.m23;
   }
 
   Bone(Bone _parent,String _name,PMatrix3D _matrix, int _id){
@@ -57,11 +60,17 @@ class Bone{
     parent = _parent;
     name = _name+"";
 
-    base = new PMatrix3D(_matrix);
-    matrix = new PMatrix3D(_matrix);
-    origin = absolutePoint(0,0,0);
+    PMatrix3D p = new PMatrix3D(parent.matrix);
 
-      inherit();
+    base = new PMatrix3D();
+
+    base.m03 = _matrix.m03;
+    base.m13 = _matrix.m13;
+    base.m23 = _matrix.m23;
+    matrix = new PMatrix3D();
+    origin = absolutePoint(0,0,0);
+    inherit();
+
   }
 
   PVector absolutePoint(float _x,float _y, float _z){
@@ -73,13 +82,7 @@ class Bone{
   }
 
   void inherit(){
-    PMatrix3D rot = new PMatrix3D(parent.matrix);
-    rot.m03 = 0.0;
-    rot.m13 = 0.0;
-    rot.m23 = 0.0;
-    
-    
-    matrix.preApply(rot);
+    matrix.preApply(parent.matrix);
   }
 
   void rotate(float _x, float _y, float _z) {
@@ -118,15 +121,20 @@ class Bone{
 
   void draw(){
    
-    rotate(mouseX,0,0);
+rotate(mouseX,0,0);
 
     if(id!=0)
       inherit();
- 
+
+        //text(matrix.m00+matrix.m01+matrix.m02+matrix.m03,screenX(0,0,0),screenY(0,0,0));
 
 
     origin = absolutePoint(0,0,0);
 
+    if(id!=0){
+      PVector pre = parent.absolutePoint(0,0,0);
+      line(pre.x,pre.y,pre.z,origin.x,origin.y,origin.z);
+    }
     /*
        if(id!=0){
        target = parent.absolutePoint(parent.origin.x,parent.origin.y,parent.origin.z);
