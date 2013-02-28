@@ -29,6 +29,12 @@ ArrayList getNodeContent(String _expr, int mode){
   return result;
 }
 
+NodeList getNode(String _expr){
+  NodeList list = query(_expr);
+  return list;
+}
+
+
 NodeList query(String _expr){
   NodeList nodes = null;
 

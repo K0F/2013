@@ -10,8 +10,8 @@ void setup() {
 
   size(800,600,P3D);
 
-font = createFont("Monaco",7,false);
-textFont(font,7);
+  font = createFont("Monaco",7,false);
+  textFont(font,7);
 
   parser = new ColladaParser("test.dae",armature);
 
@@ -20,18 +20,18 @@ textFont(font,7);
 
 void draw(){
 
-    background(0);
-    stroke(255);
-    strokeWeight(2);
+  background(0);
+  stroke(255);
+  strokeWeight(2);
 
 
-    pushMatrix();
-    translate(width/2,height/2,0);
-    scale(SCALE,SCALE,SCALE);
-    rotateX(HALF_PI);
-    rotateZ(frameCount/300.0);
-    armature.draw();
-    popMatrix();
+  pushMatrix();
+  translate(width/2,height/2,0);
+  scale(SCALE,SCALE,SCALE);
+  rotateX(HALF_PI);
+  rotateZ(frameCount/300.0);
+  armature.draw();
+  popMatrix();
 }
 
 class ColladaParser{
@@ -48,8 +48,37 @@ class ColladaParser{
     ArrayList matrices = getMatrices(names,"//library_controllers/controller/skin//source[2]");
     ArrayList weights = getNodeContent("//library_controllers/controller/skin//source[3]",2);
 
+    NodeList node = getNode("//library_visual_scenes/visual_scene/node[@id='Armature']//node");
+
+
+
+    for(int i = 0 ; i < node.getLength();i++){
+
+
+      String boneName = splitTokens(node.item(i).getAttributes().getNamedItem("id").toString(),"=\"")[1];
+      String boneParentName = splitTokens(node.item(i).getParentNode().getAttributes().getNamedItem("id").toString(),"=\"")[1];
+
+      println(boneName + " -> "+ boneParentName );
+      println(getBoneId(boneName,names) + " -> "+ getBoneId(boneParentName,names) );
+    }
+
     return new Armature(names,matrices,weights,bind_shape_matrix);
   }
+
+  int getBoneId(String _name, ArrayList names){
+    int result = -1;
+    for(int i = 0 ; i < names.size();i++){
+      String name = (String)names.get(i);
+      if(_name.equals(name)){
+        result = i;
+        break;
+      }
+    }
+
+    return result;
+  }
+
+
 
 
   PMatrix3D getMatrix(String _query){
@@ -88,6 +117,8 @@ class ColladaParser{
 
     return matrices;
   }
+
+
 
 }
 

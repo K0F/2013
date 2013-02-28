@@ -120,13 +120,13 @@ class Bone{
 
 
   void draw(){
-   
-rotate(mouseX,0,0);
+
+    rotate(mouseX,mouseY,0);
 
     if(id!=0)
       inherit();
 
-        //text(matrix.m00+matrix.m01+matrix.m02+matrix.m03,screenX(0,0,0),screenY(0,0,0));
+    //text(matrix.m00+matrix.m01+matrix.m02+matrix.m03,screenX(0,0,0),screenY(0,0,0));
 
 
     origin = absolutePoint(0,0,0);
