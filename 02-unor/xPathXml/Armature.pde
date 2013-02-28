@@ -40,23 +40,34 @@ class Bone{
   int id;
   String name;
   Bone parent;
-  PMatrix3D base,matrix;
+  PMatrix3D base,matrix,rot,trans;
   PVector origin, target;
 
   Bone(String _name,PMatrix3D _matrix, int _id){
     id = _id;
     name = _name+"";
-    matrix = new PMatrix3D(_matrix);
-    base = new PMatrix3D(_matrix);
-  }
+
+    trans = new PMatrix3D();
+    matrix = new PMatrix3D();
+    base = new PMatrix3D();
+
+    trans.m03 = _matrix.m03;
+    trans.m13 = _matrix.m13;
+    trans.m23 = _matrix.m23;
+   }
 
   Bone(Bone _parent,String _name,PMatrix3D _matrix, int _id){
     id = _id;
     parent = _parent;
     name = _name+"";
-    matrix = new PMatrix3D(_matrix);
-    base = new PMatrix3D(_matrix);
-  }
+    trans = new PMatrix3D();
+    matrix = new PMatrix3D();
+    base = new PMatrix3D();
+
+    trans.m03 = _matrix.m03;
+    trans.m13 = _matrix.m13;
+    trans.m23 = _matrix.m23;
+     }
 
   PVector absolutePoint(float _x,float _y, float _z){
     PVector pt = new PVector(_x,_y,_z);
@@ -70,7 +81,7 @@ class Bone{
     matrix.preApply(parent.matrix);
   }
 
-  void rotate(float _x, float _y, float _z){
+  void rotate(float _x, float _y, float _z) {
     float radx = radians(_x);
     float rady = radians(_y);
     float radz = radians(_z);
@@ -84,31 +95,30 @@ class Bone{
     float cg = cos(radz);
     float sg = sin(radz);
 
-
-    PMatrix3D hold = new PMatrix3D(matrix);
-  
-    matrix = new PMatrix3D(base);
-
-   
-
-    float keep[] = new float[16];
-    hold.get(keep);
-
     float[] mat = new float[16];
-        base.get(mat);
+    matrix = new PMatrix3D(base);
+    matrix.get(mat);
 
 
-    // working X,Y,Z arbitrary solution
+    //working pure hell matrix solution for rotation in X,Y,Z
     matrix = new PMatrix3D(
-        cb*cg,cg*sa*sb-ca*sg,ca*cg*sb+sa*sg,mat[3],
-        cb*sg,ca*cg+sa*sb*sg,-cg*sa+ca*sb*sg,mat[7],
-        -sb,cb*sa,ca*cb,mat[11],
-        keep[12],keep[13],keep[14],mat[15]
+        cb*cg, cg*sa*sb-ca*sg, ca*cg*sb+sa*sg, mat[3],
+        cb*sg, ca*cg+sa*sb*sg, -cg*sa+ca*sb*sg, mat[7],
+        -sb, cb*sa, ca*cb, mat[11],
+        mat[12], mat[13], mat[14], mat[15]
         );
   }
 
+
+
   void draw(){
-    rotate(mouseX,mouseY,0);
+    rotate(mouseX,0,0);
+
+    if(id!=0)
+      inherit();
+    
+
+    matrix.translate(trans.m03,trans.m13,trans.m23);
 
     origin = absolutePoint(0,0,0);
 
