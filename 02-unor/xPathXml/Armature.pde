@@ -73,7 +73,13 @@ class Bone{
   }
 
   void inherit(){
-    matrix.preApply(parent.matrix);
+    PMatrix3D rot = new PMatrix3D(parent.matrix);
+    rot.m03 = 0.0;
+    rot.m13 = 0.0;
+    rot.m23 = 0.0;
+    
+    
+    matrix.preApply(rot);
   }
 
   void rotate(float _x, float _y, float _z) {
@@ -111,9 +117,12 @@ class Bone{
 
 
   void draw(){
+   
     rotate(mouseX,0,0);
 
-
+    if(id!=0)
+      inherit();
+ 
 
 
     origin = absolutePoint(0,0,0);
