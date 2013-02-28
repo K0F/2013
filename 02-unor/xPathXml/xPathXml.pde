@@ -3,11 +3,28 @@ String filename = "";
 ColladaParser parser;
 Armature armature;
 
+float SCALE = 40.0;
+
 void setup() {
 
+  size(800,600,P3D);
   parser = new ColladaParser("test.dae",armature);
 
 
+}
+
+void draw(){
+
+    background(0);
+    stroke(255);
+    strokeWeight(2);
+
+
+    pushMatrix();
+    translate(width/2,height/2,0);
+    scale(SCALE,SCALE,SCALE);
+    armature.draw();
+    popMatrix();
 }
 
 class ColladaParser{
@@ -15,7 +32,7 @@ class ColladaParser{
 
   ColladaParser(String _filename, Armature _armature){
     filename = dataPath(_filename);
-    _armature = parseArmature();
+    armature = parseArmature();
   }
 
   Armature parseArmature(){
@@ -25,8 +42,6 @@ class ColladaParser{
     ArrayList weights = getNodeContent("//library_controllers/controller/skin//source[3]",2);
 
     return new Armature(names,matrices,weights,bind_shape_matrix);
-    
-
   }
 
 
