@@ -14,23 +14,19 @@ void setup() {
 class ColladaParser{
 
 
-  ColladaParser(String _filename){
+  ColladaParser(String _filename, Armature _armature){
     filename = dataPath(_filename);
-    parseArmature();
+    _armature = parseArmature();
   }
 
-  void parseArmature(){
+  Armature parseArmature(){
     ArrayList names = getNodeContent("//library_controllers/controller/skin//Name_array",0);
-
-    for(int i  = 0 ; i < names.size();i++){
-      String a = (String)names.get(i);
-      println(a);
-    }
-
     PMatrix3D bind_shape_matrix = getMatrix("//library_controllers/controller/skin//bind_shape_matrix");
     ArrayList matrices = getMatrices(names,"//library_controllers/controller/skin//source[2]");
     ArrayList weights = getNodeContent("//library_controllers/controller/skin//source[3]",2);
 
+    return new Armature(names,matrices,weights,bind_shape_matrix);
+    
 
   }
 

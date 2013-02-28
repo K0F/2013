@@ -1,9 +1,21 @@
 
 class Armature{
   ArrayList bones;
+  ArrayList weights;
+  PMatrix3d base;
 
-  Armature(){
+  Armature(ArrayList _names, ArrayList _matrices, ArrayList _weights,PMatrix3D _base){
+    base = new PMatrix3D(_base);
+    
+    weights = _weights;
+
     bones = new ArrayList();
+    bones.add(new Bone((String)names.get(0),(PMatrix3D)matrices.get(0)));
+    
+    for(int i = 1 ; i < names.size();i++){
+    bones.add(new Bone((Bone)bones.get(i-1),(String)names.get(i),(PMatrix3D)matrices.get(i)));
+      
+    }
   }
 }
 
