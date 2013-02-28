@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.65.0 r53177</authoring_tool>
     </contributor>
-    <created>2013-02-28T10:06:01</created>
-    <modified>2013-02-28T10:06:01</modified>
+    <created>2013-02-28T12:24:14</created>
+    <modified>2013-02-28T12:24:14</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -176,17 +176,17 @@
       <skin source="#Cube-mesh">
         <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
         <source id="Armature_Cube-skin-joints">
-          <Name_array id="Armature_Cube-skin-joints-array" count="4">Bone Bone_001 Bone_002 Bone_003</Name_array>
+          <Name_array id="Armature_Cube-skin-joints-array" count="10">Bone Bone_001 Bone_002 Bone_003 Bone_007 Bone_008 Bone_009 Bone_004 Bone_005 Bone_006</Name_array>
           <technique_common>
-            <accessor source="#Armature_Cube-skin-joints-array" count="4" stride="1">
+            <accessor source="#Armature_Cube-skin-joints-array" count="10" stride="1">
               <param name="JOINT" type="name"/>
             </accessor>
           </technique_common>
         </source>
         <source id="Armature_Cube-skin-bind_poses">
-          <float_array id="Armature_Cube-skin-bind_poses-array" count="64">1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 1 -1 1.50996e-7 0 0 0 0 1 -1 1.50996e-7 1 0 -1.50996e-7 0 0 0 1 0 -1 0 0 0.986278 0 0.1650941 -0.3341665 -0.165094 0 0.9862778 -1.996322 0 0 0 1 -0.5701701 -3.11754e-7 -0.8215268 1.66285 -0.8215268 0 0.5701701 -1.154079 -1.34847e-7 1 -2.85892e-7 5.80493e-7 0 0 0 1</float_array>
+          <float_array id="Armature_Cube-skin-bind_poses-array" count="160">1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 1 -1 1.50996e-7 0 0 0 0 1 -1 1.50996e-7 1 0 -1.50996e-7 0 0 0 1 0 -1 0 0 0.986278 0 0.1650941 -0.3341665 -0.165094 0 0.9862778 -1.996322 0 0 0 1 -0.5701701 -3.11754e-7 -0.8215268 1.66285 -0.8215268 0 0.5701701 -1.154079 -1.34847e-7 1 -2.85892e-7 5.80493e-7 0 0 0 1 -0.4615326 -0.8597729 -0.2185829 0.9295703 0.859773 -0.372802 -0.349012 -0.07724648 0.2185829 -0.3490122 0.9112697 -2.207436 0 0 0 1 -0.4251188 -0.8069972 0.4099143 -0.4810648 0.8069973 -0.132833 0.5754223 -2.048109 -0.409914 0.5754225 0.7077144 -1.147461 0 0 0 1 -0.923326 0.2316261 -0.3062976 1.573082 -0.2316262 0.3002744 0.925302 -1.797854 0.3062976 0.9253024 -0.2236005 0.1896492 0 0 0 1 -0.8958866 -0.3535107 0.2691047 -0.544694 0.3535108 -0.2003248 0.9137286 -1.849475 -0.2691045 0.9137287 0.3044382 -0.6162124 0 0 0 1 -0.9886476 0.1449896 0.03941768 0.5227242 -0.1449896 -0.8517811 -0.5034349 1.618168 -0.0394175 -0.503435 0.8631336 -3.287239 0 0 0 1 0.6842903 -0.5213771 -0.5098162 1.242093 0.521377 0.8386059 -0.1578149 0.5443782 0.5098161 -0.1578152 0.8456844 -3.443618 0 0 0 1</float_array>
           <technique_common>
-            <accessor source="#Armature_Cube-skin-bind_poses-array" count="4" stride="16">
+            <accessor source="#Armature_Cube-skin-bind_poses-array" count="10" stride="16">
               <param name="TRANSFORM" type="float4x4"/>
             </accessor>
           </technique_common>
@@ -242,9 +242,27 @@
             <matrix sid="transform">-1 -1.13999e-14 1.50996e-7 0 1.13999e-14 1 1.50996e-7 1 -1.50996e-7 1.50996e-7 -1 0 0 0 0 1</matrix>
             <node id="Bone_002" name="Bone.002" sid="Bone_002" type="JOINT">
               <matrix sid="transform">-1.50121e-7 -0.9862777 0.1650941 0 6.56309e-8 0.165094 0.9862778 1.024097 -0.9999999 1.49012e-7 3.98297e-8 0 0 0 0 1</matrix>
+              <node id="Bone_007" name="Bone.007" sid="Bone_007" type="JOINT">
+                <matrix sid="transform">0.8597729 0.372802 0.349012 0 -0.491286 0.7903551 0.3660286 0.9915552 -0.1393872 -0.4861661 0.8626781 -1.19209e-7 0 0 0 1</matrix>
+              </node>
+              <node id="Bone_008" name="Bone.008" sid="Bone_008" type="JOINT">
+                <matrix sid="transform">0.8069972 0.132833 -0.5754224 0 -0.3516108 0.8909224 -0.2874496 0.9915552 0.4744738 0.4342957 0.7656772 -1.19209e-7 0 0 0 1</matrix>
+              </node>
+              <node id="Bone_009" name="Bone.009" sid="Bone_009" type="JOINT">
+                <matrix sid="transform">-0.2316261 -0.3002746 -0.9253026 0 -0.9612242 -0.07568593 0.2651794 0.9915552 -0.1496589 0.9508456 -0.2711003 -1.19209e-7 0 0 0 1</matrix>
+              </node>
             </node>
             <node id="Bone_003" name="Bone.003" sid="Bone_003" type="JOINT">
               <matrix sid="transform">0.57017 0.8215267 2.85842e-7 0 -0.8215267 0.57017 -3.6139e-7 1.024097 -4.5987e-7 -2.87735e-8 1 0 0 0 0 1</matrix>
+            </node>
+            <node id="Bone_004" name="Bone.004" sid="Bone_004" type="JOINT">
+              <matrix sid="transform">0.8958867 -0.3535109 0.2691047 0 0.2691048 0.9137286 0.3044381 1.024097 -0.3535108 -0.2003247 0.9137287 0 0 0 0 1</matrix>
+              <node id="Bone_005" name="Bone.005" sid="Bone_005" type="JOINT">
+                <matrix sid="transform">0.8450682 0.2955314 0.4455565 -1.78814e-7 -0.3425256 -0.3406254 0.8755857 1.75902 0.410531 -0.8925445 -0.1866248 -1.78814e-7 0 0 0 1</matrix>
+              </node>
+              <node id="Bone_006" name="Bone.006" sid="Bone_006" type="JOINT">
+                <matrix sid="transform">-0.5659282 -0.8060201 -0.1733704 -1.78814e-7 -0.1194847 -0.1278812 0.9845657 1.75902 -0.8157505 0.5779088 -0.02393556 -1.78814e-7 0 0 0 1</matrix>
+              </node>
             </node>
           </node>
         </node>

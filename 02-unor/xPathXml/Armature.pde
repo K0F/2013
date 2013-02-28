@@ -23,31 +23,13 @@ class Armature{
     bones.add(new Bone((String)names.get(0),(PMatrix3D)matrices.get(0),0));
 
     for(int i = 1 ; i < names.size();i++){
-      println("addingBone");
       bones.add(new Bone((Bone)bones.get((Integer)parentsIndex.get(i)),(String)names.get(i),(PMatrix3D)matrices.get(i),i));
     }
   }
 
 
 
-  Armature(ArrayList _names, ArrayList _matrices, ArrayList _weights,PMatrix3D _base){
-    base = new PMatrix3D(_base);
-    names = _names; 
-    matrices = _matrices;
-    weights = _weights;
 
-    for(int i = 0 ; i < matrices.size();i++){
-      PMatrix3D matrix = (PMatrix3D)matrices.get(i);
-      matrix.invert();
-    }
-
-    bones = new ArrayList();
-    bones.add(new Bone((String)names.get(0),(PMatrix3D)matrices.get(0),0));
-
-    for(int i = 1 ; i < names.size();i++){
-      bones.add(new Bone((Bone)bones.get(i-1),(String)names.get(i),(PMatrix3D)matrices.get(i),i));
-    }
-  }
 
   void draw(){
     applyMatrix(base);
@@ -72,27 +54,30 @@ class Bone{
 
     matrix = new PMatrix3D(_matrix);
     base = new PMatrix3D(_matrix);
-
-    //base.m03 = _matrix.m03;
-    //base.m13 = _matrix.m13;
-    //base.m23 = _matrix.m23;
+    println("addingBone "+name);
   }
 
   Bone(Bone _parent,String _name,PMatrix3D _matrix, int _id){
     id = _id;
     parent = _parent;
     name = _name+"";
+    println("addingBone "+name+" with parent bone "+parent.name);
 
-    PMatrix3D p = new PMatrix3D(parent.matrix);
+    matrix = new PMatrix3D(_matrix);
 
     base = new PMatrix3D(_matrix);
-
-    //base.m03 = _matrix.m03;//-parent.base.m03;
-    //base.m13 = _matrix.m13;//-parent.base.m13;
-    //base.m23 = _matrix.m23;//-parent.base.m23;
-    matrix = new PMatrix3D(_matrix);
+    //base.m03 = _matrix.m03-parent.base.m03;
+    //base.m13 = _matrix.m13-parent.base.m13;
+    //base.m23 = _matrix.m23-parent.base.m23;
+    ArrayList history = getHistory();
+    
+    for(int i = 0; i < history.size();i++){
+      PMatrix3D mat = (PMatrix3D)history.get(i);
+     // mat.invert();
+      base.apply(mat);
+    }
     origin = absolutePoint(0,0,0);
-    inherit();
+        inherit();
 
   }
 
@@ -102,6 +87,25 @@ class Bone{
     nn.mult(pt,pt);
 
     return pt;
+  }
+
+  ArrayList getHistory(){
+    ArrayList n = new ArrayList();
+    Bone p = parent;
+
+    n.add(parent.matrix);
+
+    println("getting history for bone: "+name);
+
+    while(p!=null){
+      n.add(p.base);
+      print(p.name + " --> ");
+      p = p.parent;
+    }
+
+    println(n.size());
+
+    return n;
   }
 
   void inherit(){
@@ -144,10 +148,10 @@ class Bone{
 
   void draw(){
 
-    rotate(mouseX,mouseY,0);
+    rotate(0,0,0);
 
-    if(id!=0)
-      inherit();
+    //    if(id!=0)
+    //     inherit();
 
     //text(matrix.m00+matrix.m01+matrix.m02+matrix.m03,screenX(0,0,0),screenY(0,0,0));
 
