@@ -15,7 +15,6 @@ class Armature{
 
     for(int i = 0 ; i < matrices.size();i++){
       PMatrix3D matrix = (PMatrix3D)matrices.get(i);
-      matrix.preApply(base);
     }
 
     bones = new ArrayList();

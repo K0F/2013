@@ -23,6 +23,8 @@ void draw(){
     pushMatrix();
     translate(width/2,height/2,0);
     scale(SCALE,SCALE,SCALE);
+    rotateX(HALF_PI);
+    rotateZ(frameCount/30.0);
     armature.draw();
     popMatrix();
 }
