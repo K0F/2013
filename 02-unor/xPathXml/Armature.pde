@@ -75,11 +75,11 @@ class Bone{
     for(int i = 0; i < history.size();i++){
       PMatrix3D mat = (PMatrix3D)history.get(i);
       //mat.invert();
-      base.apply(mat);
+     // base.apply(mat);
     }
-    base.invert();
+   // base.invert();
 
-    inherit();
+    //inherit();
     origin = absolutePoint(0,0,0);
   }
 
@@ -101,7 +101,7 @@ class Bone{
 
     while(p!=null){
       n.add(p.base);
-      print(p.name + " --> ");
+     // print(p.name + " --> ");
       p = p.parent;
     }
 
@@ -152,9 +152,11 @@ class Bone{
 
 
     pushMatrix();
-    applyMatrix(base);
+    applyMatrix(matrix);
     box(0.2);
     popMatrix();
+
+    /*
 
     rotate(0,0,0);
 
@@ -164,12 +166,12 @@ class Bone{
     //text(matrix.m00+matrix.m01+matrix.m02+matrix.m03,screenX(0,0,0),screenY(0,0,0));
 
 
-    origin = absolutePoint(0,0,0);
 
     if(id!=0){
       PVector pre = parent.absolutePoint(0,0,0);
       line(pre.x,pre.y,pre.z,origin.x,origin.y,origin.z);
     }
+    */
     /*
        if(id!=0){
        target = parent.absolutePoint(parent.origin.x,parent.origin.y,parent.origin.z);
@@ -177,7 +179,13 @@ class Bone{
        line(origin.x,origin.y,origin.z,target.x,target.y,target.z);
        }
      */
-
+    
+    origin = absolutePoint(0,0,0);
+ if(id!=0){
+      PVector pre = parent.absolutePoint(0,0,0);
+      line(pre.x,pre.y,pre.z,origin.x,origin.y,origin.z);
+    }
+    
     pushMatrix();
 
     translate(origin.x,origin.y,origin.z);
