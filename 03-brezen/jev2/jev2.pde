@@ -6,8 +6,8 @@ import javax.media.opengl.GL;
 PGraphicsOpenGL pgl; //need to use this to stop screen tearing
 GL gl;
 
-float speed1 = 31.0;
-float speed2 = 30.0;
+float speed1 = 50.0;
+float speed2 = 51.0;
 
 boolean render = false;
 
@@ -15,7 +15,7 @@ void setup(){
     size(1280,720);
     smooth();
 
-    frameRate(25);
+    frameRate(60);
 /*
     pgl = (PGraphicsOpenGL) g; //processing graphics object
     gl = pgl.beginGL(); //begin opengl
@@ -41,7 +41,6 @@ void draw(){
         noStroke();
 
         float r1 = (sin(frameCount/speed1)+1.0)*(sin(frameCount/(speed1+1.0))+1.0)*(sin(frameCount/(speed1+1.3713))+1.0)*height/8.0+5;
-
         float r2 = (sin(frameCount/(speed2+2.33))+1.0)*(sin(frameCount/(speed2+7.033))+1.0)*(sin(frameCount/(speed2+9.371333))+1.0)*height/8.0+5;
 
 
