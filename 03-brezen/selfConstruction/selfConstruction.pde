@@ -1,7 +1,9 @@
 
 
-int MUTATE_RATE = 200;
+int MUTATION_RATE = 200;
 int TRAIL_LENGTH = 400;
+
+int SELECTED = 0;
 
 int num = 30;
 ArrayList bot;
@@ -9,7 +11,7 @@ ArrayList bot;
 int fs = 9;
 
 PVector cam;
-float follow = 900.1;
+float follow = 10.1;
 
 void setup(){
   size(900,900,P2D);
@@ -28,17 +30,46 @@ void setup(){
 void draw(){
   background(0);
 
-
   pushMatrix();
-  translate(-cam.x+width/2.0,-cam.y+height/2.0);
-  rect(cam.x,cam.y,10,10);
-  for(int i = 0 ; i< num ;i ++){
-    Bot tmp = (Bot)bot.get(i);
-    cam.x += (tmp.pos.x-cam.x) / follow ; 
-    cam.y += (tmp.pos.y-cam.y) / follow ; 
-    tmp.display();
+  stroke(30);
+  for(float y = 100-(cam.y%100.0);y<height ; y+=100){
+    stroke(255,map(abs(height/2-y),0,height/2,50,0));
+    line(0,y,width,y);
   }
+  for(float x = 0-(cam.x%100.0);x<width ; x+=100){
+    stroke(255,map(abs(width/2-x),0,width/2,50,0));
+    line(x,0,x,height);
+  }
+
+
+  translate(-cam.x+width/2.0,-cam.y+height/2.0);
+
+  Bot tmp =  (Bot)bot.get(0);
+  for(int i = 0 ; i< num ;i ++){
+    tmp = (Bot)bot.get(i);
+    if(i!=SELECTED)
+      tmp.display();
+  }
+  tmp = (Bot)bot.get(SELECTED);
+  tmp.display();
+  cam.x += (tmp.pos.x-cam.x) / follow ; 
+  cam.y += (tmp.pos.y-cam.y) / follow ; 
   popMatrix();
+
+}
+void mousePressed(){
+  if(mouseButton==LEFT)  
+    SELECTED++;
+
+  if(mouseButton==RIGHT)
+    SELECTED--;
+
+
+  if(SELECTED<0)
+    SELECTED = bot.size()-1;
+
+  if(SELECTED>bot.size()-1)
+    SELECTED=0;
 
 }
 
@@ -49,23 +80,25 @@ class Bot{
   int num_var = 9;
   float [] thetas;
   PVector direction;
-  float speed = 0.001;
+  float speed = 0.00001;
   ArrayList vari;
   ArrayList trace;
 
   int w = 3;
-  float smooth = 100.0;
+  float smooth;
+  int mutation_rate;
 
   Bot(){
     code = generateCode(num_var);
-    //pos = new PVector(random(width),random(height));
-    pos = new PVector(width/2,height/2);
+    pos = new PVector(random(-width,width),random(-height,height));
 
-    speed= 3.0;
+    speed = random(1.0,10.0);
+
+    smooth = 300.0;
 
     thetas = new float[num_var];
 
-
+    mutation_rate = (int)random(MUTATION_RATE/2,MUTATION_RATE*2);
 
     vari = new ArrayList();
     for(int i = 0 ; i < num_var;i++)
@@ -94,14 +127,28 @@ class Bot{
 
   void display(){
 
+    direction = new PVector(0,0);
+    for(int i = 0 ; i < thetas.length;i++){
+      direction.add(new PVector(cos(thetas[i]),sin(thetas[i])));
+    }
+    direction.normalize();
+    direction.mult(speed);
+    pos.add(direction);
+
+
+    drawTrail();
 
     pushMatrix();
 
+    speed += (parseFloat(code.substring(0,3))/30.0-speed)/100.0;
+    smooth += ((parseFloat(code.substring(3,6))/10.0+1.0)-smooth)/100.0;
 
     translate(pos.x,pos.y);
 
     fill(0);
-    stroke(255);
+
+
+    stroke(SELECTED==bot.indexOf(this)?color(255):color(100));
 
     for(int i = 8 ; i >= 0;i--){
 
@@ -115,15 +162,6 @@ class Bot{
       popMatrix();
 
     }
-
-    direction = new PVector(0,0);
-    for(int i = 0 ; i < thetas.length;i++){
-      direction.add(new PVector(cos(thetas[i]),sin(thetas[i])));
-    }
-    direction.normalize();
-    direction.mult(speed);
-    pos.add(direction);
-
     translate(-w/2.0*fs,-w/2.0*fs);
     fill(255);
     int x = 0, y=0;
@@ -139,7 +177,7 @@ class Bot{
 
     popMatrix();
 
-    if(frameCount%MUTATE_RATE==0)
+    if(frameCount%mutation_rate==0)
       mutate();
 
     trace.add(new PVector(pos.x,pos.y));
@@ -147,17 +185,22 @@ class Bot{
     if(trace.size()>TRAIL_LENGTH)
       trace.remove(0);
 
-    noFill();
+    attract();
+    align();
+  }
+
+  void drawTrail(){
     for(int i = 1 ; i< trace.size();i++){
       PVector tmp1 = (PVector)trace.get(i-1);
       PVector tmp2 = (PVector)trace.get(i);
-      
-      stroke(255,map(i,0,trace.size(),255,0));
+
+      stroke(map(i,0,trace.size(),0,255));
       if(dist(tmp1.x,tmp1.y,tmp2.x,tmp2.y)<100)
         line(tmp1.x,tmp1.y,tmp2.x,tmp2.y);
     }
 
-    border();
+
+
   }
 
   void mutate(){
@@ -170,11 +213,39 @@ class Bot{
 
   }
 
+  void attract(){
+    for(int i = 0 ; i< bot.size();i++){
+      Bot tmp = (Bot)bot.get(i);
+      if(tmp!=this){
+        pos.x += (tmp.pos.x-pos.x)/2000.0;
+        pos.y += (tmp.pos.y-pos.y)/2000.0;
+      }
+    }
+
+  }
+  void align(){
+    for(int i = 0 ; i< bot.size();i++){
+      Bot tmp = (Bot)bot.get(i);
+      float d = dist(pos.x,pos.y,tmp.pos.x,tmp.pos.y);
+      if(d<width){
+        for(int q = 0 ; q < thetas.length;q++){
+          thetas[q] += (tmp.thetas[q]-thetas[q])/(d*0.933+1.0);
+          thetas[q] += (tmp.thetas[q]-thetas[q])/(d*0.933+1.0);
+        }
+      }
+    }
+
+  }
   void border(){
-    if(pos.x>cam.x+width/2+100)pos.x=cam.x-width/2-100;
-    if(pos.x<cam.x-width/2-100)pos.x=cam.x+width/2+100;
-    if(pos.y>cam.y+height/2+100)pos.y=cam.y-height/2-100;
-    if(pos.y<cam.y-height/2-100)pos.y=cam.y+height/2+100;
+    if(pos.x>cam.x+width/2+100)mutate();
+    if(pos.x<cam.x-width/2-100)mutate();
+    if(pos.y>cam.y+height/2+100)mutate();
+    if(pos.y<cam.y-height/2-100)mutate();
+  }
+
+  void turn(){
+    for(int i = 0 ; i< thetas.length;i++)
+      thetas[i] += 0.1;
   }
 
 }
