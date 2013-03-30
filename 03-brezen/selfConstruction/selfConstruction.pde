@@ -5,7 +5,7 @@ int TRAIL_LENGTH = 400;
 
 int SELECTED = 0;
 
-int num = 30;
+int num = 20;
 ArrayList bot;
 
 int fs = 9;
@@ -14,9 +14,9 @@ PVector cam;
 float follow = 10.1;
 
 void setup(){
-  size(900,900,P2D);
+  size(800,800,P2D);
 
-  textFont(createFont("Monaco",fs,false));
+  textFont(loadFont("Monaco-9.vlw"));
 
   cam = new PVector(0,0);
 
@@ -144,7 +144,11 @@ class Bot{
     smooth += ((parseFloat(code.substring(3,6))/10.0+1.0)-smooth)/100.0;
 
     translate(pos.x,pos.y);
-
+    
+    if(SELECTED==bot.indexOf(this)){
+    line(35+w/2,-35+w/2,80+w/2,-80+w/2);
+    text(nf(bot.indexOf(this),2),90+w/2,-90+w/2);
+    }
     fill(0);
 
 
@@ -174,6 +178,7 @@ class Bot{
       }
 
     }
+    
 
     popMatrix();
 
@@ -194,7 +199,7 @@ class Bot{
       PVector tmp1 = (PVector)trace.get(i-1);
       PVector tmp2 = (PVector)trace.get(i);
 
-      stroke(map(i,0,trace.size(),0,255));
+      stroke(map(i,0,trace.size(),0,120));
       if(dist(tmp1.x,tmp1.y,tmp2.x,tmp2.y)<100)
         line(tmp1.x,tmp1.y,tmp2.x,tmp2.y);
     }
@@ -226,8 +231,13 @@ class Bot{
   void align(){
     for(int i = 0 ; i< bot.size();i++){
       Bot tmp = (Bot)bot.get(i);
-      float d = dist(pos.x,pos.y,tmp.pos.x,tmp.pos.y);
+      float d = dist(pos.x-w/2,pos.y-w/2,tmp.pos.x-w/2,tmp.pos.y-w/2);
       if(d<width){
+        
+        if(d<255){
+        stroke(255,(255-d)/5.0);
+          line(pos.x,pos.y,tmp.pos.x,tmp.pos.y);
+        }
         for(int q = 0 ; q < thetas.length;q++){
           thetas[q] += (tmp.thetas[q]-thetas[q])/(d*0.933+1.0);
           thetas[q] += (tmp.thetas[q]-thetas[q])/(d*0.933+1.0);
