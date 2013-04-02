@@ -27,8 +27,8 @@ class RpTesting < Processing::App
     r = 10;
 
     for i in 0..1000
-      x = cos(frameCount/(20.0+i))*(width/2.0*pow(i/1000.0,cos((frameCount+i)/2.0)*0.1)-r/2.0)+width/2
-      y = sin(frameCount/(20.0+i))*(width/2.0*pow(i/1000.0,sin((frameCount+i)/2.0)*0.1)-r/2.0)+width/2
+      x = cos(frameCount/(20.0+i))*(width/3.0*pow(i/100.0,cos((frameCount+i)/200.0)*0.1)-r/2.0)+width/2
+      y = sin(frameCount/(20.0+i))*(width/3.0*pow(i/1000.0,sin((frameCount+i)/222.0)*0.1)-r/2.0)+width/2
 
       ellipse(x,y,r,r);
     end
