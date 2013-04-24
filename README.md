@@ -4,13 +4,13 @@ Kof's sketchbook year 2013, build with [Processing](http://processing.org) softw
 
 The sketches are organized by months of year. This structure can make a feel of a superior organization, which in fact is false, it is rather mess with all ideas and unfinished concepts placed in kind of plain time-line space. Feel free to dig in and recycle anything useful for you.. when you find something like this, do not hesitate to contact me.
 
-##Sketches Running Online
+##Sketches Running On-line
 
 There is a kind of selection hosted on [Open Processing](http://www.openprocessing.org/user/3942), these are mostly a bit *obsolete* Java applets selected for being able to run in a browser.
 
 ##Rendered Outputs
 
-Other way of online presentation is quite heavily re-compressed (mpeg4) videos, they are more widely accepted due to more "standard media form". The most of these outputs are available on [Vimeo](https://vimeo.com/kof/videos).
+Other way of on-line presentation is quite heavily re-compressed (h264) videos, they are more widely accepted due to more "standard media form". The most of these outputs are available on [Vimeo](https://vimeo.com/kof/videos).
 
 ##Archival Code Bits and Pieces
 
@@ -23,7 +23,7 @@ If you really feel like digging, there are more historical *pieces*. To travel b
 * [2008](https://github.com/K0F/2008)
 * [2007](https://github.com/K0F/2007)
 
-But please, remember you had been warned, there is plenty of code with very varying *qualities* .. to be more exact, some of programmes are complete waste of time to run or even compile ))
+But please, remember you had been warned, there is plenty of code with very varying *qualities* .. to be more exact, some of programs are complete waste of time to run or even compile ))
 
 
 *Enjoy, and feel free to recycle!*
