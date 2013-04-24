@@ -6,7 +6,7 @@ class RpSpace < Processing::App
 
   def setup
  
-    size 640, 480, P2D
+    size 800, 870, P2D
 
     @@alpha = Alpha.new
 
@@ -22,6 +22,10 @@ class RpSpace < Processing::App
   
   def draw
     background 0
+   
+    @@alpha.draw
+
+    
   end
   
 end
@@ -30,8 +34,25 @@ end
 class Alpha 
 
   def initialize
-    $app.println "created"
+    $app.println `date`
+    @x = $app.width / 2
+    @y = $app.height / 2
+    @d = 20
   end
+
+  def move
+    @x += ($app.noise($app.frameCount/10.0,0)-0.5)*5
+    @y += ($app.noise(0,$app.frameCount/10.0)-0.5)*5
+  end
+
+  def draw
+    move
+    $app.fill 255
+    $app.noStroke
+    $app.ellipse @x,@y,@d,@d
+
+  end
+
 
 end
 
