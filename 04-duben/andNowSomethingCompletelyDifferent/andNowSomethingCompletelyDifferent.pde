@@ -38,7 +38,7 @@ void setup(){
     pnts.add(new Ring(i));
   }
 
-  smooth();
+ // smooth();
 }
 
 //////////////////////////////////
@@ -109,7 +109,7 @@ class Ring{
       float x = cos(f)*R;
       float y = sin(f)*R;
       stroke(lerpColor(#ffcc11,#11ccff,abs(sin(f)+1.0)/2.0),55);
-      strokeWeight(abs((constrain(tan(f+HALF_PI),0,5))+2.0));
+      strokeWeight(abs((constrain(tan(f+HALF_PI),0,5))+1.0));
       line(x,y,2,x,y,-2);
     }
     popMatrix();
