@@ -1,3 +1,29 @@
+/**
+
+   Coded by Kof @ 
+   Thu Apr 25 03:31:50 CEST 2013
+
+
+
+   ,dPYb,                  ,dPYb,
+   IP'`Yb                  IP'`Yb
+   I8  8I                  I8  8I
+   I8  8bgg,               I8  8'
+   I8 dP" "8    ,ggggg,    I8 dP
+   I8d8bggP"   dP"  "Y8ggg I8dP
+   I8P' "Yb,  i8'    ,8I   I8P
+  ,d8    `Yb,,d8,   ,d8'  ,d8b,_
+  88P      Y8P"Y8888P"    PI8"8888
+                           I8 `8,
+                           I8  `8,
+                           I8   8I
+                           I8   8I
+                           I8, ,8'
+                            "Y8P'
+*/
+
+
+//////////////////////////////////
 
 float TRAS = 2.0;
 int NUM = 280;
@@ -14,6 +40,8 @@ void setup(){
 
   smooth();
 }
+
+//////////////////////////////////
 
 
 void draw(){
@@ -47,6 +75,7 @@ void draw(){
 
 }
 
+//////////////////////////////////
 
 class Ring{
   float pointNum = 10.0;
@@ -62,12 +91,11 @@ class Ring{
   }
 
   void draw(){
-
-    //center.z = noise(frameCount/(330.0+id))*NUM*2;
     R = noise(frameCount/(200.32),id/100.33)*200.0;
     pointNum = (frameCount/10.0+abs(sin((id+frameCount) / 
-            (abs(cos(id+frameCount)/11.11)+1.0)))*1.0)%75.0+(((id^frameCount)%50)/50.0);
-    //+abs((id^(int)(frameCount))%31.4);
+            (abs(cos(id+frameCount)/11.11)+1.0)))*1.0)%75.0+
+      (((id^frameCount)%50)/50.0);
+
     float frac = TWO_PI/pointNum;
 
     if(pointNum<0.1)
@@ -76,7 +104,6 @@ class Ring{
     pushMatrix();
     translate(center.x,center.y,center.z);
     rotateZ(radians((frameCount)/(10.0+id*2.0)));
-    //rotateY(cos((frameCount)/(112.2)));
     rotateX(sin((frameCount)/(33.34+id/100.0)));
     for(float f = 0 ; f < TWO_PI;f += frac){
       float x = cos(f)*R;
@@ -87,10 +114,4 @@ class Ring{
     }
     popMatrix();
   }
-
-
-
-
-
-
 }
