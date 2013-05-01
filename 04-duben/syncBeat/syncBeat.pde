@@ -108,16 +108,16 @@ void playInstr(int which){
 
   switch(which){
     case 0:
-      out.playNote( 0, 0.5, new Tone( "A" , 0.0225, out , 0) );
+      out.playNote( 0, 0.5, new Tone( "C10" , 0.0225, out , 0) );
       break;
     case 1:
-      out.playNote( 0, 0.5, new Tone( "F", 0.0225, out , 1) );
+      out.playNote( 0, 0.5, new Tone( "A10", 0.0225, out , 1) );
       break;
     case 2:
-      out.playNote( 0, 0.5, new Tone( "E" , 0.0225, out , 2) );
+      out.playNote( 0, 0.5, new Tone( "D10" , 0.0225, out , 2) );
       break;
     case 3:
-      out.playNote( 0, 0.5, new Tone( "D" , 0.0225, out , 3) );
+      out.playNote( 0, 0.5, new Tone( "E8" , 0.0225, out , 3) );
       break;
 
   }
@@ -143,8 +143,8 @@ class Tone implements Instrument{
     amp = 0.5;
     out = _out;
 
-    damp = new Damp(random(0.01,0.1));
-    Wavetable wav[] = {Waves.SINE,Waves.TRIANGLE,Waves.PHASOR,Waves.SAW,Waves.SQUARE,Waves.QUARTERPULSE};
+    damp = new Damp(random(0.01,1.1));
+    Wavetable wav[] = {Waves.SINE,Waves.TRIANGLE,Waves.PHASOR,Waves.SQUARE,Waves.QUARTERPULSE};
     Waveform wave = wav[_sel];
     adsr = new ADSR( 1.0, 0.01, 0.2);
     osc = new Oscil(freq,amp,wave);
