@@ -65,15 +65,50 @@ class Editor{
 
 }
 
+class KShader extends PShader{
+
+  KShader(PApplet p){
+    super(p);
+  }
+
+  protected boolean compileFragmentShader() {
+ 
+    boolean compiled = false;
+    try{
+
+    glFragment = pgMain.createGLSLFragShaderObject(0);
+
+    pgl.shaderSource(glFragment, fragmentShaderSource);
+    pgl.compileShader(glFragment);
+
+    pgl.getShaderiv(glFragment, PGL.COMPILE_STATUS, intBuffer);
+    compiled = intBuffer.get(0) == 0 ? false : true;
+
+    }catch(Exception e){
+      ;
+    }
+    if (!compiled) {
+      PGraphics.showException("Cannot compile fragment shader:\n" +
+          pgl.getShaderInfoLog(glFragment));
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
+}
+
 class Compiler{
-  PShader shader;
+  KShader shader;
 
   PApplet parent;
 
   Compiler(PApplet _parent){
     parent = _parent;
-    shader = new PShader(_parent);
-    shader = loadShader("tmp/start.glsl");
+    shader = new KShader(_parent);
+    shader.setFragmentShader("tmp/start.glsl");
+    shader.compileFragmentShader();
   }
 
   void eatCode(ArrayList _in){
@@ -92,13 +127,14 @@ class Compiler{
     saveStrings("tmp/test.glsl",string);
 
 
-    PShader tmp;
+    KShader tmp = new KShader(parent);
 
     try{
-      tmp = compile();
+    shader = new KShader(parent);
+    shader.setFragmentShader("tmp/start.glsl");
+    shader.compileFragmentShader();
     }catch(RuntimeException e){
       println("Error while compiling shader!");
-      tmp = loadShader("tmp/start.glsl");
     }
 
     shader = tmp;
