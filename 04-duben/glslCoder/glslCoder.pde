@@ -65,6 +65,7 @@ class Editor{
 
 }
 
+/*
 class KShader extends PShader{
 
   KShader(PApplet p){
@@ -76,7 +77,7 @@ class KShader extends PShader{
     boolean compiled = false;
     try{
 
-    glFragment = pgMain.createGLSLFragShaderObject(0);
+//    glFragment = pgMain.createGLSLFragShaderObject(0);
 
     pgl.shaderSource(glFragment, fragmentShaderSource);
     pgl.compileShader(glFragment);
@@ -98,17 +99,24 @@ class KShader extends PShader{
 
 
 }
+*/
 
-class Compiler{
-  KShader shader;
+
+class Compiler implements Runnable{
+  PShader shader;
 
   PApplet parent;
 
   Compiler(PApplet _parent){
     parent = _parent;
-    shader = new KShader(_parent);
-    shader.setFragmentShader("tmp/start.glsl");
-    shader.compileFragmentShader();
+    shader = new PShader(_parent);
+    der.setFragmentShader("tmp/start.glsl");
+    der.compileFragmentShader();
+  }
+
+  void run(){
+    eatCode();
+    compile();
   }
 
   void eatCode(ArrayList _in){
@@ -126,18 +134,19 @@ class Compiler{
 
     saveStrings("tmp/test.glsl",string);
 
-
-    KShader tmp = new KShader(parent);
+/*
+    PShader tmp = new PShader(parent);
 
     try{
-    shader = new KShader(parent);
+    shader = new PShader(parent);
     shader.setFragmentShader("tmp/start.glsl");
-    shader.compileFragmentShader();
+    //shader.compileFragmentShader();
     }catch(RuntimeException e){
       println("Error while compiling shader!");
     }
 
     shader = tmp;
+    */
   }
 
   PShader compile(){
