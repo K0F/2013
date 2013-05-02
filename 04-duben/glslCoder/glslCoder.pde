@@ -15,8 +15,8 @@ void draw(){
 
 
   try{
-  shader(compiler.shader);
-  rect(0,0,width,height);
+    shader(compiler.shader);
+    rect(0,0,width,height);
   }catch(Exception e){;}
 
   resetShader();
@@ -90,32 +90,23 @@ class Compiler{
     }
 
     saveStrings("tmp/test.glsl",string);
-    shader = new PShader(parent);
-    shader.setFragmentShader("tmp/test.glsl");
 
-/*
 
     PShader tmp;
 
     try{
       tmp = compile();
-      
-
     }catch(RuntimeException e){
       println("Error while compiling shader!");
       tmp = loadShader("tmp/start.glsl");
     }
 
     shader = tmp;
-    */
   }
 
   PShader compile(){
-     //shader.shaderSource(load("tmp/test.glsl"));
-    
-  //  println(tmp);
-
-    return null;
+    PShader tmp = loadShader("tmp/test.glsl");
+    return tmp;
   }
 
 }
@@ -153,8 +144,8 @@ void keyPressed(){
     editor.currline++;
     editor.currline = constrain(editor.currline,0,editor.lines.size()-1);
   }else if(keyCode==TAB){
- //   editor.addText("    ");
- //   editor.carret+=4;
+    //   editor.addText("    ");
+    //   editor.carret+=4;
   }else{
     println(keyCode);
   }
