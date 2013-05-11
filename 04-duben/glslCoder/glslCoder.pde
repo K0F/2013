@@ -1,5 +1,6 @@
 Editor editor;
 Compiler compiler;
+PShader shader;
 
 void setup(){
   size(1280,720,OPENGL);
@@ -9,13 +10,20 @@ void setup(){
 
 }
 
+void recompile(){
+Runnable runnable = new Compiler(this);
+Thread thread = new Thread(runnable);
+    
+// Start the thread
+ thread.start();
+}
 
 void draw(){
   background(0);
 
 
   try{
-    shader(compiler.shader);
+    shader(shader);
     rect(0,0,width,height);
   }catch(Exception e){;}
 
@@ -65,58 +73,22 @@ class Editor{
 
 }
 
-/*
-class KShader extends PShader{
-
-  KShader(PApplet p){
-    super(p);
-  }
-
-  protected boolean compileFragmentShader() {
- 
-    boolean compiled = false;
-    try{
-
-//    glFragment = pgMain.createGLSLFragShaderObject(0);
-
-    pgl.shaderSource(glFragment, fragmentShaderSource);
-    pgl.compileShader(glFragment);
-
-    pgl.getShaderiv(glFragment, PGL.COMPILE_STATUS, intBuffer);
-    compiled = intBuffer.get(0) == 0 ? false : true;
-
-    }catch(Exception e){
-      ;
-    }
-    if (!compiled) {
-      PGraphics.showException("Cannot compile fragment shader:\n" +
-          pgl.getShaderInfoLog(glFragment));
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-
-}
-*/
 
 
 class Compiler implements Runnable{
-  PShader shader;
 
   PApplet parent;
 
   Compiler(PApplet _parent){
     parent = _parent;
-    shader = new PShader(_parent);
-    der.setFragmentShader("tmp/start.glsl");
-    der.compileFragmentShader();
+    shader = loadShader("tmp/start.glsl");
+    //shader.compileFragmentShader();
   }
 
+
   void run(){
-    eatCode();
-    compile();
+    eatCode(editor.lines);
+    shader = compile();
   }
 
   void eatCode(ArrayList _in){
@@ -180,8 +152,7 @@ void keyPressed(){
     println("######################################");
     println("## COMPILING");
     println("######################################");
-    compiler.eatCode(editor.lines);
-
+    recompile();
   }else if(keyCode==UP){
     editor.currline--;
     editor.currline = constrain(editor.currline,0,editor.lines.size()-1);
