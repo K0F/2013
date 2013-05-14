@@ -22,11 +22,12 @@ Tue May 14 14:44:09 CEST 2013
 
 */
 
+
 ArrayList taos;
 /////////////////////////////////////////////////////////////////////
 
 int NUM = 10;
-int SEED_COUNT = 10;
+int SEED_COUNT = 3;
 
 float SLOWDOWN = 0.5;
 int MIN_TIME = 2;
@@ -38,7 +39,7 @@ ArrayList SEEDS;
 
 
 void setup(){
-  size(800,600,OPENGL);
+  size(640,384,P2D);
   textFont(createFont("Monaco",9,false));
   taos = new ArrayList();
 
@@ -66,7 +67,7 @@ void draw(){
 
 class Taoid{
   int seed;
-  int w = 10;
+  int w = 3;
 
   ArrayList trail;
   int cycle;
@@ -89,17 +90,19 @@ class Taoid{
 
   void draw(){
     move();
+
+    noStroke();
     rect(pos.x,pos.y,w,w);
     text(nf(seed,6),pos.x,pos.y);
+
+    stroke(255,35);
 
     for(int i = 1 ; i < trail.size();i++){
       PVector tmp1 = (PVector)trail.get(i-1);
       PVector tmp2 = (PVector)trail.get(i);
 
-      stroke(255,35);
-
       if(dist(tmp1.x,tmp1.y,tmp2.x,tmp2.y)<100)
-      line(tmp1.x,tmp1.y,tmp2.x,tmp2.y);
+        line(tmp1.x,tmp1.y,tmp2.x,tmp2.y);
     }
 
   }
