@@ -44,9 +44,12 @@ void setup(){
   taos = new ArrayList();
 
   SEEDS = new ArrayList();
-  for(int i = 0 ; i < NUM ; i++)
-    SEEDS.add((int)random(100000,999999));
+  for(int i = 0 ; i < NUM ; i++){
+    int mod1 = random(100)>50?-1:1;
 
+    SEEDS.add((int)random(100000,999999)*mod1);
+  
+  }
   for(int i = 0 ; i < NUM ; i++)
     taos.add(new Taoid());
 
@@ -146,10 +149,7 @@ class Taoid{
     int X = parseInt(tmp.substring(0,2));
     int Y = parseInt(tmp.substring(3,5));
 
-    float mod1 = random(100)>50?-1:1;
-    float mod2 = random(100)>50?-1:1;
-
-    PVector result = new PVector(X*mod1,Y*mod2);
+      PVector result = new PVector(X,Y);
     result.mult(0.01);
 
     return result;
