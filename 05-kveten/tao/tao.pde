@@ -1,20 +1,50 @@
+/*
+Coded by Kof @ 
+Tue May 14 14:44:09 CEST 2013
+
+
+
+   ,dPYb,                  ,dPYb,
+   IP'`Yb                  IP'`Yb
+   I8  8I                  I8  8I
+   I8  8bgg,               I8  8'
+   I8 dP" "8    ,ggggg,    I8 dP
+   I8d8bggP"   dP"  "Y8ggg I8dP
+   I8P' "Yb,  i8'    ,8I   I8P
+  ,d8    `Yb,,d8,   ,d8'  ,d8b,_
+  88P      Y8P"Y8888P"    PI8"8888
+                           I8 `8,
+                           I8  `8,
+                           I8   8I
+                           I8   8I
+                           I8, ,8'
+                            "Y8P'
+
+*/
+
 ArrayList taos;
 /////////////////////////////////////////////////////////////////////
 
-int NUM = 100;
+int NUM = 10;
+int SEED_COUNT = 10;
 
-
-float SLOWDOWN = 0.0;
-int MIN_TIME = 20;
+float SLOWDOWN = 0.5;
+int MIN_TIME = 2;
 int MAX_TIME = 200;
-int TRAIL_LEN = 1000;
+int TRAIL_LEN = 200;
+
+ArrayList SEEDS;
 /////////////////////////////////////////////////////////////////////
 
 
 void setup(){
-  size(800,600,P2D);
+  size(800,600,OPENGL);
   textFont(createFont("Monaco",9,false));
   taos = new ArrayList();
+
+  SEEDS = new ArrayList();
+  for(int i = 0 ; i < NUM ; i++)
+    SEEDS.add((int)random(100000,999999));
 
   for(int i = 0 ; i < NUM ; i++)
     taos.add(new Taoid());
@@ -63,10 +93,12 @@ class Taoid{
     text(nf(seed,6),pos.x,pos.y);
 
     for(int i = 1 ; i < trail.size();i++){
-      PVector tmp1 = (PVector)trail.get(i);
+      PVector tmp1 = (PVector)trail.get(i-1);
       PVector tmp2 = (PVector)trail.get(i);
 
-      stroke(255,145);
+      stroke(255,35);
+
+      if(dist(tmp1.x,tmp1.y,tmp2.x,tmp2.y)<100)
       line(tmp1.x,tmp1.y,tmp2.x,tmp2.y);
     }
 
@@ -79,9 +111,13 @@ class Taoid{
       dir = getVector();
 
 
+
+
     acc.add(dir);
     vel.add(acc);
     pos.add(vel);
+
+    border();
 
     acc.mult(SLOWDOWN);
     vel.mult(SLOWDOWN);
@@ -102,7 +138,7 @@ class Taoid{
   }
 
   PVector getVector(){
-    seed = (int)random(100000,999999);
+    seed = (Integer)SEEDS.get((int)random(SEEDS.size()));
     String tmp = ""+nf(seed,6);
     int X = parseInt(tmp.substring(0,2));
     int Y = parseInt(tmp.substring(3,5));
@@ -111,7 +147,7 @@ class Taoid{
     float mod2 = random(100)>50?-1:1;
 
     PVector result = new PVector(X*mod1,Y*mod2);
-    result.normalize();
+    result.mult(0.01);
 
     return result;
   }
