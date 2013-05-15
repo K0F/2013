@@ -24,17 +24,19 @@ Tue May 14 14:44:09 CEST 2013
 
 
 ArrayList taos;
+
 /////////////////////////////////////////////////////////////////////
 
-int NUM = 10;
-int SEED_COUNT = 3;
+int NUM = 100;
+int SEED_COUNT = 200;
 
 float SLOWDOWN = 0.5;
 int MIN_TIME = 2;
-int MAX_TIME = 200;
+int MAX_TIME = 300;
 int TRAIL_LEN = 200;
 
 ArrayList SEEDS;
+
 /////////////////////////////////////////////////////////////////////
 
 
@@ -45,9 +47,8 @@ void setup(){
 
   SEEDS = new ArrayList();
   for(int i = 0 ; i < NUM ; i++){
-    int mod1 = random(100)>50?-1:1;
 
-    SEEDS.add((int)random(100000,999999)*mod1);
+    SEEDS.add((int)random(100000,999999));
   
   }
   for(int i = 0 ; i < NUM ; i++)
@@ -66,11 +67,14 @@ void draw(){
 
   }
 }
+
 /////////////////////////////////////////////////////////////////////
 
 class Taoid{
   int seed;
   int w = 3;
+
+  int sel = 0;
 
   ArrayList trail;
   int cycle;
@@ -89,14 +93,15 @@ class Taoid{
 
     dir = getVector();
   }
+  
   /////////////////////////////////////////////////////////////////////
 
   void draw(){
     move();
 
-    noStroke();
-    rect(pos.x,pos.y,w,w);
-    text(nf(seed,6),pos.x,pos.y);
+    //noStroke();
+    //rect(pos.x,pos.y,w,w);
+    //text(nf(seed,6),pos.x,pos.y);
 
     stroke(255,35);
 
@@ -109,15 +114,13 @@ class Taoid{
     }
 
   }
+
   /////////////////////////////////////////////////////////////////////
 
   void move(){
 
     if(frameCount%cycle==0)
       dir = getVector();
-
-
-
 
     acc.add(dir);
     vel.add(acc);
@@ -144,17 +147,20 @@ class Taoid{
   }
 
   PVector getVector(){
-    seed = (Integer)SEEDS.get((int)random(SEEDS.size()));
+    seed = (Integer)SEEDS.get(sel);
+    sel++;
+
+    if(sel>=SEEDS.size())
+      sel = 0;
+
     String tmp = ""+nf(seed,6);
     int X = parseInt(tmp.substring(0,2));
     int Y = parseInt(tmp.substring(3,5));
 
-      PVector result = new PVector(X,Y);
+      PVector result = new PVector(X-50,Y-50);
     result.mult(0.01);
 
     return result;
   }
   /////////////////////////////////////////////////////////////////////
-
-
 }
