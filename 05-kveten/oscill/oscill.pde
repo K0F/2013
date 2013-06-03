@@ -36,11 +36,11 @@ void setup(){
   smooth();
   rectMode(CENTER);
 
-  mask = new PGraphics[2];
+  mask = new PGraphics[1];
 
   mask[0] = createGraphics(width,height,JAVA2D);
   mask[0].beginDraw();
-  mask[0].stroke(0);
+  mask[0].stroke(0,100);
   mask[0].noFill();
   mask[0].strokeWeight(40);
   mask[0].rect(0,0,width,height);
@@ -48,20 +48,11 @@ void setup(){
   mask[0].endDraw();
 
 
-  for(int i = 1 ; i < mask.length;i++){
-    mask[i] = createGraphics(width,height,JAVA2D);
-    mask[i].beginDraw();
-    mask[i].strokeWeight(1);
-    mask[i].stroke(0,10);
-    for(int z = 0;z<100000;z++)
-      mask[i].point(random(width),random(height));
-    mask[i].endDraw();
-  }
 }
 
 void draw(){
 
-  float speed = map(sin(frameCount/(PI*10.0)),-1,1,400000,900000);
+  float speed = map(sin(frameCount/(PI*80.0)),-1,1,400000,900000);
 
   r = ((sin(frameCount*650.0/speed)) + 1.0) * 127;
   g = ((sin(frameCount*510.0/speed)) + 1.0) * 127;
@@ -112,7 +103,6 @@ void draw(){
 
   image(mask[0],0,0);
 
-  image(mask[frameCount%(mask.length-1)+1],0,0);
 
 
 }
