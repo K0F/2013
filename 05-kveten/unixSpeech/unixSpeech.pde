@@ -25,7 +25,7 @@ LinkedList zpravy,precteneZpravy;
 
 
 void setup() {
-  background (000);
+  background (0);
   size(720, 560);
   frameRate(5);
   s = 16;
