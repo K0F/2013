@@ -25,6 +25,7 @@ Mon Jun 17 13:46:56 CEST 2013
 */
 
 Word word;
+boolean hide = false;
 
 void setup(){
 
@@ -35,6 +36,7 @@ void setup(){
   textAlign(CENTER);
 
   rectMode(CENTER);
+  smooth();
 
 
   word = new Word("");
@@ -79,7 +81,7 @@ class Word{
     pushMatrix();
     translate(-26*16/2.0-10,-50);
     cx +=  ((13*16 - message.length*16/2.0)-cx)/20.0 ;
-    
+
     if(src.length()<=0){
       fill(255);
       text("type something",cx,120);
@@ -87,41 +89,45 @@ class Word{
 
     for(int i  = 0 ; i <  message.length ; i++){
 
-
-
       float x1 = i*16+20 + cx;
       float x2 = (((int)message[i])-97)*16+20;
 
       stroke(255,120);
 
       if(message[i]!=' '){
-      line(x1,120-14,x2,20+6);
-      line(x1,120-14,x1,height);
-      line(x2,20+6,x2,-height);
-
-      fill(0);
-      stroke(255);
-
-      rect(x1,116,12,12);
+        line(x1,120-14,x2,20+6);
+        line(x1,120-14,x1,height);
+        line(x2,20+6,x2,-height);
 
 
-      fill(255);
+        if(!hide){
+          fill(0);
+          stroke(255);
 
-      text(message[i],x1,120);
+
+
+          rect(x1,116,12,12);
+
+
+          fill(255);
+
+          text(message[i],x1,120);
+        }
       }
     }
-    
-    for(int i  = 0 ; i <  26 ; i++){
 
-      stroke(255);
-      fill(0);
-      rect(i*16+20,16,12,12);
+    if(!hide)
+      for(int i  = 0 ; i <  26 ; i++){
 
-      fill(255);
+        stroke(255);
+        fill(0);
+        rect(i*16+20,16,12,12);
 
-      
-      text((char)(97+i),i*16+20,20);
-    }
+        fill(255);
+
+
+        text((char)(97+i),i*16+20,20);
+      }
 
     popMatrix();
 
@@ -130,16 +136,18 @@ class Word{
 
 void keyPressed(){
   if(key>=97 && key<=122 || key == ' '){
-    
+
     if(word.src.length()<48){
-    word.src += (char)key;
-    word.rewrite();
+      word.src += (char)key;
+      word.rewrite();
     }
 
   }else if(keyCode==BACKSPACE){
     if(word.src.length()>=1)
       word.src = word.src.substring(0,word.src.length()-1);
     word.rewrite();
+  }else if(keyCode==ENTER){
+    hide=!hide;
   }
 
 }
