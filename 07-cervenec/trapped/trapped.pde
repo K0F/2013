@@ -28,6 +28,8 @@ float blink = 10.0;
 int NUM = 4000;
 ArrayList things;
 
+boolean RENDER = false;
+
 PGraphics frame;
 
 void setup(){
@@ -62,32 +64,19 @@ void setup(){
 
 void draw(){
 
-
-
   fill(255,noise(frameCount/blink,0)*140);
   rect(width/2,height/2,width,height);
-
-  /*
-     fill(0);
-     float ss = 10.0;//noise(frameCount/1000.0)*100.0;
-     float r = 100;
-     ellipse(sin(frameCount/ss)*(width/2.0-r/2.0)+width/2,height/2,r,r);
-   */
-
 
   blink = noise(frameCount/500.0)*100.0;
   tras = noise(frameCount/102.0)*10.0;
 
   pushMatrix();
 
-
   translate(width/2,height/2);
   rotate(-frameCount/1000.0);
   translate(-width/2,-height/2);
 
   pushMatrix();
-
-
 
   translate( 
       (noise(frameCount/2.0,0)-0.5)*tras + (noise(frameCount/200.0,0)-0.5)*tras*10.0, 
@@ -107,7 +96,12 @@ void draw(){
   image(frame,0,0);
 
 
+  if(RENDER)
+    saveFrame("/home/kof/render/trapped/fr#####.tga");
+
 }
+
+//////////////////////////////////////////////////////////
 
 class Thing{
 
