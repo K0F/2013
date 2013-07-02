@@ -26,7 +26,7 @@ float tras = 4.0;
 float blink = 10.0;
 
 int NUM = 4000;
-ArrayList things;
+ArrayList veci;
 
 boolean RENDER = false;
 
@@ -36,10 +36,10 @@ void setup(){
 
   size(1280,720,P2D);
 
-  things = new ArrayList();
+  veci = new ArrayList();
 
   for(int i = 0 ; i < NUM; i++)
-    things.add(new Thing(i));
+    veci.add(new Vec(i));
 
   rectMode(CENTER);
 
@@ -82,9 +82,9 @@ void draw(){
       (noise(frameCount/2.0,0)-0.5)*tras + (noise(frameCount/200.0,0)-0.5)*tras*10.0, 
       (noise(0,frameCount/2.0)-0.5)*tras + (noise(0,0,frameCount/200.0)-0.5)*tras*10.0 );
 
-  for(int i = 0 ; i < things.size();i++){
+  for(int i = 0 ; i < veci.size();i++){
 
-    Thing t = (Thing)things.get(i);
+    Vec t = (Vec)veci.get(i);
     t.draw();
 
   }
@@ -103,14 +103,14 @@ void draw(){
 
 //////////////////////////////////////////////////////////
 
-class Thing{
+class Vec{
 
   PVector pos;
   float speed = 10.0;
   int id;
   boolean dir;
 
-  Thing(int _id){
+  Vec(int _id){
     dir = random(100)>50?true:false;
     id = _id;
     speed = pow(id,0.8)*10.0+1.0;
@@ -142,10 +142,4 @@ class Thing{
 
     popMatrix();
   }
-
-
-
-
-
-
 }
