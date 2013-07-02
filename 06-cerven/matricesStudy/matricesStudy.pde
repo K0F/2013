@@ -1,25 +1,25 @@
 
 
-PMatrix3D a,b,c;
+PMatrix3D am,bm,cm;
 
 void setup(){
 
   size(640,640,P3D);
 
 
-  a = new PMatrix3D(
+  am = new PMatrix3D(
       1,0,0,0,
       0,1,0,0,
       0,0,1,0,
       0,0,0,1
       );
-  b = new PMatrix3D(
+  bm = new PMatrix3D(
       1,0,0,0,
       0,1,0,0,
       0,0,1,0,
       0,0,0,1
       );
-  c = new PMatrix3D(
+  cm = new PMatrix3D(
       1,0,0,0,
       0,1,0,0,
       0,0,1,0,
@@ -32,12 +32,11 @@ void setup(){
 void draw(){
 
   background(0);
-
-  applyMatrix(a);
+  applyMatrix(am);
   box(10);
-  applyMatrix(b);
+  applyMatrix(bm);
   box(10);
-  applyMatrix(c);
+  applyMatrix(cm);
   box(10);
 }
 

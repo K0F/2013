@@ -28,17 +28,11 @@ Word word;
 boolean hide = false;
 
 void setup(){
-
   size(800,480);
-
-
   textFont(loadFont("Dialog.plain-10.vlw"));
   textAlign(CENTER);
-
   rectMode(CENTER);
   smooth();
-
-
   word = new Word("");
 }
 
@@ -49,9 +43,7 @@ void draw(){
   pushMatrix();
   translate(width/2,height/2-30);
   word.draw();
-
   popMatrix();
-
 }
 
 
@@ -62,8 +54,6 @@ class Word{
 
   Word(String _src){
     src = _src;
-
-
     rewrite();
 
     cx = (13*16 - message.length*16/2.0);
@@ -95,22 +85,19 @@ class Word{
       stroke(255,120);
 
       if(message[i]!=' '){
-        line(x1,120-14,x2,20+6);
         line(x1,120-14,x1,height);
         line(x2,20+6,x2,-height);
 
 
+        noFill();
+
+        bezier(x1,120-14,x1,80,x2,60,x2,20+6);
+
         if(!hide){
           fill(0);
           stroke(255);
-
-
-
           rect(x1,116,12,12);
-
-
           fill(255);
-
           text(message[i],x1,120);
         }
       }
@@ -122,26 +109,19 @@ class Word{
         stroke(255);
         fill(0);
         rect(i*16+20,16,12,12);
-
         fill(255);
-
-
         text((char)(97+i),i*16+20,20);
       }
-
     popMatrix();
-
   }
 }
 
 void keyPressed(){
   if(key>=97 && key<=122 || key == ' '){
-
     if(word.src.length()<48){
       word.src += (char)key;
       word.rewrite();
     }
-
   }else if(keyCode==BACKSPACE){
     if(word.src.length()>=1)
       word.src = word.src.substring(0,word.src.length()-1);
@@ -149,5 +129,4 @@ void keyPressed(){
   }else if(keyCode==ENTER){
     hide=!hide;
   }
-
 }
