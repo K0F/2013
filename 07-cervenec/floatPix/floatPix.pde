@@ -24,8 +24,9 @@ void draw(){
     int x = i%width;
     int y = i/width;
 
-    pix[i] += (1+dist(x,y,noise(frameCount/10.0,y/10.0+frameCount/10.0)*width,noise(x/10.0,frameCount/10.0)*height)/100.0);
+    pix[i] += (log(pow(dist(x,y,mouseX,mouseY),1.11)/300.0));
     pix[i] = pix[i] % 255;
+    if(pix[i]<0)pix[i] = 255;
     pixels[i] = color(pix[i]);
   }
 

@@ -26,7 +26,7 @@ float [] steps = {10.5};
 float [] widths = {5};
 
 void setup(){
-  size(500,500);
+  //size(500,500);
   strokeWeight(4);
  smooth();
 
