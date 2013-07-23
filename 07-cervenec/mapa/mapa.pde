@@ -1,4 +1,5 @@
-
+/* @pjs font="SempliceRegular-8.vlw";
+*/
 
 PImage mapa;
 ArrayList mista;
@@ -28,7 +29,7 @@ void setup() {
 
 
   rectMode(CENTER);
-  textFont(loadFont("SempliceRegular-8.vlw"));
+  textFont(createFont("Semplice Regular",8,false));
   textAlign(CENTER);
 
   mista = new ArrayList();
@@ -85,7 +86,7 @@ class Misto {
     rect(pos.x, pos.y, 5, 5);
 
     if (over())
-      text(name, pos.x, pos.y-10);
+      text(name, pos.x, pos.y-7);
   }
 
   boolean over() {
@@ -107,8 +108,6 @@ class Misto {
     String lonX = splitTokens(lon, " \"'°ENVS");
     String latY = splitTokens(lat, " \"'°ENVS");
 
-    println(lonX);
-
     float dx = parseFloat(lonX[0]);
     float mx = parseFloat(lonX[1]);
     float sx = parseFloat(lonX[2]);
@@ -118,14 +117,6 @@ class Misto {
     float my = parseFloat(latY[1]);
     float sy = parseFloat(latY[2]);
 
-
-
-
-    println(dx + mx / 60.0 + sx / 3600.0);
-    println(12.0 +  5.0 / 60.0 + 50.46 / 3600.0);
-    println(18.0 + 49.0 / 60.0 + 38.02 / 3600.0);
-
-    //println(
     PVector calc = new PVector(
     map(
     dx + mx / 60.0 + sx / 3600.0, 
@@ -139,7 +130,6 @@ class Misto {
     51.0 + 0.0 + 27.75 / 3600.0, 
     465.0, 0)
       );
-
 
     return calc;
   }
