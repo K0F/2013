@@ -1,25 +1,53 @@
+/*
+Coded by Kof @ 
+Sun Jul 28 20:11:44 CEST 2013
+
+
+
+   ,dPYb,                  ,dPYb,
+   IP'`Yb                  IP'`Yb
+   I8  8I                  I8  8I
+   I8  8bgg,               I8  8'
+   I8 dP" "8    ,ggggg,    I8 dP
+   I8d8bggP"   dP"  "Y8ggg I8dP
+   I8P' "Yb,  i8'    ,8I   I8P
+  ,d8    `Yb,,d8,   ,d8'  ,d8b,_
+  88P      Y8P"Y8888P"    PI8"8888
+                           I8 `8,
+                           I8  `8,
+                           I8   8I
+                           I8   8I
+                           I8, ,8'
+                            "Y8P'
+
+..and yes, we are probably beings made from fractals
+ 
+ */
+
 float frac = 17;
 
 float slope = 0.80;
 float sc = 1.5;
 float nx,ny;
-PVector one,two,shift;
 float TH = 0;
 float depth = 1;
 
+PVector one,two,shift;
+
 void setup(){
-  size(720,720,P2D);
+  size(512,512,P2D);
+  smooth();
 }
 
 void draw(){
 
-
-  one = new PVector(100,height/2);
-  two = new PVector(width-100,height/2);
+  one = new PVector(50,height/2);
+  two = new PVector(width-50,height/2);
 
 
 
   fill(0,10);
+  noStroke();
   rect(0,0,width,height);
 
   nx = noise(frameCount/1000.0,0)*sc;
@@ -45,17 +73,14 @@ void fractal(PVector p1,PVector p2,float depth){
   if(d>=1){
     float theta = atan2(p2.y-p1.y,p2.x-p1.x)+(frameCount)/((1/depth)*1000.0*depth+depth*depth);
 
-
-
     PVector p3 = 
       new PVector(
           (p1.x+p2.x)/2.0+cos(theta)*nx*d/2.0,
           (p1.y+p2.y)/2.0+sin(theta)*nx*d/2.0);
 
-
     stroke(lerpColor(#ffcc00,#00ccff,map(theta,-PI,PI,0,1)),10);
     if(d<50)
-    line(p1.x,p1.y,p2.x,p2.y);
+      line(p1.x,p1.y,p2.x,p2.y);
     depth *= slope;
 
     if(depth >= 0.1){
