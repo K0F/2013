@@ -1,5 +1,5 @@
 /* @pjs font="SempliceRegular-8.vlw";
-*/
+ */
 
 PImage mapa;
 ArrayList mista;
@@ -29,7 +29,7 @@ void setup() {
 
 
   rectMode(CENTER);
-  textFont(createFont("Semplice Regular",8,false));
+  textFont(createFont("Semplice Regular", 8, false));
   textAlign(CENTER);
 
   mista = new ArrayList();
@@ -41,6 +41,8 @@ void setup() {
   mista.add(new Misto("Ostrava", " 50°57'8.29\"N", " 14°27'41.14\"E"));
 
   mista.add(new Misto("test", "49°31'53.05\"N", "18°47'46.77\"E"));
+  
+  mista.add(new Misto("MAGISTRÁT HRADEC KRÁLOVÉ", "50°12'45.10\"S", "15°50'12.99\"V", "hrakra.jpg"));
 }
 
 
@@ -71,10 +73,23 @@ void draw() {
 class Misto {
   PVector pos;
   String name;
+  PImage obrazek;
+  String image_filename;
+  int al;
+
+  boolean fadein, fadeout;
 
   Misto( String _name, String _lat, String _lon) {
     pos = coordToXY(_lat, _lon);
     name = _name;
+  }
+  
+  
+  Misto( String _name, String _lat, String _lon,String _image_filename) {
+    pos = coordToXY(_lat, _lon);
+    name = _name;
+    image_filename = _image_filename;
+    obrazek = loadImage(image_filename);
   }
 
   void draw() {
@@ -87,14 +102,64 @@ class Misto {
 
     if (over())
       text(name, pos.x, pos.y-7);
+      
+      if(!over()){
+      fadeout = true;
+      
+      if(al<10)
+      fadein = false;
+      
+      }
+
+    if (over() && mousePressed && !fadein) {
+      
+      for(int i = 0 ; i < mista.size();i++){
+       Misto tmp = (Misto)mista.get(i);
+        tmp.fadein = false; 
+      }
+      
+      fadeout = false;
+      fadein = true;
+      al = 0;
+    }
+
+    if (fadein) {
+      
+      if(!fadeout)
+      al += 20;
+      else
+      al -= 40;
+      
+      
+      
+      al = constrain(al,0,255);
+      
+      
+      fill(255, al);
+      stroke(0,al);
+      pushMatrix();
+      
+      pushStyle();
+      rectMode(CORNER);
+      translate((int)pos.x-200,(int)pos.y-150);
+      rect(0,0, 400, 300);
+      
+      
+      tint(255,al);
+      if(obrazek!=null)
+      image(obrazek,10,10,380,280);
+      
+      fill(0,al);
+      text(name,200,20);
+      
+      popStyle();
+      popMatrix();
+    }
   }
 
   boolean over() {
     return dist(mouseX, mouseY, pos.x+shiftx, pos.y+shifty) < 100;
   }
-
-
-
 
   PVector coordToXY(String lat, String lon) {
 
@@ -103,15 +168,12 @@ class Misto {
     float x = (float)(correctedLat * (height / 180) );
     float y = (float)(correctedLon * (width / 180) );
 
-
-
     String lonX = splitTokens(lon, " \"'°ENVS");
     String latY = splitTokens(lat, " \"'°ENVS");
 
     float dx = parseFloat(lonX[0]);
     float mx = parseFloat(lonX[1]);
     float sx = parseFloat(lonX[2]);
-
 
     float dy = parseFloat(latY[0]);
     float my = parseFloat(latY[1]);
