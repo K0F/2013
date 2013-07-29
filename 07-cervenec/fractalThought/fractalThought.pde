@@ -20,14 +20,14 @@ Sun Jul 28 20:11:44 CEST 2013
                            I8, ,8'
                             "Y8P'
 
-..and yes, we are probably beings made from fractals
+..and yes, we are probably beings made of fractals as well
  
  */
 
-float frac = 17;
+float frac = 24;
 
-float slope = 0.80;
-float sc = 1.5;
+float slope = 0.8;
+float sc = 1.8;
 float nx,ny;
 float TH = 0;
 float depth = 1;
@@ -36,23 +36,28 @@ PVector one,two,shift;
 
 void setup(){
   size(512,512,P2D);
-  smooth();
+  noSmooth();
+  background(0);
 }
 
 void draw(){
 
-  one = new PVector(50,height/2);
-  two = new PVector(width-50,height/2);
+  one = new PVector(0,height/2);
+  two = new PVector(width-0,height/2);
+
+noiseSeed(98797);
 
 
-
-  fill(0,10);
+  fill(0,5);
   noStroke();
   rect(0,0,width,height);
 
+tint(255,10);
+  image(g,random(-2,2),random(-2,2));
   nx = noise(frameCount/1000.0,0)*sc;
-  ny = noise(0,frameCount/1000.0)*sc;
-  stroke(255,20);
+   ny = noise(0,frameCount/1000.0)*sc;
+  
+  stroke(255,10);
 
 
   for(int i= 0 ; i < frac;i++){
@@ -65,13 +70,15 @@ void draw(){
     fractal(one,two,depth);
     popMatrix();
   }
+  
+  
 }
 
 void fractal(PVector p1,PVector p2,float depth){
 
   float d = dist(p1.x,p1.y,p2.x,p2.y);
-  if(d>=1){
-    float theta = atan2(p2.y-p1.y,p2.x-p1.x)+(frameCount)/((1/depth)*1000.0*depth+depth*depth);
+  if(d>=1.5){
+    float theta = atan2(p2.y-p1.y,p2.x-p1.x)+(frameCount)/(((1/depth))*200.0);
 
     PVector p3 = 
       new PVector(
@@ -88,5 +95,4 @@ void fractal(PVector p1,PVector p2,float depth){
       fractal(p2,p3,depth);
     }
   }
-
 }
