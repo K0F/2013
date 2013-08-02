@@ -15,6 +15,7 @@ String T = "51°0'27.75\"N";
 String B = "48°31'55.93\"N";
 String R = "18°49'38.02\"E";
 
+String raw[];
 
 
 void setup() {
@@ -32,25 +33,27 @@ void setup() {
   textFont(createFont("Semplice Regular", 8, false));
   textAlign(CENTER);
 
+
+
   mista = new ArrayList();
 
-  mista.add(new Misto("Plzen", "49 44 50.91", "13 22 39.39"));
-  mista.add(new Misto("Ostrava", "49°49'5.69", "18°15'41.34"));
 
+  parse();
 
-  mista.add(new Misto("Ostrava", " 50°57'8.29\"N", " 14°27'41.14\"E"));
-
-  mista.add(new Misto("test", "49°31'53.05\"N", "18°47'46.77\"E"));
-  
-  mista.add(new Misto("MAGISTRÁT HRADEC KRÁLOVÉ", "50°12'45.10\"S", "15°50'12.99\"V", "hrakra.jpg"));
 }
 
 
-
-
+void parse(){
+  raw = loadStrings("prace.csv");
+ 
+  for(int i = 0 ; i < raw.length;i++){
+    raw[i].replaceAll(",",", ");
+    String tmp[] = splitTokens(raw[i],",");
+    mista.add(new Misto(tmp[5],tmp[3],tmp[4]));
+  }
+}
 
 void draw() {
-
   background(255);
 
   stroke(0, 10);

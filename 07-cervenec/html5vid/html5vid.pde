@@ -1,38 +1,71 @@
-
-
-var ctx;
-
-final int cameraWidth = 640;
-final int cameraHeight = 480;
-
-void setup() { 
-    size(640,480);
-    ctx = externals.context;    
+var video = document.createElement("video");
+video.setAttribute("style", "display:none;");
+video.setAttribute("id", "videoOutput");
+video.setAttribute("width", "500px");
+video.setAttribute("height", "660px");
+video.setAttribute("autoplay", "true");
+if(document.body!=null) document.body.appendChild(video);
+ 
+// var video = document.getElementById("videoOutput");
+ 
+var getUserMedia = function(t, onsuccess, onerror) {
+    if (navigator.getUserMedia) {
+        return navigator.getUserMedia(t, onsuccess, onerror);
+    } else if (navigator.webkitGetUserMedia) {
+        return navigator.webkitGetUserMedia(t, onsuccess, onerror);
+    } else if (navigator.mozGetUserMedia) {
+        return navigator.mozGetUserMedia(t, onsuccess, onerror);
+    } else if (navigator.msGetUserMedia) {
+        return navigator.msGetUserMedia(t, onsuccess, onerror);
+    } else {
+        onerror(new Error("No getUserMedia implementation found."));
+    }
+};
+ 
+var URL = window.URL || window.webkitURL;
+var createObjectURL = URL.createObjectURL || webkitURL.createObjectURL;
+if (!createObjectURL) {
+    throw new Error("URL.createObjectURL not found.");
 }
-
-void draw() { 
-    
-    if (!video.available) return;
-   
-    float tras = noise(frameCount/5.0)*10.0;
-    
+ 
+getUserMedia({audio:true, video:true},
+    function(stream) {
+        var url = createObjectURL(stream);
+        video.src = url;
+    },
+    function(error) {
+        alert&#40;"Couldn’t access webcam."&#41;;
+    }
+);
+ 
+var ctx;
+PImage img;
+int nb=20;
+ 
+void setup(){
+    size(500,660);
+    ctx = externals.context;
+    ellipseMode(CORNER);
+    smooth();
+}
+ 
+void draw(){
     pushMatrix();
-    
     translate(width,0);
-    
-    scale(-1,1);
-    
-    translate(random(-tras,tras),random(-tras,tras));
-    
-    ctx.drawImage(video, 0, 0, cameraWidth, cameraHeight);
-    
-    
+    scale(-1,1);//mirror the video
+    ctx.drawImage(video, 0, 0, width, height); //video is defined outside processing code
     popMatrix();
-    
-    noFill();
-    stroke(0);
-    strokeWeight(3);
-    rect(0,0,width-1,height-1);
-    
+ 
+    //do something
+    img=get();
+    img.resize(nb,nb);
+    background(255);
+    noStroke();
+    for(int j=0; j<nb; j++){
+        for(int i=0; i<nb; i++){
+            fill(img.get(i, j));
+            ellipse(i*width/nb, j*height/nb, width/nb, height/nb);
+        }
+    }
 }
 
