@@ -49,7 +49,7 @@ void parse(){
   for(int i = 0 ; i < raw.length;i++){
     raw[i].replaceAll(",",", ");
     String tmp[] = splitTokens(raw[i],",");
-    mista.add(new Misto(tmp[5],tmp[3],tmp[4]));
+    mista.add(new Misto(tmp[6],tmp[4],tmp[5]));
   }
 }
 
