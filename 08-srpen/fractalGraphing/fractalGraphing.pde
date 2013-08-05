@@ -21,7 +21,7 @@ void draw(){
   for(int i = 0 ; i < num ;i++){
     pushMatrix();
     translate(width/2,height/2);
-    rotate(i/(num+0.0)*TWO_PI);
+    rotate(i/(num+0.0)*TWO_PI*100.321);
     translate(-width/2,-height/2);
     fractal(a,b,i/(num+0.0)+abs(sin(i+frameCount/10.0)),ITERATIONS);
     popMatrix();
@@ -45,16 +45,18 @@ void fractal(PVector a,PVector b, float pos,float _ITERATIONS){
 
   PVector offset = new PVector(cos(theta)*(d*n)/20.0+center.x,n*sin(theta)*(d*n)/2.0+center.y);
 
-  if(d<100){
-  line(a.x,a.y,offset.x,offset.y);
-  line(b.x,b.y,offset.x,offset.y);
+  //if(d<100){
+  //line(a.x,a.y,offset.x,offset.y);
+  //line(b.x,b.y,offset.x,offset.y);
 
   pushMatrix();
-  translate((a.x+b.x)/2.0+noise(it/10.0+frameCount/11.123)*100.0,(a.y+b.y)/2.0);
+
+  stroke(((sin(it/10.123+frameCount/13.0)+1.0)/2.0)*255.0 ,20);
+  translate((a.x+b.x)/2.0+noise(it/10.0+frameCount/100.123)*100.0,(a.y+b.y)/2.0);
   rotate(-theta);
   line(d*n,0,sin(frameCount/10.0)*sin(frameCount/33.33)*10.0,n);
   popMatrix();
-  }
+  //}
   if(it > 0){
     fractal(a,offset,pos,it);
     fractal(b,offset,pos,it);
