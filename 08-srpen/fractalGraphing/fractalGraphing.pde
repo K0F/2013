@@ -21,7 +21,7 @@ void draw(){
   for(int i = 0 ; i < num ;i++){
     pushMatrix();
     translate(width/2,height/2);
-    rotate(i/(num+0.0)*TWO_PI*100.321);
+    rotate(i/(num+0.0)*TWO_PI);
     translate(-width/2,-height/2);
     fractal(a,b,i/(num+0.0)+abs(sin(i+frameCount/10.0)),ITERATIONS);
     popMatrix();
@@ -35,30 +35,20 @@ void draw(){
 void fractal(PVector a,PVector b, float pos,float _ITERATIONS){
 
   float it = _ITERATIONS-0.5;
-
   float n = noise(frameCount/1000.0)*0.5;
-
   float d = dist(a.x,a.y,b.x,b.y);
-  float theta = atan2(b.y-a.y,b.x-a.x)*n+n;
+  float theta = atan2(b.y-a.y,b.x-a.x)+it;
  
-  PVector center = (new PVector(lerp(a.x,b.x,0.5)+cos(theta)*it*10.0,lerp(a.y,b.y,0.5)+sin(theta)*it*10.0));
-
-  PVector offset = new PVector(cos(theta)*(d*n)/20.0+center.x,n*sin(theta)*(d*n)/2.0+center.y);
-
-  //if(d<100){
-  //line(a.x,a.y,offset.x,offset.y);
-  //line(b.x,b.y,offset.x,offset.y);
-
+  PVector center = (new PVector(lerp(a.x,b.x,n)+cos(theta)*it*10.0,lerp(a.y,b.y,n)+sin(theta)*it*10.0));
+  PVector offset = new PVector(cos(theta)*10.0+center.x,sin(theta)*10.0+center.y);
   pushMatrix();
-
-  stroke(((sin(it/10.123+frameCount/13.0)+1.0)/2.0)*255.0 ,20);
-  translate((a.x+b.x)/2.0+noise(it/10.0+frameCount/100.123)*100.0,(a.y+b.y)/2.0);
-  rotate(-theta);
-  line(d*n,0,sin(frameCount/10.0)*sin(frameCount/33.33)*10.0,n);
+  translate((a.x+b.x)/2.0+noise(it/10.0+frameCount/100.123)*1000.0,(a.y+b.y)/2.0);
+  rotate(-theta*it*n);
+  line(-d*n,n*10.0,d*n,n*10.0);
   popMatrix();
-  //}
   if(it > 0){
     fractal(a,offset,pos,it);
     fractal(b,offset,pos,it);
   }
+
 }
