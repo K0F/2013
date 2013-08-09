@@ -3,9 +3,9 @@ int TRAIL_LENGTH = 20;
 
 int STEP = 5;
 
-float FRICTION = 0.75;
-float FORCE = 5;
-int INTERVAL = 100;
+float FRICTION = 0.9;
+float FORCE = 1;
+int INTERVAL = 140;
 int INTERVAL_SPREAD = 0;
 
 int TRAIL_ALPHA = 120;
@@ -43,21 +43,20 @@ void draw(){
 
 }
 
+/////////////////////////////////////////////
 
 class Signal{
-
-
 
   PVector pos,vel,acc;
   ArrayList trail;
 
   int cyc ;
 
-  int smery[] = {0,1,2,3};
+  int smery[] = {0,1,2,3,3,2,1,0,1,2,3};
   int dir;
 
   Signal(int _x, int _y){
-    dir = ((int)random(100))%4;
+    dir = ((int)random(100))%smery.length;
 
     trail = new ArrayList();
     cyc = (int)random(INTERVAL_SPREAD)+INTERVAL;
@@ -99,7 +98,7 @@ class Signal{
       popMatrix();
     }
 
-    fill(0,100);
+    fill(0);
     noStroke();
 
 
@@ -132,7 +131,7 @@ class Signal{
 
     int smer = smery[dir++];
 
-    dir = dir%4;
+    dir = dir%smery.length;
 
     switch(smer){
       case 0:
