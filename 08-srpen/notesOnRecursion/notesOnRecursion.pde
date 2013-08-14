@@ -1,5 +1,6 @@
 
-
+float sett[] = {1,2,3,3,3,3,3,4,4,4,4,23,2,3};
+int id = 0;
 
 void setup(){
 
@@ -20,7 +21,8 @@ void draw(){
 
   stroke(0,15);
 
-  int num = 3;
+  int num = 100;
+  id ++;
 
   for(int i = 0 ; i < num ; i++){
     pushMatrix();
@@ -36,7 +38,8 @@ void draw(){
 
 void recurse(int in, int out,float an){
 
-  an += 0.0000001*mouseX;
+  an += (sett[id%sett.length]*0.1*PI-an)/10.0;
+
 
   line(0,0,in,0);
   translate(in,0);
