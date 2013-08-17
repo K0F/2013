@@ -22,7 +22,9 @@ void draw(){
   stroke(0,15);
 
   int num = 100;
-  id ++;
+
+  if(frameCount%100==0)
+    id ++;
 
   for(int i = 0 ; i < num ; i++){
     pushMatrix();
@@ -38,7 +40,7 @@ void draw(){
 
 void recurse(int in, int out,float an){
 
-  an += (sett[id%sett.length]*0.1*PI-an)/10.0;
+  an += (sett[id%sett.length]*0.1*PI-an)/100000000.0;
 
 
   line(0,0,in,0);
