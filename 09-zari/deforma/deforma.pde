@@ -35,7 +35,7 @@ void draw(){
 
   for(float y = 0 ; y<height ; y+=step){
     for(float x = 0 ; x<width ; x+=step){
-      
+
       float nx1 = norm(x,0,width);
       float ny1 = norm(y,0,height);
       float nx2 = norm(x+step,0,width);
