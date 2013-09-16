@@ -31,9 +31,7 @@ void setup(){
 
 
 void draw(){
-
   background(0);
-
   fill(255);
   list.draw();
 }
@@ -43,7 +41,6 @@ class Piece{
   Document doc;
 
   Piece(){
-
     get();
   }
 
@@ -65,25 +62,20 @@ class Piece{
       e.printStackTrace();
     }
 
-
-
-
   }
 
   void draw(){
-
     int i = 0 ;
     // get all links
     Elements links = doc.select("div[class$=descriptionBox]");
     for (Element link : links) {
 
       noStroke();
-      fill(32);
-      rect(0,i*10-10,width,10);
-      fill(0);
-      text(link.text(),10,i*10);
+      fill(32*noise(i+frameCount/10.0));
+      rect(0,i*12-12,width,12);
+      fill(#ffcc00);
+      text(link.text(),10,i*12-3);
       i++;
     }
   }
-
 }
