@@ -24,7 +24,7 @@ void draw(){
 }
 
 
-class Piece(){
+class Piece{
   Document doc;
 
   Piece(){
