@@ -117,7 +117,9 @@ class Neuron{
   }
 
   void update(){
-    val += (getVal()-val)/10.0;
+    val += (getVal()-val)/100.5;
+
+    treshold += (val-treshold)/100.6;
 
     active = (val >= treshold) ? true : false; 
 
@@ -125,19 +127,24 @@ class Neuron{
   }
 
   void move(){
-    //if(active)
+
+
+    if(active)
     for(int i = 0 ; i < conns.size();i++){
       Connection c = (Connection)conns.get(i);
       if(c.b.active){
-        if(c.d > 100+(val*10.0)){
-          pos.x += (c.b.pos.x-pos.x)/(c.d*10.0);
-          pos.y += (c.b.pos.y-pos.y)/(c.d*10.0);
+        if(c.d > (val*100.0)){
+          pos.x += (c.b.pos.x-pos.x)/(c.d*100.0);
+          pos.y += (c.b.pos.y-pos.y)/(c.d*100.0);
         }
       }
 
       pos.x += random(-1,1)/100.0; 
       pos.y += random(-1,1)/100.0; 
     }
+
+    pos.x -= (width/2-pos.x)/1000.0;
+    pos.y -= (height/2-pos.y)/1000.0;
 
   }
 
