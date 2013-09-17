@@ -45,9 +45,7 @@ class Piece{
   }
 
   void get(){
-
     try {
-
       // need http protocol
       File input = new File(sketchPath+"/data/test.txt");
 
@@ -66,16 +64,21 @@ class Piece{
 
   void draw(){
     int i = 0 ;
-    // get all links
-    Elements links = doc.select("div[class$=descriptionBox]");
+    
+    Elements links = doc.select("div[class$=portalPiece] div[class$=descriptionBox] a[href]");
+
     for (Element link : links) {
 
       noStroke();
       fill(32*noise(i+frameCount/10.0));
       rect(0,i*12-12,width,12);
-      fill(#ffcc00);
-      text(link.text(),10,i*12-3);
+      fill(255);
+
+      String a = link.text() + link.attr("href");
+
+      text(a,10,i*12-3);
       i++;
+
     }
   }
 }
