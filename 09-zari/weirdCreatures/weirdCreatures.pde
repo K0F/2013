@@ -68,8 +68,8 @@ void draw(){
   pushMatrix();
 
   translate(width/2,height/2);
-  rotate(frameCount);
-  scale(3);
+  rotate(random(10));
+  scale(3-random(10)/10.0);
   translate(-width/2,-height/2);
 
 
@@ -163,7 +163,6 @@ class Creature{
       beginShape();
       for(int ii = 0 ; ii < pnts.size();ii++){
         PVector tmp = (PVector)pnts.get(ii);
-        //stroke((sin(map(atan2(tmp.y,tmp.x),-PI,PI,-HALF_PI,HALF_PI)+1.0)/2.0)*255);
         
         fill(lerpColor(color(#010203),color(0),map(i,0,layers.size(),0,1)));
           
@@ -182,8 +181,9 @@ class Creature{
       stroke(c);
       
       PVector b = new PVector(a.x,a.y);
-      a.mult(1.4);
-      line(a.x,a.y,b.x,b.y);
+      a.mult(0.2);
+      translate(b.x,b.y);
+      line(0,0,a.x,a.y);
  
       popMatrix();
 
