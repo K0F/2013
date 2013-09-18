@@ -1,4 +1,4 @@
-/*
+/**
 Coded by Kof @ 
 Tue Sep 17 20:18:51 CEST 2013
 
@@ -22,6 +22,7 @@ Tue Sep 17 20:18:51 CEST 2013
 
 */
 
+/////////////////////////////////////////////////////
 
 // BACKGROUND COLORS
 color C1 = color(0,0,15);
@@ -84,11 +85,11 @@ void generateMask(){
 
   frame = createGraphics(width+20,height+20,JAVA2D);
   frame.beginDraw();
-  frame.stroke(0);
+  frame.stroke(0,75);
   frame.strokeWeight(40);
   frame.noFill();
   frame.rect(10,10,frame.width-10,frame.height-10);
-  frame.filter(BLUR,40);
+  frame.filter(BLUR,20);
   frame.endDraw();
 
 
@@ -160,14 +161,14 @@ void fade(color c, float speed){
 
   beginShape();
 
-  fill(c,247/2);
+  fill(c,247/3);
   vertex(0,0);
-  fill(c,247/2);
+  fill(c,247/3);
   vertex(width,0);
 
-  fill(c,120/2);
+  fill(c,120/3);
   vertex(width,height);
-  fill(c,120/2);
+  fill(c,120/3);
   vertex(0,height);
 
   endShape(CLOSE);
@@ -267,9 +268,9 @@ class Creature{
       }
       endShape(CLOSE);  
 
-      if(i%5==0){
+      if(i%3==0){
         noStroke();
-        fill(0,15);
+        fill(0,8);
 
 
         translate(a.x,a.y);
