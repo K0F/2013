@@ -45,6 +45,7 @@ float DIVERSITY = 9.0;
 // POSTPRODUCTION
 float SHAKE = 2.0;
 
+PImage logo;
 ArrayList dustFrames;
 PGraphics frame;
 
@@ -53,9 +54,11 @@ Creature creature;
 /////////////////////////////////////////////////////
 
 void setup(){
-  size(820,420,P2D);
+  size(720,576,P2D);
 
   creature = new Creature(LENGTH);
+
+  logo = loadImage("ng.png");
 
   smooth();
 
@@ -120,6 +123,7 @@ void renderDustFrameToPlasureAnEye(){
 /////////////////////////////////////////////////////
 
 void draw(){
+  pushMatrix();
   translate((noise(frameCount,0)-0.5)*SHAKE,(noise(0,frameCount)-0.5)*SHAKE);
 
   creature.generate();
@@ -136,6 +140,8 @@ void draw(){
 
   renderDustFrameToPlasureAnEye();
   drawMask();
+  popMatrix();
+  image(logo,0,0);
 }
 
 /////////////////////////////////////////////////////
@@ -218,6 +224,8 @@ class Creature{
 
       current.x += (previous.x - current.x) / FOLLOW_SPEED;
       current.y += (previous.y - current.y) / FOLLOW_SPEED;
+      current.y += norm(current.y,height,0);
+      current.x += norm(current.x,0,width)-0.5;
     }
 
     PVector first = (PVector)pos.get(0);
