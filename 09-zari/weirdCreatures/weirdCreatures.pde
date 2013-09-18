@@ -255,31 +255,24 @@ class Creature{
 
         if( ii == pnts.size()/2){
           a = new PVector(tmp.x,tmp.y);
-          //c = color(sin(atan2(tmp.y,tmp.x))*255);
-
         }
 
         if( ii == 0){
           b = new PVector(tmp.x,tmp.y);
-          //c = color(sin(atan2(tmp.y,tmp.x))*255);
-
         }
 
-
-
-
-        stroke(sin(atan2(tmp.y,tmp.x))*255);
+        stroke(lerpColor(color(0),color(#746F4B),0.5*(sin(atan2(tmp.y,tmp.x))+1.0)*map(i,0,layers.size(),1.0,0.2) ));
         vertex(tmp.x,tmp.y);
       }
       endShape(CLOSE);  
 
       if(i%5==0){
-      noStroke();
-      fill(0,15);
+        noStroke();
+        fill(0,15);
 
 
-      translate(a.x,a.y);
-      rect(0,0,b.x-a.x,-600);
+        translate(a.x,a.y);
+        rect(0,0,b.x-a.x,-600);
       }
       popMatrix();
 
