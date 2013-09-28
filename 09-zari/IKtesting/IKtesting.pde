@@ -12,16 +12,12 @@ void setup(){
     Bone p = (Bone)bones.get(i-1);
     bones.add(new Bone(p));
   }
-
 }
 
 
 void draw(){
-
   background(255);
-
 }
-
 
 class Bone{
   Bone parent;
@@ -33,7 +29,6 @@ class Bone{
 
   Bone(){
     parent=_parent;
-
     Bone p = parent;
     mat = new PMatrix3D(
         p.m00,p.m01,p.m02,p.m03,
@@ -41,13 +36,10 @@ class Bone{
         p.m20,p.m21,p.m22,p.m23,
         p.m30,p.m31,p.m32,p.m33
         );
-    
   }
 
   void draw(){
     applyMatrix(mat);
     line(0,0,0,0,length,0);
   }
-
-
 }
