@@ -1,0 +1,2473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/generic page.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>The Processing Portfolio of Kryštof Pešek (Kof) - OpenProcessing</title>
+
+<meta property="fb:admins" content="844361" />
+<meta property="fb:app_id" content="113458952018100" />
+<meta property="fb:page_id" content="162389123795206" />
+<meta property="og:title" content=" - OpenProcessing" />
+<meta property="og:description" content="The Processing Portfolio of Kryštof Pešek (Kof) - OpenProcessing" />
+<meta property="og:image" content="http://www.openprocessing.org/user/3942/thumbnail" />
+<meta property="thumbnail" content="http://www.openprocessing.org/user/3942/thumbnail" />
+<meta property="og:type" content="openprocessingfb:user" />
+<!-- InstanceEndEditable -->
+<!-- template version 1.1 -->
+<link rel="icon" type="image/png" href="/assets/images/favicon.ico" />
+<link href="/assets/css/general.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/js/jquery.js"></script>
+<!-- InstanceBeginEditable name="head" -->
+<meta name="title" content="The Processing Portfolio of Kryštof Pešek (Kof) - OpenProcessing" />
+<meta name="description" content="The Processing Portfolio of Kryštof Pešek (Kof) - OpenProcessing" />
+<link rel="alternate" type="application/rss+xml" title="Latest Sketches by Kryštof Pešek (Kof) - OpenProcessing" href="http://www.openprocessing.org/user/3942/rss">
+<link rel="image_src" href="/assets/profileImages/user3942.jpg" />
+<script type="text/javascript" src="/assets/js/jquery-ui/js/jquery-ui.js"></script>
+<link type="text/css" href="/assets/js/jquery-ui/css/flick/jquery-ui.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/assets/js/qtip/jquery.qtip.css" />
+<script type="text/javascript" src="/assets/js/qtip/jquery.qtip.min.js"></script>
+<link type="text/css" href="/assets/images/icons/iconicSprite/iconicSprite.css" rel="stylesheet" />
+
+<script>
+toggleDisplay = function(toShow){
+		$('#'+toShow).toggle(); 
+}
+var favorites;
+var favoritesIDs;
+init = function() {
+	if($('.portalPiece').length == 0){ $('#tutorial').fadeIn(500);}
+		
+	
+	favorites = new Array();
+	favoritesIDs = new Array();
+	
+	favoritesIDs.push("106144");favorites.push("/sketch/thumbnail/106144/cache/2013-08-09 18:28:55");favoritesIDs.push("107486");favorites.push("/sketch/thumbnail/107486/cache/2013-09-07 18:58:14");favoritesIDs.push("107386");favorites.push("/sketch/thumbnail/107386/cache/2013-08-26 22:27:58");favoritesIDs.push("105897");favorites.push("/sketch/thumbnail/105897/cache/2013-08-07 07:38:20");favoritesIDs.push("107166");favorites.push("/sketch/thumbnail/107166/cache/2013-08-23 05:26:05");favoritesIDs.push("106981");favorites.push("/sketch/thumbnail/106981/cache/2013-08-19 03:12:21");favoritesIDs.push("102466");favorites.push("/sketch/thumbnail/102466/cache/2013-06-30 16:26:49");favoritesIDs.push("104377");favorites.push("/sketch/thumbnail/104377/cache/2013-07-28 21:39:33");favoritesIDs.push("65033");favorites.push("/sketch/thumbnail/65033/cache/2012-07-04 22:35:25");favoritesIDs.push("105410");favorites.push("/sketch/thumbnail/105410/cache/2013-08-02 15:09:48");favoritesIDs.push("105455");favorites.push("/sketch/thumbnail/105455/cache/2013-08-04 09:26:06");favoritesIDs.push("62120");favorites.push("/sketch/thumbnail/62120/cache/2012-05-19 22:17:40");favoritesIDs.push("25239");favorites.push("/sketch/thumbnail/25239/cache/2012-03-04 19:48:05");favoritesIDs.push("38034");favorites.push("/sketch/thumbnail/38034/cache/2012-03-04 19:48:05");favoritesIDs.push("103670");favorites.push("/sketch/thumbnail/103670/cache/2013-07-15 22:32:52");favoritesIDs.push("103583");favorites.push("/sketch/thumbnail/103583/cache/2013-07-15 04:03:13");favoritesIDs.push("92756");favorites.push("/sketch/thumbnail/92756/cache/2013-03-12 13:09:25");favoritesIDs.push("95940");favorites.push("/sketch/thumbnail/95940/cache/2013-04-11 14:28:51");favoritesIDs.push("101255");favorites.push("/sketch/thumbnail/101255/cache/2013-06-19 09:08:29");favoritesIDs.push("103448");favorites.push("/sketch/thumbnail/103448/cache/2013-07-11 13:17:47");favoritesIDs.push("7475");favorites.push("/sketch/thumbnail/7475/cache/2012-03-04 19:48:05");favoritesIDs.push("8540");favorites.push("/sketch/thumbnail/8540/cache/2012-03-04 19:48:05");favoritesIDs.push("64367");favorites.push("/sketch/thumbnail/64367/cache/2012-06-20 01:59:20");favoritesIDs.push("102805");favorites.push("/sketch/thumbnail/102805/cache/2013-07-29 06:47:47");favoritesIDs.push("81872");favorites.push("/sketch/thumbnail/81872/cache/2012-12-02 09:24:51");favoritesIDs.push("100937");favorites.push("/sketch/thumbnail/100937/cache/2013-06-13 15:44:28");favoritesIDs.push("102142");favorites.push("/sketch/thumbnail/102142/cache/2013-06-30 08:38:20");favoritesIDs.push("65532");favorites.push("/sketch/thumbnail/65532/cache/2012-07-19 11:00:39");favoritesIDs.push("102905");favorites.push("/sketch/thumbnail/102905/cache/2013-07-01 22:37:59");favoritesIDs.push("102677");favorites.push("/sketch/thumbnail/102677/cache/2013-07-01 08:48:17");favoritesIDs.push("102084");favorites.push("/sketch/thumbnail/102084/cache/2013-06-28 08:17:03");favoritesIDs.push("83073");favorites.push("/sketch/thumbnail/83073/cache/2012-12-12 05:57:41");favoritesIDs.push("64159");favorites.push("/sketch/thumbnail/64159/cache/2012-06-16 18:12:24");favoritesIDs.push("101126");favorites.push("/sketch/thumbnail/101126/cache/2013-06-17 04:51:57");favoritesIDs.push("6269");favorites.push("/sketch/thumbnail/6269/cache/2012-03-04 19:48:05");favoritesIDs.push("90192");favorites.push("/sketch/thumbnail/90192/cache/2013-03-08 03:26:03");favoritesIDs.push("98855");favorites.push("/sketch/thumbnail/98855/cache/2013-05-12 09:28:09");favoritesIDs.push("97569");favorites.push("/sketch/thumbnail/97569/cache/2013-04-28 21:21:04");favoritesIDs.push("1257");favorites.push("/sketch/thumbnail/1257/cache/2012-03-04 19:48:05");favoritesIDs.push("21866");favorites.push("/sketch/thumbnail/21866/cache/2012-03-04 19:48:05");favoritesIDs.push("1272");favorites.push("/sketch/thumbnail/1272/cache/2012-03-04 19:48:05");favoritesIDs.push("50355");favorites.push("/sketch/thumbnail/50355/cache/2013-01-25 12:29:34");favoritesIDs.push("92288");favorites.push("/sketch/thumbnail/92288/cache/2013-03-07 17:29:26");favoritesIDs.push("77334");favorites.push("/sketch/thumbnail/77334/cache/2012-10-29 09:35:07");favoritesIDs.push("96902");favorites.push("/sketch/thumbnail/96902/cache/2013-04-20 08:32:11");favoritesIDs.push("92253");favorites.push("/sketch/thumbnail/92253/cache/2013-03-07 07:25:04");favoritesIDs.push("53493");favorites.push("/sketch/thumbnail/53493/cache/2012-03-04 19:48:05");favoritesIDs.push("15905");favorites.push("/sketch/thumbnail/15905/cache/2012-03-04 19:48:05");favoritesIDs.push("18092");favorites.push("/sketch/thumbnail/18092/cache/2012-03-04 19:48:05");favoritesIDs.push("94632");favorites.push("/sketch/thumbnail/94632/cache/2013-03-29 09:56:37");favoritesIDs.push("47434");favorites.push("/sketch/thumbnail/47434/cache/2012-03-04 19:48:05");favoritesIDs.push("10081");favorites.push("/sketch/thumbnail/10081/cache/2012-03-04 19:48:05");favoritesIDs.push("60342");favorites.push("/sketch/thumbnail/60342/cache/2012-05-02 05:42:10");favoritesIDs.push("6195");favorites.push("/sketch/thumbnail/6195/cache/2012-03-04 19:48:05");favoritesIDs.push("92571");favorites.push("/sketch/thumbnail/92571/cache/2013-03-11 09:09:31");favoritesIDs.push("92434");favorites.push("/sketch/thumbnail/92434/cache/2013-03-09 11:17:08");favoritesIDs.push("92116");favorites.push("/sketch/thumbnail/92116/cache/2013-03-06 06:12:34");favoritesIDs.push("92254");favorites.push("/sketch/thumbnail/92254/cache/2013-03-07 07:26:13");favoritesIDs.push("82123");favorites.push("/sketch/thumbnail/82123/cache/2012-12-04 10:01:05");favoritesIDs.push("54123");favorites.push("/sketch/thumbnail/54123/cache/2012-03-04 19:48:05");favoritesIDs.push("57589");favorites.push("/sketch/thumbnail/57589/cache/2012-03-30 08:03:13");favoritesIDs.push("60052");favorites.push("/sketch/thumbnail/60052/cache/2012-06-06 05:19:20");favoritesIDs.push("41142");favorites.push("/sketch/thumbnail/41142/cache/2012-03-04 19:48:05");favoritesIDs.push("11113");favorites.push("/sketch/thumbnail/11113/cache/2012-03-04 19:48:05");favoritesIDs.push("25021");favorites.push("/sketch/thumbnail/25021/cache/2012-03-04 19:48:05");favoritesIDs.push("25776");favorites.push("/sketch/thumbnail/25776/cache/2012-03-04 19:48:05");favoritesIDs.push("10731");favorites.push("/sketch/thumbnail/10731/cache/2012-03-04 19:48:05");favoritesIDs.push("43799");favorites.push("/sketch/thumbnail/43799/cache/2012-03-04 19:48:05");favoritesIDs.push("17104");favorites.push("/sketch/thumbnail/17104/cache/2012-03-04 19:48:05");favoritesIDs.push("2067");favorites.push("/sketch/thumbnail/2067/cache/2012-03-04 19:48:05");favoritesIDs.push("6753");favorites.push("/sketch/thumbnail/6753/cache/2012-03-04 19:48:05");favoritesIDs.push("31195");favorites.push("/sketch/thumbnail/31195/cache/2012-03-04 19:48:05");favoritesIDs.push("65385");favorites.push("/sketch/thumbnail/65385/cache/2012-07-12 12:27:06");favoritesIDs.push("9738");favorites.push("/sketch/thumbnail/9738/cache/2012-03-04 19:48:05");favoritesIDs.push("70685");favorites.push("/sketch/thumbnail/70685/cache/2012-09-17 13:54:26");favoritesIDs.push("47647");favorites.push("/sketch/thumbnail/47647/cache/2012-03-04 19:48:05");favoritesIDs.push("2698");favorites.push("/sketch/thumbnail/2698/cache/2012-03-04 19:48:05");favoritesIDs.push("11899");favorites.push("/sketch/thumbnail/11899/cache/2012-03-04 19:48:05");favoritesIDs.push("6598");favorites.push("/sketch/thumbnail/6598/cache/2012-03-04 19:48:05");favoritesIDs.push("87999");favorites.push("/sketch/thumbnail/87999/cache/2013-02-03 13:26:47");favoritesIDs.push("87880");favorites.push("/sketch/thumbnail/87880/cache/2013-02-01 14:58:31");favoritesIDs.push("86276");favorites.push("/sketch/thumbnail/86276/cache/2013-01-21 00:42:36");favoritesIDs.push("86274");favorites.push("/sketch/thumbnail/86274/cache/2013-01-21 00:38:48");favoritesIDs.push("78461");favorites.push("/sketch/thumbnail/78461/cache/2012-11-09 06:35:57");favoritesIDs.push("62506");favorites.push("/sketch/thumbnail/62506/cache/2012-06-02 12:20:24");favoritesIDs.push("63206");favorites.push("/sketch/thumbnail/63206/cache/2012-06-02 12:18:40");favoritesIDs.push("4461");favorites.push("/sketch/thumbnail/4461/cache/2012-03-04 19:48:05");favoritesIDs.push("2583");favorites.push("/sketch/thumbnail/2583/cache/2012-03-04 19:48:05");favoritesIDs.push("3088");favorites.push("/sketch/thumbnail/3088/cache/2012-03-04 19:48:05");favoritesIDs.push("23360");favorites.push("/sketch/thumbnail/23360/cache/2012-03-04 19:48:05");favoritesIDs.push("7370");favorites.push("/sketch/thumbnail/7370/cache/2012-03-04 19:48:05");favoritesIDs.push("7303");favorites.push("/sketch/thumbnail/7303/cache/2012-03-04 19:48:05");favoritesIDs.push("84561");favorites.push("/sketch/thumbnail/84561/cache/2013-01-06 17:36:51");favoritesIDs.push("74233");favorites.push("/sketch/thumbnail/74233/cache/2012-10-09 16:38:18");favoritesIDs.push("58118");favorites.push("/sketch/thumbnail/58118/cache/2012-04-05 08:59:04");favoritesIDs.push("85413");favorites.push("/sketch/thumbnail/85413/cache/2013-01-14 12:59:02");favoritesIDs.push("85194");favorites.push("/sketch/thumbnail/85194/cache/2013-01-12 05:49:58");favoritesIDs.push("2925");favorites.push("/sketch/thumbnail/2925/cache/2012-03-04 19:48:05");favoritesIDs.push("84465");favorites.push("/sketch/thumbnail/84465/cache/2013-01-05 07:36:46");favoritesIDs.push("64386");favorites.push("/sketch/thumbnail/64386/cache/2012-06-20 10:24:40");favoritesIDs.push("83794");favorites.push("/sketch/thumbnail/83794/cache/2012-12-18 09:11:40");favoritesIDs.push("84310");favorites.push("/sketch/thumbnail/84310/cache/2012-12-31 16:34:17");favoritesIDs.push("84298");favorites.push("/sketch/thumbnail/84298/cache/2012-12-30 13:40:44");favoritesIDs.push("84094");favorites.push("/sketch/thumbnail/84094/cache/2012-12-22 13:41:16");favoritesIDs.push("19183");favorites.push("/sketch/thumbnail/19183/cache/2012-03-04 19:48:05");favoritesIDs.push("83478");favorites.push("/sketch/thumbnail/83478/cache/2012-12-14 14:27:54");favoritesIDs.push("72198");favorites.push("/sketch/thumbnail/72198/cache/2012-09-27 07:31:34");favoritesIDs.push("71950");favorites.push("/sketch/thumbnail/71950/cache/2012-09-25 05:07:24");favoritesIDs.push("81115");favorites.push("/sketch/thumbnail/81115/cache/2012-11-28 06:24:01");favoritesIDs.push("81826");favorites.push("/sketch/thumbnail/81826/cache/2012-12-02 11:00:36");favoritesIDs.push("81918");favorites.push("/sketch/thumbnail/81918/cache/2012-12-02 15:10:13");favoritesIDs.push("83224");favorites.push("/sketch/thumbnail/83224/cache/2012-12-12 19:57:29");favoritesIDs.push("82456");favorites.push("/sketch/thumbnail/82456/cache/2012-12-06 17:50:03");favoritesIDs.push("82592");favorites.push("/sketch/thumbnail/82592/cache/2012-12-07 13:06:33");favoritesIDs.push("82451");favorites.push("/sketch/thumbnail/82451/cache/2012-12-06 17:56:33");favoritesIDs.push("78541");favorites.push("/sketch/thumbnail/78541/cache/2012-11-09 15:50:00");favoritesIDs.push("80169");favorites.push("/sketch/thumbnail/80169/cache/2012-11-27 09:22:57");favoritesIDs.push("68162");favorites.push("/sketch/thumbnail/68162/cache/2012-09-22 15:17:52");favoritesIDs.push("67665");favorites.push("/sketch/thumbnail/67665/cache/2012-08-18 16:42:14");favoritesIDs.push("75");favorites.push("/sketch/thumbnail/75/cache/2012-03-04 19:48:05");favoritesIDs.push("43133");favorites.push("/sketch/thumbnail/43133/cache/2012-03-04 19:48:05");favoritesIDs.push("74380");favorites.push("/sketch/thumbnail/74380/cache/2013-06-25 05:46:45");favoritesIDs.push("75044");favorites.push("/sketch/thumbnail/75044/cache/2012-10-14 09:12:03");favoritesIDs.push("72702");favorites.push("/sketch/thumbnail/72702/cache/2012-09-30 17:23:09");favoritesIDs.push("73427");favorites.push("/sketch/thumbnail/73427/cache/2012-10-05 13:12:04");favoritesIDs.push("69720");favorites.push("/sketch/thumbnail/69720/cache/2012-09-11 11:39:40");favoritesIDs.push("56745");favorites.push("/sketch/thumbnail/56745/cache/2012-03-21 02:43:57");favoritesIDs.push("5453");favorites.push("/sketch/thumbnail/5453/cache/2012-03-04 19:48:05");favoritesIDs.push("10728");favorites.push("/sketch/thumbnail/10728/cache/2012-03-04 19:48:05");favoritesIDs.push("69196");favorites.push("/sketch/thumbnail/69196/cache/2012-09-08 15:54:34");favoritesIDs.push("28390");favorites.push("/sketch/thumbnail/28390/cache/2012-03-04 19:48:05");favoritesIDs.push("64254");favorites.push("/sketch/thumbnail/64254/cache/2012-06-18 05:57:29");favoritesIDs.push("159");favorites.push("/sketch/thumbnail/159/cache/2012-03-04 19:48:05");favoritesIDs.push("67241");favorites.push("/sketch/thumbnail/67241/cache/2012-08-11 11:47:48");favoritesIDs.push("68369");favorites.push("/sketch/thumbnail/68369/cache/2012-09-01 03:27:17");favoritesIDs.push("68368");favorites.push("/sketch/thumbnail/68368/cache/2012-08-31 22:54:29");favoritesIDs.push("68216");favorites.push("/sketch/thumbnail/68216/cache/2012-10-05 13:20:25");favoritesIDs.push("45489");favorites.push("/sketch/thumbnail/45489/cache/2012-03-04 19:48:05");favoritesIDs.push("67253");favorites.push("/sketch/thumbnail/67253/cache/2012-08-13 20:45:25");favoritesIDs.push("55481");favorites.push("/sketch/thumbnail/55481/cache/2012-03-09 20:10:25");favoritesIDs.push("63218");favorites.push("/sketch/thumbnail/63218/cache/2012-06-02 15:26:11");favoritesIDs.push("7102");favorites.push("/sketch/thumbnail/7102/cache/2012-03-04 19:48:05");favoritesIDs.push("65461");favorites.push("/sketch/thumbnail/65461/cache/2012-07-15 14:17:22");favoritesIDs.push("65570");favorites.push("/sketch/thumbnail/65570/cache/2012-07-20 00:48:11");favoritesIDs.push("65714");favorites.push("/sketch/thumbnail/65714/cache/2012-07-24 22:27:52");favoritesIDs.push("64914");favorites.push("/sketch/thumbnail/64914/cache/2012-07-01 17:35:14");favoritesIDs.push("64705");favorites.push("/sketch/thumbnail/64705/cache/2012-06-26 17:25:58");favoritesIDs.push("40539");favorites.push("/sketch/thumbnail/40539/cache/2012-06-21 02:27:34");favoritesIDs.push("64701");favorites.push("/sketch/thumbnail/64701/cache/2012-06-26 12:28:51");favoritesIDs.push("64660");favorites.push("/sketch/thumbnail/64660/cache/2012-06-25 19:58:52");favoritesIDs.push("64573");favorites.push("/sketch/thumbnail/64573/cache/2012-06-23 11:05:51");favoritesIDs.push("31295");favorites.push("/sketch/thumbnail/31295/cache/2012-03-04 19:48:05");favoritesIDs.push("63198");favorites.push("/sketch/thumbnail/63198/cache/2012-06-02 09:59:16");favoritesIDs.push("64038");favorites.push("/sketch/thumbnail/64038/cache/2012-06-14 07:34:10");favoritesIDs.push("63617");favorites.push("/sketch/thumbnail/63617/cache/2012-06-07 06:57:30");favoritesIDs.push("62743");favorites.push("/sketch/thumbnail/62743/cache/2012-05-27 11:37:07");favoritesIDs.push("2833");favorites.push("/sketch/thumbnail/2833/cache/2012-03-04 19:48:05");favoritesIDs.push("59700");favorites.push("/sketch/thumbnail/59700/cache/2012-04-23 05:36:14");favoritesIDs.push("19200");favorites.push("/sketch/thumbnail/19200/cache/2012-03-04 19:48:05");favoritesIDs.push("7207");favorites.push("/sketch/thumbnail/7207/cache/2012-03-04 19:48:05");favoritesIDs.push("52945");favorites.push("/sketch/thumbnail/52945/cache/2012-03-04 19:48:05");favoritesIDs.push("61275");favorites.push("/sketch/thumbnail/61275/cache/2012-05-13 11:50:29");favoritesIDs.push("61208");favorites.push("/sketch/thumbnail/61208/cache/2012-05-12 14:57:03");favoritesIDs.push("59527");favorites.push("/sketch/thumbnail/59527/cache/2012-04-19 23:20:37");favoritesIDs.push("25016");favorites.push("/sketch/thumbnail/25016/cache/2012-03-04 19:48:05");favoritesIDs.push("14228");favorites.push("/sketch/thumbnail/14228/cache/2012-03-04 19:48:05");favoritesIDs.push("11120");favorites.push("/sketch/thumbnail/11120/cache/2012-03-04 19:48:05");favoritesIDs.push("49692");favorites.push("/sketch/thumbnail/49692/cache/2012-03-04 19:48:05");favoritesIDs.push("20824");favorites.push("/sketch/thumbnail/20824/cache/2012-03-04 19:48:05");favoritesIDs.push("35030");favorites.push("/sketch/thumbnail/35030/cache/2012-03-04 19:48:05");favoritesIDs.push("35044");favorites.push("/sketch/thumbnail/35044/cache/2012-03-04 19:48:05");favoritesIDs.push("35068");favorites.push("/sketch/thumbnail/35068/cache/2012-03-04 19:48:05");favoritesIDs.push("35066");favorites.push("/sketch/thumbnail/35066/cache/2012-03-04 19:48:05");favoritesIDs.push("10423");favorites.push("/sketch/thumbnail/10423/cache/2012-03-04 19:48:05");favoritesIDs.push("1315");favorites.push("/sketch/thumbnail/1315/cache/2012-03-04 19:48:05");favoritesIDs.push("59390");favorites.push("/sketch/thumbnail/59390/cache/2012-04-18 12:29:32");favoritesIDs.push("58830");favorites.push("/sketch/thumbnail/58830/cache/2012-04-11 10:30:35");favoritesIDs.push("10250");favorites.push("/sketch/thumbnail/10250/cache/2012-03-04 19:48:05");favoritesIDs.push("10888");favorites.push("/sketch/thumbnail/10888/cache/2012-03-04 19:48:05");favoritesIDs.push("1205");favorites.push("/sketch/thumbnail/1205/cache/2012-03-04 19:48:05");favoritesIDs.push("7929");favorites.push("/sketch/thumbnail/7929/cache/2012-03-04 19:48:05");favoritesIDs.push("13590");favorites.push("/sketch/thumbnail/13590/cache/2012-03-04 19:48:05");favoritesIDs.push("14097");favorites.push("/sketch/thumbnail/14097/cache/2012-03-04 19:48:05");favoritesIDs.push("25855");favorites.push("/sketch/thumbnail/25855/cache/2012-03-04 19:48:05");favoritesIDs.push("52390");favorites.push("/sketch/thumbnail/52390/cache/2012-03-04 19:48:05");favoritesIDs.push("34282");favorites.push("/sketch/thumbnail/34282/cache/2012-03-04 19:48:05");favoritesIDs.push("14332");favorites.push("/sketch/thumbnail/14332/cache/2012-03-04 19:48:05");favoritesIDs.push("310");favorites.push("/sketch/thumbnail/310/cache/2012-03-04 19:48:05");favoritesIDs.push("17052");favorites.push("/sketch/thumbnail/17052/cache/2012-03-04 19:48:05");favoritesIDs.push("29559");favorites.push("/sketch/thumbnail/29559/cache/2012-03-04 19:48:05");favoritesIDs.push("47769");favorites.push("/sketch/thumbnail/47769/cache/2012-03-04 19:48:05");favoritesIDs.push("58064");favorites.push("/sketch/thumbnail/58064/cache/2012-04-04 06:52:05");favoritesIDs.push("17378");favorites.push("/sketch/thumbnail/17378/cache/2012-03-04 19:48:05");favoritesIDs.push("58104");favorites.push("/sketch/thumbnail/58104/cache/2012-04-04 22:28:27");favoritesIDs.push("4222");favorites.push("/sketch/thumbnail/4222/cache/2012-03-04 19:48:05");favoritesIDs.push("35065");favorites.push("/sketch/thumbnail/35065/cache/2012-03-04 19:48:05");favoritesIDs.push("43704");favorites.push("/sketch/thumbnail/43704/cache/2013-03-20 13:00:04");favoritesIDs.push("55440");favorites.push("/sketch/thumbnail/55440/cache/2012-03-09 15:25:38");favoritesIDs.push("29203");favorites.push("/sketch/thumbnail/29203/cache/2012-03-04 19:48:05");favoritesIDs.push("57709");favorites.push("/sketch/thumbnail/57709/cache/2012-04-01 13:51:14");favoritesIDs.push("8541");favorites.push("/sketch/thumbnail/8541/cache/2012-03-04 19:48:05");favoritesIDs.push("8360");favorites.push("/sketch/thumbnail/8360/cache/2012-03-04 19:48:05");favoritesIDs.push("46403");favorites.push("/sketch/thumbnail/46403/cache/2012-03-04 19:48:05");favoritesIDs.push("44311");favorites.push("/sketch/thumbnail/44311/cache/2012-03-04 19:48:05");favoritesIDs.push("38549");favorites.push("/sketch/thumbnail/38549/cache/2012-03-04 19:48:05");favoritesIDs.push("36608");favorites.push("/sketch/thumbnail/36608/cache/2012-03-04 19:48:05");favoritesIDs.push("3576");favorites.push("/sketch/thumbnail/3576/cache/2012-03-04 19:48:05");favoritesIDs.push("27500");favorites.push("/sketch/thumbnail/27500/cache/2012-03-04 19:48:05");favoritesIDs.push("24860");favorites.push("/sketch/thumbnail/24860/cache/2012-03-04 19:48:05");favoritesIDs.push("46807");favorites.push("/sketch/thumbnail/46807/cache/2012-03-04 19:48:05");favoritesIDs.push("46808");favorites.push("/sketch/thumbnail/46808/cache/2012-03-04 19:48:05");favoritesIDs.push("3455");favorites.push("/sketch/thumbnail/3455/cache/2012-03-04 19:48:05");favoritesIDs.push("25892");favorites.push("/sketch/thumbnail/25892/cache/2012-03-04 19:48:05");favoritesIDs.push("55526");favorites.push("/sketch/thumbnail/55526/cache/2012-03-10 14:26:57");favoritesIDs.push("31151");favorites.push("/sketch/thumbnail/31151/cache/2012-03-12 10:12:08");favoritesIDs.push("54855");favorites.push("/sketch/thumbnail/54855/cache/2012-03-06 14:57:02");favoritesIDs.push("53137");favorites.push("/sketch/thumbnail/53137/cache/2012-03-04 19:48:05");favoritesIDs.push("7474");favorites.push("/sketch/thumbnail/7474/cache/2012-03-04 19:48:05");favoritesIDs.push("31457");favorites.push("/sketch/thumbnail/31457/cache/2012-03-04 19:48:05");favoritesIDs.push("50238");favorites.push("/sketch/thumbnail/50238/cache/2012-03-04 19:48:05");favoritesIDs.push("25079");favorites.push("/sketch/thumbnail/25079/cache/2012-03-04 19:48:05");favoritesIDs.push("44121");favorites.push("/sketch/thumbnail/44121/cache/2012-03-04 19:48:05");favoritesIDs.push("35865");favorites.push("/sketch/thumbnail/35865/cache/2012-03-04 19:48:05");favoritesIDs.push("10400");favorites.push("/sketch/thumbnail/10400/cache/2012-03-04 19:48:05");favoritesIDs.push("2238");favorites.push("/sketch/thumbnail/2238/cache/2012-03-04 19:48:05");favoritesIDs.push("4536");favorites.push("/sketch/thumbnail/4536/cache/2012-03-04 19:48:05");favoritesIDs.push("4324");favorites.push("/sketch/thumbnail/4324/cache/2012-03-04 19:48:05");favoritesIDs.push("17403");favorites.push("/sketch/thumbnail/17403/cache/2012-03-04 19:48:05");favoritesIDs.push("51522");favorites.push("/sketch/thumbnail/51522/cache/2012-03-04 19:48:05");favoritesIDs.push("52909");favorites.push("/sketch/thumbnail/52909/cache/2012-03-04 19:48:05");favoritesIDs.push("8058");favorites.push("/sketch/thumbnail/8058/cache/2012-03-04 19:48:05");favoritesIDs.push("8056");favorites.push("/sketch/thumbnail/8056/cache/2012-03-04 19:48:05");favoritesIDs.push("52238");favorites.push("/sketch/thumbnail/52238/cache/2012-03-04 19:48:05");favoritesIDs.push("39584");favorites.push("/sketch/thumbnail/39584/cache/2012-03-04 19:48:05");favoritesIDs.push("34320");favorites.push("/sketch/thumbnail/34320/cache/2012-03-04 19:48:05");favoritesIDs.push("36961");favorites.push("/sketch/thumbnail/36961/cache/2012-03-04 19:48:05");favoritesIDs.push("7072");favorites.push("/sketch/thumbnail/7072/cache/2012-03-04 19:48:05");favoritesIDs.push("6009");favorites.push("/sketch/thumbnail/6009/cache/2012-03-04 19:48:05");favoritesIDs.push("52134");favorites.push("/sketch/thumbnail/52134/cache/2012-03-04 19:48:05");favoritesIDs.push("17807");favorites.push("/sketch/thumbnail/17807/cache/2012-03-04 19:48:05");favoritesIDs.push("3294");favorites.push("/sketch/thumbnail/3294/cache/2012-03-04 19:48:05");favoritesIDs.push("3137");favorites.push("/sketch/thumbnail/3137/cache/2012-03-04 19:48:05");favoritesIDs.push("51390");favorites.push("/sketch/thumbnail/51390/cache/2012-03-04 19:48:05");favoritesIDs.push("49923");favorites.push("/sketch/thumbnail/49923/cache/2012-03-04 19:48:05");favoritesIDs.push("49428");favorites.push("/sketch/thumbnail/49428/cache/2012-03-04 19:48:05");favoritesIDs.push("29018");favorites.push("/sketch/thumbnail/29018/cache/2012-03-04 19:48:05");favoritesIDs.push("46552");favorites.push("/sketch/thumbnail/46552/cache/2012-03-04 19:48:05");favoritesIDs.push("2696");favorites.push("/sketch/thumbnail/2696/cache/2012-03-04 19:48:05");favoritesIDs.push("30738");favorites.push("/sketch/thumbnail/30738/cache/2012-03-04 19:48:05");favoritesIDs.push("9908");favorites.push("/sketch/thumbnail/9908/cache/2012-03-04 19:48:05");favoritesIDs.push("1334");favorites.push("/sketch/thumbnail/1334/cache/2012-03-04 19:48:05");favoritesIDs.push("1957");favorites.push("/sketch/thumbnail/1957/cache/2012-03-04 19:48:05");favoritesIDs.push("29687");favorites.push("/sketch/thumbnail/29687/cache/2012-03-04 19:48:05");favoritesIDs.push("1758");favorites.push("/sketch/thumbnail/1758/cache/2012-03-04 19:48:05");favoritesIDs.push("19084");favorites.push("/sketch/thumbnail/19084/cache/2012-03-04 19:48:05");favoritesIDs.push("27653");favorites.push("/sketch/thumbnail/27653/cache/2012-03-04 19:48:05");favoritesIDs.push("30490");favorites.push("/sketch/thumbnail/30490/cache/2012-03-04 19:48:05");favoritesIDs.push("49159");favorites.push("/sketch/thumbnail/49159/cache/2012-03-04 19:48:05");favoritesIDs.push("12878");favorites.push("/sketch/thumbnail/12878/cache/2012-03-04 19:48:05");favoritesIDs.push("17194");favorites.push("/sketch/thumbnail/17194/cache/2012-03-04 19:48:05");favoritesIDs.push("17239");favorites.push("/sketch/thumbnail/17239/cache/2012-03-04 19:48:05");favoritesIDs.push("7508");favorites.push("/sketch/thumbnail/7508/cache/2012-03-04 19:48:05");favoritesIDs.push("1955");favorites.push("/sketch/thumbnail/1955/cache/2012-03-04 19:48:05");favoritesIDs.push("8022");favorites.push("/sketch/thumbnail/8022/cache/2012-03-04 19:48:05");favoritesIDs.push("30842");favorites.push("/sketch/thumbnail/30842/cache/2012-03-04 19:48:05");favoritesIDs.push("4553");favorites.push("/sketch/thumbnail/4553/cache/2012-03-04 19:48:05");favoritesIDs.push("5669");favorites.push("/sketch/thumbnail/5669/cache/2012-03-04 19:48:05");favoritesIDs.push("49030");favorites.push("/sketch/thumbnail/49030/cache/2012-03-04 19:48:05");favoritesIDs.push("45269");favorites.push("/sketch/thumbnail/45269/cache/2012-03-04 19:48:05");favoritesIDs.push("46988");favorites.push("/sketch/thumbnail/46988/cache/2012-03-04 19:48:05");favoritesIDs.push("47757");favorites.push("/sketch/thumbnail/47757/cache/2012-03-04 19:48:05");favoritesIDs.push("8101");favorites.push("/sketch/thumbnail/8101/cache/2012-03-04 19:48:05");favoritesIDs.push("34403");favorites.push("/sketch/thumbnail/34403/cache/2012-03-04 19:48:05");favoritesIDs.push("7571");favorites.push("/sketch/thumbnail/7571/cache/2012-03-04 19:48:05");favoritesIDs.push("26773");favorites.push("/sketch/thumbnail/26773/cache/2012-03-04 19:48:05");favoritesIDs.push("13607");favorites.push("/sketch/thumbnail/13607/cache/2012-03-04 19:48:05");favoritesIDs.push("37626");favorites.push("/sketch/thumbnail/37626/cache/2012-03-04 19:48:05");favoritesIDs.push("39486");favorites.push("/sketch/thumbnail/39486/cache/2012-03-04 19:48:05");favoritesIDs.push("31158");favorites.push("/sketch/thumbnail/31158/cache/2012-03-04 19:48:05");favoritesIDs.push("11907");favorites.push("/sketch/thumbnail/11907/cache/2012-03-04 19:48:05");favoritesIDs.push("5138");favorites.push("/sketch/thumbnail/5138/cache/2012-03-04 19:48:05");favoritesIDs.push("18971");favorites.push("/sketch/thumbnail/18971/cache/2012-03-04 19:48:05");favoritesIDs.push("15082");favorites.push("/sketch/thumbnail/15082/cache/2012-03-04 19:48:05");favoritesIDs.push("2292");favorites.push("/sketch/thumbnail/2292/cache/2012-03-04 19:48:05");favoritesIDs.push("11537");favorites.push("/sketch/thumbnail/11537/cache/2012-03-04 19:48:05");favoritesIDs.push("10414");favorites.push("/sketch/thumbnail/10414/cache/2012-03-04 19:48:05");favoritesIDs.push("11092");favorites.push("/sketch/thumbnail/11092/cache/2012-03-04 19:48:05");favoritesIDs.push("11516");favorites.push("/sketch/thumbnail/11516/cache/2012-03-04 19:48:05");	if(favorites.length ==0){ 
+		$('<span class="greyText">no favorites yet.</span>').insertAfter($('#favoritesTitle')); 
+		} else { 
+		$("<input type='button' id='showMore' class='formButton showMoreButton' value='show more'/>").click(function(){ revealFavorites();}).insertAfter($('#favoritesTitle'));
+		}
+	revealFavorites();
+
+	
+	
+}
+
+var faveIndex = 0;
+function revealFavorites(){
+	for(var i=faveIndex; i<faveIndex+36; i++){
+		if(favorites[i]){
+			var index=i;
+			var img = $('<img  class="visThumbnail visThumbnailHomepage"/>').attr('src', favorites[index]).attr('title', favoritesIDs[index]);
+			img.on('click', function(event){ location.href='/visuals/?visualID='+$(this).attr('title'); } ).insertBefore($('#showMore'));
+		}
+		else if(typeof favorites[i+1] == 'undefined'){
+			$('#showMore').hide();
+			break;	
+		}
+	};
+	faveIndex+=42;
+}
+
+function toggleDescriptions(){
+	$('.visDescription').toggle(); 
+	$('#listIcon').toggle(); 
+	$('#listThumbIcon').toggle(); 
+	if($('.visDescription').css('display') == 'block'){
+		$('.portalPiece').addClass('noMargin');	
+	} else { $('.portalPiece').removeClass('noMargin');	}
+	
+	
+}
+
+function initialize() {
+   codeAddress();
+ 
+}
+  
+function loadMap() {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
+  document.body.appendChild(script);
+}
+
+function codeAddress() {
+  var geocoder = new google.maps.Geocoder();
+  var mapCanvas = document.getElementById("map_canvas");
+  mapCanvas.innerHTML = "";
+  
+  var address = "Prague";
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+		//if(typeof marker != "undefined") marker.setMap(null); //remove marker if already exist
+		var myLatlng = results[0].geometry.location;
+		  var myOptions = {
+		    zoom: 2,
+		    center: myLatlng,
+		    mapTypeId: google.maps.MapTypeId.ROADMAP,
+		    disableDefaultUI: true,
+		  }
+   	      var map = new google.maps.Map(mapCanvas, myOptions);
+		//map.setCenter(results[0].geometry.location);
+
+            marker = new google.maps.Marker({
+            map: map, 
+            position: results[0].geometry.location
+        });
+	  mapCanvas.style.visibility = "visible";
+
+      } else if(address!=""){
+		mapCanvas.innerHTML = "Couldn't find it on Google Maps.. It says: " + status;
+	  }
+    });
+  }
+
+
+</script>
+<style type="text/css">
+<!--
+.portalPiece {
+	margin-right:20px;
+}
+#leftColumn div.portalPiece:nth-of-type(5n+6) {
+	margin-right: 0px;
+}
+.portalPiece .visDescription {
+	float:left;
+	margin-left:20px;
+	width:468px;
+	border-top: solid 1px #eee;
+	padding:10px 0;
+}
+.portalPiece.noMargin {
+	margin-right:0;	
+}
+
+
+
+.userThumbnail40 {
+	border:#ccc solid 1px;
+	width:40px;
+	height:40px;
+	cursor:pointer;
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+}
+.userThumbnail40:hover {
+	border-color: #F90;
+}
+
+.followButtonBox {
+	float:left;
+	width:105px;
+	text-align:center;
+}
+.followBox {
+	float:left;
+	width:75px;
+	border:#ccc dotted;
+	border-width:1px 1px 0 1px;
+	text-align:center;
+	margin-top:-5px;
+}
+.followBox.selected {
+	background: #f0f0f0;	
+}
+.followBox a {
+	font-size:16px;
+	font-weight:bold;
+}
+.followList {
+	width:248px;
+	border:#ccc dotted;
+	border-width:1px 1px 0px 1px;
+	padding:5px;
+	background:#f0f0f0;
+	}
+.private {
+	
+	
+}
+.visThumbnail .icons {
+	 position:absolute; 
+	 right:2px;
+	 top:2px;	
+	 background:none;
+}
+.visThumbnail .iconicSprite {
+	 float:right;
+	 margin:2px;	
+}
+-->
+</style>
+
+
+<link href="/assets/css/user.css" rel="stylesheet" type="text/css" />
+<!-- InstanceEndEditable -->
+</head>
+
+<body onload="init()">
+<div id="menuBackground"></div>
+<div id="pageContainer"><!-- InstanceBeginEditable name="currentSectionTag" -->
+		<!-- InstanceEndEditable -->
+  
+<div id="menuHeader">
+		<div  id="menuAdSpace" class="navElementBottom">
+		<!-- BuySellAds Zone Code -->
+		<div id="bsap_1273897" class="bsarocks bsap_1c56119236652d8d7f1daf17ae966cfe"></div>
+		<!-- End BuySellAds Zone Code -->
+				<div onclick="location.assign('/membership/');" style='cursor:pointer'> <a href="/membership/">
+			<h3>Introducing <span class="orange">Plus+</span> Membership!</h3>
+			</a>
+			<div class="greyText" style="margin:3px 0;">Enjoy the next level for your sketches<br />
+while supporting OpenProcessing</div>
+			<h3 class="mako">Bigger uploads, no ads,<br />
+				custom license & private sketches</h3>
+		</div>
+			</div>
+		<div class="navElement" style="left:0px; width:208px; height:26px; overflow:visible; top:3px;"><a href="/"><img src="/assets/images/header.png" alt="OpenProcessing" width="167" height="24" /></a> </div>
+	<div class="navElementBottom" id="profileElement" style="left:0px; border:none; width:auto; z-index:1; height:40px; padding:0; overflow:visible;" >
+						<a href="/login/" class="mako" style="font-size:14px">login</a> - <a href="/login/?signup=true" class="mako" style="font-size:14px">sign up</a>
+			</div>
+	<div class="navElement mako" style="left: 280px;"> <a href="/browse/" class="menuItem ">browse</a> <a href="/classrooms/" class="menuItem ">classrooms</a> <a href="/collections/" class="menuItem ">collections</a><a href="/books/" class="menuItem ">books</a></div>
+	<div class="navElement mako" style="right: 0px; text-align:right;"> <a href="/membership/" class="menuItem ">go <span class="orange">plus+</span></a><a href="/jobs/" class="menuItem ">jobs</a> <!--a href="http://blog.openprocessing.org/" class="menuItem ">blog</a-->
+		<form id="searchForm" action="/search/" onsubmit="if($('#searchField').val() == 'search') $('#searchField').val('');" class="menuItem">
+			<div id="searchButton" class="menuItem"><img class="menuItem iconSet searchGrey" src="/assets/images/spacer.png"  onclick="$('#menuHeader #searchForm').submit();"/></div>
+			<input class="menuItem" id="searchField" default="search" name="q" type="text" maxlength="40" value="search" onfocus="($(this).val()=='search')? $(this).val(''):''; $(this).animate({width: '+=55'}, 100).css({color:'#000'});" onblur="if( $(this).val()==''){ $(this).val('search'); $(this).css('color','#CCC');}; $(this).animate({width: '-=55'},100);" />
+		</form>
+	</div>
+		</div>
+<div class="clearDiv"></div>
+<script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Mako::latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); 
+  
+  function openSketch(obj){
+	//var int = $(obj).addClass('selected').attr('alt');
+	//console.log(int);
+	//$('#menuHeader #browseModule .visThumbnail50').animate({left: int},200, function(){ });  
+	location.href=$(obj).attr('href');
+		  
+  }
+  
+  </script> 
+<!-- InstanceBeginEditable name="main" -->
+	<!--	<script type="text/javascript" src="/Scripts/imageCrop/js/jquery-pack.js"></script>
+-->	<script type="text/javascript" src="/assets/js/imageCrop/jquery.imgareaselect.js"></script>
+	<script type="text/javascript" src="/assets/js/imageCrop/jquery.ocupload-packed.js"></script>
+	<link type="text/css" href="/assets/js/imageCrop/css/imgareaselect-default.css" rel="stylesheet" />
+<!-- 
+* Copyright (c) 2008 http://www.webmotionuk.com / http://www.webmotionuk.co.uk
+* "Jquery image upload & crop for php"
+* Date: 2008-11-21
+* Ver 1.0
+* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+* IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
+* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+* PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+* INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+* STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF 
+* THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+* http://www.opensource.org/licenses/bsd-license.php
+-->
+<script type="text/javascript">
+//<![CDATA[
+
+//create a preview of the selection
+function preview(img, selection) { 
+	//get width and height of the uploaded image.
+	var current_width = $('#uploaded_image').find('#mainImage').width();
+	var current_height = $('#uploaded_image').find('#mainImage').height();
+
+	var scaleX = 100 / selection.width; 
+	var scaleY = 100 / selection.height; 
+	
+	$('#thumbnailImage').css({ 
+		width: Math.round(scaleX * current_width) + 'px', 
+		height: Math.round(scaleY * current_height) + 'px',
+		marginLeft: '-' + Math.round(scaleX * selection.x1) + 'px', 
+		marginTop: '-' + Math.round(scaleY * selection.y1) + 'px' 
+	});
+	$('#x1').val(selection.x1);
+	$('#y1').val(selection.y1);
+	$('#x2').val(selection.x2);
+	$('#y2').val(selection.y2);
+	$('#w').val(selection.width);
+	$('#h').val(selection.height);
+} 
+
+//show and hide the loading message
+function loadingmessage(msg, show_hide){
+	if(show_hide=="show"){
+		$('#loader').show();
+		$('#progress').show().text(msg);
+	}else if(show_hide=="hide"){
+		$('#loader').hide();
+		$('#progress').text('').hide();
+	}else{
+		$('#loader').hide();
+		$('#progress').text('').hide();
+	}
+}
+
+//delete the image when the delete link is clicked.
+function deleteimage(large_image, thumbnail_image){
+	loadingmessage('Please wait, deleting images...', 'show');
+	$.ajax({
+		type: 'POST',
+		url: '/user/uploadImage',
+		data: 'a=delete&large_image='+large_image+'&thumbnail_image='+thumbnail_image,
+		cache: false,
+		success: function(response){
+			loadingmessage('', 'hide');
+			response = unescape(response);
+			var response = response.split("|");
+			var responseType = response[0];
+			var responseMsg = response[1];
+			if(responseType=="success"){
+				$('#upload_status').show().html('<h1>Please select area</h1>');
+			}else{
+				$('#upload_status').show().html('<h1>Unexpected Error</h1><p>Please try again</p>'+response);
+			}
+		}
+	});
+}
+
+var setupImageCropDialog = function(){
+		/*	
+		$( "#imageCropDialog" ).dialog({
+			autoOpen: false,
+			height: 'auto',
+			width:900,
+			modal: true,
+			buttons: {
+				"Save": function() {
+					saveThumbnail();
+					$('#uploaded_image').find('#thumbnail').imgAreaSelect({ disable: true, hide: true }); 
+					$( this ).dialog( "hide" );
+
+				},
+				Cancel: function() {
+					$('#uploaded_image').find('#thumbnail').imgAreaSelect({ disable: true, hide: true }); 
+					$( this ).dialog( "close" );
+
+				}
+			},
+			close: function() {
+			}
+			
+		});
+		*/
+		
+		$('#loader').hide();
+		$('#progress').hide();
+		var myUpload = $('#thumbnailImage').upload({
+		   name: 'image',
+		   action: '/user/uploadImage',
+		   enctype: 'multipart/form-data',
+		   params: {upload:'Upload'},
+		   autoSubmit: true,
+		   onSubmit: function() {
+				//$('#uploadThumbnailLink').select();
+		   		//$('#imageCropDialog').dialog('open');
+		   		//$('#uploadImageForm').html($('#imageCropDialog').html());
+				$('#upload_status').html('').hide();
+				$('#loadingIcon').show();
+	   },
+		   onComplete: function(response) {
+		   		$('#hiddenOrigin').qtip({
+				      
+				    content: {
+						// Set the text to an image HTML string with the correct src URL to the loading image you want to use
+						text: $('#imageCropDialog')
+					},
+					position: {
+						at: 'bottom left', // Position the tooltip above the link
+						my: 'top left',
+						viewport: $(window), // Keep the tooltip on-screen at all times
+						effect: false, // Disable positioning animation
+						target: $('#thumbnailDiv')
+						
+				         },
+				    show: {
+				    	  ready: true,
+   						event: 'click',
+						solo: true // Only show one tooltip at a time
+				    },
+				     hide: {
+				   },
+				    style: {
+						classes: 'ui-tooltip-wiki ui-tooltip-light ui-tooltip-shadow',
+						width: 'auto'
+				    },
+				     events: {
+				     	render: function(event, api) {
+					      },
+						visible: function(event, api) {
+		 				$('#loadingIcon').hide();
+						 updateImageCrop(response);
+						 //$('#imageCropDialog').show();
+
+						},
+						hide: function(event, api){
+						    $('#mainImage').imgAreaSelect({ disable: true, hide: true }); 
+						}
+					}
+				    
+				         
+				 });
+		    //$('#hiddenOrigin').qtip("open");
+
+		   }
+		});
+		
+		$('#uploadThumbnailDiv').click(function(){ $('input[name="image"]').click(); });
+}
+
+var updateImageCrop = function(response){
+	
+				response = unescape(response);
+				var response = response.split("|");
+				var responseType = response[0];
+				var responseMsg = response[1];
+				if(responseType=="success"){
+					var current_width = response[2];
+					var current_height = response[3];
+					var min_dimension = Math.min(parseInt(current_width), parseInt(current_height));
+					$('#mainImage').attr('src',''); //delete first so that it becomes smaller.
+					$('#mainImage').removeAttr('src'); //delete it so allows new cache.
+					$('#mainImage').attr('src',responseMsg + "?random="+Math.random(500));
+					$('#thumbnailImage').attr('oldsrc',$('#thumbnailImage').attr('src')); //save the old source for cancel.
+					$('#thumbnailImage').attr('oldstyle',$('#thumbnailImage').attr('style')); //save the old source for cancel.
+					$('#thumbnailImage').attr('src',responseMsg + "?random="+Math.random(500));
+					
+ 					$('#mainImage').imgAreaSelect({ enable: true, show: true,  aspectRatio: '1:1', zIndex:20000,persistent:true, handles:true, onSelectChange: preview, onInit: preview, x1:10,y1:10,x2:min_dimension-10,y2:min_dimension-10 });
+					//find the image inserted above, and allow it to be cropped
+					//display the hidden form
+				}else if(responseType=="error"){
+					$('#upload_status').show().html('<h1>Error</h1><p>'+responseMsg+'</p>');
+				}else{
+					$('#upload_status').show().html('<h1>Unexpected Error</h1><p>Please try again</p>'+response);
+				}
+
+
+}
+		
+
+	
+	//create the thumbnail
+var saveThumbnail = function() {
+		var x1 = $('#x1').val();
+		var y1 = $('#y1').val();
+		var x2 = $('#x2').val();
+		var y2 = $('#y2').val();
+		var w = $('#w').val();
+		var h = $('#h').val();
+		if(x1=="" || y1=="" || x2=="" || y2=="" || w=="" || h==""){
+			alert("You must make a selection first");
+			return false;
+		}else{
+			//hide the selection and disable the imgareaselect plugin
+			$('#mainImage').imgAreaSelect({ disable: true, hide: true }); 
+			loadingmessage('Please wait, saving thumbnail....', 'show');
+			$.ajax({
+				type: 'POST',
+				url: '/user/uploadImage',
+				data: 'save_thumb=Save Thumbnail&x1='+x1+'&y1='+y1+'&x2='+x2+'&y2='+y2+'&w='+w+'&h='+h,
+				cache: false,
+				success: function(response){
+					loadingmessage('', 'hide');
+					response = unescape(response);
+					var response = response.split("|");
+					var responseType = response[0];
+					var responseLargeImage = response[1];
+					var responseThumbImage = response[2];
+					if(responseType=="success"){
+					    $('#hiddenOrigin').qtip("hide");
+					    
+					    //refresh the profile image on the navigation
+						$('#menuHeader img.gravatar40').attr('src', '');
+						$('#menuHeader img.gravatar40').removeAttr('src');
+						$('#menuHeader img.gravatar40').attr('src', '/assets/profileImages/user0.jpg?rand='+Math.random(200));
+
+						
+					}else{
+						$('#upload_status').show().html('Unexpected Error, please try again. If problem persists, please contact info -at- openprocessing dot org. ');
+						//reactivate the imgareaselect plugin to allow another attempt.
+		    			$('#hiddenOrigin').qtip("show");
+					}
+				}
+			});
+			
+			return false;
+		}
+}
+
+var cancelImageCrop	= function(){
+	$('#hiddenOrigin').qtip("hide");
+    $('#mainImage').imgAreaSelect({ disable: true, hide: true }); 
+	$('#thumbnailImage').attr('src',$('#thumbnailImage').attr('oldsrc')); //save the old source for cancel.
+	$('#thumbnailImage').attr('style',$('#thumbnailImage').attr('oldstyle')); //save the old source for cancel.
+	$('#thumbnailImage').attr('style','position:relative;'); //remove offset values.
+
+	
+}
+
+$.eventReport = function(selector, root) {
+        var s = [];
+        $(selector || '*', root).andSelf().each(function() {
+            var e = $.data(this, 'events');
+            if(!e) return;
+            s.push(this.tagName);
+            if(this.id) s.push('#', this.id);
+            if(this.className) s.push('.', this.className);
+            for(var p in e) s.push('\n', p);
+            s.push('\n\n');
+        });
+        return s.join('');
+    }
+$.fn.eventReport = function(selector) {
+        return $.eventReport(selector, this);
+
+}
+
+
+//]]>
+</script>
+<div id="imageCropDialog" style="display:none">
+	<input class="formButtonMain" type="button" value='Save' onclick='saveThumbnail()'/> <input class="formButton" type='button' value='Cancel'  onclick='cancelImageCrop()'>
+	<div id="upload_status"></div>
+	<div id="uploaded_image"><img style="margin: 10px;" id="mainImage"/></div>
+	<div id="thumbnail_form" style="display:none;">
+		<form name="form" action="" method="post">
+			<input type="hidden" name="x1" value="" id="x1" />
+			<input type="hidden" name="y1" value="" id="y1" />
+			<input type="hidden" name="x2" value="" id="x2" />
+			<input type="hidden" name="y2" value="" id="y2" />
+			<input type="hidden" name="w" value="" id="w" />
+			<input type="hidden" name="h" value="" id="h" />
+		</form>
+	</div>
+</div>
+<div id='hiddenOrigin' style='display:none;'></div>
+	<div style="position:relative; background:url(/assets/images/gradient2-inverse.png) bottom repeat-x; min-height:77px;  ; border-bottom: solid 2px #f90; margin-bottom:50px">
+		<div id="userDetails" class="floatRight" style="width:260px; position:absolute; bottom:5px; right:0px; padding:5px 0;">
+						&nbsp;<span class="iconicSprite iconic-map_pin_stroke_8x12"></span> <strong>
+			Prague			</strong><br/>
+									<span class="iconicSprite iconic-link_10x10"></span> <a href="https://github.com/K0F/2013" rel="nofollow" target="_blank"><strong>
+			https://github.com/K0F/2013			</strong></a><br/>
+						<span class="iconicSprite iconic-user_9x12"></span> member since
+			January 3, 2010					</div>
+		<div id="thumbnailDiv"> <img src="/assets/profileImages/user3942.jpg" alt="profile picture" id="thumbnailImage" style="position:relative; width: 100px; height: 100px"/> <img src="/assets/images/loadingIcon.gif" id="loadingIcon" style="position:absolute; top:40px; left: 40px; display:none; "/>
+			<div id="uploadThumbnailDiv" style='display:none'> upload thumbnail </div>
+		</div>
+		<div class="" style="position: relative; left: 120px; width: 470px; bottom: 0px;">
+			<h1> <span style="color:#999999; line-height:35px;">portfolio of <br />
+				</span> <span style="font-size:50px; padding-left:0px; line-height:50px;">
+				Kryštof Pešek (Kof)				</span> </h1>
+		</div>
+		<div class="clearDiv"></div>
+	</div>
+	<div id="leftColumn" class="" style="float:left; width:590px;">
+		<div style="position:relative; top:-50px; left:0; text-align:left" class="">
+							<a href="javascript:;" class="hangingBox" style="position:absolute; right:0;" onclick="toggleDescriptions()"><span id="listIcon" class="iconicSprite iconic-list_12x11_blue"></span><span id="listThumbIcon" class="iconicSprite  iconic-list_thumbs_12x11_blue" style="display:none"></span></a>
+								</div>
+									<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox104960" onmouseover="$('#title104960').show();" onmouseout="$('#title104960').hide();" >
+				<div class="icons">
+										<div class="iconicSprite iconic-fork_14x16"></div>				</div>
+				 <a href="/sketch/104960"> <img id="image104960" src="/sketch/thumbnail/104960/cache/2013-07-31 14:02:06" /> </a>
+					<div id="title104960" class="descriptionBox"> <a href="/sketch/104960"> <strong>
+						Eppur si muove!						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/104960">
+						Eppur si muove!						</a>
+					</h3>
+					))<br />
+<br />
+Thanks to @Makio135 for his nice webcam browser patch.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox104397" onmouseover="$('#title104397').show();" onmouseout="$('#title104397').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/104397"> <img id="image104397" src="/sketch/thumbnail/104397/cache/2013-07-29 02:46:14" /> </a>
+					<div id="title104397" class="descriptionBox"> <a href="/sketch/104397"> <strong>
+						Spirofractal						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/104397">
+						Spirofractal						</a>
+					</h3>
+					Just a few simple rules, iterated, rotated, repeated.. beware, it can randomly cause sudden enlightenment )				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox103078" onmouseover="$('#title103078').show();" onmouseout="$('#title103078').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/103078"> <img id="image103078" src="/sketch/thumbnail/103078/cache/2013-07-05 10:00:01" /> </a>
+					<div id="title103078" class="descriptionBox"> <a href="/sketch/103078"> <strong>
+						Optodisc						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/103078">
+						Optodisc						</a>
+					</h3>
+					.. many different constellations, some of them are quite interesting.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox101128" onmouseover="$('#title101128').show();" onmouseout="$('#title101128').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/101128"> <img id="image101128" src="/sketch/thumbnail/101128/cache/2013-06-17 05:07:31" /> </a>
+					<div id="title101128" class="descriptionBox"> <a href="/sketch/101128"> <strong>
+						Visual encryption						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/101128">
+						Visual encryption						</a>
+					</h3>
+					Visual representation of words, tool for creating geometrical patterns which can be considered as encrypted language.<br />
+<br />
+Type something.<br />
+(gain focus first)<br />
+<br />
+Press ENTER to hide / show the key.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox100191" onmouseover="$('#title100191').show();" onmouseout="$('#title100191').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/100191"> <img id="image100191" src="/sketch/thumbnail/100191/cache/2013-05-28 00:14:44" /> </a>
+					<div id="title100191" class="descriptionBox"> <a href="/sketch/100191"> <strong>
+						Color Study						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/100191">
+						Color Study						</a>
+					</h3>
+					Oscillation, wavelengths, light..				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox97391" onmouseover="$('#title97391').show();" onmouseout="$('#title97391').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/97391"> <img id="image97391" src="/sketch/thumbnail/97391/cache/2013-04-25 17:09:33" /> </a>
+					<div id="title97391" class="descriptionBox"> <a href="/sketch/97391"> <strong>
+						compositionFriApr26						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/97391">
+						compositionFriApr26						</a>
+					</h3>
+					Sorry for bad timing and screwed vsync in browser.. all is bit out of tune, so it is probably better viewed elsewhere.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox97344" onmouseover="$('#title97344').show();" onmouseout="$('#title97344').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/97344"> <img id="image97344" src="/sketch/thumbnail/97344/cache/2013-04-24 18:38:45" /> </a>
+					<div id="title97344" class="descriptionBox"> <a href="/sketch/97344"> <strong>
+						andNowForSomethingCompletelyDi...						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/97344">
+						andNowForSomethingCompletelyDifferent						</a>
+					</h3>
+					Title says it all.. ))				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox94219" onmouseover="$('#title94219').show();" onmouseout="$('#title94219').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/94219"> <img id="image94219" src="/sketch/thumbnail/94219/cache/2013-03-22 19:31:35" /> </a>
+					<div id="title94219" class="descriptionBox"> <a href="/sketch/94219"> <strong>
+						Little Machines						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/94219">
+						Little Machines						</a>
+					</h3>
+					Some random crowding study..<br />
+<br />
+Click to follow other machine.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox90923" onmouseover="$('#title90923').show();" onmouseout="$('#title90923').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/90923"> <img id="image90923" src="/sketch/thumbnail/90923/cache/2013-02-25 00:46:30" /> </a>
+					<div id="title90923" class="descriptionBox"> <a href="/sketch/90923"> <strong>
+						Generic Vertebrate						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/90923">
+						Generic Vertebrate						</a>
+					</h3>
+					This fancy spine-some worm uses a series of 3D matrix transformations and rotations. You may find bit hard to understand matrices, especially if you had very little math in school.. like myself.<br />
+<br />
+In general this gives processing great power to handle wide range of transformations and what is the best to store and apply more at once.<br />
+<br />
+For some basic insight I suggest reading:<br />
+<a  href="http://www.sjbaker.org/steve/omniv/matrices_can_be_your_friends.html" rel="nofollow" target="_blank">http://www.sjbaker.org/steve/omniv/matrices_can_be_your_friends.html</a><br />
+<br />
+I will try to bring some parsed and rigged mesh soon.. just when I have some time to dig in fully.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox87346" onmouseover="$('#title87346').show();" onmouseout="$('#title87346').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/87346"> <img id="image87346" src="/sketch/thumbnail/87346/cache/2013-01-30 01:28:49" /> </a>
+					<div id="title87346" class="descriptionBox"> <a href="/sketch/87346"> <strong>
+						Draw 3D						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/87346">
+						Draw 3D						</a>
+					</h3>
+					Drawing in 3D is quite problematic, this is raw conception how it could be achieved, the possibilities are fairly limited..<br />
+<br />
+LEFTDRAG = draw<br />
+RIGHTDRAG = rotate<br />
+SPACE = erase<br />
+<br />
+Hold both buttons together to create circular-like shapes in space.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox87304" onmouseover="$('#title87304').show();" onmouseout="$('#title87304').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/87304"> <img id="image87304" src="/sketch/thumbnail/87304/cache/2013-01-29 09:23:04" /> </a>
+					<div id="title87304" class="descriptionBox"> <a href="/sketch/87304"> <strong>
+						Aurora						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/87304">
+						Aurora						</a>
+					</h3>
+					Wait for a while.. it slowly reveals itself.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox86552" onmouseover="$('#title86552').show();" onmouseout="$('#title86552').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/86552"> <img id="image86552" src="/sketch/thumbnail/86552/cache/2013-01-22 17:03:11" /> </a>
+					<div id="title86552" class="descriptionBox"> <a href="/sketch/86552"> <strong>
+						System Parody						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/86552">
+						System Parody						</a>
+					</h3>
+					Media hijack.. it would be funny to make small linux distro on usb thumb running X server plus this sketch by default in fullscreen. But it would be quite, well, evil. ))				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox84477" onmouseover="$('#title84477').show();" onmouseout="$('#title84477').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/84477"> <img id="image84477" src="/sketch/thumbnail/84477/cache/2013-01-05 12:38:46" /> </a>
+					<div id="title84477" class="descriptionBox"> <a href="/sketch/84477"> <strong>
+						Textured terrain						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/84477">
+						Textured terrain						</a>
+					</h3>
+					Example of computing normals per vertex / smooth shading (instead of processing default, normal per face). Terrain generator with textured output.<br />
+<br />
+Press any key to generate new elevation map.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox83881" onmouseover="$('#title83881').show();" onmouseout="$('#title83881').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/83881"> <img id="image83881" src="/sketch/thumbnail/83881/cache/2013-01-03 14:32:39" /> </a>
+					<div id="title83881" class="descriptionBox"> <a href="/sketch/83881"> <strong>
+						Multi Gravity						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/83881">
+						Multi Gravity						</a>
+					</h3>
+					System which tends to stabilize itself, the more particles you add the more complex orbital system you will probably observe.<br />
+<br />
+Red dot marks a center of gravity of all computed particles. When it starts creating some patterns, the system is very close to stadium of self-stabilization (synchronized cycles).<br />
+<br />
+10+ particles takes often hours (if not forever) to create any *visible* patterns..<br />
+<br />
+**(it is to consider, in which scale we call things already patterns by giving them any name)<br />
+<br />
+Test new Android version:<br />
+<a  href="http://bit.ly/RYtu0H" rel="nofollow" target="_blank">http://bit.ly/RYtu0H</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox83392" onmouseover="$('#title83392').show();" onmouseout="$('#title83392').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/83392"> <img id="image83392" src="/sketch/thumbnail/83392/cache/2012-12-14 05:02:41" /> </a>
+					<div id="title83392" class="descriptionBox"> <a href="/sketch/83392"> <strong>
+						Coding flock						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/83392">
+						Coding flock						</a>
+					</h3>
+					Another live session capture.. (it is starting to be kind of code fetish :D ).. quick flocking system. (Session speedup 3x)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox83063" onmouseover="$('#title83063').show();" onmouseout="$('#title83063').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/83063"> <img id="image83063" src="/sketch/thumbnail/83063/cache/2012-12-11 14:40:53" /> </a>
+					<div id="title83063" class="descriptionBox"> <a href="/sketch/83063"> <strong>
+						TTY Star Wars						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/83063">
+						TTY Star Wars						</a>
+					</h3>
+					As @bitcraft suggested before, there is a Processing player implementation for legendary Simon Jansen's Star Wars Episode IV remake in pure ASCII art.<br />
+<br />
+The A++ movie (textie) is not complete here (has already 3.3 megs), it is playing from captured file from original telnet translation made by Sten Spans.<br />
+<br />
+Other movie credits also goes to Mike Edwards for terrifying *terminal effects*, the rest is just processing fun emulating the vt100 terminal console (historically incorrect).<br />
+<br />
+Please excuse the connection gitches.<br />
+<br />
+Check full original here: <br />
+<a  href="http://www.asciimation.co.nz/" rel="nofollow" target="_blank">http://www.asciimation.co.nz/</a><br />
+<br />
+Enjoy!				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox82664" onmouseover="$('#title82664').show();" onmouseout="$('#title82664').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/82664"> <img id="image82664" src="/sketch/thumbnail/82664/cache/2012-12-10 20:09:00" /> </a>
+					<div id="title82664" class="descriptionBox"> <a href="/sketch/82664"> <strong>
+						TTY Video test						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/82664">
+						TTY Video test						</a>
+					</h3>
+					Made by hasciicam by Jaromil <a  href="http://ascii.dyne.org/" rel="nofollow" target="_blank">http://ascii.dyne.org/</a> and ttyrec.<br />
+<br />
+<br />
+..it may take some time to load				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox81785" onmouseover="$('#title81785').show();" onmouseout="$('#title81785').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/81785"> <img id="image81785" src="/sketch/thumbnail/81785/cache/2012-11-30 21:31:25" /> </a>
+					<div id="title81785" class="descriptionBox"> <a href="/sketch/81785"> <strong>
+						Dialogue						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/81785">
+						Dialogue						</a>
+					</h3>
+					This is very *meta* sketch. Program called ttyrec captures a born of ttyrec file processing parser.. you can see that the code actually contains some errors.. but it captures real mind-flow from very beginning of the whole concept.<br />
+<br />
+TODO: visible cursor, vt100 colors<br />
+<br />
+<a  href="http://0xcc.net/ttyrec/index.html.en" rel="nofollow" target="_blank">http://0xcc.net/ttyrec/index.html.en</a><br />
+<br />
+It works with any ttyrecord file ;)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox77960" onmouseover="$('#title77960').show();" onmouseout="$('#title77960').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/77960"> <img id="image77960" src="/sketch/thumbnail/77960/cache/2012-11-04 19:51:47" /> </a>
+					<div id="title77960" class="descriptionBox"> <a href="/sketch/77960"> <strong>
+						Visual Gravity						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/77960">
+						Visual Gravity						</a>
+					</h3>
+					Little experiment with image analysis. The result is quite creepy.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox73876" onmouseover="$('#title73876').show();" onmouseout="$('#title73876').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/73876"> <img id="image73876" src="/sketch/thumbnail/73876/cache/2012-10-08 02:52:33" /> </a>
+					<div id="title73876" class="descriptionBox"> <a href="/sketch/73876"> <strong>
+						Route Planning						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/73876">
+						Route Planning						</a>
+					</h3>
+					Inspired by Ken Perlin's applet <a  href="http://mrl.nyu.edu/~perlin/experiments/path/" rel="nofollow" target="_blank">http://mrl.nyu.edu/~perlin/experiments/path/</a><br />
+trying to reconstruct an idea of route planning in more interactive manner.<br />
+<br />
+Solutions are still imperfect.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox73266" onmouseover="$('#title73266').show();" onmouseout="$('#title73266').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/73266"> <img id="image73266" src="/sketch/thumbnail/73266/cache/2012-10-03 23:18:52" /> </a>
+					<div id="title73266" class="descriptionBox"> <a href="/sketch/73266"> <strong>
+						Learning Machine						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/73266">
+						Learning Machine						</a>
+					</h3>
+					Another try to give machine an ability to learn. Left image is an original one which is processed by a kind of neural-like structure (schematics below). Right image displays a reconstruction map of its current memory.<br />
+<br />
+Note after some observation, there is an interesting fact that the initial setup of network (see TAXONOMY int[]) do not alter the results so dramatically, even with a quite low amount of &quot;neurons&quot;.<br />
+<br />
+Code is quite messy now.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox71513" onmouseover="$('#title71513').show();" onmouseout="$('#title71513').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/71513"> <img id="image71513" src="/sketch/thumbnail/71513/cache/2012-09-21 14:49:36" /> </a>
+					<div id="title71513" class="descriptionBox"> <a href="/sketch/71513"> <strong>
+						Logartihmic Dynamics 4						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/71513">
+						Logartihmic Dynamics 4						</a>
+					</h3>
+					Visually polished variant of previous logarithmic experiments... so it is no. 4 now?<br />
+<br />
+there is a TV skrew version as well:<br />
+<a  href="http://vimeo.com/49953334" rel="nofollow" target="_blank">http://vimeo.com/49953334</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox69785" onmouseover="$('#title69785').show();" onmouseout="$('#title69785').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/69785"> <img id="image69785" src="/sketch/thumbnail/69785/cache/2012-09-11 17:38:46" /> </a>
+					<div id="title69785" class="descriptionBox"> <a href="/sketch/69785"> <strong>
+						Van Gogh's Turbolences						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/69785">
+						Van Gogh's Turbolences						</a>
+					</h3>
+					Heavily inspired by Vincent van Gogh's windy paintings, trying to recreate the feel of its dynamics.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox68096" onmouseover="$('#title68096').show();" onmouseout="$('#title68096').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/68096"> <img id="image68096" src="/sketch/thumbnail/68096/cache/2012-08-26 12:37:22" /> </a>
+					<div id="title68096" class="descriptionBox"> <a href="/sketch/68096"> <strong>
+						Tower of Babel						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/68096">
+						Tower of Babel						</a>
+					</h3>
+					Inspired by legendary &quot;Tower of Goo&quot; game, written and drawn in one Sunday afternoon.<br />
+<br />
+How high you can build?				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox68020" onmouseover="$('#title68020').show();" onmouseout="$('#title68020').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/68020"> <img id="image68020" src="/sketch/thumbnail/68020/cache/2012-08-24 04:40:24" /> </a>
+					<div id="title68020" class="descriptionBox"> <a href="/sketch/68020"> <strong>
+						Melodicon						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/68020">
+						Melodicon						</a>
+					</h3>
+					Dead-simple tool for creating melodies. Scale contains just &quot;white piano keys&quot;.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox67983" onmouseover="$('#title67983').show();" onmouseout="$('#title67983').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/67983"> <img id="image67983" src="/sketch/thumbnail/67983/cache/2012-08-23 15:24:17" /> </a>
+					<div id="title67983" class="descriptionBox"> <a href="/sketch/67983"> <strong>
+						Tv Hack						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/67983">
+						Tv Hack						</a>
+					</h3>
+					Hacking on TV stream live.<br />
+<br />
+Please accept certificate and wait for a while until applet is loaded (1.9 MB).<br />
+<br />
+The applet use GStreamer library by Andrés Colubri, to deliver an online video stream, then classical &quot;slit scan&quot; is applied, tested on Linux only.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox67904" onmouseover="$('#title67904').show();" onmouseout="$('#title67904').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/67904"> <img id="image67904" src="/sketch/thumbnail/67904/cache/2012-08-22 08:36:46" /> </a>
+					<div id="title67904" class="descriptionBox"> <a href="/sketch/67904"> <strong>
+						Melodic Variations						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/67904">
+						Melodic Variations						</a>
+					</h3>
+					...				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox67790" onmouseover="$('#title67790').show();" onmouseout="$('#title67790').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/67790"> <img id="image67790" src="/sketch/thumbnail/67790/cache/2012-08-20 11:07:37" /> </a>
+					<div id="title67790" class="descriptionBox"> <a href="/sketch/67790"> <strong>
+						Melancholic Variations						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/67790">
+						Melancholic Variations						</a>
+					</h3>
+					Minim-BETA Unit Generators (UGens) are wonderful code to play with. (thanks to Damien Di Fede)<br />
+<br />
+This is a pseudo-random melancholy generator, better speakers or headphones are well-advised, enjoy.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox64339" onmouseover="$('#title64339').show();" onmouseout="$('#title64339').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/64339"> <img id="image64339" src="/sketch/thumbnail/64339/cache/2012-06-19 11:02:11" /> </a>
+					<div id="title64339" class="descriptionBox"> <a href="/sketch/64339"> <strong>
+						Sphere Deformations						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/64339">
+						Sphere Deformations						</a>
+					</h3>
+					Manual construction of sphere object.. some deformations and effects were added.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox62720" onmouseover="$('#title62720').show();" onmouseout="$('#title62720').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/62720"> <img id="image62720" src="/sketch/thumbnail/62720/cache/2012-05-26 16:15:45" /> </a>
+					<div id="title62720" class="descriptionBox"> <a href="/sketch/62720"> <strong>
+						Interferences						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/62720">
+						Interferences						</a>
+					</h3>
+					A/V wave interference synthesis.<br />
+<br />
+(please accept the certificate if asked)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox62696" onmouseover="$('#title62696').show();" onmouseout="$('#title62696').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/62696"> <img id="image62696" src="/sketch/thumbnail/62696/cache/2012-05-25 15:35:08" /> </a>
+					<div id="title62696" class="descriptionBox"> <a href="/sketch/62696"> <strong>
+						nGonCultivation						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/62696">
+						nGonCultivation						</a>
+					</h3>
+					Multiple n-gons creates an illusion of circle. Geometry can be perfect just when it is not perceived.<br />
+<br />
+Thanks to Martin Blazicek for his inspiring misinterpretation. <a  href="http://blazicek.net/" rel="nofollow" target="_blank">http://blazicek.net/</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox62670" onmouseover="$('#title62670').show();" onmouseout="$('#title62670').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/62670"> <img id="image62670" src="/sketch/thumbnail/62670/cache/2012-05-25 07:35:29" /> </a>
+					<div id="title62670" class="descriptionBox"> <a href="/sketch/62670"> <strong>
+						Isometric Contour Lines						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/62670">
+						Isometric Contour Lines						</a>
+					</h3>
+					Terrain generator which creates contours out of marching Perlin's noise.<br />
+<br />
+It is probably not the most elegant way to do this.. it works somehow.<br />
+<br />
+<br />
+Modified full 3d version:<br />
+<a  href="https://vimeo.com/55577921" rel="nofollow" target="_blank">https://vimeo.com/55577921</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox61123" onmouseover="$('#title61123').show();" onmouseout="$('#title61123').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/61123"> <img id="image61123" src="/sketch/thumbnail/61123/cache/2012-05-11 09:47:42" /> </a>
+					<div id="title61123" class="descriptionBox"> <a href="/sketch/61123"> <strong>
+						Perlin noise study						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/61123">
+						Perlin noise study						</a>
+					</h3>
+					Three dimensional perlin-noise study.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox60455" onmouseover="$('#title60455').show();" onmouseout="$('#title60455').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/60455"> <img id="image60455" src="/sketch/thumbnail/60455/cache/2012-05-04 03:06:31" /> </a>
+					<div id="title60455" class="descriptionBox"> <a href="/sketch/60455"> <strong>
+						Wavelenghts						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/60455">
+						Wavelenghts						</a>
+					</h3>
+					Some kind of color representation of wavelengts mapped on trigonometrical functions, values which represents colors should be relatively accurate, so it could simulate a kind of color dispersion.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox59757" onmouseover="$('#title59757').show();" onmouseout="$('#title59757').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/59757"> <img id="image59757" src="/sketch/thumbnail/59757/cache/2012-04-23 12:46:52" /> </a>
+					<div id="title59757" class="descriptionBox"> <a href="/sketch/59757"> <strong>
+						Vassarely's Zebras						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/59757">
+						Vassarely's Zebras						</a>
+					</h3>
+					One of my favorite painting by Victor Vassarely  in motion.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox59536" onmouseover="$('#title59536').show();" onmouseout="$('#title59536').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/59536"> <img id="image59536" src="/sketch/thumbnail/59536/cache/2012-04-20 05:38:36" /> </a>
+					<div id="title59536" class="descriptionBox"> <a href="/sketch/59536"> <strong>
+						Heurestic GA						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/59536">
+						Heurestic GA						</a>
+					</h3>
+					I was watching some lectures for students here who reproduced parametrically Kandinsky's paintings.. they made it well, but it was bit frustrating to me.<br />
+<br />
+Interesting problem for genetic algorithm.. the method used here is described as stochastic brute-force model..<br />
+<br />
+It reminds me a story of unlimited amount of monkeys writing Shakespeare's play in unlimited amount of time.<br />
+<br />
+Results are not so accurate so far.<br />
+<br />
+(maybe it needs another algorithm to optimize it's settings, well, then probably another one to optimize such optimizer, then it is easier to just redraw it ..)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox59416" onmouseover="$('#title59416').show();" onmouseout="$('#title59416').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/59416"> <img id="image59416" src="/sketch/thumbnail/59416/cache/2012-04-18 15:48:49" /> </a>
+					<div id="title59416" class="descriptionBox"> <a href="/sketch/59416"> <strong>
+						Logarithmic Dynamics 3						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/59416">
+						Logarithmic Dynamics 3						</a>
+					</h3>
+					Series continues..  some trigonometric particle influence and interactive aspects added.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox59341" onmouseover="$('#title59341').show();" onmouseout="$('#title59341').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/59341"> <img id="image59341" src="/sketch/thumbnail/59341/cache/2012-04-17 18:21:06" /> </a>
+					<div id="title59341" class="descriptionBox"> <a href="/sketch/59341"> <strong>
+						Logartihmic Dynamics 2						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/59341">
+						Logartihmic Dynamics 2						</a>
+					</h3>
+					Logarithmic forces applied to a particle field, this one slightly differs in few parameters from previous one, study continues ...				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox59234" onmouseover="$('#title59234').show();" onmouseout="$('#title59234').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/59234"> <img id="image59234" src="/sketch/thumbnail/59234/cache/2012-04-16 20:29:23" /> </a>
+					<div id="title59234" class="descriptionBox"> <a href="/sketch/59234"> <strong>
+						Logarithmic Dynamics						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/59234">
+						Logarithmic Dynamics						</a>
+					</h3>
+					Early study of logarithmic dynamics.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox59221" onmouseover="$('#title59221').show();" onmouseout="$('#title59221').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/59221"> <img id="image59221" src="/sketch/thumbnail/59221/cache/2012-04-16 18:12:04" /> </a>
+					<div id="title59221" class="descriptionBox"> <a href="/sketch/59221"> <strong>
+						Radial Blur						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/59221">
+						Radial Blur						</a>
+					</h3>
+					Raw implementation of Quasimondo radial blur /w polar projection.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox58402" onmouseover="$('#title58402').show();" onmouseout="$('#title58402').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/58402"> <img id="image58402" src="/sketch/thumbnail/58402/cache/2012-04-09 17:00:08" /> </a>
+					<div id="title58402" class="descriptionBox"> <a href="/sketch/58402"> <strong>
+						Knowledge Welding						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/58402">
+						Knowledge Welding						</a>
+					</h3>
+					Original painting by Victor Vasarely (1964) is driven by algorithm written by Raven Kwok and optimized with fast inverse square root originally probably written by John Carmack.<br />
+<br />
+..then there are about few hundreds of thousands more names related..<br />
+<br />
+and then..<br />
+Pythagoras				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox58217" onmouseover="$('#title58217').show();" onmouseout="$('#title58217').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/58217"> <img id="image58217" src="/sketch/thumbnail/58217/cache/2012-04-06 10:31:00" /> </a>
+					<div id="title58217" class="descriptionBox"> <a href="/sketch/58217"> <strong>
+						Corona						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/58217">
+						Corona						</a>
+					</h3>
+					Imagine the life as a strange consequence of one thermonuclear reaction.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox57867" onmouseover="$('#title57867').show();" onmouseout="$('#title57867').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/57867"> <img id="image57867" src="/sketch/thumbnail/57867/cache/2012-04-02 19:19:45" /> </a>
+					<div id="title57867" class="descriptionBox"> <a href="/sketch/57867"> <strong>
+						Brainfuck live Interpreter						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/57867">
+						Brainfuck live Interpreter						</a>
+					</h3>
+					Tiny interpreter for great esoteric language from 93' named &quot;Brainfuck&quot; by Urban Muller.<br />
+<br />
+<a  href="http://en.wikipedia.org/wiki/Brainfuck" rel="nofollow" target="_blank">http://en.wikipedia.org/wiki/Brainfuck</a><br />
+<br />
+There is something deeply poetic about this programming language. It consist of eight characters only.<br />
+<br />
+&lt; &gt; + - . , [ ]<br />
+<br />
+Coding it is pure evil. Here you can watch the live code interpretation..<br />
+<br />
+it would be nice to implement whole processing into this language, in the name of simplification ))<br />
+<br />
+--<br />
+<br />
+*the sketch is unfinished (editor is still not working properly)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox57569" onmouseover="$('#title57569').show();" onmouseout="$('#title57569').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/57569"> <img id="image57569" src="/sketch/thumbnail/57569/cache/2012-03-29 19:06:08" /> </a>
+					<div id="title57569" class="descriptionBox"> <a href="/sketch/57569"> <strong>
+						Tiny IRC						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/57569">
+						Tiny IRC						</a>
+					</h3>
+					Experimenting with little IRC client in processing. <br />
+<br />
++ geo-location database API<br />
+<a  href="http://www.ip2location.com/" rel="nofollow" target="_blank">http://www.ip2location.com/</a><br />
+<br />
++ Plate Carrée (Equirectangular map projection) mapping from real world coordinates to actual pixels (not so accurate)<br />
+<br />
++ homebrew lo-fi IRC server<br />
+<br />
+It is early prototype, it may be buggy,<br />
+ask the MESH for more info...				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox57415" onmouseover="$('#title57415').show();" onmouseout="$('#title57415').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/57415"> <img id="image57415" src="/sketch/thumbnail/57415/cache/2012-03-28 08:56:38" /> </a>
+					<div id="title57415" class="descriptionBox"> <a href="/sketch/57415"> <strong>
+						Constructivist poster generato...						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/57415">
+						Constructivist poster generator						</a>
+					</h3>
+					Click to generate another number.<br />
+<br />
+(01, 242, 425 are my most favorite)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox57362" onmouseover="$('#title57362').show();" onmouseout="$('#title57362').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/57362"> <img id="image57362" src="/sketch/thumbnail/57362/cache/2012-03-27 15:04:59" /> </a>
+					<div id="title57362" class="descriptionBox"> <a href="/sketch/57362"> <strong>
+						Data Dada						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/57362">
+						Data Dada						</a>
+					</h3>
+					Any program which is reading it's source code is my favorite metaphor for helpless human efforts to understand the meaning of life.<br />
+<br />
+a good illustration of such helplessness:<br />
+<br />
+<a  href="http://en.wikipedia.org/wiki/Meaning_of_life" rel="nofollow" target="_blank">http://en.wikipedia.org/wiki/Meaning_of_life</a><br />
+<br />
+(notice the number of references at very bottom, it seems you can probably find the answer.. elsewhere)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox57043" onmouseover="$('#title57043').show();" onmouseout="$('#title57043').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/57043"> <img id="image57043" src="/sketch/thumbnail/57043/cache/2012-03-23 09:33:55" /> </a>
+					<div id="title57043" class="descriptionBox"> <a href="/sketch/57043"> <strong>
+						Site Unseen (study)						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/57043">
+						Site Unseen (study)						</a>
+					</h3>
+					A study for a visualization of track named *Site Unseen* from album Matter of Mind by Kadet Kuhne.<br />
+<br />
+It may take some time to download (3MB).				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox55992" onmouseover="$('#title55992').show();" onmouseout="$('#title55992').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/55992"> <img id="image55992" src="/sketch/thumbnail/55992/cache/2012-03-16 20:39:18" /> </a>
+					<div id="title55992" class="descriptionBox"> <a href="/sketch/55992"> <strong>
+						Collab Painting						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/55992">
+						Collab Painting						</a>
+					</h3>
+					Little experiment with an ability to save image outside the server ..saving to my home server &gt;&gt; http socket + little php script.<br />
+<br />
+<br />
+*Please accept certificate<br />
+<br />
+LEFT MOUSE drag to paint<br />
+<br />
+RIGHT MOUSE click to change color<br />
+<br />
+PRESS ANY KEY TO SAVE AND DOWNLOAD<br />
+<br />
+collection is growing here:<br />
+<br />
+<a  href="http://lab19.dyndns.org/gallery.php" rel="nofollow" target="_blank">http://lab19.dyndns.org/gallery.php</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox54641" onmouseover="$('#title54641').show();" onmouseout="$('#title54641').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/54641"> <img id="image54641" src="/sketch/thumbnail/54641/cache/2012-03-05 17:35:44" /> </a>
+					<div id="title54641" class="descriptionBox"> <a href="/sketch/54641"> <strong>
+						Pythagorian Worlds						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/54641">
+						Pythagorian Worlds						</a>
+					</h3>
+					Inspired by Pete Hipwell's Sine Dive<br />
+<br />
+<a  href="http://openprocessing.org/visuals/?visualID=4324" rel="nofollow" target="_blank">http://openprocessing.org/visuals/?visualID=4324</a><br />
+<br />
+You will not probably reach full 100 fps.. it is not very polite to your system to set this, but it can be very alive sketch then, enjoy!				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox53531" onmouseover="$('#title53531').show();" onmouseout="$('#title53531').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/53531"> <img id="image53531" src="/sketch/thumbnail/53531/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title53531" class="descriptionBox"> <a href="/sketch/53531"> <strong>
+						Neural Caravan						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/53531">
+						Neural Caravan						</a>
+					</h3>
+					Pretty complex flocking system is exploring the *continuum*<br />
+<br />
+<br />
+500 entities in post-production <a  href="http://vimeo.com/kof/neuralcaravan" rel="nofollow" target="_blank">http://vimeo.com/kof/neuralcaravan</a> video version.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox53243" onmouseover="$('#title53243').show();" onmouseout="$('#title53243').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/53243"> <img id="image53243" src="/sketch/thumbnail/53243/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title53243" class="descriptionBox"> <a href="/sketch/53243"> <strong>
+						System Fail (the game)						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/53243">
+						System Fail (the game)						</a>
+					</h3>
+					It is funny game.. the reality is not.<br />
+<br />
+If you are in any of these countries right now:<br />
+<br />
+Belarus, Burma, China, Cuba, Iran, Libya, The Maldives, Nepal, North Korea, Saudi Arabia, Syria, Tunisia, Turkmenistan, Uzbekistan, Vietnam.. (?)<br />
+<br />
+You should use at least <a  href="https://www.torproject.org/" rel="nofollow" target="_blank">https://www.torproject.org/</a> this.<br />
+<br />
+Should we?<br />
+<br />
+--<br />
+The numbers of official statistics are <br />
+<a  href="http://www.google.com/transparencyreport/governmentrequests/CN/?p=2011-06" rel="nofollow" target="_blank">http://www.google.com/transparencyreport/governmentrequests/CN/?p=2011-06</a> *suspiciously low* considering one-billion country. User data requests are unavailable.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox52926" onmouseover="$('#title52926').show();" onmouseout="$('#title52926').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/52926"> <img id="image52926" src="/sketch/thumbnail/52926/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title52926" class="descriptionBox"> <a href="/sketch/52926"> <strong>
+						XOR &amp; XOR						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/52926">
+						XOR &amp; XOR						</a>
+					</h3>
+					just a chain of XORs subsequently applied on booleaned image				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox52136" onmouseover="$('#title52136').show();" onmouseout="$('#title52136').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/52136"> <img id="image52136" src="/sketch/thumbnail/52136/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title52136" class="descriptionBox"> <a href="/sketch/52136"> <strong>
+						Eye trap						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/52136">
+						Eye trap						</a>
+					</h3>
+					It can be painful to watch this sketch.. probably because of some rapid eye movements.. caused by brain's attempts to stabilize an image information.. it is also causing this text is *waving* afterwards .. )<br />
+<br />
+(try to move your head forward and backward slightly to see /\ \/ patterns)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox51444" onmouseover="$('#title51444').show();" onmouseout="$('#title51444').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/51444"> <img id="image51444" src="/sketch/thumbnail/51444/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title51444" class="descriptionBox"> <a href="/sketch/51444"> <strong>
+						Tatlin's dreamt monument						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/51444">
+						Tatlin's dreamt monument						</a>
+					</h3>
+					Recycled <a  href="http://vimeo.com/6290043" rel="nofollow" target="_blank">http://vimeo.com/6290043</a> older sketch, altering JPEG data live, producing classical glitch deconstruction aesthetics on-fly.<br />
+<br />
+Anything considered ideal, contains at least one error ...<br />
+<br />
+Data are so fragile, single byte different inside compressed image and see what happens..<br />
+<br />
+The future ideas are not going to last for next 100 years, no more in this era.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox51221" onmouseover="$('#title51221').show();" onmouseout="$('#title51221').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/51221"> <img id="image51221" src="/sketch/thumbnail/51221/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title51221" class="descriptionBox"> <a href="/sketch/51221"> <strong>
+						untitled Homage to Zdeňek Sý...						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/51221">
+						untitled Homage to Zdeňek Sýkora						</a>
+					</h3>
+					Small tribute to great &quot;Czechoslovak&quot; abstract painter Zdeňek Sýkora (1920 - 2011)<br />
+<br />
+<a  href="http://en.wikipedia.org/wiki/Zdeněk_Sýkora" rel="nofollow" target="_blank">http://en.wikipedia.org/wiki/Zdeněk_Sýkora</a> <br />
+<br />
+wikipedia				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox50493" onmouseover="$('#title50493').show();" onmouseout="$('#title50493').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/50493"> <img id="image50493" src="/sketch/thumbnail/50493/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title50493" class="descriptionBox"> <a href="/sketch/50493"> <strong>
+						European demography						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/50493">
+						European demography						</a>
+					</h3>
+					Mapping the data from official resources (EuroStat) reveals some dramatical demographic differences across European countries (+/- EU).. the map illustrate total amount of graduated (University) citizens per population per country.<br />
+<br />
+data grabbed form this source<br />
+<a  href="http://epp.eurostat.ec.europa.eu/portal/page/portal/eurostat/home/" rel="nofollow" target="_blank">http://epp.eurostat.ec.europa.eu/portal/page/portal/eurostat/home/</a><br />
+<br />
+Mouse-click to cycle trough years (2001-2010)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox49274" onmouseover="$('#title49274').show();" onmouseout="$('#title49274').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/49274"> <img id="image49274" src="/sketch/thumbnail/49274/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title49274" class="descriptionBox"> <a href="/sketch/49274"> <strong>
+						Geometrie (studie 2)						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/49274">
+						Geometrie (studie 2)						</a>
+					</h3>
+									</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox49170" onmouseover="$('#title49170').show();" onmouseout="$('#title49170').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/49170"> <img id="image49170" src="/sketch/thumbnail/49170/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title49170" class="descriptionBox"> <a href="/sketch/49170"> <strong>
+						Geometrie (studie 1)						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/49170">
+						Geometrie (studie 1)						</a>
+					</h3>
+					Series of studies for exhibition called Geometrie @ <br />
+<a  href="http://www.gvun.cz/galerie.php?zobrazit=historie" rel="nofollow" target="_blank">http://www.gvun.cz/galerie.php?zobrazit=historie</a> GVUN<br />
+Gallery of Fine Arts in Nachod, Bohemia (May 2012)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox48949" onmouseover="$('#title48949').show();" onmouseout="$('#title48949').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/48949"> <img id="image48949" src="/sketch/thumbnail/48949/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title48949" class="descriptionBox"> <a href="/sketch/48949"> <strong>
+						robot free fall						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/48949">
+						robot free fall						</a>
+					</h3>
+					..if AI is capable of problem solving, you need to define problem first!<br />
+<br />
+Have you ever tried to think how your body is actually moving? ..sure it is moving way you have learned.. it is more than unnoticed.. just try for a moment to describe move by move your hand picking up a cup of coffee by words.. in fact, it is very difficult to describe a millions of decent movements which has to be done to do such *simple task*, there is completely no logics involved in this process, quite clearly..<br />
+<br />
+so called Artificial Inelligence and all it's hidden processes is wonderful logical hypocrisy..				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox48947" onmouseover="$('#title48947').show();" onmouseout="$('#title48947').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/48947"> <img id="image48947" src="/sketch/thumbnail/48947/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title48947" class="descriptionBox"> <a href="/sketch/48947"> <strong>
+						Basic skeletal animation						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/48947">
+						Basic skeletal animation						</a>
+					</h3>
+					Very basic <a  href="http://en.wikipedia.org/wiki/Biovision_Hierarchy" rel="nofollow" target="_blank">http://en.wikipedia.org/wiki/Biovision_Hierarchy</a> BVH parser.. (y-inverted space) + dummy <a  href="http://en.wikipedia.org/wiki/Forward_kinematics" rel="nofollow" target="_blank">http://en.wikipedia.org/wiki/Forward_kinematics</a> forward kinematics animation achieved by applying de-synchronized oscillations on relative joint rotation.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox48879" onmouseover="$('#title48879').show();" onmouseout="$('#title48879').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/48879"> <img id="image48879" src="/sketch/thumbnail/48879/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title48879" class="descriptionBox"> <a href="/sketch/48879"> <strong>
+						Understanding projection						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/48879">
+						Understanding projection						</a>
+					</h3>
+					click to change color				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox48874" onmouseover="$('#title48874').show();" onmouseout="$('#title48874').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/48874"> <img id="image48874" src="/sketch/thumbnail/48874/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title48874" class="descriptionBox"> <a href="/sketch/48874"> <strong>
+						Live Map Paint						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/48874">
+						Live Map Paint						</a>
+					</h3>
+					drag mouse to paint texture<br />
+<br />
+right click to erase				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox48832" onmouseover="$('#title48832').show();" onmouseout="$('#title48832').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/48832"> <img id="image48832" src="/sketch/thumbnail/48832/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title48832" class="descriptionBox"> <a href="/sketch/48832"> <strong>
+						Blind Wanderer						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/48832">
+						Blind Wanderer						</a>
+					</h3>
+					This sketch is cheating a lot..<br />
+<br />
+It uses a real 3d model generated with great opensource project <a  href="http://www.makehuman.org/" rel="nofollow" target="_blank">http://www.makehuman.org/</a><br />
+<br />
+The model is imported via SAITO and Matt Diton's OBJLoader library <a  href="http://code.google.com/p/saitoobjloader" rel="nofollow" target="_blank">http://code.google.com/p/saitoobjloader</a><br />
+<br />
+Animation is achieved by applying Perlin's noise. This is tricky, but resulting the slight movement an illusion of man stepping.<br />
+<br />
+Atmosphere is created by combining Quasimondo's superfast blurring algorithm<br />
+<a  href="http://incubator.quasimondo.com/processing/superfast_blur.php" rel="nofollow" target="_blank">http://incubator.quasimondo.com/processing/superfast_blur.php</a><br />
+<br />
+and set of pixel filters..				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox48805" onmouseover="$('#title48805').show();" onmouseout="$('#title48805').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/48805"> <img id="image48805" src="/sketch/thumbnail/48805/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title48805" class="descriptionBox"> <a href="/sketch/48805"> <strong>
+						Klecksographie						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/48805">
+						Klecksographie						</a>
+					</h3>
+					Justinus Krener's natural poetry<br />
+<br />
+...				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox47785" onmouseover="$('#title47785').show();" onmouseout="$('#title47785').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/47785"> <img id="image47785" src="/sketch/thumbnail/47785/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title47785" class="descriptionBox"> <a href="/sketch/47785"> <strong>
+						Graphing						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/47785">
+						Graphing						</a>
+					</h3>
+					Graph is a kind of theory, artificial perspective, a projection of human into raw data.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox47616" onmouseover="$('#title47616').show();" onmouseout="$('#title47616').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/47616"> <img id="image47616" src="/sketch/thumbnail/47616/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title47616" class="descriptionBox"> <a href="/sketch/47616"> <strong>
+						Live Montage!						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/47616">
+						Live Montage!						</a>
+					</h3>
+					Hand-less made film by Ken Perlin, Dziga Vertov and You.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox47469" onmouseover="$('#title47469').show();" onmouseout="$('#title47469').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/47469"> <img id="image47469" src="/sketch/thumbnail/47469/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title47469" class="descriptionBox"> <a href="/sketch/47469"> <strong>
+						Edgar Allan						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/47469">
+						Edgar Allan						</a>
+					</h3>
+					an ode to quote edgar<br />
+<br />
+.. it is probably as interactive as Poe himself was				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox47241" onmouseover="$('#title47241').show();" onmouseout="$('#title47241').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/47241"> <img id="image47241" src="/sketch/thumbnail/47241/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title47241" class="descriptionBox"> <a href="/sketch/47241"> <strong>
+						Calm Flow						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/47241">
+						Calm Flow						</a>
+					</h3>
+					There is probably a silence, somewhere between sinus and cosinus.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox46070" onmouseover="$('#title46070').show();" onmouseout="$('#title46070').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/46070"> <img id="image46070" src="/sketch/thumbnail/46070/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title46070" class="descriptionBox"> <a href="/sketch/46070"> <strong>
+						Artifacts						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/46070">
+						Artifacts						</a>
+					</h3>
+					It is time to celebrate a famous man, wonderful living artifact from history of video art. Woody Bohuslav Vasulka!<br />
+<br />
+&quot;original&quot; video in *Artifacts*:<br />
+<a  href="http://www.medienkunstnetz.de/works/artifacts/video/1/" rel="nofollow" target="_blank">http://www.medienkunstnetz.de/works/artifacts/video/1/</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox45356" onmouseover="$('#title45356').show();" onmouseout="$('#title45356').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/45356"> <img id="image45356" src="/sketch/thumbnail/45356/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title45356" class="descriptionBox"> <a href="/sketch/45356"> <strong>
+						Blue Harmonograph						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/45356">
+						Blue Harmonograph						</a>
+					</h3>
+					harmonograph variation blue				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox45335" onmouseover="$('#title45335').show();" onmouseout="$('#title45335').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/45335"> <img id="image45335" src="/sketch/thumbnail/45335/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title45335" class="descriptionBox"> <a href="/sketch/45335"> <strong>
+						Green Harmonograph						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/45335">
+						Green Harmonograph						</a>
+					</h3>
+					geomety abstraction, green variation<br />
+<br />
+sonified version /w wonderful DIN synthetiser by S. Jagannathan: <br />
+<a  href="http://www.dinisnoise.org/" rel="nofollow" target="_blank">http://www.dinisnoise.org/</a><br />
+<br />
+here:<br />
+<a  href="http://vimeo.com/31769570" rel="nofollow" target="_blank">http://vimeo.com/31769570</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox44151" onmouseover="$('#title44151').show();" onmouseout="$('#title44151').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/44151"> <img id="image44151" src="/sketch/thumbnail/44151/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title44151" class="descriptionBox"> <a href="/sketch/44151"> <strong>
+						untitled						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/44151">
+						untitled						</a>
+					</h3>
+					this program has been written under heavy influence of itself to its creator.. please do not ask me what the hell it is ))				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox39511" onmouseover="$('#title39511').show();" onmouseout="$('#title39511').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/39511"> <img id="image39511" src="/sketch/thumbnail/39511/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title39511" class="descriptionBox"> <a href="/sketch/39511"> <strong>
+						octopus reloaded						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/39511">
+						octopus reloaded						</a>
+					</h3>
+					highly experimental neuro-net inspired by asemic writing machine by Brian Pollock:<br />
+<a  href="http://openprocessing.org/visuals/?visualID=38549" rel="nofollow" target="_blank">http://openprocessing.org/visuals/?visualID=38549</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox39463" onmouseover="$('#title39463').show();" onmouseout="$('#title39463').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/39463"> <img id="image39463" src="/sketch/thumbnail/39463/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title39463" class="descriptionBox"> <a href="/sketch/39463"> <strong>
+						Yet another pehnomenon						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/39463">
+						Yet another pehnomenon						</a>
+					</h3>
+					noiseSeed(19);				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox25728" onmouseover="$('#title25728').show();" onmouseout="$('#title25728').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/25728"> <img id="image25728" src="/sketch/thumbnail/25728/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title25728" class="descriptionBox"> <a href="/sketch/25728"> <strong>
+						Octopus (N..pus)						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/25728">
+						Octopus (N..pus)						</a>
+					</h3>
+					Neural network driven organism. It reacts on impulses shown on background, red impulse means complete index shift of whole reacting pattern.. in random arranged system it means complete reset of sustained values.<br />
+<br />
+You can slightly interact with NPus by dragging mouse moving one of it's tentacle (red one).				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox24454" onmouseover="$('#title24454').show();" onmouseout="$('#title24454').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/24454"> <img id="image24454" src="/sketch/thumbnail/24454/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title24454" class="descriptionBox"> <a href="/sketch/24454"> <strong>
+						Frequency Analysis						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/24454">
+						Frequency Analysis						</a>
+					</h3>
+					Text visualization tool. Each letter has different size mapping according to position in charset.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox23558" onmouseover="$('#title23558').show();" onmouseout="$('#title23558').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/23558"> <img id="image23558" src="/sketch/thumbnail/23558/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title23558" class="descriptionBox"> <a href="/sketch/23558"> <strong>
+						Déjà Vu						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/23558">
+						Déjà Vu						</a>
+					</h3>
+					Fake isometric projection and dummy 3D sprite animation. The motion not fitting the grid.. and it is complete waste of time. Simply, yeah, I love this sketch.<br />
+<br />
+Use arrow keys to move the cube (gain focus first).				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox22564" onmouseover="$('#title22564').show();" onmouseout="$('#title22564').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/22564"> <img id="image22564" src="/sketch/thumbnail/22564/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title22564" class="descriptionBox"> <a href="/sketch/22564"> <strong>
+						Kofian Motion						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/22564">
+						Kofian Motion						</a>
+					</h3>
+					Asynchronized oscillators are affecting the separate plotter coordinates.<br />
+<br />
+All of the plotters has (more less) different combination of source oscillators.<br />
+<br />
+Click to reset simulation.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox20876" onmouseover="$('#title20876').show();" onmouseout="$('#title20876').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/20876"> <img id="image20876" src="/sketch/thumbnail/20876/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title20876" class="descriptionBox"> <a href="/sketch/20876"> <strong>
+						nomad (space interaction)						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/20876">
+						nomad (space interaction)						</a>
+					</h3>
+					3d fast steering test				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox19801" onmouseover="$('#title19801').show();" onmouseout="$('#title19801').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/19801"> <img id="image19801" src="/sketch/thumbnail/19801/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title19801" class="descriptionBox"> <a href="/sketch/19801"> <strong>
+						Another flocking system						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/19801">
+						Another flocking system						</a>
+					</h3>
+					Click to cast some creatures. The more entities you cast the more slow simulation gets (exponential). Final possible count of entities depends on your HW.<br />
+<br />
+<br />
+Left click to cast entities<br />
+Right click to attract entities				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox19330" onmouseover="$('#title19330').show();" onmouseout="$('#title19330').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/19330"> <img id="image19330" src="/sketch/thumbnail/19330/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title19330" class="descriptionBox"> <a href="/sketch/19330"> <strong>
+						Golden Rationality						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/19330">
+						Golden Rationality						</a>
+					</h3>
+					1.6180339887498948482 ..				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox17295" onmouseover="$('#title17295').show();" onmouseout="$('#title17295').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/17295"> <img id="image17295" src="/sketch/thumbnail/17295/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title17295" class="descriptionBox"> <a href="/sketch/17295"> <strong>
+						Lead worms						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/17295">
+						Lead worms						</a>
+					</h3>
+					Decision-less entities, strictly keeping the rules, turning everything into lead.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox17022" onmouseover="$('#title17022').show();" onmouseout="$('#title17022').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/17022"> <img id="image17022" src="/sketch/thumbnail/17022/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title17022" class="descriptionBox"> <a href="/sketch/17022"> <strong>
+						Perception Shifting						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/17022">
+						Perception Shifting						</a>
+					</h3>
+					Be careful, this code can cause balance disorder.. please beware longer observation.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox16741" onmouseover="$('#title16741').show();" onmouseout="$('#title16741').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/16741"> <img id="image16741" src="/sketch/thumbnail/16741/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title16741" class="descriptionBox"> <a href="/sketch/16741"> <strong>
+						sndviz						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/16741">
+						sndviz						</a>
+					</h3>
+					Live input vizualisation, may not work in particular cases. Please accept the certificate and try to adjust your mic volume levels first.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox16246" onmouseover="$('#title16246').show();" onmouseout="$('#title16246').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/16246"> <img id="image16246" src="/sketch/thumbnail/16246/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title16246" class="descriptionBox"> <a href="/sketch/16246"> <strong>
+						Movements						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/16246">
+						Movements						</a>
+					</h3>
+					<a  href="http://www.looksgood.de/libraries/Ani/" rel="nofollow" target="_blank">http://www.looksgood.de/libraries/Ani/</a><br />
+<br />
+Ani library testing.<br />
+<br />
+yup, something went wrong millis() ???...				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox15859" onmouseover="$('#title15859').show();" onmouseout="$('#title15859').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/15859"> <img id="image15859" src="/sketch/thumbnail/15859/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title15859" class="descriptionBox"> <a href="/sketch/15859"> <strong>
+						Neuro Patterns						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/15859">
+						Neuro Patterns						</a>
+					</h3>
+					One rule, different alignment, unlimited possibilities of patterns.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox15831" onmouseover="$('#title15831').show();" onmouseout="$('#title15831').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/15831"> <img id="image15831" src="/sketch/thumbnail/15831/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title15831" class="descriptionBox"> <a href="/sketch/15831"> <strong>
+						Measure de mesure						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/15831">
+						Measure de mesure						</a>
+					</h3>
+					remediation				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox14121" onmouseover="$('#title14121').show();" onmouseout="$('#title14121').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/14121"> <img id="image14121" src="/sketch/thumbnail/14121/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title14121" class="descriptionBox"> <a href="/sketch/14121"> <strong>
+						Amphiblestrodian feed						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/14121">
+						Amphiblestrodian feed						</a>
+					</h3>
+					eyefeed				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox11193" onmouseover="$('#title11193').show();" onmouseout="$('#title11193').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/11193"> <img id="image11193" src="/sketch/thumbnail/11193/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title11193" class="descriptionBox"> <a href="/sketch/11193"> <strong>
+						NeuralNet 3rd Dim						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/11193">
+						NeuralNet 3rd Dim						</a>
+					</h3>
+					Three dimensional reconstruction of earlier model.<br />
+<br />
+<a  href="http://www.openprocessing.org/sketch/11152" rel="nofollow" target="_blank">http://www.openprocessing.org/sketch/11152</a><br />
+<br />
+RIGHTCLICK == reset network				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox11170" onmouseover="$('#title11170').show();" onmouseout="$('#title11170').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/11170"> <img id="image11170" src="/sketch/thumbnail/11170/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title11170" class="descriptionBox"> <a href="/sketch/11170"> <strong>
+						FreeForm						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/11170">
+						FreeForm						</a>
+					</h3>
+					Architectural freeform design tool for generating three-dimensional shapes. Export function has been removed due to online functionality.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox11152" onmouseover="$('#title11152').show();" onmouseout="$('#title11152').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/11152"> <img id="image11152" src="/sketch/thumbnail/11152/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title11152" class="descriptionBox"> <a href="/sketch/11152"> <strong>
+						NeuralNet Noises						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/11152">
+						NeuralNet Noises						</a>
+					</h3>
+					for more dense structure: <a  href="http://vimeo.com/13909361" rel="nofollow" target="_blank">http://vimeo.com/13909361</a>				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox10867" onmouseover="$('#title10867').show();" onmouseout="$('#title10867').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/10867"> <img id="image10867" src="/sketch/thumbnail/10867/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title10867" class="descriptionBox"> <a href="/sketch/10867"> <strong>
+						Vermeer						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/10867">
+						Vermeer						</a>
+					</h3>
+					Famous painting Girl With a Pearl Earring by Jan Vermeer, decomposed into set of 5000 colors. 				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox10759" onmouseover="$('#title10759').show();" onmouseout="$('#title10759').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/10759"> <img id="image10759" src="/sketch/thumbnail/10759/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title10759" class="descriptionBox"> <a href="/sketch/10759"> <strong>
+						MEM						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/10759">
+						MEM						</a>
+					</h3>
+					All the patterns you observe, are mind generated illusions. Simply, nothing can happen twice.. ever.. but play it again :)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox10478" onmouseover="$('#title10478').show();" onmouseout="$('#title10478').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/10478"> <img id="image10478" src="/sketch/thumbnail/10478/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title10478" class="descriptionBox"> <a href="/sketch/10478"> <strong>
+						Ellipses						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/10478">
+						Ellipses						</a>
+					</h3>
+					Ellipses --&gt; Sphere.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox9679" onmouseover="$('#title9679').show();" onmouseout="$('#title9679').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/9679"> <img id="image9679" src="/sketch/thumbnail/9679/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title9679" class="descriptionBox"> <a href="/sketch/9679"> <strong>
+						Waltz of Determinism						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/9679">
+						Waltz of Determinism						</a>
+					</h3>
+					Lindenmayer system in elegant dialogue with Perlin's one.. Let's dance a waltz with mathematics.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox8802" onmouseover="$('#title8802').show();" onmouseout="$('#title8802').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/8802"> <img id="image8802" src="/sketch/thumbnail/8802/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title8802" class="descriptionBox"> <a href="/sketch/8802"> <strong>
+						CatastropheTwo						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/8802">
+						CatastropheTwo						</a>
+					</h3>
+					Media hacking. Fully scripted 8mm frame, it just reveals how present visual culture becoming more and more bizarre. (can be slow)				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox8729" onmouseover="$('#title8729').show();" onmouseout="$('#title8729').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/8729"> <img id="image8729" src="/sketch/thumbnail/8729/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title8729" class="descriptionBox"> <a href="/sketch/8729"> <strong>
+						Hardcoded Pixels						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/8729">
+						Hardcoded Pixels						</a>
+					</h3>
+					Retro coding style; forgotten art of direct pixel manipulation.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox7626" onmouseover="$('#title7626').show();" onmouseout="$('#title7626').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/7626"> <img id="image7626" src="/sketch/thumbnail/7626/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title7626" class="descriptionBox"> <a href="/sketch/7626"> <strong>
+						Genome Flock Algorithm						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/7626">
+						Genome Flock Algorithm						</a>
+					</h3>
+					Genetic wars of 'dna' code dominance on a group of instances. Each has unique code which is envovling and spreading over entities. Groups of similar genomes has a tendency to hold together to defend its genome.				</div>
+			</div>
+					<div class="portalPiece">
+				<div class="visThumbnail"  style="float:left; clear:left;" id="visBox7006" onmouseover="$('#title7006').show();" onmouseout="$('#title7006').hide();" >
+				<div class="icons">
+														</div>
+				 <a href="/sketch/7006"> <img id="image7006" src="/sketch/thumbnail/7006/cache/2012-03-04 19:48:05" /> </a>
+					<div id="title7006" class="descriptionBox"> <a href="/sketch/7006"> <strong>
+						test						</strong></a> </div>
+				</div>
+				<div class="visDescription">
+					<h3>
+						<a href="/sketch/7006">
+						test						</a>
+					</h3>
+					..yes it works, well, good work openprocessing!				</div>
+			</div>
+			</div>
+		
+	<div id="rightArea" class="">
+						
+			<div class="rightModule" style="border:dotted #ccc; border-width:0 0 1px 0;">
+				<div class="followButtonBox">
+				<div id="followCheckMark" class="iconicSprite iconic-check_16x13_orange" style="display:none"></div>
+				<input id="followButton" type="button" onclick="followUser(0,3942)" class="followButton formButtonMain" value="Follow"/>
+				</div>				<div id="followByBox" class="followBox" >
+					followed by<br/>
+					<a id='followedByNumber' onclick="$('#followedByList').load('/user/3942/followedBy'); $('#followingListContainer').hide(); $('#followedByListContainer').toggle(); $('#followByBox').toggleClass('selected');$('#followingBox').removeClass('selected');">142</a>
+				</div>
+				<div id="followingBox"  class="followBox" >
+					following<br/>
+					<a id='followingNumber' onclick="$('#followingList').load('/user/3942/following'); $('#followedByListContainer').hide(); $('#followingListContainer').toggle(); $('#followingBox').toggleClass('selected');$('#followByBox').removeClass('selected');">38</a>
+				</div>
+				<div class="clearDiv"></div>
+				
+				<div id="followedByListContainer" class="followList  notYet">
+					<div id="followedByList"><img src="/assets/images/loadingIcon.gif" /></div>
+				</div>
+				
+				<div id="followingListContainer" class="followList  notYet">
+					<div id="followingList"><img src="/assets/images/loadingIcon.gif" /></div>
+				</div>
+			</div>
+			
+			
+			
+			<!--<div id="followedByListContainer" class="rightModule notYet boxee">
+			<div class="closeButton" onclick="$('#followedByListContainer').hide();"></div>
+			<h3>Followed by</h3>
+			<div id="followedByList"><img src="/assets/images/loadingIcon.gif" /></div>
+			</div>
+			
+			<div id="followingListContainer" class="rightModule notYet boxee">
+			<div class="closeButton" onclick="$('#followingListContainer').hide();"></div>
+			<h3>Following</h3>
+			<div id="followingList"><img src="/assets/images/loadingIcon.gif" /></div>
+			</div>-->
+			
+			<div class="rightModule">
+				<h3>collections and classrooms</h3>
+										<a href="/collection/305">
+						CAS - FAMU (Center of Audiovisual Studies)						</a><br />
+											<a href="/collection/1386">
+						Illusions						</a><br />
+					<br/>submitted sketches to:<br/>						<a href="/collection/65">
+						Evolution						</a><br />
+											<a href="/collection/330">
+						open architecture open design						</a><br />
+											<a href="/collection/1751">
+						Fractals &amp; Landscapes						</a><br />
+											<a href="/collection/2054">
+						Beyond Drawing						</a><br />
+											<a href="/collection/2233">
+						2D Simulations						</a><br />
+											<a href="/collection/2278">
+						ReCode Project						</a><br />
+											<a href="/collection/2349">
+						Fast						</a><br />
+											<a href="/collection/2844">
+						Self-Organisation						</a><br />
+												</div>
+			<div class="rightModule" style="clear:both;">
+				<h3 id="favoritesTitle">favorites</h3>
+				<div class="clearDiv"></div>
+			</div>
+			<div class="rightModule" style="border-top:solid 1px #ccc; padding:5px 0; clear:both;"> 
+				<!-- ADDTHIS BUTTON BEGIN --> 
+				<script type="text/javascript">
+			    		var addthis_pub = "msinan";
+					var addthis_options = "facebook,twitter, delicious, google, stumbleupon,";
+		 		 </script> 
+				<a href="http://www.addthis.com/bookmark.php" onclick="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" style="margin-right:20px;" > <img src="http://w.sharethis.com/images/share-icon-12x12.png" alt="Share" width="12" height="12" border="0" style="margin-bottom:4px;" align="absmiddle" /> Share</a>
+				<a href="/user/3942/rss"><img src="/assets/images/rssIconSmall.png" width="12" height="12" /></a>
+				<a href="/user/3942/rss">Subscribe to sketches</a> 
+		 
+				<!-- ADDTHIS BUTTON END --> 
+			</div>
+			
+			<div class="clearDiv"></div>
+		</div>
+		
+	<!-- InstanceEndEditable -->
+<div class="clearDiv"></div>
+<div id="footer" style="width:%100; border: 1px dotted #cccccc; padding-top:3px; background-color:#FFFFFF; float:none; clear:both; margin-top:30px;">
+	<div class="column" style="border:0px; position:relative;">
+		<h3>About OpenProcessing</h3>
+		<p>OpenProcessing is an online community platform devoted to sharing and discussing Processing sketches in a collaborative, open-source environment.<br />
+			<br />
+			<a href="http://www.processing.org/download" target="_blank"><img src="/assets/images/external.png" width="10" height="10" /> Download Processing</a><br />
+			<a href="/about/termsOfService">Terms of Service</a> - <a href="/about/privacyPolicy">Privacy Policy</a></p>
+		<!--<div style="float: right; margin-top:-39px;"><img src="/assets/images/twitterBird.png" width="56" height="49" /></div>
+    <div id="twitter_div" style="margin-bottom:10px;">
+      <ul id="twitter_update_list">
+      </ul>
+    </div>-->
+		<div class="clearDiv"></div>
+	</div>
+	<div class="column">
+		<h3>Get in Touch</h3>
+		<p>To contact, send an email to:<br />
+			<script type="text/javascript">
+	//<![CDATA[
+	var l=new Array();
+	l[0]='>';l[1]='a';l[2]='/';l[3]='<';l[4]='|103';l[5]='|114';l[6]='|111';l[7]='|46';l[8]='|103';l[9]='|110';l[10]='|105';l[11]='|115';l[12]='|115';l[13]='|101';l[14]='|99';l[15]='|111';l[16]='|114';l[17]='|112';l[18]='|110';l[19]='|101';l[20]='|112';l[21]='|111';l[22]='|64';l[23]='|111';l[24]='|102';l[25]='|110';l[26]='|105';l[27]='>';l[28]='"';l[29]='|103';l[30]='|114';l[31]='|111';l[32]='|46';l[33]='|103';l[34]='|110';l[35]='|105';l[36]='|115';l[37]='|115';l[38]='|101';l[39]='|99';l[40]='|111';l[41]='|114';l[42]='|112';l[43]='|110';l[44]='|101';l[45]='|112';l[46]='|111';l[47]='|64';l[48]='|111';l[49]='|102';l[50]='|110';l[51]='|105';l[52]=':';l[53]='o';l[54]='t';l[55]='l';l[56]='i';l[57]='a';l[58]='m';l[59]='"';l[60]='=';l[61]='f';l[62]='e';l[63]='r';l[64]='h';l[65]=' ';l[66]='a';l[67]='<';
+	for (var i = l.length-1; i >= 0; i=i-1){
+	if (l[i].substring(0, 1) == '|') document.write("&#"+unescape(l[i].substring(1))+";");
+	else document.write(unescape(l[i]));}
+	//]]>
+	</script>		</p>
+		<p><br />
+			<br /><a href="http://twitter.com/openprocessing">Follow OpenProcessing on Twitter!</a><br />
+			<a href="http://blog.openprocessing.org">Blog</a> - <a href="http://openprocessing.uservoice.com" target="_blank">Feedback forum</a></p>
+		<p>&nbsp;</p>
+	</div>
+	<div class="column">
+		<h3>License &amp; Credits</h3>
+		<p>Sketches and source code of free membership users are licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" target="_blank">CC</a> and <a href="http://creativecommons.org/licenses/GPL/2.0/" target="_blank">GNU GPL</a>. </p>
+		<p> <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" target="_blank"><img src="/assets/images/creativeCommonsOnly.png" align="left" style="margin-right:10px;"/></a>&nbsp; <a href="http://creativecommons.org/licenses/GPL/2.0/" target="_blank"><img src="/assets/images/gnuGplOnly.png" alt="GNU-GPL"/></a> </p>
+		<p> <a class="orange" href="/membership/">Plus+</a> member sketches may 
+			include a different license.</p>
+	</div>
+	<div class="column"  style="border: 0px">
+		<h3>&nbsp;</h3>
+		<p>Most icons  by <a href="http://somerandomdude.com/projects/iconic/" target="_blank">somerandomdude</a>.<br />
+		<a href="http://alexgorbatchev.com/wiki/SyntaxHighlighter" target="_blank">Syntax highlighting</a> and <a href="http://en.myinventions.pl/index.php?page=ProcessingSyntaxHighlighting" target="_blank">Processing brush </a>under LGPL 3. 
+					</p>
+	</div>
+	<div class="clearDiv"></div>
+	</p>
+</div>
+<!-- BuySellAds Ad Code -->
+<script type="text/javascript">
+if(!('https:' == document.location.protocol)){
+	(function(){
+	  var bsa = document.createElement('script');
+	     bsa.type = 'text/javascript';
+	     bsa.async = true;
+	     bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+	  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+	})();
+}
+</script>
+<!-- End BuySellAds Ad Code -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-875534-5']);
+  _gaq.push(['_setDomainName', 'openprocessing.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script></div>
+<script type="text/javascript" src="/assets/js/globalFunctions.js"></script>
+<!-- InstanceBeginEditable name="endScripts" -->
+<script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script> 
+
+<!-- InstanceEndEditable -->
+</body>
+<!-- InstanceEnd --></html>
