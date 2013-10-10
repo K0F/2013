@@ -47,7 +47,7 @@ float S = 10;
 float L = 50;
 float V = 50;
 
-float SCALE = 1;
+float SCALE = 0.75;
 
 ArrayList bones;
 PMatrix3D clean;
@@ -59,6 +59,9 @@ PImage texture;
 void setup() {
   size(1280, 720, OPENGL);
   //noSmooth();
+  //
+  
+  noiseSeed(03102013);
 
   texture = loadImage("texture.png");
   textureMode(NORMAL);
@@ -87,9 +90,16 @@ void setup() {
 }
 
 float snoise = 1.0;
+float dnoise = 1.0;
 
 void draw() {
-  snoise += (noise(frameCount/10.0)*20-snoise)/100.0;
+  snoise += (noise(frameCount/10.0)-snoise)/100.0;
+  dnoise += (noise(frameCount/20.0)-dnoise)/100.0;
+float fov = (PI*(snoise+1.0))/3.0;
+float cameraZ = (height/2.0) / tan(fov/2.0);
+perspective(fov, float(width)/float(height), 
+                cameraZ/10.0, cameraZ*10.0);
+  
   background(0);
   for (int i = 0 ; i < bones.size();i++) {
     Rovina r = (Rovina)bones.get(i);
@@ -101,7 +111,7 @@ void draw() {
   }
   lights();
   pushMatrix();
-  translate(width/2, height/2, -200);
+  translate(width/2, height/2, -200-200*dnoise);
   scale(SCALE);
   rotateX(QUARTER_PI);
   rotateY(QUARTER_PI+frameCount/200.0);
