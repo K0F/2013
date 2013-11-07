@@ -7,15 +7,9 @@ import org.jsoup.select.Elements;
 Piece list;
 
 void init(){
-
-
-
   frame.removeNotify();
-
   frame.setUndecorated(true);
-
   frame.addNotify();
-
   super.init();
 }
 

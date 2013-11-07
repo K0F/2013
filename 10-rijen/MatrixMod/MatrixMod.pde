@@ -22,7 +22,7 @@ void setup(){
       for(int xx = 0; xx < matrix.length;xx++){
       for(int yy = 0; yy < matrix[xx].length;yy++){
 
-        img.pixels[idx] += (matrix[xx][yy]*pixels[(y+yy)*width+(x+xx)]-img.pixels[idx])/3.0;
+        img.pixels[idx]+=(matrix[xx][yy]*pixels[(y+yy)*width+(x+xx)]-img.pixels[idx])/3.0;
       }
       }
       
