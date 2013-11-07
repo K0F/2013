@@ -36,26 +36,24 @@ public void setup() {
 void draw() {
   background(255);
 
-  float frac = TWO_PI / 500.0;
-  float speed = 500.0;
+  float speed = mouseY/100.0;
 
   noStroke();
 
   pushMatrix();
 
   translate(width/2,height/2);
+
+  rotate(frameCount/1000.0);
   pushMatrix();
   translate(0,-sin(frameCount/10000.0)*200.0);
   rotate(frameCount/speed);
 
   fill(B);
+  
+  float frac = PI / (mouseX/2.0);
 
-  int cntr = 0;
-  for(float f = 0 ; f < TWO_PI;f += frac*2){
-
-    //fill((cntr+frameCount)%2==0?A:B);
-
-    cntr++;
+  for(float f = frac/2 ; f < TWO_PI;f += frac*2){
 
     triangle(
         cos(f)*width,sin(f)*width,
@@ -68,14 +66,12 @@ void draw() {
   pushMatrix();
   translate(0,sin(frameCount/10000.0)*200.0);
   rotate(-frameCount/speed);
+  
+  frac = PI / (mouseX/2.0+10.0);
 
-  cntr = 0;
+  for(float f = frac/2 ; f < TWO_PI;f += frac*2){
 
-  for(float f = 0 ; f < TWO_PI;f += frac*2){
 
-    //fill((cntr+frameCount)%2==0?B:A);
-
-    cntr++;
 
 
     triangle(
