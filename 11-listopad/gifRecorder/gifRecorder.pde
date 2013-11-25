@@ -2,14 +2,11 @@ import gifAnimation.*;
 
 boolean saveit = false;
 
-
 GifMaker gifExport;
 int frames = 0;
 int totalFrames = 31;
 
-
 color A,B;//
-
 
 public void setup() {
   size(1600, 900,P2D);
