@@ -133,7 +133,18 @@ void draw(){
      //noTint();
      
 
-  
+ 
+  // if(sin(frameCount/10.0)>0.3){
+      noStroke();
+      colorMode(HSB);
+      rectMode(CENTER);
+      int x = (int)random(width);
+      int y = (int)random(height);
+      int idx = y*input.width+x;
+      fill( hue(color(input.pixels[idx])),127,127,10 );
+      rect(random(width),random(height),random(1,5)*50,random(1,5)*50);
+      colorMode(RGB);
+  //}
 }
 
 void mousePressed(){
