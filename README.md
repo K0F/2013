@@ -27,3 +27,6 @@ But please, remember you had been warned, there is plenty of code with very vary
 
 
 *Enjoy, and feel free to recycle!*
+
+*-- kof*
+
