@@ -42,10 +42,11 @@ class PdReader{
           int x = parseInt(tokens[2]);
           int y = parseInt(tokens[3]);
           String name = "";
-          for(int z = 4 ;z < tokens.length;z++){
-           if(!tokens[z].equals(" ") && !tokens[z].equals("empty") && !tokens[4].equals("bng"))
+          for(int z = 4 ;z < tokens.length; z++){
+           if(!tokens[z].equals("empty") && !tokens[4].equals("bng"))
            name += tokens[z]+" ";          
            }
+          //println("debug: "+name);
           createObjekt(x,y,name,objCntr);
           objCntr++;
         }
@@ -65,9 +66,9 @@ class PdReader{
     } 
   } 
 
-  void createObjekt(int x,int y,String name,int id){
+  void createObjekt(int x,int y,String _name,int id){
     o = (Objekt[])expand(o,o.length+1);
-    o[o.length-1]=new Objekt(x,y,name,id,this); 
+    o[o.length-1]=new Objekt(x,y,_name,id,this); 
   }
 
   void createDrat(int father,int posF,int son,int posS){
@@ -122,26 +123,22 @@ class Objekt{
     y = _y;
     name = _name+"";
     id=_id;
-    int ll = 20;
 
-    try{
-      ll = (int)textWidth(name)*2;
-    }catch(Exception e){;}
+    delka = (int)textWidth(name)+3;
 
-    delka = ll;
   }
 
   void draw(){
-    if(over()||parent.drag[id])fill(#FFCC00);else fill(lerpColor(#aa0000,#FFFFFF,norm(id,0,parent.o.length)));  
+    if(over()||parent.drag[id])fill(#FFCC00);else fill(120);  
     stroke(0);
     pushMatrix();
     translate(0,posunY);
     rectMode(CORNER);
     rect(x-3,y,delka,-10);
     noStroke();
-    fill(120);
-    rect(x-3,y,delka,2);
-    rect(x-3,y-10,delka,2);
+    fill(255);
+    rect(x-3,y+1,delka,2);
+    rect(x-3,y-11,delka,2);
     text(name,x,y);
     popMatrix();
   }
@@ -179,7 +176,7 @@ class Drat{
 
   void draw(){
     setup();
-    stroke(255,90);
+    stroke(255,30);
     line(x,y,x2,y2);
   }
 

@@ -36,8 +36,9 @@ void setup(){
 
 
   size(800,600,P2D);
-textFont(createFont("SempliceRegular",9,false));
-
+  textFont(createFont("SempliceRegular",9,false));
+  smooth();
+   n = new PdReader("test.pd");
   pd = new PureData(this, 44100, 0, 2);
 
   pd.openPatch("test.pd");
@@ -45,15 +46,11 @@ textFont(createFont("SempliceRegular",9,false));
 
 }
 
-void init(){
 
-   n = new PdReader("test.pd");
 
-   super.init();
 
   
 
-}
 
 void draw() {
 
